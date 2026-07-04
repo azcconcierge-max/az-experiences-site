@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AZ Conciergerie — Site vitrine
 
-## Getting Started
+Site premium de la marque **AZ Conciergerie** : conciergerie privée, transport, hospitality & accès VIP, billets d'exception. Bilingue FR/EN, 100% statique, optimisé SEO + GEO (moteurs IA).
 
-First, run the development server:
+## Démarrer
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # vérifier avant déploiement
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Les 3 fichiers à connaître (aucun code requis)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Quoi | Où |
+|---|---|
+| **WhatsApp, email, adresse, domaine** | `src/lib/site.ts` |
+| **Ajouter / modifier un événement** | `src/data/events.ts` (copier un bloc existant) |
+| **Tous les textes du site (FR/EN)** | `src/i18n/fr.ts` et `src/i18n/en.ts` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Activer WhatsApp
+Dans `src/lib/site.ts`, remplacer `whatsapp: null` par le numéro au format international sans `+` (ex: `"33612345678"`). Tous les boutons WhatsApp s'activent automatiquement.
 
-## Learn More
+### Ajouter une photo à un événement
+Déposer l'image dans `public/events/` puis renseigner `image: "/events/mon-fichier.jpg"` dans l'événement concerné (`src/data/events.ts`). Sans photo, un visuel abstrait élégant est généré.
 
-To learn more about Next.js, take a look at the following resources:
+### Activer l'envoi du formulaire de contact
+1. Créer un compte sur [resend.com](https://resend.com) (gratuit)
+2. Créer `.env.local` avec `RESEND_API_KEY=re_xxxx`
+3. Une fois le domaine vérifié chez Resend, remplacer `onboarding@resend.dev` dans `src/app/actions/contact.ts`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Déploiement (Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Pousser ce repo sur GitHub
+2. Importer sur [vercel.com](https://vercel.com) — aucun réglage nécessaire
+3. Brancher le nom de domaine, puis mettre à jour `baseUrl` dans `src/lib/site.ts`
+4. Ajouter `RESEND_API_KEY` dans les variables d'environnement Vercel
 
-## Deploy on Vercel
+## SEO / GEO intégrés
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Balises meta + hreflang FR/EN sur chaque page
+- `sitemap.xml` et `robots.txt` générés automatiquement (nouveaux événements inclus)
+- Données structurées Schema.org : Organization/LocalBusiness, Event (par événement), FAQPage
+- `public/llms.txt` : fiche d'identité lisible par ChatGPT, Claude, Gemini, Perplexity
+- Site 100% statique : performances maximales
