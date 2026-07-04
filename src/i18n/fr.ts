@@ -1,12 +1,11 @@
 export const fr = {
   locale: "fr",
   nav: {
-    maison: "La Maison",
-    conciergerie: "Conciergerie",
-    transport: "Transport",
-    hospitality: "Hospitality & VIP",
-    evenements: "Événements",
-    contact: "Demande privée",
+    about: "Qui sommes-nous",
+    services: "Services",
+    events: "Événements",
+    guide: "Le Guide",
+    contact: "Contact",
   },
   cta: {
     request: "Demande privée",
@@ -14,241 +13,189 @@ export const fr = {
     whatsapp: "WhatsApp",
     discover: "Découvrir",
     allEvents: "Tous les événements",
+    allServices: "Tous nos services",
+    readArticle: "Lire l'article",
+    backToEvents: "Tous les événements",
+    backToGuide: "Retour au guide",
     contactUs: "Nous écrire",
   },
   home: {
-    metaTitle: "AZ Conciergerie — Conciergerie privée, hospitality & billets VIP",
+    metaTitle: "AZ Conciergerie — Conciergerie privée & accès aux événements sold out",
     metaDescription:
-      "AZ Conciergerie est une conciergerie privée parisienne : accès VIP, hospitality, transport et billets pour les événements les plus exclusifs — Grand Prix, finales, fashion weeks, concerts.",
-    heroEyebrow: "Conciergerie privée — Paris",
-    heroTitle: "L'accès est notre métier.",
+      "AZ Conciergerie, conciergerie privée parisienne spécialisée dans l'accès aux événements sold out : billets VIP, hospitality, jet privé, yachts, sécurité, voyages sur mesure. Coupe du Monde, F1 Monaco, Super Bowl, Fashion Week.",
+    heroEyebrow: "Conciergerie privée — Paris · Monde",
+    heroLine1: "L'accès",
+    heroLine2: "est notre métier.",
     heroSubtitle:
-      "Billets introuvables, loges privées, hospitality d'exception. Ce que vous pensiez inaccessible, nous le rendons simple.",
-    manifestoEyebrow: "La promesse",
-    manifesto:
-      "AZ Conciergerie ouvre les portes des événements les plus convoités au monde. Une seule demande, un interlocuteur unique, une exécution parfaite — dans la plus grande discrétion.",
-    universesEyebrow: "Nos univers",
-    universesTitle: "Quatre savoir-faire, une exigence",
-    universes: [
-      {
-        num: "01",
-        title: "Conciergerie privée",
-        text: "Tables impossibles, suites convoitées, demandes sur-mesure. Votre quotidien, orchestré sans effort.",
-        href: "/conciergerie",
-      },
-      {
-        num: "02",
-        title: "Transport",
-        text: "Chauffeur privé, transferts aéroport, logistique complète le jour J. Vous ne pensez à rien.",
-        href: "/transport",
-      },
-      {
-        num: "03",
-        title: "Hospitality & accès VIP",
-        text: "Loges, carrés VIP, paddocks, backstage. Vivez l'événement depuis les meilleures places du monde.",
-        href: "/hospitality",
-      },
-      {
-        num: "04",
-        title: "Billets d'exception",
-        text: "Finales, Grands Prix, fashion weeks, concerts complets. Nous trouvons ce qui ne se trouve pas.",
-        href: "/evenements",
-      },
-    ],
-    eventsEyebrow: "En ce moment",
-    eventsTitle: "Les événements les plus convoités",
+      "Conciergerie privée spécialisée dans les événements sold out. Billets, hospitality, expériences sur mesure — partout dans le monde.",
+    aboutEyebrow: "Qui sommes-nous",
+    aboutTitle: "Une conciergerie spécialisée dans l'impossible",
+    aboutText:
+      "AZ Conciergerie est une maison privée dédiée à l'accès : événements affichés complets, tables introuvables, expériences que l'on croit réservées à d'autres. Une demande, un interlocuteur, une exécution parfaite.",
+    aboutLink: "Découvrir la maison",
+    servicesEyebrow: "Nos services",
+    servicesTitle: "Un savoir-faire complet",
+    servicesIntro:
+      "Bien plus que le ticketing : une conciergerie totale, du jet privé à la table du dîner.",
+    eventsEyebrow: "Notre spécialité",
+    eventsTitle: "Les événements sold out",
+    eventsIntro:
+      "C'est notre signature : vous placer là où il n'y a officiellement plus de place. Sélection actualisée en continu.",
     stepsEyebrow: "L'expérience",
     stepsTitle: "Trois étapes, aucun effort",
     steps: [
       {
         num: "I",
-        title: "Vous formulez votre demande",
-        text: "Par message ou via notre formulaire privé. Un événement, une envie, une date — cela suffit.",
+        title: "Vous demandez",
+        text: "Par WhatsApp, email ou formulaire privé. Un événement, une envie, une date — cela suffit.",
       },
       {
         num: "II",
-        title: "Nous activons notre réseau",
-        text: "Sous quelques heures, nous revenons vers vous avec les meilleures options disponibles, en toute transparence.",
+        title: "Nous activons",
+        text: "Notre réseau de détenteurs officiels et de partenaires répond en quelques heures, avec les meilleures options.",
       },
       {
         num: "III",
-        title: "Vous vivez l'instant",
-        text: "Billets remis en main propre ou livrés, transport coordonné, assistance jusqu'à la dernière minute.",
+        title: "Vous vivez",
+        text: "Billets livrés, accès confirmés, transport orchestré. Vous n'avez plus qu'à être là.",
       },
     ],
-    stats: [
-      { value: "24/7", label: "Disponibilité" },
-      { value: "48h", label: "Réponse garantie sous quelques heures" },
-      { value: "FR · EN", label: "Deux langues" },
-      { value: "Paris", label: "Basés au cœur du 8ᵉ" },
-    ],
     faqEyebrow: "Questions essentielles",
-    faqTitle: "Ce que l'on nous demande",
+    faqTitle: "Toutes vos questions, toutes nos réponses",
     faq: [
       {
         q: "Qu'est-ce qu'AZ Conciergerie ?",
-        a: "AZ Conciergerie est une conciergerie privée basée à Paris, spécialisée dans l'accès aux événements exclusifs : billets VIP, hospitality, loges privées, transport et services de conciergerie sur-mesure.",
+        a: "AZ Conciergerie est une conciergerie privée basée à Paris, spécialisée dans l'accès aux événements sold out : billets VIP, packages hospitality, loges privées. La maison propose également jet privé, yachts, hôtels, sécurité rapprochée et voyages sur mesure.",
       },
       {
         q: "Pouvez-vous obtenir des billets pour un événement affiché complet ?",
-        a: "Oui. C'est précisément notre métier. Grâce à notre réseau de partenaires officiels et de détenteurs, nous obtenons des billets et des packages hospitality pour la plupart des événements affichés complets — finales, Grands Prix, concerts, fashion weeks.",
+        a: "Oui, c'est précisément notre spécialité. Grâce à notre réseau de détenteurs officiels et de partenaires hospitality, nous obtenons des accès pour la plupart des événements sold out : Coupe du Monde, Grand Prix de Monaco, Super Bowl, Wimbledon, Fashion Week, grands concerts.",
       },
       {
-        q: "Sous quel délai répondez-vous ?",
-        a: "Nous répondons généralement en moins de quelques heures, 7 jours sur 7. Pour les demandes urgentes le jour d'un événement, WhatsApp reste le canal le plus rapide.",
+        q: "Comment se passe une demande ?",
+        a: "Vous nous écrivez par WhatsApp, email ou via le formulaire privé. Nous revenons vers vous en quelques heures avec les options disponibles et un devis précis. Rien n'est engagé sans votre accord écrit.",
       },
       {
-        q: "Comment sont fixés vos prix ?",
-        a: "Chaque demande est unique : nous établissons un devis précis et transparent avant toute confirmation. Aucun engagement n'est pris sans votre accord écrit.",
+        q: "Pourquoi les prix ne sont-ils pas affichés ?",
+        a: "Chaque demande est unique : la date, la catégorie, le nombre de places et le niveau d'hospitality changent tout. Nous établissons un devis sur mesure, transparent et sans engagement, pour chaque demande.",
       },
       {
-        q: "La confidentialité est-elle garantie ?",
-        a: "Absolument. La discrétion est le fondement de notre maison : aucune information client n'est partagée, jamais.",
+        q: "Travaillez-vous avec les entreprises ?",
+        a: "Oui. Nous accompagnons les entreprises pour leurs invitations clients, cadeaux d'affaires et opérations d'hospitality sur les grands événements sportifs et culturels.",
       },
     ],
   },
-  maison: {
-    metaTitle: "La Maison — AZ Conciergerie",
+  about: {
+    metaTitle: "Qui sommes-nous — AZ Conciergerie",
     metaDescription:
-      "L'histoire et l'ADN d'AZ Conciergerie : une maison parisienne fondée sur trois principes — accès, exigence, discrétion.",
-    eyebrow: "La Maison",
-    title: "Une maison fondée sur l'accès",
+      "AZ Conciergerie : conciergerie privée parisienne, spécialiste de l'accès aux événements sold out et du sur-mesure. Accès, exigence, discrétion.",
+    eyebrow: "Qui sommes-nous",
+    title: "La maison de l'accès",
     intro:
-      "AZ Conciergerie est née d'une conviction simple : le vrai luxe n'est pas de posséder, mais d'accéder. Aux places que l'on croit réservées à d'autres. Aux soirées dont on ne connaît pas l'adresse. Aux instants qui ne se rejouent pas.",
-    values: [
+      "AZ Conciergerie est une conciergerie privée née d'une conviction simple : le vrai luxe n'est pas de posséder, mais d'accéder.",
+    manifesto:
+      "Nous sommes spécialisés dans ce que les autres appellent impossible : les événements affichés complets, les tables que l'on ne réserve pas, les accès que l'on croit réservés à d'autres. Pour chaque demande, un interlocuteur unique vous accompagne du premier message au dernier instant.",
+    soldout: {
+      title: "Spécialistes du sold out",
+      text: "Notre cœur de métier, c'est l'événement : finales, Grands Prix, fashion weeks, concerts et cérémonies affichés complets. Des années au cœur de ce marché nous ont construit un réseau rare — détenteurs officiels, organisateurs, partenaires hospitality — que nous mettons à votre service, toute l'année, dans le monde entier.",
+    },
+    pillars: [
       {
         title: "L'accès",
-        text: "Des années passées au cœur du marché des événements premium nous ont construit un réseau rare : détenteurs officiels, organisateurs, hospitality partners. C'est ce réseau que nous mettons à votre service.",
+        text: "Ce qui est complet ne l'est jamais vraiment. Notre réseau ouvre les portes que l'on croit fermées, sur les cinq continents.",
       },
       {
         title: "L'exigence",
-        text: "Un billet n'est jamais qu'un début. Placement, accueil, transport, timing : chaque détail est vérifié, chaque promesse tenue. Nous ne confirmons que ce que nous savons livrer.",
+        text: "Un billet n'est qu'un début. Placement, accueil, transport, timing : chaque détail est vérifié. Nous ne confirmons que ce que nous savons livrer.",
       },
       {
         title: "La discrétion",
-        text: "Nos clients nous confient leurs plus belles occasions. Ils savent que rien ne sort de la maison — ni un nom, ni une date, ni une destination.",
+        text: "Nos clients nous confient leurs plus belles occasions. Rien ne sort de la maison — ni un nom, ni une date, ni une destination.",
       },
     ],
     closing:
-      "Basée à Paris, la maison accompagne une clientèle française et internationale sur les événements majeurs en Europe et dans le monde.",
+      "Basée à Paris, la maison accompagne une clientèle privée et des entreprises, en français, anglais, espagnol et portugais, sur les événements majeurs en Europe et dans le monde.",
   },
-  conciergerie: {
-    metaTitle: "Conciergerie privée à Paris — AZ Conciergerie",
+  services: {
+    metaTitle: "Nos services — conciergerie privée sur mesure — AZ Conciergerie",
     metaDescription:
-      "Conciergerie privée sur-mesure : réservations impossibles, restaurants, hôtels, nightlife, expériences rares et demandes spéciales, à Paris et à l'international.",
-    eyebrow: "Conciergerie",
-    title: "Le sur-mesure, sans limite",
+      "Événements & billets sold out, gastronomie, jet privé, yachts, hôtels, transport avec chauffeur, sécurité rapprochée, voyages sur mesure : les services d'AZ Conciergerie.",
+    eyebrow: "Nos services",
+    title: "Tout ce qu'une maison peut faire",
     intro:
-      "AZ Conciergerie prend en charge vos demandes lifestyle les plus exigeantes, à Paris comme à l'international. Un interlocuteur unique, disponible, qui connaît vos habitudes et devance vos envies.",
-    services: [
-      {
-        title: "Tables & adresses",
-        text: "Restaurants complets, comptoirs confidentiels, chefs privés à domicile. La bonne table, au bon moment.",
-      },
-      {
-        title: "Hôtels & séjours",
-        text: "Suites signature, surclassements, arrivées orchestrées. Nous réservons ce qui ne se réserve pas en ligne.",
-      },
-      {
-        title: "Nightlife",
-        text: "Tables dans les clubs les plus demandés de Paris, Saint-Tropez, Mykonos ou Dubaï. Entrée fluide, placement premium.",
-      },
-      {
-        title: "Expériences rares",
-        text: "Visites privées, ateliers de maisons de luxe, rencontres exceptionnelles. Ce qui ne s'achète pas se demande.",
-      },
-      {
-        title: "Demandes spéciales",
-        text: "Cadeaux introuvables, organisation de surprises, urgences de dernière minute. Dites-le nous, nous trouvons comment.",
-      },
-    ],
-  },
-  transport: {
-    metaTitle: "Transport privé & logistique VIP — AZ Conciergerie",
-    metaDescription:
-      "Chauffeur privé, transferts aéroport, jet et hélicoptère via partenaires, logistique complète les jours d'événement. Le transport pensé comme une expérience.",
-    eyebrow: "Transport",
-    title: "Le trajet fait partie de l'expérience",
-    intro:
-      "Un grand événement ne commence pas à l'entrée du stade — il commence à votre porte. Nous coordonnons chaque déplacement pour que le jour J soit parfaitement fluide.",
-    services: [
-      {
-        title: "Chauffeur privé",
-        text: "Berlines et vans premium avec chauffeur, à l'heure ou à la journée, à Paris et dans les grandes capitales.",
-      },
-      {
-        title: "Transferts aéroport",
-        text: "Accueil personnalisé, suivi des vols, prise en charge des bagages. De la passerelle à votre hôtel sans friction.",
-      },
-      {
-        title: "Jour d'événement",
-        text: "Dépose au plus près des accès VIP, chauffeur en attente, retour sécurisé quelle que soit l'heure. Notre spécialité.",
-      },
-      {
-        title: "Jet & hélicoptère",
-        text: "Vols à la demande via nos partenaires certifiés — pour un Grand Prix, une finale ou un aller-retour dans la journée.",
-      },
-    ],
-  },
-  hospitality: {
-    metaTitle: "Hospitality & accès VIP — loges, paddocks, backstage — AZ Conciergerie",
-    metaDescription:
-      "Packages hospitality et accès VIP pour les plus grands événements : loges privées, carrés VIP, paddock clubs, backstage. Le cœur de métier d'AZ Conciergerie.",
-    eyebrow: "Hospitality & VIP",
-    title: "Les meilleures places du monde",
-    intro:
-      "C'est le cœur de notre maison. Loges privées, carrés VIP, paddock clubs, accès backstage : nous plaçons nos clients là où l'événement se vit vraiment — et nous nous occupons de tout le reste.",
-    services: [
-      {
-        title: "Loges privées",
-        text: "Loges et suites dans les plus grands stades et arenas d'Europe, avec restauration signature et service dédié.",
-      },
-      {
-        title: "Carrés & villages VIP",
-        text: "Hospitalités officielles des grands rendez-vous : finales, tournois, festivals. Champagne, vue imprenable, monde choisi.",
-      },
-      {
-        title: "Paddock & pit lane",
-        text: "Formule 1 et sports mécaniques : paddock clubs, grid walks, terrasses au-dessus des stands.",
-      },
-      {
-        title: "Backstage & coulisses",
-        text: "Concerts et spectacles : accès privilégiés, loges d'artistes, instants que le public ne voit jamais.",
-      },
-    ],
-    note:
-      "Chaque package est construit sur-mesure : billets, hospitality, transport et conciergerie peuvent être combinés en une seule expérience.",
+      "Une conciergerie totale, construite autour d'une même promesse : vous dites où vous voulez être, nous nous occupons de tout le reste. Chaque service suit la même exigence — clarté, précision, discrétion.",
+    pointsLabel: "Ce que nous faisons",
   },
   events: {
-    metaTitle: "Événements exclusifs — billets VIP & hospitality — AZ Conciergerie",
+    metaTitle: "Événements sold out — billets VIP & hospitality — AZ Conciergerie",
     metaDescription:
-      "Les événements les plus convoités du moment : Grands Prix, finales, fashion weeks, concerts. Billets premium, loges et packages hospitality via AZ Conciergerie.",
+      "Coupe du Monde 2026, Wimbledon, US Open, F1 Monaco, Super Bowl, Festival de Cannes, Ballon d'Or, Fashion Week, Roland-Garros : billets premium et hospitality via AZ Conciergerie.",
     eyebrow: "Événements",
-    title: "Le calendrier de l'exception",
+    title: "Là où il n'y a plus de place, nous en trouvons une",
     intro:
-      "Une sélection des rendez-vous les plus convoités du moment. Vous ne trouvez pas votre événement ? Notre réseau couvre bien plus que cette page — écrivez-nous.",
-    requestOther: "Un autre événement en tête ?",
-    requestOtherText:
-      "Cette sélection n'est qu'un aperçu. Finales, tournois, concerts, galas : dites-nous où vous voulez être, nous trouvons comment vous y placer.",
+      "Notre spécialité : l'accès premium aux événements les plus demandés au monde. Sélection actualisée en continu — les prix se demandent, par email ou WhatsApp.",
+    custom: {
+      title: "Un autre événement en tête ?",
+      text: "Cette sélection n'est qu'un aperçu. Concerts, finales, galas, conférences : dites-nous où vous voulez être, nous trouvons comment vous y placer.",
+      cta: "Demande sur mesure",
+    },
     whatWeOffer: "Ce que nous proposons",
-    eventFaqTitle: "Questions fréquentes",
-    backToEvents: "Tous les événements",
-    categories: { sport: "Sport", musique: "Musique", mode: "Mode", festival: "Festival" },
+    faqTitle: "Questions fréquentes",
+    faq: [
+      {
+        q: "Comment réserver ?",
+        a: "Écrivez-nous par WhatsApp, email ou via le formulaire privé en précisant l'événement, la date et le nombre de personnes. Nous revenons vers vous en quelques heures avec les options disponibles.",
+      },
+      {
+        q: "Pourquoi aucun prix n'est affiché ?",
+        a: "Chaque demande est unique : catégorie, placement, hospitality et date font varier chaque dossier. Un devis précis et transparent est établi avant toute confirmation.",
+      },
+      {
+        q: "Les billets sont-ils garantis ?",
+        a: "Nous ne confirmons que ce que nous savons livrer. Chaque confirmation fait l'objet d'un engagement écrit, et vous êtes accompagné jusqu'à votre place.",
+      },
+    ],
+    categories: {
+      sport: "Sport",
+      musique: "Musique",
+      mode: "Mode",
+      festival: "Festival",
+      ceremonie: "Cérémonie",
+    },
+  },
+  guide: {
+    metaTitle: "Le Guide — conseils & adresses d'AZ Conciergerie",
+    metaDescription:
+      "Le guide d'AZ Conciergerie : comment accéder aux événements sold out, vivre les grands rendez-vous en VIP, et les adresses à connaître. Toutes vos questions, toutes nos réponses.",
+    eyebrow: "Le Guide",
+    title: "Toutes vos questions, toutes nos réponses",
+    intro:
+      "Les coulisses de notre métier : accéder aux événements complets, vivre les grands rendez-vous comme il se doit, connaître les bonnes adresses. Publié régulièrement par la maison.",
+    published: "Publié le",
+    reading: "min de lecture",
+    ctaTitle: "Une question ? Une envie ?",
+    ctaText: "Le guide donne les réponses générales. Pour votre cas précis, écrivez-nous — la réponse arrive en quelques heures.",
   },
   contact: {
-    metaTitle: "Demande privée — AZ Conciergerie",
+    metaTitle: "Contact — demande privée — AZ Conciergerie",
     metaDescription:
-      "Adressez votre demande privée à AZ Conciergerie : billets VIP, hospitality, conciergerie, transport. Réponse rapide et confidentielle, 7j/7.",
+      "Adressez votre demande privée à AZ Conciergerie : billets d'événements sold out, hospitality, jet privé, voyages sur mesure. Réponse rapide et confidentielle, 7j/7.",
     eyebrow: "Contact",
     title: "Votre demande privée",
     intro:
-      "Décrivez-nous votre projet en quelques lignes — un événement, une date, une envie. Nous revenons vers vous rapidement, en toute confidentialité.",
+      "Un événement, une date, une envie — décrivez-nous votre projet en quelques lignes. Nous revenons vers vous en quelques heures, en toute confidentialité.",
     form: {
       name: "Nom complet",
       email: "Email",
       phone: "Téléphone (optionnel)",
       type: "Type de demande",
-      types: ["Billets & événements", "Hospitality & VIP", "Conciergerie", "Transport", "Autre"],
+      types: [
+        "Billets & événements",
+        "Hospitality & VIP",
+        "Jet privé / Yacht",
+        "Voyage sur mesure",
+        "Autre demande",
+      ],
       message: "Votre demande",
       messagePlaceholder: "Événement souhaité, nombre de personnes, dates, préférences…",
       submit: "Envoyer ma demande",

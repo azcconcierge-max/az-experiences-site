@@ -6,11 +6,11 @@ import { Logo } from "./Logo";
 export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
   const year = new Date().getFullYear();
   const nav = [
-    { href: `/${locale}/maison`, label: dict.nav.maison },
-    { href: `/${locale}/conciergerie`, label: dict.nav.conciergerie },
-    { href: `/${locale}/transport`, label: dict.nav.transport },
-    { href: `/${locale}/hospitality`, label: dict.nav.hospitality },
-    { href: `/${locale}/evenements`, label: dict.nav.evenements },
+    { href: `/${locale}/qui-sommes-nous`, label: dict.nav.about },
+    { href: `/${locale}/services`, label: dict.nav.services },
+    { href: `/${locale}/evenements`, label: dict.nav.events },
+    { href: `/${locale}/guide`, label: dict.nav.guide },
+    { href: `/${locale}/contact`, label: dict.nav.contact },
   ];
 
   return (

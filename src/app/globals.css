@@ -2,12 +2,15 @@
 
 @theme {
   --color-noir: #0a0a09;
-  --color-noir-soft: #121210;
-  --color-noir-card: #161613;
-  --color-ivory: #f5f1e8;
+  --color-noir-soft: #12110f;
+  --color-noir-card: #161512;
+  --color-ivory: #f4efe4;
+  --color-ivory-soft: #ece5d5;
   --color-ivory-dim: #a29b8c;
+  --color-ink: #14130f;
+  --color-ink-dim: #57534a;
   --color-gold: #c6a664;
-  --color-gold-soft: #8a7344;
+  --color-gold-deep: #8a7344;
   --font-display: var(--font-bodoni), "Didot", "Bodoni MT", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
@@ -28,10 +31,11 @@ body {
   color: var(--color-noir);
 }
 
-/* ---- Titres éditoriaux ---- */
+/* ---- Typographie éditoriale ---- */
 .display {
   font-family: var(--font-display);
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .eyebrow {
@@ -41,24 +45,40 @@ body {
   color: var(--color-gold);
 }
 
-/* ---- Ligne or décorative ---- */
+/* ---- Sections ivoire (alternance éditoriale) ---- */
+.section-ivory {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+}
+
+.section-ivory .eyebrow {
+  color: var(--color-gold-deep);
+}
+
+.section-ivory ::selection {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+/* ---- Lignes or ---- */
 .gold-line {
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--color-gold) 50%,
-    transparent
-  );
+  background: linear-gradient(to right, transparent, var(--color-gold) 50%, transparent);
+}
+
+.gold-rule {
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.5;
 }
 
 /* ---- Révélation au scroll ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
   transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
@@ -66,7 +86,24 @@ body {
   transform: none;
 }
 
-/* ---- Ken Burns très lent sur les visuels hero ---- */
+/* ---- Entrée du hero (au chargement, sans JS) ---- */
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-up {
+  opacity: 0;
+  animation: heroUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ---- Ken Burns très lent ---- */
 @keyframes kenburns {
   from {
     transform: scale(1);
@@ -77,19 +114,60 @@ body {
 }
 
 .kenburns {
-  animation: kenburns 22s ease-out forwards;
+  animation: kenburns 24s ease-out forwards;
+}
+
+/* ---- Marquee (bandeau défilant des événements) ---- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 46s linear infinite;
+}
+
+/* ---- Lien souligné à l'or ---- */
+.gold-underline {
+  position: relative;
+}
+
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gold-underline:hover::after {
+  transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .hero-up {
     opacity: 1;
     transform: none;
     transition: none;
+    animation: none;
   }
-  .kenburns {
+  .kenburns,
+  .marquee-track {
     animation: none;
   }
 }

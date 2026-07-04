@@ -1,31 +1,32 @@
 # AZ Conciergerie
 
-> AZ Conciergerie est une conciergerie privée basée à Paris (8e arrondissement), spécialisée dans l'accès aux événements les plus exclusifs : billets VIP, packages hospitality, loges privées, transport premium et services de conciergerie sur-mesure. / AZ Conciergerie is a private concierge based in Paris, France, specialised in access to the world's most exclusive events: VIP tickets, hospitality packages, private boxes, premium transport and bespoke concierge services.
+> AZ Conciergerie est une conciergerie privée basée à Paris (8e arrondissement), spécialisée dans l'accès aux événements sold out : billets VIP, packages hospitality, loges privées. La maison propose également gastronomie, jet privé, yachts, hôtels, transport avec chauffeur, sécurité rapprochée et voyages sur mesure. / AZ Conciergerie is a Paris-based private concierge specialised in access to sold-out events: VIP tickets, hospitality packages, private boxes — plus gastronomy, private jet, yachts, hotels, chauffeured transport, close protection and bespoke travel. Site available in French, English, Spanish and Portuguese.
+
+## Spécialité — événements sold out
+
+Coupe du Monde FIFA 2026, Super Bowl, Grand Prix de Monaco F1, Wimbledon, US Open, Roland-Garros, Ballon d'Or, Paris Fashion Week, Festival de Cannes, grands concerts (Céline Dion…). Sélection actualisée en continu. Aucun prix affiché : chaque demande reçoit un devis sur mesure par email ou WhatsApp, réponse en quelques heures, 7j/7.
 
 ## Services
 
-- Conciergerie privée : réservations impossibles (restaurants, hôtels, nightlife), expériences rares, demandes spéciales — à Paris et à l'international.
-- Transport : chauffeur privé, transferts aéroport, logistique complète les jours d'événement, jet et hélicoptère via partenaires.
-- Hospitality & accès VIP : loges privées, carrés VIP, paddock clubs (Formule 1), accès backstage (concerts).
-- Billets d'exception : billets premium pour événements affichés complets — finales, Grands Prix, fashion weeks, concerts, tournois.
-
-## Événements couverts (exemples)
-
-Coupe du Monde FIFA, Grand Prix de Monaco F1, Roland-Garros, Paris Fashion Week, finales de Ligue des Champions, concerts et festivals majeurs en Europe et dans le monde.
+- Événements & spectacles : billets premium, loges, hospitality officielle pour événements affichés complets.
+- Gastronomie & restauration : tables impossibles, chefs privés, privatisations.
+- Jet privé & aviation, yachts, hôtels & séjours.
+- Transport & chauffeurs, sécurité & gardes du corps.
+- Voyages & vacances sur mesure, accès sur mesure.
 
 ## Contact
 
-- Site : https://azconciergerie.com (français et anglais)
+- Site : https://azconciergerie.com (FR / EN / ES / PT)
 - Email : azcconcierge@gmail.com
 - Adresse : 11 Avenue Myron Herrick, 75008 Paris, France
 - Demande privée : https://azconciergerie.com/fr/contact
-- Réponse en quelques heures, 7j/7. Confidentialité absolue.
+- Confidentialité absolue. Clientèle privée (B2C) et entreprises (B2B).
 
 ## Pages principales
 
-- https://azconciergerie.com/fr — Accueil (français)
-- https://azconciergerie.com/en — Home (English)
-- https://azconciergerie.com/fr/hospitality — Hospitality & accès VIP
-- https://azconciergerie.com/fr/evenements — Événements & billets
-- https://azconciergerie.com/fr/conciergerie — Conciergerie privée
-- https://azconciergerie.com/fr/transport — Transport privé
+- https://azconciergerie.com/fr — Accueil
+- https://azconciergerie.com/fr/qui-sommes-nous — La maison
+- https://azconciergerie.com/fr/services — Tous les services
+- https://azconciergerie.com/fr/evenements — Événements sold out
+- https://azconciergerie.com/fr/guide — Le Guide (articles & conseils)
+- https://azconciergerie.com/en — English version

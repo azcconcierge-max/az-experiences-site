@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getDict } from "@/i18n";
+import { pageAlternates } from "@/lib/seo";
 import { site, whatsappHref } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
@@ -15,10 +16,7 @@ export async function generateMetadata({
   return {
     title: { absolute: d.metaTitle },
     description: d.metaDescription,
-    alternates: {
-      canonical: `/${locale}/contact`,
-      languages: { fr: "/fr/contact", en: "/en/contact" },
-    },
+    alternates: pageAlternates("/contact", locale),
   };
 }
 

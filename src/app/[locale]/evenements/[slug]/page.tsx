@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import { getDict, locales, type Locale } from "@/i18n";
 import { events, getEvent } from "@/data/events";
 import { site } from "@/lib/site";
+import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { EventVisual } from "@/components/EventVisual";
+import { EventCard } from "@/components/EventCard";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -23,20 +25,16 @@ export async function generateMetadata({
   const event = getEvent(slug);
   if (!event) return {};
   const l = locale as Locale;
-  const title =
-    l === "fr"
-      ? `${event.name} — Billets VIP & hospitality`
-      : `${event.name} — VIP tickets & hospitality`;
+  const suffix = {
+    fr: "Billets VIP & hospitality",
+    en: "VIP tickets & hospitality",
+    es: "Entradas VIP y hospitality",
+    pt: "Bilhetes VIP e hospitality",
+  }[l];
   return {
-    title: { absolute: `${title} — ${site.name}` },
+    title: { absolute: `${event.name} — ${suffix} — ${site.name}` },
     description: event.description[l],
-    alternates: {
-      canonical: `/${locale}/evenements/${slug}`,
-      languages: {
-        fr: `/fr/evenements/${slug}`,
-        en: `/en/evenements/${slug}`,
-      },
-    },
+    alternates: pageAlternates(`/evenements/${slug}`, locale),
   };
 }
 
@@ -51,41 +49,46 @@ export default async function EventPage({
   if (!event) notFound();
   const dict = getDict(locale);
   const d = dict.events;
+  const others = events.filter((e) => e.slug !== slug).slice(0, 3);
 
-  const eventJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    name: event.name,
-    startDate: event.startDate,
-    ...(event.endDate ? { endDate: event.endDate } : {}),
-    eventStatus: "https://schema.org/EventScheduled",
-    location: {
-      "@type": "Place",
-      name: event.venue,
-      address: { "@type": "PostalAddress", addressLocality: event.city, addressCountry: event.country },
-    },
-    description: event.description[locale],
-    organizer: { "@type": "Organization", name: site.name, url: site.baseUrl },
-    offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      url: `${site.baseUrl}/${locale}/evenements/${event.slug}`,
-    },
-  };
-
-  const faqItems = event.faq.map((f) => ({ q: f.q[locale], a: f.a[locale] }));
+  const eventJsonLd = event.startDate
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        name: event.name,
+        startDate: event.startDate,
+        ...(event.endDate ? { endDate: event.endDate } : {}),
+        eventStatus: "https://schema.org/EventScheduled",
+        location: {
+          "@type": "Place",
+          name: event.venue,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: event.city,
+            addressCountry: event.country,
+          },
+        },
+        description: event.description[locale],
+        organizer: { "@type": "Organization", name: site.name, url: site.baseUrl },
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          url: `${site.baseUrl}/${locale}/evenements/${event.slug}`,
+        },
+      }
+    : null;
 
   return (
     <>
-      <JsonLd data={eventJsonLd} />
-      {faqItems.length > 0 && <JsonLd data={faqJsonLd(faqItems)} />}
+      {eventJsonLd && <JsonLd data={eventJsonLd} />}
+      <JsonLd data={faqJsonLd(d.faq)} />
 
-      {/* ---- HERO ÉVÉNEMENT ---- */}
-      <section className="relative flex min-h-[70svh] items-end overflow-hidden">
+      {/* ---- HERO ---- */}
+      <section className="relative flex min-h-[75svh] items-end overflow-hidden">
         <EventVisual event={event} className="kenburns absolute inset-0 h-full w-full" />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-noir via-noir/40 to-noir/20"
+          className="absolute inset-0 bg-gradient-to-t from-noir via-noir/40 to-noir/25"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 md:px-8">
           <Reveal>
@@ -93,15 +96,17 @@ export default async function EventPage({
               href={`/${locale}/evenements`}
               className="mb-8 inline-block text-[0.65rem] tracking-[0.25em] text-ivory-dim uppercase transition-colors hover:text-gold"
             >
-              ← {d.backToEvents}
+              ← {dict.cta.backToEvents}
             </Link>
             <p className="eyebrow mb-4">
-              {event.dateLabel[locale]} — {event.venue}, {event.city}
+              {event.dateLabel[locale]} — {event.venue}
             </p>
-            <h1 className="display max-w-3xl text-4xl leading-tight text-ivory md:text-6xl">
+            <h1 className="display max-w-4xl text-5xl leading-[1.02] text-ivory md:text-7xl">
               {event.name}
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-ivory-dim italic">{event.tagline[locale]}</p>
+            <p className="display mt-5 max-w-xl text-xl text-ivory/70 italic">
+              {event.tagline[locale]}
+            </p>
           </Reveal>
         </div>
       </section>
@@ -111,14 +116,13 @@ export default async function EventPage({
         <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
             <div>
-              <p className="text-base leading-relaxed text-ivory/85">{event.description[locale]}</p>
-
-              {faqItems.length > 0 && (
-                <div className="mt-16">
-                  <h2 className="display mb-8 text-2xl text-ivory">{d.eventFaqTitle}</h2>
-                  <Faq items={faqItems} />
-                </div>
-              )}
+              <p className="text-base leading-relaxed text-ivory/85 md:text-lg">
+                {event.description[locale]}
+              </p>
+              <div className="mt-16">
+                <h2 className="display mb-8 text-2xl text-ivory">{d.faqTitle}</h2>
+                <Faq items={d.faq} />
+              </div>
             </div>
           </Reveal>
 
@@ -140,6 +144,22 @@ export default async function EventPage({
               </div>
             </aside>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ---- AUTRES ÉVÉNEMENTS ---- */}
+      <section className="section-ivory px-5 py-24 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <h2 className="display mb-12 text-3xl md:text-4xl">{dict.cta.allEvents}</h2>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {others.map((other, i) => (
+              <Reveal key={other.slug} delay={i * 100}>
+                <EventCard event={other} locale={locale} dict={dict} />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </>

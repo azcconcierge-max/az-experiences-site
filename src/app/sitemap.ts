@@ -2,17 +2,10 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { locales } from "@/i18n";
 import { events } from "@/data/events";
+import { articles } from "@/data/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = [
-    "",
-    "/maison",
-    "/conciergerie",
-    "/transport",
-    "/hospitality",
-    "/evenements",
-    "/contact",
-  ];
+  const pages = ["", "/qui-sommes-nous", "/services", "/evenements", "/guide", "/contact"];
 
   const staticEntries = locales.flatMap((locale) =>
     pages.map((page) => ({
@@ -30,5 +23,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticEntries, ...eventEntries];
+  const articleEntries = locales.flatMap((locale) =>
+    articles.map((article) => ({
+      url: `${site.baseUrl}/${locale}/guide/${article.slug}`,
+      lastModified: article.date,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
+  );
+
+  return [...staticEntries, ...eventEntries, ...articleEntries];
 }

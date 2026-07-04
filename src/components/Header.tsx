@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { locales } from "@/i18n";
 import { Logo } from "./Logo";
 
 type NavItem = { href: string; label: string };
@@ -31,29 +32,27 @@ export function Header({
     setOpen(false);
   }, [pathname]);
 
-  // Bascule fr/en en conservant la page courante
-  const otherLocale = locale === "fr" ? "en" : "fr";
-  const switchHref =
-    pathname?.replace(new RegExp(`^/${locale}`), `/${otherLocale}`) || `/${otherLocale}`;
+  const localeHref = (target: string) =>
+    pathname?.replace(new RegExp(`^/${locale}`), `/${target}`) || `/${target}`;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled || open
-          ? "border-b border-ivory/8 bg-noir/90 backdrop-blur-md"
+          ? "border-b border-ivory/8 bg-noir/92 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 md:px-8">
         <Logo locale={locale} />
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-[0.68rem] uppercase tracking-[0.22em] transition-colors duration-300 ${
-                pathname === item.href ? "text-gold" : "text-ivory/70 hover:text-ivory"
+              className={`gold-underline text-[0.68rem] uppercase tracking-[0.22em] transition-colors duration-300 ${
+                pathname?.startsWith(item.href) ? "text-gold" : "text-ivory/70 hover:text-ivory"
               }`}
             >
               {item.label}
@@ -62,16 +61,23 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-5">
-          <Link
-            href={switchHref}
-            className="text-[0.68rem] uppercase tracking-[0.22em] text-ivory-dim transition-colors hover:text-gold"
-            aria-label={otherLocale === "en" ? "Switch to English" : "Passer en français"}
-          >
-            {otherLocale.toUpperCase()}
-          </Link>
+          <nav aria-label="Langues" className="hidden items-center gap-2 md:flex">
+            {locales.map((l) => (
+              <Link
+                key={l}
+                href={localeHref(l)}
+                aria-current={l === locale ? "true" : undefined}
+                className={`text-[0.62rem] uppercase tracking-[0.15em] transition-colors ${
+                  l === locale ? "text-gold" : "text-ivory-dim hover:text-ivory"
+                }`}
+              >
+                {l}
+              </Link>
+            ))}
+          </nav>
           <Link
             href={`/${locale}/contact`}
-            className="hidden border border-gold/60 px-5 py-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold transition-all duration-500 hover:bg-gold hover:text-noir md:inline-block"
+            className="hidden border border-gold/60 px-5 py-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold transition-all duration-500 hover:bg-gold hover:text-noir lg:inline-block"
           >
             {ctaLabel}
           </Link>
@@ -119,6 +125,19 @@ export function Header({
               >
                 {ctaLabel}
               </Link>
+            </li>
+            <li className="flex gap-4 pt-2">
+              {locales.map((l) => (
+                <Link
+                  key={l}
+                  href={localeHref(l)}
+                  className={`text-[0.68rem] uppercase tracking-[0.2em] ${
+                    l === locale ? "text-gold" : "text-ivory-dim"
+                  }`}
+                >
+                  {l}
+                </Link>
+              ))}
             </li>
           </ul>
         </nav>

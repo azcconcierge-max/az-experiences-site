@@ -43,11 +43,11 @@ export async function generateMetadata({
     description: dict.home.metaDescription,
     alternates: {
       canonical: `/${locale}`,
-      languages: { fr: "/fr", en: "/en" },
+      languages: { fr: "/fr", en: "/en", es: "/es", pt: "/pt" },
     },
     openGraph: {
       siteName: site.name,
-      locale: locale === "fr" ? "fr_FR" : "en_US",
+      locale: { fr: "fr_FR", en: "en_US", es: "es_ES", pt: "pt_PT" }[locale] ?? "fr_FR",
       type: "website",
     },
     robots: { index: true, follow: true },
@@ -72,12 +72,12 @@ const organizationJsonLd = {
     addressCountry: site.address.country,
   },
   areaServed: ["Paris", "France", "Europe", "Worldwide"],
-  knowsLanguage: ["fr", "en"],
+  knowsLanguage: ["fr", "en", "es", "pt"],
   contactPoint: {
     "@type": "ContactPoint",
     email: site.email,
     contactType: "customer service",
-    availableLanguage: ["French", "English"],
+    availableLanguage: ["French", "English", "Spanish", "Portuguese"],
   },
 };
 
@@ -93,11 +93,10 @@ export default async function LocaleLayout({
   const dict = getDict(locale);
 
   const nav = [
-    { href: `/${locale}/maison`, label: dict.nav.maison },
-    { href: `/${locale}/conciergerie`, label: dict.nav.conciergerie },
-    { href: `/${locale}/transport`, label: dict.nav.transport },
-    { href: `/${locale}/hospitality`, label: dict.nav.hospitality },
-    { href: `/${locale}/evenements`, label: dict.nav.evenements },
+    { href: `/${locale}/qui-sommes-nous`, label: dict.nav.about },
+    { href: `/${locale}/services`, label: dict.nav.services },
+    { href: `/${locale}/evenements`, label: dict.nav.events },
+    { href: `/${locale}/guide`, label: dict.nav.guide },
   ];
 
   return (
