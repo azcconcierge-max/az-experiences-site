@@ -60,6 +60,9 @@ export const fr = {
         text: "Billets livrés, accès confirmés, transport orchestré. Vous n'avez plus qu'à être là.",
       },
     ],
+    avisEyebrow: "Ils nous ont fait confiance",
+    avisTitle: "La discrétion n'empêche pas la gratitude",
+    avisNote: "Extraits de retours clients. Prénoms seuls — la discrétion fait partie de la maison.",
     faqEyebrow: "Questions essentielles",
     faqTitle: "Toutes vos questions, toutes nos réponses",
     faq: [
@@ -115,6 +118,15 @@ export const fr = {
     ],
     closing:
       "Basée à Paris, la maison accompagne une clientèle privée et des entreprises, en français, anglais, espagnol et portugais, sur les événements majeurs en Europe et dans le monde.",
+    founder: {
+      eyebrow: "Une maison à visage humain",
+      name: "Noam Azoulay",
+      role: "Fondateur",
+      p1: "Né en France dans une famille d'hôteliers, Noam Azoulay grandit avec une certitude : le service n'est pas un métier, c'est une éducation. Regarder, anticiper, ne jamais faire attendre.",
+      p2: "C'est à Madrid, pendant son école de commerce, qu'il découvre l'envers des grands événements et commence à construire ce qui fera la force de la maison : un réseau. Détenteurs officiels, organisateurs, maisons d'hospitality — des années de voyages pour nouer des relations qui ne s'achètent pas.",
+      p3: "AZ Conciergerie est née de cette double culture : l'exigence hôtelière française et l'art de l'accès. Il la met aujourd'hui au service d'une clientèle qui partage la même conviction — une expérience ne vaut que si elle est parfaite.",
+      quote: "Un accès n'a de valeur que si tout le reste est impeccable.",
+    },
   },
   services: {
     metaTitle: "Nos services — conciergerie privée sur mesure — AZ Conciergerie",

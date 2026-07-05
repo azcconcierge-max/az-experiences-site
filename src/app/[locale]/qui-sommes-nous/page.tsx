@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getDict } from "@/i18n";
 import { pageAlternates } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
+import { Parallax } from "@/components/Parallax";
 
 export async function generateMetadata({
   params,
@@ -52,6 +54,44 @@ export default async function AboutPage({
           <Reveal delay={200}>
             <p className="text-base leading-relaxed text-ink-dim md:text-lg lg:pt-3">
               {d.soldout.text}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Le fondateur */}
+      <section className="px-5 py-24 md:px-8 md:py-32">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+          <Reveal>
+            <div className="img-reveal relative aspect-[3/4] overflow-hidden">
+              <Parallax amount={32} className="absolute -inset-y-10 inset-x-0">
+                <Image
+                  src="/images/fondateur.jpg"
+                  alt={`${d.founder.name} — ${d.founder.role}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </Parallax>
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-noir/50 via-transparent to-transparent"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={180}>
+            <p className="eyebrow mb-6">{d.founder.eyebrow}</p>
+            <h2 className="display text-4xl text-ivory md:text-5xl">{d.founder.name}</h2>
+            <p className="mt-2 text-[0.68rem] tracking-[0.3em] text-gold uppercase">
+              {d.founder.role}
+            </p>
+            <div className="mt-8 flex flex-col gap-5 text-sm leading-relaxed text-ivory-dim md:text-base">
+              <p>{d.founder.p1}</p>
+              <p>{d.founder.p2}</p>
+              <p>{d.founder.p3}</p>
+            </div>
+            <p className="display mt-9 border-l border-gold/60 pl-6 text-xl leading-relaxed text-gold italic md:text-2xl">
+              « {d.founder.quote} »
             </p>
           </Reveal>
         </div>

@@ -133,6 +133,16 @@ body {
   animation: marquee 46s linear infinite;
 }
 
+/* ---- Révélation d'image en rideau (dans un bloc .reveal) ---- */
+.reveal .img-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.reveal.is-visible .img-reveal {
+  clip-path: inset(0 0 0 0);
+}
+
 /* ---- Lien souligné à l'or ---- */
 .gold-underline {
   position: relative;
@@ -165,6 +175,10 @@ body {
     transform: none;
     transition: none;
     animation: none;
+  }
+  .reveal .img-reveal {
+    clip-path: none;
+    transition: none;
   }
   .kenburns,
   .marquee-track {

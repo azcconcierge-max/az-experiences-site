@@ -62,6 +62,9 @@ export const en: Dict = {
         text: "Tickets delivered, access confirmed, transport orchestrated. All you have to do is be there.",
       },
     ],
+    avisEyebrow: "They trusted us",
+    avisTitle: "Discretion does not preclude gratitude",
+    avisNote: "Excerpts from client feedback. First names only — discretion is part of the house.",
     faqEyebrow: "Essential questions",
     faqTitle: "All your questions, all our answers",
     faq: [
@@ -117,6 +120,15 @@ export const en: Dict = {
     ],
     closing:
       "Based in Paris, the house serves private clients and companies, in French, English, Spanish and Portuguese, across major events in Europe and worldwide.",
+    founder: {
+      eyebrow: "A house with a human face",
+      name: "Noam Azoulay",
+      role: "Founder",
+      p1: "Born in France into a family of hoteliers, Noam Azoulay grew up with one certainty: service is not a job, it is an upbringing. Watch, anticipate, never keep anyone waiting.",
+      p2: "It was in Madrid, during business school, that he discovered the inner workings of major events and began building what would become the house's strength: a network. Official holders, organisers, hospitality houses — years of travel to forge relationships that cannot be bought.",
+      p3: "AZ Conciergerie was born of this dual culture: French hotel-trade standards and the art of access. He now puts it at the service of clients who share the same conviction — an experience is only worth having if it is flawless.",
+      quote: "Access is only valuable if everything else is impeccable.",
+    },
   },
   services: {
     metaTitle: "Our services — bespoke private concierge — AZ Conciergerie",

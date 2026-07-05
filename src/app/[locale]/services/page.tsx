@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getDict, type Locale } from "@/i18n";
 import { services } from "@/data/services";
 import { pageAlternates } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
+import { Parallax } from "@/components/Parallax";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
 
@@ -55,10 +57,25 @@ export default async function ServicesPage({
             <Reveal key={service.slug}>
               <article
                 id={service.slug}
-                className="grid gap-8 border-t border-ivory/10 py-14 scroll-mt-28 lg:grid-cols-[0.55fr_1fr_1fr] lg:gap-12"
+                className={`grid items-center gap-10 border-t border-ivory/10 py-16 scroll-mt-28 lg:grid-cols-2 lg:gap-16 ${
+                  i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
               >
-                <div>
-                  <span className="display text-5xl text-gold/40">
+                <div className="img-reveal relative aspect-[4/3] overflow-hidden">
+                  <Parallax amount={26} className="absolute -inset-y-8 inset-x-0">
+                    <Image
+                      src={`/images/${service.slug}.jpg`}
+                      alt={service.title[locale]}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </Parallax>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-noir/60 via-transparent to-transparent"
+                  />
+                  <span className="display absolute bottom-5 left-6 text-5xl text-ivory/90">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -69,12 +86,10 @@ export default async function ServicesPage({
                   <p className="display mt-3 text-lg text-gold italic">
                     {service.phrase[locale]}
                   </p>
-                </div>
-                <div>
-                  <p className="text-sm leading-relaxed text-ivory-dim md:text-base">
+                  <p className="mt-6 text-sm leading-relaxed text-ivory-dim md:text-base">
                     {service.text[locale]}
                   </p>
-                  <p className="eyebrow mt-7 mb-4">{d.pointsLabel}</p>
+                  <p className="eyebrow mt-8 mb-4">{d.pointsLabel}</p>
                   <ul className="flex flex-col gap-2.5">
                     {service.points[locale].map((point) => (
                       <li key={point} className="flex items-start gap-3 text-sm text-ivory/85">

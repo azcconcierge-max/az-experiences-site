@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getDict, type Locale } from "@/i18n";
 import { events } from "@/data/events";
 import { services } from "@/data/services";
+import { testimonials } from "@/data/testimonials";
+import { Parallax } from "@/components/Parallax";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
@@ -43,18 +46,17 @@ export default async function HomePage({
 
       {/* ---- HERO ---- */}
       <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="kenburns absolute inset-0"
-          style={{
-            background: [
-              "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(198,166,100,0.14), transparent)",
-              "radial-gradient(ellipse 45% 35% at 82% 88%, rgba(198,166,100,0.08), transparent)",
-              "radial-gradient(ellipse 90% 70% at 15% 100%, rgba(32,29,22,0.95), transparent)",
-              "linear-gradient(180deg, #0d0c0a, #0a0a09)",
-            ].join(", "),
-          }}
-        />
+        <div aria-hidden="true" className="kenburns absolute inset-0">
+          <Image
+            src="/images/hero.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-noir/75 via-noir/50 to-noir" />
+        </div>
         <div className="relative z-10 mx-auto max-w-5xl px-5 pt-20 text-center">
           <p className="eyebrow hero-up mb-8" style={{ animationDelay: "0.1s" }}>
             {h.heroEyebrow}
@@ -94,24 +96,33 @@ export default async function HomePage({
 
       {/* ---- 01 QUI SOMMES-NOUS (ivoire) ---- */}
       <section className="section-ivory px-5 py-28 md:px-8 md:py-36">
-        <div className="mx-auto grid max-w-6xl items-start gap-14 lg:grid-cols-[1.2fr_1fr]">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.15fr]">
           <Reveal>
+            <div className="img-reveal relative aspect-[3/4] max-w-md overflow-hidden">
+              <Parallax amount={30} className="absolute -inset-y-10 inset-x-0">
+                <Image
+                  src="/images/fondateur.jpg"
+                  alt={`${dict.about.founder.name} — ${dict.about.founder.role}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </Parallax>
+            </div>
+          </Reveal>
+          <Reveal delay={200}>
             <p className="eyebrow mb-6 flex items-baseline gap-4">
               <span className="display text-sm tracking-normal opacity-70">01</span>
               {h.aboutEyebrow}
             </p>
             <h2 className="display text-4xl leading-[1.08] md:text-6xl">{h.aboutTitle}</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="lg:pt-16">
-              <p className="text-base leading-relaxed text-ink-dim md:text-lg">{h.aboutText}</p>
-              <Link
-                href={`/${locale}/qui-sommes-nous`}
-                className="gold-underline mt-8 inline-block text-[0.68rem] tracking-[0.28em] text-gold-deep uppercase"
-              >
-                {h.aboutLink} →
-              </Link>
-            </div>
+            <p className="mt-8 text-base leading-relaxed text-ink-dim md:text-lg">{h.aboutText}</p>
+            <Link
+              href={`/${locale}/qui-sommes-nous`}
+              className="gold-underline mt-8 inline-block text-[0.68rem] tracking-[0.28em] text-gold-deep uppercase"
+            >
+              {h.aboutLink} →
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -245,10 +256,39 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 05 FAQ ---- */}
+      {/* ---- 05 AVIS ---- */}
       <section className="px-5 py-28 md:px-8 md:py-36">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeader num="05" eyebrow={h.avisEyebrow} title={h.avisTitle} intro={h.avisNote} />
+          <div className="grid gap-px border border-ivory/8 bg-ivory/8 md:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={i * 130} className="bg-noir">
+                <figure className="flex h-full flex-col justify-between p-9">
+                  <blockquote>
+                    <span aria-hidden="true" className="display block text-5xl leading-none text-gold/40">
+                      “
+                    </span>
+                    <p className="display mt-2 text-lg leading-relaxed text-ivory italic">
+                      {t.quote[locale]}
+                    </p>
+                  </blockquote>
+                  <figcaption className="mt-8 border-t border-ivory/10 pt-5">
+                    <p className="text-sm text-ivory">{t.name}</p>
+                    <p className="mt-1 text-[0.62rem] tracking-[0.25em] text-gold uppercase">
+                      {t.context[locale]}
+                    </p>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---- 06 FAQ ---- */}
+      <section className="bg-noir-soft px-5 py-28 md:px-8 md:py-36">
         <div className="mx-auto max-w-3xl">
-          <SectionHeader num="05" eyebrow={h.faqEyebrow} title={h.faqTitle} />
+          <SectionHeader num="06" eyebrow={h.faqEyebrow} title={h.faqTitle} />
           <Reveal delay={150}>
             <Faq items={h.faq} />
           </Reveal>
