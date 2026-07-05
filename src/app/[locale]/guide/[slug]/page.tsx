@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!article) return {};
   const l = locale as Locale;
   return {
-    title: { absolute: `${article.title[l]} — ${site.name}` },
+    title: { absolute: `${article.title[l]}, ${site.name}` },
     description: article.excerpt[l],
     alternates: pageAlternates(`/guide/${slug}`, locale),
   };
@@ -74,7 +74,7 @@ export default async function ArticlePage({
               ← {dict.cta.backToGuide}
             </Link>
             <p className="eyebrow mb-5">
-              {d.published} {formatDate(article.date, locale)} — {article.readingMinutes}{" "}
+              {d.published} {formatDate(article.date, locale)}, {article.readingMinutes}{" "}
               {d.reading}
             </p>
             <h1 className="display text-4xl leading-[1.08] text-ivory md:text-6xl">

@@ -5,7 +5,7 @@ import { getDict, type Locale } from "@/i18n";
 import { events } from "@/data/events";
 import { services } from "@/data/services";
 import { testimonials } from "@/data/testimonials";
-import { Parallax } from "@/components/Parallax";
+import { TypoPanel } from "@/components/TypoPanel";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
@@ -98,17 +98,7 @@ export default async function HomePage({
       <section className="section-ivory px-5 py-28 md:px-8 md:py-36">
         <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.15fr]">
           <Reveal>
-            <div className="img-reveal relative aspect-[3/4] max-w-md overflow-hidden">
-              <Parallax amount={30} className="absolute -inset-y-10 inset-x-0">
-                <Image
-                  src="/images/fondateur.jpg"
-                  alt={`${dict.about.founder.name} — ${dict.about.founder.role}`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                />
-              </Parallax>
-            </div>
+            <TypoPanel name={dict.about.founder.name} role={dict.about.founder.role} />
           </Reveal>
           <Reveal delay={200}>
             <p className="eyebrow mb-6 flex items-baseline gap-4">
@@ -147,7 +137,7 @@ export default async function HomePage({
             {services.map((s, i) => (
               <Reveal key={s.slug} delay={(i % 3) * 100} className="bg-noir">
                 <Link
-                  href={`/${locale}/services#${s.slug}`}
+                  href={`/${locale}/services/${s.slug}`}
                   className="group block h-full p-8 transition-colors duration-500 hover:bg-noir-card"
                 >
                   <span className="display text-sm text-gold/60">

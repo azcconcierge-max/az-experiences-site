@@ -1,7 +1,7 @@
 import type { L } from "@/i18n";
 
 /**
- * AVIS CLIENTS — exemples de démonstration à remplacer par de VRAIS avis
+ * AVIS CLIENTS, exemples de démonstration à remplacer par de VRAIS avis
  * (Google, WhatsApp, emails clients) dès que possible.
  * Prénom + initiale uniquement : la discrétion fait partie de la promesse.
  */
@@ -30,10 +30,10 @@ export const testimonials: Testimonial[] = [
   {
     name: "Karim B.",
     context: {
-      fr: "Finale — billets sold out",
-      en: "Final — sold-out tickets",
-      es: "Final — entradas agotadas",
-      pt: "Final — bilhetes esgotados",
+      fr: "Finale, billets sold out",
+      en: "Final, sold-out tickets",
+      es: "Final, entradas agotadas",
+      pt: "Final, bilhetes esgotados",
     },
     quote: {
       fr: "Quatre places catégorie 1 pour une finale affichée complète depuis des mois. Billets nominatifs, accompagnement jusqu'au tourniquet. Sérieux absolu.",

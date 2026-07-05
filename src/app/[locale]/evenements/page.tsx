@@ -46,7 +46,7 @@ export default async function EventsPage({
               </Reveal>
             ))}
 
-            {/* Carte « sur mesure » — tous les autres événements */}
+            {/* Carte « sur mesure », tous les autres événements */}
             <Reveal delay={(events.length % 3) * 100}>
               <Link
                 href={`/${locale}/contact`}

@@ -28,7 +28,7 @@ export async function sendContact(
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.warn("[contact] RESEND_API_KEY manquant — demande non envoyée:", {
+    console.warn("[contact] RESEND_API_KEY manquant, demande non envoyée:", {
       name,
       email,
       type,
@@ -46,7 +46,7 @@ export async function sendContact(
       from: `${site.name} <onboarding@resend.dev>`, // à remplacer par le domaine vérifié
       to: [site.email],
       reply_to: email,
-      subject: `Demande privée — ${type || "Général"} — ${name}`,
+      subject: `Demande privée, ${type || "Général"}, ${name}`,
       text: [
         `Nom : ${name}`,
         `Email : ${email}`,

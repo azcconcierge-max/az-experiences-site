@@ -32,7 +32,7 @@ export default async function MentionsPage({
         <div className="mx-auto max-w-3xl text-sm leading-relaxed text-ivory-dim [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-medium [&_h2]:text-ivory">
           <h2>{fr ? "Éditeur du site" : "Site publisher"}</h2>
           <p>
-            {site.legalName} — SIRET 993 643 378 00017
+            {site.legalName}, SIRET 993 643 378 00017
             <br />
             {site.address.street}, {site.address.postalCode} {site.address.city}, France
             <br />
@@ -42,7 +42,7 @@ export default async function MentionsPage({
           <p>Noam Azoulay</p>
           <h2>{fr ? "Hébergement" : "Hosting"}</h2>
           <p>
-            Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA —{" "}
+            Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA ,{" "}
             <a href="https://vercel.com" className="text-gold">
               vercel.com
             </a>

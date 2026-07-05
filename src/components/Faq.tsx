@@ -1,6 +1,6 @@
 type Item = { q: string; a: string };
 
-/** FAQ accessible (details/summary) — également balisée en Schema.org FAQPage. */
+/** FAQ accessible (details/summary), également balisée en Schema.org FAQPage. */
 export function Faq({ items }: { items: Item[] }) {
   return (
     <div className="divide-y divide-ivory/8 border-y border-ivory/8">

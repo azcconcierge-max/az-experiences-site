@@ -1,11 +1,11 @@
 import type { L, Locale } from "@/i18n";
 
 /**
- * LES ÉVÉNEMENTS — la vitrine principale du site, à actualiser en continu.
+ * LES ÉVÉNEMENTS · la vitrine principale du site, à actualiser en continu.
  * Ajouter un événement = copier un bloc. Jamais de prix : les demandes
  * se font par email ou WhatsApp.
  * `image` : chemin d'une photo dans /public/events (sinon visuel abstrait auto).
- * `startDate` : ISO (YYYY-MM-DD ou YYYY-MM) — laisser undefined si dates sur demande.
+ * `startDate` : ISO (YYYY-MM-DD ou YYYY-MM) · laisser undefined si dates sur demande.
  */
 export type EventItem = {
   slug: string;
@@ -35,10 +35,10 @@ export const events: EventItem[] = [
     startDate: "2026-06-11",
     endDate: "2026-07-19",
     dateLabel: {
-      fr: "Finale le 19 juillet 2026 — New York",
-      en: "Final on July 19, 2026 — New York",
-      es: "Final el 19 de julio de 2026 — Nueva York",
-      pt: "Final a 19 de julho de 2026 — Nova Iorque",
+      fr: "Finale le 19 juillet 2026 · New York",
+      en: "Final on July 19, 2026 · New York",
+      es: "Final el 19 de julio de 2026 · Nueva York",
+      pt: "Final a 19 de julho de 2026 · Nova Iorque",
     },
     tagline: {
       fr: "Le match que le monde entier regardera.",
@@ -69,10 +69,10 @@ export const events: EventItem[] = [
     venue: "SoFi Stadium",
     startDate: "2027-02",
     dateLabel: {
-      fr: "Février 2027 — Los Angeles",
-      en: "February 2027 — Los Angeles",
-      es: "Febrero de 2027 — Los Ángeles",
-      pt: "Fevereiro de 2027 — Los Angeles",
+      fr: "Février 2027 · Los Angeles",
+      en: "February 2027 · Los Angeles",
+      es: "Febrero de 2027 · Los Ángeles",
+      pt: "Fevereiro de 2027 · Los Angeles",
     },
     tagline: {
       fr: "Le plus grand show du sport américain.",
@@ -104,10 +104,10 @@ export const events: EventItem[] = [
     startDate: "2027-05-27",
     endDate: "2027-05-30",
     dateLabel: {
-      fr: "Mai 2027 — Monte-Carlo",
-      en: "May 2027 — Monte-Carlo",
-      es: "Mayo de 2027 — Montecarlo",
-      pt: "Maio de 2027 — Monte-Carlo",
+      fr: "Mai 2027 · Monte-Carlo",
+      en: "May 2027 · Monte-Carlo",
+      es: "Mayo de 2027 · Montecarlo",
+      pt: "Maio de 2027 · Monte-Carlo",
     },
     tagline: {
       fr: "Le joyau du calendrier, vu d'en haut.",
@@ -139,10 +139,10 @@ export const events: EventItem[] = [
     startDate: "2027-06-28",
     endDate: "2027-07-11",
     dateLabel: {
-      fr: "Juin – juillet 2027 — Londres",
-      en: "June – July 2027 — London",
-      es: "Junio – julio de 2027 — Londres",
-      pt: "Junho – julho de 2027 — Londres",
+      fr: "Juin – juillet 2027 · Londres",
+      en: "June – July 2027 · London",
+      es: "Junio – julio de 2027 · Londres",
+      pt: "Junho – julho de 2027 · Londres",
     },
     tagline: {
       fr: "Le gazon le plus fermé du monde.",
@@ -151,10 +151,10 @@ export const events: EventItem[] = [
       pt: "A relva mais exclusiva do mundo.",
     },
     description: {
-      fr: "Centre Court en Debenture, hospitality dans les clubs privés du All England Club, finales du week-end : Wimbledon est le tournoi le plus difficile d'accès au monde — c'est exactement notre spécialité.",
-      en: "Centre Court Debentures, hospitality in the All England Club's private clubs, finals weekend: Wimbledon is the hardest tournament in the world to access — which is exactly our speciality.",
-      es: "Centre Court en Debenture, hospitality en los clubes privados del All England Club, finales del fin de semana: Wimbledon es el torneo de acceso más difícil del mundo — exactamente nuestra especialidad.",
-      pt: "Centre Court em Debenture, hospitality nos clubes privados do All England Club, finais do fim de semana: Wimbledon é o torneio de acesso mais difícil do mundo — exatamente a nossa especialidade.",
+      fr: "Centre Court en Debenture, hospitality dans les clubs privés du All England Club, finales du week-end : Wimbledon est le tournoi le plus difficile d'accès au monde · c'est exactement notre spécialité.",
+      en: "Centre Court Debentures, hospitality in the All England Club's private clubs, finals weekend: Wimbledon is the hardest tournament in the world to access · which is exactly our speciality.",
+      es: "Centre Court en Debenture, hospitality en los clubes privados del All England Club, finales del fin de semana: Wimbledon es el torneo de acceso más difícil del mundo · exactamente nuestra especialidad.",
+      pt: "Centre Court em Debenture, hospitality nos clubes privados do All England Club, finais do fim de semana: Wimbledon é o torneio de acesso mais difícil do mundo · exatamente a nossa especialidade.",
     },
     offers: {
       fr: ["Debentures Centre Court", "Hospitality clubs privés", "Finales dames & messieurs"],
@@ -174,10 +174,10 @@ export const events: EventItem[] = [
     startDate: "2026-08-31",
     endDate: "2026-09-13",
     dateLabel: {
-      fr: "Août – septembre 2026 — New York",
-      en: "August – September 2026 — New York",
-      es: "Agosto – septiembre de 2026 — Nueva York",
-      pt: "Agosto – setembro de 2026 — Nova Iorque",
+      fr: "Août – septembre 2026 · New York",
+      en: "August – September 2026 · New York",
+      es: "Agosto – septiembre de 2026 · Nueva York",
+      pt: "Agosto – setembro de 2026 · Nova Iorque",
     },
     tagline: {
       fr: "Le Grand Chelem sous les lumières de New York.",
@@ -209,10 +209,10 @@ export const events: EventItem[] = [
     startDate: "2027-05-23",
     endDate: "2027-06-06",
     dateLabel: {
-      fr: "Mai – juin 2027 — Paris",
-      en: "May – June 2027 — Paris",
-      es: "Mayo – junio de 2027 — París",
-      pt: "Maio – junho de 2027 — Paris",
+      fr: "Mai – juin 2027 · Paris",
+      en: "May – June 2027 · Paris",
+      es: "Mayo – junio de 2027 · París",
+      pt: "Maio – junho de 2027 · Paris",
     },
     tagline: {
       fr: "La terre battue, côté loges.",
@@ -243,10 +243,10 @@ export const events: EventItem[] = [
     venue: "Théâtre du Châtelet",
     startDate: "2026-10",
     dateLabel: {
-      fr: "Octobre 2026 — Paris",
-      en: "October 2026 — Paris",
-      es: "Octubre de 2026 — París",
-      pt: "Outubro de 2026 — Paris",
+      fr: "Octobre 2026 · Paris",
+      en: "October 2026 · Paris",
+      es: "Octubre de 2026 · París",
+      pt: "Outubro de 2026 · Paris",
     },
     tagline: {
       fr: "La soirée où le football couronne son roi.",
@@ -278,10 +278,10 @@ export const events: EventItem[] = [
     startDate: "2026-09-28",
     endDate: "2026-10-06",
     dateLabel: {
-      fr: "Septembre – octobre 2026 — Paris",
-      en: "September – October 2026 — Paris",
-      es: "Septiembre – octubre de 2026 — París",
-      pt: "Setembro – outubro de 2026 — Paris",
+      fr: "Septembre – octobre 2026 · Paris",
+      en: "September – October 2026 · Paris",
+      es: "Septiembre – octubre de 2026 · París",
+      pt: "Setembro – outubro de 2026 · Paris",
     },
     tagline: {
       fr: "Au premier rang de la mode mondiale.",
@@ -312,10 +312,10 @@ export const events: EventItem[] = [
     venue: "Palais des Festivals",
     startDate: "2027-05",
     dateLabel: {
-      fr: "Mai 2027 — Croisette",
-      en: "May 2027 — The Croisette",
-      es: "Mayo de 2027 — La Croisette",
-      pt: "Maio de 2027 — Croisette",
+      fr: "Mai 2027 · Croisette",
+      en: "May 2027 · The Croisette",
+      es: "Mayo de 2027 · La Croisette",
+      pt: "Maio de 2027 · Croisette",
     },
     tagline: {
       fr: "Les marches les plus célèbres du monde.",
@@ -345,10 +345,10 @@ export const events: EventItem[] = [
     country: "FR",
     venue: "Dates sur demande",
     dateLabel: {
-      fr: "Tournée — dates sur demande",
-      en: "Tour — dates upon request",
-      es: "Gira — fechas bajo petición",
-      pt: "Digressão — datas a pedido",
+      fr: "Tournée · dates sur demande",
+      en: "Tour · dates upon request",
+      es: "Gira · fechas bajo petición",
+      pt: "Digressão · datas a pedido",
     },
     tagline: {
       fr: "Une voix, une fois dans une vie.",
@@ -375,3 +375,17 @@ export const events: EventItem[] = [
 export function getEvent(slug: string): EventItem | undefined {
   return events.find((e) => e.slug === slug);
 }
+
+/** Organisateurs officiels, affichés dans les faits clés des pages événements. */
+export const organizers: Record<string, string> = {
+  "coupe-du-monde-2026": "FIFA",
+  "super-bowl": "NFL",
+  "f1-monaco": "Automobile Club de Monaco",
+  wimbledon: "AELTC",
+  "us-open": "USTA",
+  "roland-garros": "FFT",
+  "ballon-dor": "France Football & UEFA",
+  "fashion-week-paris": "FHCM",
+  "festival-cannes": "Festival de Cannes",
+  "celine-dion": "Production officielle",
+};

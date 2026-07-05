@@ -2,7 +2,7 @@ import { site, whatsappHref } from "@/lib/site";
 
 /**
  * Bouton WhatsApp flottant (bas droite).
- * Tant que site.whatsapp est null, il pointe vers l'email —
+ * Tant que site.whatsapp est null, il pointe vers l'email
  * il basculera automatiquement dès que le numéro sera renseigné dans lib/site.ts.
  */
 export function WhatsAppFloat({ label }: { label: string }) {

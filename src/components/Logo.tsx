@@ -11,7 +11,7 @@ export function Logo({
     <Link
       href={`/${locale}`}
       className="group inline-flex flex-col items-center gap-1"
-      aria-label="AZ Conciergerie — Accueil"
+      aria-label="AZ Conciergerie | Accueil"
     >
       <span className="display text-3xl leading-none tracking-[-0.06em] text-ivory transition-colors duration-500 group-hover:text-gold">
         AZ

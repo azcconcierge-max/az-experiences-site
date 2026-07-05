@@ -22,14 +22,14 @@ export const en: Dict = {
     contactUs: "Write to us",
   },
   home: {
-    metaTitle: "AZ Conciergerie — Private concierge & access to sold-out events",
+    metaTitle: "AZ Conciergerie | Private concierge & access to sold-out events",
     metaDescription:
       "AZ Conciergerie, Paris-based private concierge specialised in access to sold-out events: VIP tickets, hospitality, private jet, yachts, security, bespoke travel. World Cup, Monaco F1, Super Bowl, Fashion Week.",
-    heroEyebrow: "Private concierge — Paris · Worldwide",
+    heroEyebrow: "Private concierge, Paris · Worldwide",
     heroLine1: "Access",
     heroLine2: "is our craft.",
     heroSubtitle:
-      "A private concierge specialised in sold-out events. Tickets, hospitality, bespoke experiences — anywhere in the world.",
+      "A private concierge specialised in sold-out events. Tickets, hospitality, bespoke experiences, anywhere in the world.",
     aboutEyebrow: "About us",
     aboutTitle: "A concierge specialised in the impossible",
     aboutText:
@@ -49,7 +49,7 @@ export const en: Dict = {
       {
         num: "I",
         title: "You ask",
-        text: "By WhatsApp, email or private form. An event, a wish, a date — that is all it takes.",
+        text: "By WhatsApp, email or private form. An event, a wish, a date, that is all it takes.",
       },
       {
         num: "II",
@@ -64,7 +64,7 @@ export const en: Dict = {
     ],
     avisEyebrow: "They trusted us",
     avisTitle: "Discretion does not preclude gratitude",
-    avisNote: "Excerpts from client feedback. First names only — discretion is part of the house.",
+    avisNote: "Excerpts from client feedback. First names only, discretion is part of the house.",
     faqEyebrow: "Essential questions",
     faqTitle: "All your questions, all our answers",
     faq: [
@@ -74,7 +74,7 @@ export const en: Dict = {
       },
       {
         q: "Can you get tickets for a sold-out event?",
-        a: "Yes — that is precisely our speciality. Through our network of official holders and hospitality partners, we secure access to most sold-out events: World Cup, Monaco Grand Prix, Super Bowl, Wimbledon, Fashion Week, major concerts.",
+        a: "Yes, that is precisely our speciality. Through our network of official holders and hospitality partners, we secure access to most sold-out events: World Cup, Monaco Grand Prix, Super Bowl, Wimbledon, Fashion Week, major concerts.",
       },
       {
         q: "How does a request work?",
@@ -91,7 +91,7 @@ export const en: Dict = {
     ],
   },
   about: {
-    metaTitle: "About us — AZ Conciergerie",
+    metaTitle: "About us | AZ Conciergerie",
     metaDescription:
       "AZ Conciergerie: Paris-based private concierge, specialist in access to sold-out events and bespoke requests. Access, standards, discretion.",
     eyebrow: "About us",
@@ -102,11 +102,11 @@ export const en: Dict = {
       "We specialise in what others call impossible: sold-out events, tables that cannot be booked, access believed to be reserved for others. For every request, one dedicated contact accompanies you from the first message to the very last moment.",
     soldout: {
       title: "Sold-out specialists",
-      text: "Our core craft is the event: finals, Grands Prix, fashion weeks, concerts and ceremonies marked as sold out. Years at the heart of this market have built us a rare network — official holders, organisers, hospitality partners — which now works for you, all year round, worldwide.",
+      text: "Our core craft is the event: finals, Grands Prix, fashion weeks, concerts and ceremonies marked as sold out. Years at the heart of this market have built us a rare network, official holders, organisers, hospitality partners, which now works for you, all year round, worldwide.",
     },
     pillars: [
       {
-        title: "Access",
+        title: "The network",
         text: "Sold out is never truly sold out. Our network opens the doors believed to be closed, on five continents.",
       },
       {
@@ -115,7 +115,11 @@ export const en: Dict = {
       },
       {
         title: "Discretion",
-        text: "Our clients trust us with their finest occasions. Nothing leaves the house — not a name, not a date, not a destination.",
+        text: "Our clients trust us with their finest occasions. Nothing leaves the house, not a name, not a date, not a destination.",
+      },
+      {
+        title: "Availability",
+        text: "A house reachable seven days a week, answering in hours, not days. The finest occasions never give notice.",
       },
     ],
     closing:
@@ -124,36 +128,45 @@ export const en: Dict = {
       eyebrow: "A house with a human face",
       name: "Noam Azoulay",
       role: "Founder",
-      p1: "Born in France into a family of hoteliers, Noam Azoulay grew up with one certainty: service is not a job, it is an upbringing. Watch, anticipate, never keep anyone waiting.",
-      p2: "It was in Madrid, during business school, that he discovered the inner workings of major events and began building what would become the house's strength: a network. Official holders, organisers, hospitality houses — years of travel to forge relationships that cannot be bought.",
-      p3: "AZ Conciergerie was born of this dual culture: French hotel-trade standards and the art of access. He now puts it at the service of clients who share the same conviction — an experience is only worth having if it is flawless.",
+      p1: "I was born in France, into a family of hoteliers. I grew up with one certainty: service is not a job, it is an upbringing. Watch, anticipate, never keep anyone waiting.",
+      p2: "It was in Madrid, during business school, that I discovered the inner workings of major events and began building what is now the house's strength: a network. Official holders, organisers, hospitality houses: years of experience and travel to forge relationships that cannot be bought.",
+      p3: "AZ Conciergerie was born of this dual culture: French hotel-trade standards and the art of access. I now put it at the service of clients who share my conviction: an experience is only worth having if it is flawless.",
       quote: "Access is only valuable if everything else is impeccable.",
     },
   },
   services: {
-    metaTitle: "Our services — bespoke private concierge — AZ Conciergerie",
+    metaTitle: "Our services, bespoke private concierge | AZ Conciergerie",
     metaDescription:
       "Sold-out events & tickets, gastronomy, private jet, yachts, hotels, chauffeured transport, close protection, bespoke travel: the services of AZ Conciergerie.",
     eyebrow: "Our services",
     title: "Everything a house can do",
     intro:
-      "A total concierge, built around a single promise: you tell us where you want to be, we take care of everything else. Every service follows the same standard — clarity, precision, discretion.",
+      "A total concierge, built around a single promise: you tell us where you want to be, we take care of everything else. Every service follows the same standard, clarity, precision, discretion.",
     pointsLabel: "What we do",
+    orchestrationsLabel: "What we orchestrate",
+    faqTitle: "Frequently asked",
   },
   events: {
-    metaTitle: "Sold-out events — VIP tickets & hospitality — AZ Conciergerie",
+    metaTitle: "Sold-out events, VIP tickets & hospitality | AZ Conciergerie",
     metaDescription:
       "World Cup 2026, Wimbledon, US Open, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week, Roland-Garros: premium tickets and hospitality through AZ Conciergerie.",
     eyebrow: "Events",
     title: "Where there is no room left, we find one",
     intro:
-      "Our speciality: premium access to the world's most in-demand events. Continuously updated selection — prices upon request, by email or WhatsApp.",
+      "Our speciality: premium access to the world's most in-demand events. Continuously updated selection, prices upon request, by email or WhatsApp.",
     custom: {
       title: "Another event in mind?",
       text: "This selection is only a glimpse. Concerts, finals, galas, conferences: tell us where you want to be, we will find how to place you there.",
       cta: "Bespoke request",
     },
     whatWeOffer: "What we offer",
+    facts: {
+      title: "Key facts",
+      date: "Date",
+      venue: "Venue",
+      city: "City",
+      organizer: "Organiser",
+    },
     faqTitle: "Frequently asked",
     faq: [
       {
@@ -178,7 +191,7 @@ export const en: Dict = {
     },
   },
   guide: {
-    metaTitle: "The Guide — advice & addresses by AZ Conciergerie",
+    metaTitle: "The Guide, advice & addresses by AZ Conciergerie",
     metaDescription:
       "The AZ Conciergerie guide: how to access sold-out events, experience the great occasions as a VIP, and the addresses worth knowing. All your questions, all our answers.",
     eyebrow: "The Guide",
@@ -189,16 +202,16 @@ export const en: Dict = {
     reading: "min read",
     ctaTitle: "A question? A wish?",
     ctaText:
-      "The guide gives the general answers. For your specific case, write to us — the answer arrives within hours.",
+      "The guide gives the general answers. For your specific case, write to us, the answer arrives within hours.",
   },
   contact: {
-    metaTitle: "Contact — private request — AZ Conciergerie",
+    metaTitle: "Contact, private request | AZ Conciergerie",
     metaDescription:
       "Send your private request to AZ Conciergerie: sold-out event tickets, hospitality, private jet, bespoke travel. Fast, confidential answer, 7 days a week.",
     eyebrow: "Contact",
     title: "Your private request",
     intro:
-      "An event, a date, a wish — tell us about your project in a few lines. We come back within hours, in full confidentiality.",
+      "An event, a date, a wish, tell us about your project in a few lines. We come back within hours, in full confidentiality.",
     form: {
       name: "Full name",
       email: "Email",

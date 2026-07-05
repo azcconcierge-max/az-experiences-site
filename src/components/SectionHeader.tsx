@@ -1,7 +1,7 @@
 import { Reveal } from "./Reveal";
 
 /**
- * En-tête de section standardisé — utilisé partout pour une structure
+ * En-tête de section standardisé, utilisé partout pour une structure
  * identique : numéro + eyebrow, grand titre serif, intro optionnelle.
  */
 export function SectionHeader({

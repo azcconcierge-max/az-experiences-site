@@ -53,7 +53,7 @@ export default async function GuidePage({
                   className="group block border-t border-ivory/10 py-12"
                 >
                   <p className="mb-3 text-[0.62rem] tracking-[0.28em] text-gold uppercase">
-                    {d.published} {formatDate(article.date, locale)} — {article.readingMinutes}{" "}
+                    {d.published} {formatDate(article.date, locale)}, {article.readingMinutes}{" "}
                     {d.reading}
                   </p>
                   <h2 className="display text-3xl text-ivory transition-colors duration-300 group-hover:text-gold md:text-4xl">

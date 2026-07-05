@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-/** Bouton principal — contour or, remplissage au survol. */
+/** Bouton principal, contour or, remplissage au survol. */
 export function GoldLink({
   href,
   children,

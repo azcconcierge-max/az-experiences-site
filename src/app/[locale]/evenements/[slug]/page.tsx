@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDict, locales, type Locale } from "@/i18n";
-import { events, getEvent } from "@/data/events";
+import { events, getEvent, organizers } from "@/data/events";
 import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
@@ -32,7 +32,7 @@ export async function generateMetadata({
     pt: "Bilhetes VIP e hospitality",
   }[l];
   return {
-    title: { absolute: `${event.name} — ${suffix} — ${site.name}` },
+    title: { absolute: `${event.name}, ${suffix}, ${site.name}` },
     description: event.description[l],
     alternates: pageAlternates(`/evenements/${slug}`, locale),
   };
@@ -99,9 +99,9 @@ export default async function EventPage({
               ← {dict.cta.backToEvents}
             </Link>
             <p className="eyebrow mb-4">
-              {event.dateLabel[locale]} — {event.venue}
+              {event.dateLabel[locale]}, {event.venue}
             </p>
-            <h1 className="display max-w-4xl text-5xl leading-[1.02] text-ivory md:text-7xl">
+            <h1 className="display max-w-5xl text-5xl leading-[1.0] text-ivory md:text-8xl">
               {event.name}
             </h1>
             <p className="display mt-5 max-w-xl text-xl text-ivory/70 italic">
@@ -128,6 +128,24 @@ export default async function EventPage({
 
           <Reveal delay={150}>
             <aside className="h-fit border border-gold/30 bg-noir-card p-8 lg:sticky lg:top-28">
+              <h2 className="eyebrow mb-5">{d.facts.title}</h2>
+              <dl className="mb-9 flex flex-col gap-3 border-b border-ivory/10 pb-8">
+                {[
+                  { label: d.facts.date, value: event.dateLabel[locale] },
+                  { label: d.facts.venue, value: event.venue },
+                  { label: d.facts.city, value: event.city },
+                  { label: d.facts.organizer, value: organizers[event.slug] },
+                ]
+                  .filter((f) => f.value)
+                  .map((fact) => (
+                    <div key={fact.label} className="flex items-baseline justify-between gap-6">
+                      <dt className="shrink-0 text-[0.62rem] tracking-[0.25em] text-ivory-dim uppercase">
+                        {fact.label}
+                      </dt>
+                      <dd className="text-right text-sm text-ivory">{fact.value}</dd>
+                    </div>
+                  ))}
+              </dl>
               <h2 className="eyebrow mb-6">{d.whatWeOffer}</h2>
               <ul className="flex flex-col gap-4">
                 {event.offers[locale].map((offer) => (

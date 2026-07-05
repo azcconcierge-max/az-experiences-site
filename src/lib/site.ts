@@ -1,5 +1,5 @@
 /**
- * Configuration centrale du site — tout ce qui change souvent est ici.
+ * Configuration centrale du site, tout ce qui change souvent est ici.
  * Modifier ce fichier suffit pour mettre à jour WhatsApp, email, adresse, etc.
  */
 export const site = {

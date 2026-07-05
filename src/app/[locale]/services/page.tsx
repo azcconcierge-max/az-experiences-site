@@ -98,6 +98,9 @@ export default async function ServicesPage({
                       </li>
                     ))}
                   </ul>
+                  <GoldLink href={`/${locale}/services/${service.slug}`} className="mt-9">
+                    {dict.cta.discover}
+                  </GoldLink>
                 </div>
               </article>
             </Reveal>

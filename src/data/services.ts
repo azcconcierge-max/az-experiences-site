@@ -1,7 +1,7 @@
 import type { L } from "@/i18n";
 
 /**
- * Les services de la maison — structure standardisée :
+ * Les services de la maison, structure standardisée :
  * numéro, titre, phrase signature (italique), description, 3 points concrets.
  */
 export type Service = {
@@ -109,10 +109,10 @@ export const services: Service[] = [
       pt: "O mar, em privado.",
     },
     text: {
-      fr: "Location de yachts avec équipage, journées en mer, positions privilégiées lors des grands événements — Grand Prix de Monaco, Festival de Cannes, Saint-Tropez.",
-      en: "Crewed yacht charters, days at sea, privileged positions at the great events — Monaco Grand Prix, Cannes Film Festival, Saint-Tropez.",
-      es: "Alquiler de yates con tripulación, jornadas en el mar, posiciones privilegiadas en los grandes eventos — Gran Premio de Mónaco, Festival de Cannes, Saint-Tropez.",
-      pt: "Aluguer de iates com tripulação, dias no mar, posições privilegiadas nos grandes eventos — Grande Prémio do Mónaco, Festival de Cannes, Saint-Tropez.",
+      fr: "Location de yachts avec équipage, journées en mer, positions privilégiées lors des grands événements, Grand Prix de Monaco, Festival de Cannes, Saint-Tropez.",
+      en: "Crewed yacht charters, days at sea, privileged positions at the great events, Monaco Grand Prix, Cannes Film Festival, Saint-Tropez.",
+      es: "Alquiler de yates con tripulación, jornadas en el mar, posiciones privilegiadas en los grandes eventos, Gran Premio de Mónaco, Festival de Cannes, Saint-Tropez.",
+      pt: "Aluguer de iates com tripulação, dias no mar, posições privilegiadas nos grandes eventos, Grande Prémio do Mónaco, Festival de Cannes, Saint-Tropez.",
     },
     points: {
       fr: ["Location avec équipage", "Yacht en bord de circuit à Monaco", "Journées & croisières privées"],
@@ -217,10 +217,10 @@ export const services: Service[] = [
       pt: "Férias desenhadas para si.",
     },
     text: {
-      fr: "De l'itinéraire au dernier dîner : nous concevons et organisons vos voyages de bout en bout — villas, vols, expériences, réservations — autour de vos envies.",
-      en: "From the itinerary to the last dinner: we design and organise your trips end to end — villas, flights, experiences, reservations — around your wishes.",
-      es: "Del itinerario a la última cena: diseñamos y organizamos sus viajes de principio a fin — villas, vuelos, experiencias, reservas — en torno a sus deseos.",
-      pt: "Do itinerário ao último jantar: desenhamos e organizamos as suas viagens de ponta a ponta — villas, voos, experiências, reservas — em torno dos seus desejos.",
+      fr: "De l'itinéraire au dernier dîner : nous concevons et organisons vos voyages de bout en bout, villas, vols, expériences, réservations, autour de vos envies.",
+      en: "From the itinerary to the last dinner: we design and organise your trips end to end, villas, flights, experiences, reservations, around your wishes.",
+      es: "Del itinerario a la última cena: diseñamos y organizamos sus viajes de principio a fin, villas, vuelos, experiencias, reservas, en torno a sus deseos.",
+      pt: "Do itinerário ao último jantar: desenhamos e organizamos as suas viagens de ponta a ponta, villas, voos, experiências, reservas, em torno dos seus desejos.",
     },
     points: {
       fr: ["Itinéraires sur mesure", "Villas & locations d'exception", "Conciergerie pendant le séjour"],
@@ -245,7 +245,7 @@ export const services: Service[] = [
     },
     text: {
       fr: "Cadeaux introuvables, rencontres exceptionnelles, demandes de dernière minute, projets inclassables : dites-nous quoi, nous trouvons comment.",
-      en: "Unfindable gifts, exceptional encounters, last-minute requests, unclassifiable projects: tell us what — we will find how.",
+      en: "Unfindable gifts, exceptional encounters, last-minute requests, unclassifiable projects: tell us what, we will find how.",
       es: "Regalos imposibles de encontrar, encuentros excepcionales, peticiones de última hora, proyectos inclasificables: díganos qué, nosotros encontramos cómo.",
       pt: "Presentes impossíveis de encontrar, encontros excecionais, pedidos de última hora, projetos inclassificáveis: diga-nos o quê, nós encontramos o como.",
     },

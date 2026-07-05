@@ -1,4 +1,4 @@
-/** Bandeau défilant des noms d'événements — pur CSS, pause si reduced-motion. */
+/** Bandeau défilant des noms d'événements, pur CSS, pause si reduced-motion. */
 export function Marquee({ items }: { items: string[] }) {
   const row = items.map((name) => (
     <span key={name} className="flex items-center">

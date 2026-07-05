@@ -22,14 +22,14 @@ export const pt: Dict = {
     contactUs: "Escreva-nos",
   },
   home: {
-    metaTitle: "AZ Conciergerie — Concierge privado e acesso a eventos esgotados",
+    metaTitle: "AZ Conciergerie | Concierge privado e acesso a eventos esgotados",
     metaDescription:
       "AZ Conciergerie, concierge privado de Paris especializado no acesso a eventos esgotados: bilhetes VIP, hospitality, jato privado, iates, segurança, viagens à medida. Mundial, F1 Mónaco, Super Bowl, Fashion Week.",
-    heroEyebrow: "Concierge privado — Paris · Mundo",
+    heroEyebrow: "Concierge privado, Paris · Mundo",
     heroLine1: "O acesso",
     heroLine2: "é o nosso ofício.",
     heroSubtitle:
-      "Concierge privado especializado em eventos esgotados. Bilhetes, hospitality, experiências à medida — em qualquer lugar do mundo.",
+      "Concierge privado especializado em eventos esgotados. Bilhetes, hospitality, experiências à medida, em qualquer lugar do mundo.",
     aboutEyebrow: "Quem somos",
     aboutTitle: "Um concierge especializado no impossível",
     aboutText:
@@ -49,7 +49,7 @@ export const pt: Dict = {
       {
         num: "I",
         title: "Você pede",
-        text: "Por WhatsApp, email ou formulário privado. Um evento, um desejo, uma data — é o suficiente.",
+        text: "Por WhatsApp, email ou formulário privado. Um evento, um desejo, uma data, é o suficiente.",
       },
       {
         num: "II",
@@ -64,7 +64,7 @@ export const pt: Dict = {
     ],
     avisEyebrow: "Confiaram em nós",
     avisTitle: "A discrição não impede a gratidão",
-    avisNote: "Excertos de comentários de clientes. Apenas primeiros nomes — a discrição faz parte da casa.",
+    avisNote: "Excertos de comentários de clientes. Apenas primeiros nomes, a discrição faz parte da casa.",
     faqEyebrow: "Perguntas essenciais",
     faqTitle: "Todas as suas perguntas, todas as nossas respostas",
     faq: [
@@ -91,7 +91,7 @@ export const pt: Dict = {
     ],
   },
   about: {
-    metaTitle: "Quem somos — AZ Conciergerie",
+    metaTitle: "Quem somos | AZ Conciergerie",
     metaDescription:
       "AZ Conciergerie: concierge privado de Paris, especialista no acesso a eventos esgotados e no feito à medida. Acesso, exigência, discrição.",
     eyebrow: "Quem somos",
@@ -102,11 +102,11 @@ export const pt: Dict = {
       "Somos especializados no que os outros chamam impossível: eventos esgotados, mesas que não se reservam, acessos que se julgam reservados a outros. Para cada pedido, um interlocutor único acompanha-o desde a primeira mensagem até ao último instante.",
     soldout: {
       title: "Especialistas do sold out",
-      text: "O coração do nosso ofício é o evento: finais, Grandes Prémios, fashion weeks, concertos e cerimónias esgotados. Anos no coração deste mercado construíram-nos uma rede rara — detentores oficiais, organizadores, parceiros de hospitality — que colocamos ao seu serviço, todo o ano, no mundo inteiro.",
+      text: "O coração do nosso ofício é o evento: finais, Grandes Prémios, fashion weeks, concertos e cerimónias esgotados. Anos no coração deste mercado construíram-nos uma rede rara, detentores oficiais, organizadores, parceiros de hospitality, que colocamos ao seu serviço, todo o ano, no mundo inteiro.",
     },
     pillars: [
       {
-        title: "O acesso",
+        title: "A rede",
         text: "O que está esgotado nunca o está verdadeiramente. A nossa rede abre as portas que se julgam fechadas, nos cinco continentes.",
       },
       {
@@ -115,7 +115,11 @@ export const pt: Dict = {
       },
       {
         title: "A discrição",
-        text: "Os nossos clientes confiam-nos as suas melhores ocasiões. Nada sai da casa — nem um nome, nem uma data, nem um destino.",
+        text: "Os nossos clientes confiam-nos as suas melhores ocasiões. Nada sai da casa, nem um nome, nem uma data, nem um destino.",
+      },
+      {
+        title: "A disponibilidade",
+        text: "Uma casa contactável sete dias por semana, que responde em horas, não em dias. As melhores ocasiões não avisam.",
       },
     ],
     closing:
@@ -124,36 +128,45 @@ export const pt: Dict = {
       eyebrow: "Uma casa com rosto humano",
       name: "Noam Azoulay",
       role: "Fundador",
-      p1: "Nascido em França numa família de hoteleiros, Noam Azoulay cresceu com uma certeza: o serviço não é um ofício, é uma educação. Observar, antecipar, nunca fazer esperar.",
-      p2: "Foi em Madrid, durante a escola de negócios, que descobriu os bastidores dos grandes eventos e começou a construir o que seria a força da casa: uma rede. Detentores oficiais, organizadores, casas de hospitality — anos de viagens para criar relações que não se compram.",
-      p3: "A AZ Conciergerie nasceu desta dupla cultura: a exigência hoteleira francesa e a arte do acesso. Hoje coloca-a ao serviço de uma clientela que partilha a mesma convicção — uma experiência só vale se for perfeita.",
+      p1: "Nasci em França, numa família de hoteleiros. Cresci com uma certeza: o serviço não é um ofício, é uma educação. Observar, antecipar, nunca fazer esperar.",
+      p2: "Foi em Madrid, durante a minha escola de negócios, que descobri os bastidores dos grandes eventos e comecei a construir o que é hoje a força da casa: uma rede. Detentores oficiais, organizadores, casas de hospitality: anos de experiência e de viagens para criar relações que não se compram.",
+      p3: "A AZ Conciergerie nasceu desta dupla cultura: a exigência hoteleira à francesa e a arte do acesso. Hoje coloco-a ao serviço de uma clientela que partilha a minha convicção: uma experiência só vale se for perfeita.",
       quote: "Um acesso só tem valor se tudo o resto for impecável.",
     },
   },
   services: {
-    metaTitle: "Os nossos serviços — concierge privado à medida — AZ Conciergerie",
+    metaTitle: "Os nossos serviços, concierge privado à medida | AZ Conciergerie",
     metaDescription:
       "Eventos e bilhetes esgotados, gastronomia, jato privado, iates, hotéis, transporte com motorista, proteção pessoal, viagens à medida: os serviços da AZ Conciergerie.",
     eyebrow: "Os nossos serviços",
     title: "Tudo o que uma casa pode fazer",
     intro:
-      "Um concierge total, construído em torno de uma mesma promessa: diz-nos onde quer estar, nós tratamos de todo o resto. Cada serviço segue a mesma exigência — clareza, precisão, discrição.",
+      "Um concierge total, construído em torno de uma mesma promessa: diz-nos onde quer estar, nós tratamos de todo o resto. Cada serviço segue a mesma exigência, clareza, precisão, discrição.",
     pointsLabel: "O que fazemos",
+    orchestrationsLabel: "O que orquestramos",
+    faqTitle: "Perguntas frequentes",
   },
   events: {
-    metaTitle: "Eventos esgotados — bilhetes VIP e hospitality — AZ Conciergerie",
+    metaTitle: "Eventos esgotados, bilhetes VIP e hospitality | AZ Conciergerie",
     metaDescription:
       "Mundial 2026, Wimbledon, US Open, F1 Mónaco, Super Bowl, Festival de Cannes, Bola de Ouro, Fashion Week, Roland-Garros: bilhetes premium e hospitality com a AZ Conciergerie.",
     eyebrow: "Eventos",
     title: "Onde já não há lugar, encontramos um",
     intro:
-      "A nossa especialidade: o acesso premium aos eventos mais procurados do mundo. Seleção atualizada continuamente — os preços pedem-se por email ou WhatsApp.",
+      "A nossa especialidade: o acesso premium aos eventos mais procurados do mundo. Seleção atualizada continuamente, os preços pedem-se por email ou WhatsApp.",
     custom: {
       title: "Outro evento em mente?",
       text: "Esta seleção é apenas uma amostra. Concertos, finais, galas, conferências: diga-nos onde quer estar e encontraremos como colocá-lo lá.",
       cta: "Pedido à medida",
     },
     whatWeOffer: "O que propomos",
+    facts: {
+      title: "Os factos-chave",
+      date: "Data",
+      venue: "Local",
+      city: "Cidade",
+      organizer: "Organizador",
+    },
     faqTitle: "Perguntas frequentes",
     faq: [
       {
@@ -178,7 +191,7 @@ export const pt: Dict = {
     },
   },
   guide: {
-    metaTitle: "O Guia — conselhos e moradas da AZ Conciergerie",
+    metaTitle: "O Guia, conselhos e moradas da AZ Conciergerie",
     metaDescription:
       "O guia da AZ Conciergerie: como aceder a eventos esgotados, viver os grandes encontros em VIP e as moradas a conhecer. Todas as suas perguntas, todas as nossas respostas.",
     eyebrow: "O Guia",
@@ -189,16 +202,16 @@ export const pt: Dict = {
     reading: "min de leitura",
     ctaTitle: "Uma pergunta? Um desejo?",
     ctaText:
-      "O guia dá as respostas gerais. Para o seu caso concreto, escreva-nos — a resposta chega em poucas horas.",
+      "O guia dá as respostas gerais. Para o seu caso concreto, escreva-nos, a resposta chega em poucas horas.",
   },
   contact: {
-    metaTitle: "Contacto — pedido privado — AZ Conciergerie",
+    metaTitle: "Contacto, pedido privado | AZ Conciergerie",
     metaDescription:
       "Envie o seu pedido privado à AZ Conciergerie: bilhetes para eventos esgotados, hospitality, jato privado, viagens à medida. Resposta rápida e confidencial, 7 dias por semana.",
     eyebrow: "Contacto",
     title: "O seu pedido privado",
     intro:
-      "Um evento, uma data, um desejo — descreva-nos o seu projeto em algumas linhas. Respondemos em poucas horas, com total confidencialidade.",
+      "Um evento, uma data, um desejo, descreva-nos o seu projeto em algumas linhas. Respondemos em poucas horas, com total confidencialidade.",
     form: {
       name: "Nome completo",
       email: "Email",

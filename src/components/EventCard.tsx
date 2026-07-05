@@ -3,7 +3,7 @@ import type { EventItem } from "@/data/events";
 import type { Dict, Locale } from "@/i18n";
 import { EventVisual } from "./EventVisual";
 
-/** Carte événement — visuel plein cadre, titre sur l'image, façon TGZ. */
+/** Carte événement, visuel plein cadre, titre sur l'image, façon TGZ. */
 export function EventCard({
   event,
   locale,

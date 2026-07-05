@@ -38,7 +38,7 @@ export async function generateMetadata({
     metadataBase: new URL(site.baseUrl),
     title: {
       default: dict.home.metaTitle,
-      template: `%s — ${site.name}`,
+      template: `%s, ${site.name}`,
     },
     description: dict.home.metaDescription,
     alternates: {

@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 import { locales } from "@/i18n";
 import { events } from "@/data/events";
 import { articles } from "@/data/articles";
+import { services } from "@/data/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "/qui-sommes-nous", "/services", "/evenements", "/guide", "/contact"];
@@ -23,6 +24,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  const serviceEntries = locales.flatMap((locale) =>
+    services.map((service) => ({
+      url: `${site.baseUrl}/${locale}/services/${service.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }))
+  );
+
   const articleEntries = locales.flatMap((locale) =>
     articles.map((article) => ({
       url: `${site.baseUrl}/${locale}/guide/${article.slug}`,
@@ -32,5 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticEntries, ...eventEntries, ...articleEntries];
+  return [...staticEntries, ...eventEntries, ...serviceEntries, ...articleEntries];
 }
