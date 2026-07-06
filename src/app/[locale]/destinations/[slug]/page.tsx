@@ -120,11 +120,11 @@ export default async function DestinationPage({
             {cats.map((cat, ci) => (
               <div
                 key={cat}
-                className={`grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 ${
+                className={`grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 ${
                   ci % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <Reveal>
+                <Reveal className="lg:sticky lg:top-28">
                   <div className="img-reveal relative aspect-[4/3] overflow-hidden">
                     <Parallax amount={24} className="absolute -inset-y-8 inset-x-0">
                       <Image
@@ -156,7 +156,7 @@ export default async function DestinationPage({
                       <div className="gold-rule flex-1 opacity-30" />
                     </div>
                   </Reveal>
-                  {dest.guide[cat].slice(0, 2).map((spot) => (
+                  {dest.guide[cat].map((spot) => (
                     <Reveal key={spot.name}>
                       <div className="group border-t border-ink/10 py-7">
                         <h4 className="display text-2xl transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
