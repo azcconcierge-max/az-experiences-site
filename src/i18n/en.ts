@@ -6,6 +6,7 @@ export const en: Dict = {
     about: "About us",
     services: "Services",
     events: "Events",
+    destinations: "Destinations",
     guide: "The Guide",
     contact: "Contact",
   },
@@ -189,6 +190,21 @@ export const en: Dict = {
       festival: "Festival",
       ceremonie: "Ceremony",
     },
+  },
+  destinations: {
+    metaTitle: "Destinations, the world in private | AZ Conciergerie",
+    metaDescription:
+      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York: the destinations where AZ Conciergerie has its habits. Villas, tables, beach clubs, nights and access by introduction.",
+    eyebrow: "Destinations",
+    title: "The world, in private",
+    intro:
+      "Six territories where the house has its habits, its tables and its keys. Hover, choose, we take care of the rest.",
+    homeEyebrow: "Our destinations",
+    homeTitle: "Where the house holds the keys",
+    spotsLabel: "The guide to the places",
+    spotsTitle: "The addresses that matter",
+    whatWeDo: "On the ground, we orchestrate",
+    explore: "Explore",
   },
   guide: {
     metaTitle: "The Guide, advice & addresses by AZ Conciergerie",

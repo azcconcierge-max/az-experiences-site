@@ -10,6 +10,7 @@ import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { EventCard } from "@/components/EventCard";
+import { DestinationsStrip } from "@/components/DestinationsStrip";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Marquee } from "@/components/Marquee";
 import { Faq, faqJsonLd } from "@/components/Faq";
@@ -187,10 +188,34 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 04 EXPÉRIENCE (ivoire) ---- */}
+      {/* ---- 04 DESTINATIONS : le panorama ---- */}
+      <section className="py-28 md:py-36">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <SectionHeader
+              num="04"
+              eyebrow={dict.destinations.homeEyebrow}
+              title={dict.destinations.homeTitle}
+              intro={dict.destinations.intro}
+            />
+            <Reveal delay={150}>
+              <GoldLink href={`/${locale}/destinations`} className="mb-16">
+                {dict.nav.destinations}
+              </GoldLink>
+            </Reveal>
+          </div>
+        </div>
+        <div className="px-2 md:px-4">
+          <Reveal>
+            <DestinationsStrip locale={locale} ctaLabel={dict.destinations.explore} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---- 05 EXPÉRIENCE (ivoire) ---- */}
       <section className="section-ivory px-5 py-28 md:px-8 md:py-36">
         <div className="mx-auto max-w-6xl">
-          <SectionHeader num="04" eyebrow={h.stepsEyebrow} title={h.stepsTitle} />
+          <SectionHeader num="05" eyebrow={h.stepsEyebrow} title={h.stepsTitle} />
           <div className="grid gap-12 md:grid-cols-3">
             {h.steps.map((step, i) => (
               <Reveal key={step.num} delay={i * 150}>
@@ -249,7 +274,7 @@ export default async function HomePage({
       {/* ---- 05 AVIS ---- */}
       <section className="px-5 py-28 md:px-8 md:py-36">
         <div className="mx-auto max-w-6xl">
-          <SectionHeader num="05" eyebrow={h.avisEyebrow} title={h.avisTitle} intro={h.avisNote} />
+          <SectionHeader num="06" eyebrow={h.avisEyebrow} title={h.avisTitle} intro={h.avisNote} />
           <div className="grid gap-px border border-ivory/8 bg-ivory/8 md:grid-cols-3">
             {testimonials.map((t, i) => (
               <Reveal key={t.name} delay={i * 130} className="bg-noir">
@@ -278,7 +303,7 @@ export default async function HomePage({
       {/* ---- 06 FAQ ---- */}
       <section className="bg-noir-soft px-5 py-28 md:px-8 md:py-36">
         <div className="mx-auto max-w-3xl">
-          <SectionHeader num="06" eyebrow={h.faqEyebrow} title={h.faqTitle} />
+          <SectionHeader num="07" eyebrow={h.faqEyebrow} title={h.faqTitle} />
           <Reveal delay={150}>
             <Faq items={h.faq} />
           </Reveal>

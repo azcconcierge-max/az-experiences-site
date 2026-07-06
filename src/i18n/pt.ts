@@ -6,6 +6,7 @@ export const pt: Dict = {
     about: "Quem somos",
     services: "Serviços",
     events: "Eventos",
+    destinations: "Destinos",
     guide: "O Guia",
     contact: "Contacto",
   },
@@ -189,6 +190,21 @@ export const pt: Dict = {
       festival: "Festival",
       ceremonie: "Cerimónia",
     },
+  },
+  destinations: {
+    metaTitle: "Destinos, o mundo em versão privada | AZ Conciergerie",
+    metaDescription:
+      "Mónaco, Côte d'Azur, Paris, Mykonos, Ibiza, Nova Iorque: os destinos onde a AZ Conciergerie tem os seus hábitos. Villas, mesas, beach clubs, noites e acessos por introdução.",
+    eyebrow: "Destinos",
+    title: "O mundo, em versão privada",
+    intro:
+      "Seis territórios onde a casa tem os seus hábitos, as suas mesas e as suas chaves. Sobrevoe, escolha, nós tratamos do resto.",
+    homeEyebrow: "Os nossos destinos",
+    homeTitle: "Onde a casa tem as chaves",
+    spotsLabel: "O guia dos lugares",
+    spotsTitle: "As moradas que contam",
+    whatWeDo: "No terreno, orquestramos",
+    explore: "Explorar",
   },
   guide: {
     metaTitle: "O Guia, conselhos e moradas da AZ Conciergerie",

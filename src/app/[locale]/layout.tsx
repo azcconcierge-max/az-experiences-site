@@ -99,6 +99,7 @@ export default async function LocaleLayout({
     { href: `/${locale}/qui-sommes-nous`, label: dict.nav.about },
     { href: `/${locale}/services`, label: dict.nav.services },
     { href: `/${locale}/evenements`, label: dict.nav.events },
+    { href: `/${locale}/destinations`, label: dict.nav.destinations },
     { href: `/${locale}/guide`, label: dict.nav.guide },
   ];
 

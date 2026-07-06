@@ -4,9 +4,18 @@ import { locales } from "@/i18n";
 import { events } from "@/data/events";
 import { articles } from "@/data/articles";
 import { services } from "@/data/services";
+import { destinations } from "@/data/destinations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/qui-sommes-nous", "/services", "/evenements", "/guide", "/contact"];
+  const pages = [
+    "",
+    "/qui-sommes-nous",
+    "/services",
+    "/evenements",
+    "/destinations",
+    "/guide",
+    "/contact",
+  ];
 
   const staticEntries = locales.flatMap((locale) =>
     pages.map((page) => ({
@@ -41,5 +50,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticEntries, ...eventEntries, ...serviceEntries, ...articleEntries];
+  const destinationEntries = locales.flatMap((locale) =>
+    destinations.map((dest) => ({
+      url: `${site.baseUrl}/${locale}/destinations/${dest.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }))
+  );
+
+  return [
+    ...staticEntries,
+    ...eventEntries,
+    ...serviceEntries,
+    ...destinationEntries,
+    ...articleEntries,
+  ];
 }

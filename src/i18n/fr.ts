@@ -4,6 +4,7 @@ export const fr = {
     about: "Qui sommes-nous",
     services: "Services",
     events: "Événements",
+    destinations: "Destinations",
     guide: "Le Guide",
     contact: "Contact",
   },
@@ -187,6 +188,21 @@ export const fr = {
       festival: "Festival",
       ceremonie: "Cérémonie",
     },
+  },
+  destinations: {
+    metaTitle: "Destinations, le monde en version privée | AZ Conciergerie",
+    metaDescription:
+      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York : les destinations où AZ Conciergerie a ses habitudes. Villas, tables, beach clubs, nuits et accès par introduction.",
+    eyebrow: "Destinations",
+    title: "Le monde, en version privée",
+    intro:
+      "Six territoires où la maison a ses habitudes, ses tables et ses clés. Survolez, choisissez, nous nous occupons du reste.",
+    homeEyebrow: "Nos destinations",
+    homeTitle: "Là où la maison a ses clés",
+    spotsLabel: "Le guide des lieux",
+    spotsTitle: "Les adresses qui comptent",
+    whatWeDo: "Sur place, nous orchestrons",
+    explore: "Explorer",
   },
   guide: {
     metaTitle: "Le Guide, conseils & adresses d'AZ Conciergerie",
