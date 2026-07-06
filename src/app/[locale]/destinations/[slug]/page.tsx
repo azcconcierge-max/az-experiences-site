@@ -9,6 +9,7 @@ import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { Marquee } from "@/components/Marquee";
+import { Parallax } from "@/components/Parallax";
 import { JsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -115,33 +116,62 @@ export default async function DestinationPage({
               {d.spotsNote}
             </p>
           </Reveal>
-          {cats.map((cat, ci) => (
-            <div key={cat} className="mb-4">
-              <Reveal>
-                <div className="mt-10 mb-2 flex items-baseline gap-5">
-                  <span className="display text-sm text-gold-deep/70">
-                    {String(ci + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="display text-2xl text-gold-deep italic md:text-3xl">
-                    {d.cats[cat]}
-                  </h3>
-                  <div className="gold-rule flex-1 opacity-30" />
-                </div>
-              </Reveal>
-              {dest.guide[cat].map((spot) => (
-                <Reveal key={spot.name}>
-                  <div className="group grid items-baseline gap-2 border-t border-ink/10 py-7 md:grid-cols-[1fr_1.5fr] md:gap-8">
-                    <h4 className="display text-2xl transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
-                      {spot.name}
-                    </h4>
-                    <p className="text-sm leading-relaxed text-ink-dim md:text-base">
-                      {spot.text[locale]}
-                    </p>
+          <div className="flex flex-col gap-20">
+            {cats.map((cat, ci) => (
+              <div
+                key={cat}
+                className={`grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 ${
+                  ci % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                <Reveal>
+                  <div className="img-reveal relative aspect-[4/3] overflow-hidden">
+                    <Parallax amount={24} className="absolute -inset-y-8 inset-x-0">
+                      <Image
+                        src={`/images/guide-${cat}.jpg`}
+                        alt={d.cats[cat]}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 42vw"
+                        className="object-cover"
+                      />
+                    </Parallax>
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent"
+                    />
+                    <span className="display absolute bottom-5 left-6 text-3xl text-ivory italic">
+                      {d.cats[cat]}
+                    </span>
                   </div>
                 </Reveal>
-              ))}
-            </div>
-          ))}
+                <div>
+                  <Reveal>
+                    <div className="mb-2 flex items-baseline gap-5">
+                      <span className="display text-sm text-gold-deep/70">
+                        {String(ci + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="display text-2xl text-gold-deep italic md:text-3xl">
+                        {d.cats[cat]}
+                      </h3>
+                      <div className="gold-rule flex-1 opacity-30" />
+                    </div>
+                  </Reveal>
+                  {dest.guide[cat].slice(0, 2).map((spot) => (
+                    <Reveal key={spot.name}>
+                      <div className="group border-t border-ink/10 py-7">
+                        <h4 className="display text-2xl transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
+                          {spot.name}
+                        </h4>
+                        <p className="mt-2 text-sm leading-relaxed text-ink-dim md:text-base">
+                          {spot.text[locale]}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
