@@ -201,10 +201,17 @@ export const en: Dict = {
       "Six territories where the house has its habits, its tables and its keys. Hover, choose, we take care of the rest.",
     homeEyebrow: "Our destinations",
     homeTitle: "Where the house holds the keys",
-    spotsLabel: "The guide to the places",
+    spotsLabel: "The house guide",
     spotsTitle: "The addresses that matter",
+    spotsNote: "Every address in this guide can be booked through the house: tables, sunbeds, booths, night tables.",
     whatWeDo: "On the ground, we orchestrate",
     explore: "Explore",
+    cats: {
+      vivre: "To live",
+      tables: "The tables",
+      verres: "For a drink",
+      nuit: "The night",
+    },
   },
   guide: {
     metaTitle: "The Guide, advice & addresses by AZ Conciergerie",

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDict, locales, type Locale } from "@/i18n";
-import { destinations, getDestination } from "@/data/destinations";
+import { destinations, getDestination, type GuideCategory } from "@/data/destinations";
 import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
@@ -44,13 +44,16 @@ export default async function DestinationPage({
   const d = dict.destinations;
   const others = destinations.filter((x) => x.slug !== slug);
 
+  const cats: GuideCategory[] = ["vivre", "tables", "verres", "nuit"];
+  const allSpots = cats.flatMap((c) => dest.guide[c]);
+
   const placeJsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristDestination",
     name: dest.name,
     description: dest.intro[locale],
     touristType: "Luxury travellers",
-    includesAttraction: dest.spots.map((s) => ({ "@type": "TouristAttraction", name: s.name })),
+    includesAttraction: allSpots.map((s) => ({ "@type": "TouristAttraction", name: s.name })),
   };
 
   return (
@@ -98,32 +101,47 @@ export default async function DestinationPage({
         </div>
       </section>
 
-      <Marquee items={dest.spots.map((s) => s.name)} />
+      <Marquee items={allSpots.map((s) => s.name)} />
 
-      {/* ---- LE GUIDE DES LIEUX (ivoire) ---- */}
+      {/* ---- LE GUIDE DE LA MAISON (ivoire), 4 rubriques ---- */}
       <section className="section-ivory px-5 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <p className="eyebrow mb-5">{d.spotsLabel}</p>
-            <h2 className="display mb-16 max-w-2xl text-3xl leading-[1.1] md:text-5xl">
+            <h2 className="display mb-4 max-w-2xl text-3xl leading-[1.1] md:text-5xl">
               {d.spotsTitle}
             </h2>
+            <p className="mb-14 max-w-xl text-sm leading-relaxed text-ink-dim md:text-base">
+              {d.spotsNote}
+            </p>
           </Reveal>
-          <div className="flex flex-col">
-            {dest.spots.map((spot, i) => (
-              <Reveal key={spot.name}>
-                <div className="group grid items-baseline gap-4 border-t border-ink/15 py-10 md:grid-cols-[0.3fr_1fr_1.4fr]">
-                  <span className="display text-4xl text-gold-deep/50 transition-colors duration-500 group-hover:text-gold-deep">
-                    {String(i + 1).padStart(2, "0")}
+          {cats.map((cat, ci) => (
+            <div key={cat} className="mb-4">
+              <Reveal>
+                <div className="mt-10 mb-2 flex items-baseline gap-5">
+                  <span className="display text-sm text-gold-deep/70">
+                    {String(ci + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="display text-3xl transition-transform duration-500 group-hover:translate-x-2 md:text-4xl">
-                    {spot.name}
+                  <h3 className="display text-2xl text-gold-deep italic md:text-3xl">
+                    {d.cats[cat]}
                   </h3>
-                  <p className="text-base leading-relaxed text-ink-dim">{spot.text[locale]}</p>
+                  <div className="gold-rule flex-1 opacity-30" />
                 </div>
               </Reveal>
-            ))}
-          </div>
+              {dest.guide[cat].map((spot) => (
+                <Reveal key={spot.name}>
+                  <div className="group grid items-baseline gap-2 border-t border-ink/10 py-7 md:grid-cols-[1fr_1.5fr] md:gap-8">
+                    <h4 className="display text-2xl transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
+                      {spot.name}
+                    </h4>
+                    <p className="text-sm leading-relaxed text-ink-dim md:text-base">
+                      {spot.text[locale]}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 

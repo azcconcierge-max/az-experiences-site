@@ -201,10 +201,17 @@ export const pt: Dict = {
       "Seis territórios onde a casa tem os seus hábitos, as suas mesas e as suas chaves. Sobrevoe, escolha, nós tratamos do resto.",
     homeEyebrow: "Os nossos destinos",
     homeTitle: "Onde a casa tem as chaves",
-    spotsLabel: "O guia dos lugares",
+    spotsLabel: "O guia da casa",
     spotsTitle: "As moradas que contam",
+    spotsNote: "Cada morada deste guia reserva-se através da casa: mesas, espreguiçadeiras, cabines, mesas de noite.",
     whatWeDo: "No terreno, orquestramos",
     explore: "Explorar",
+    cats: {
+      vivre: "Para viver",
+      tables: "As mesas",
+      verres: "Para um copo",
+      nuit: "A noite",
+    },
   },
   guide: {
     metaTitle: "O Guia, conselhos e moradas da AZ Conciergerie",

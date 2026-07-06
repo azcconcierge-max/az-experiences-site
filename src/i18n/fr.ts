@@ -199,10 +199,17 @@ export const fr = {
       "Six territoires où la maison a ses habitudes, ses tables et ses clés. Survolez, choisissez, nous nous occupons du reste.",
     homeEyebrow: "Nos destinations",
     homeTitle: "Là où la maison a ses clés",
-    spotsLabel: "Le guide des lieux",
+    spotsLabel: "Le guide de la maison",
     spotsTitle: "Les adresses qui comptent",
+    spotsNote: "Chaque adresse de ce guide se réserve via la maison : table, transats, cabines, tables de nuit.",
     whatWeDo: "Sur place, nous orchestrons",
     explore: "Explorer",
+    cats: {
+      vivre: "À vivre",
+      tables: "Les tables",
+      verres: "Boire un verre",
+      nuit: "La nuit",
+    },
   },
   guide: {
     metaTitle: "Le Guide, conseils & adresses d'AZ Conciergerie",
