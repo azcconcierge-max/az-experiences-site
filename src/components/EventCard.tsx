@@ -18,7 +18,7 @@ export function EventCard({
   return (
     <Link
       href={`/${locale}/evenements/${event.slug}`}
-      className="group relative block overflow-hidden border border-ivory/8"
+      className="card-shine group relative block overflow-hidden border border-ivory/8 transition-colors duration-500 hover:border-gold/40"
     >
       <div className={`relative overflow-hidden ${large ? "aspect-[16/11]" : "aspect-[4/3]"}`}>
         <EventVisual

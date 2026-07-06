@@ -7,6 +7,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/JsonLd";
+import { Preloader } from "@/components/Preloader";
+import { Cursor } from "@/components/Cursor";
+import { StickyCta } from "@/components/StickyCta";
 import "../globals.css";
 
 const bodoni = Bodoni_Moda({
@@ -102,11 +105,23 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${bodoni.variable} ${inter.variable}`}>
       <body>
+        <Preloader />
         <JsonLd data={organizationJsonLd} />
         <Header locale={locale} nav={nav} ctaLabel={dict.cta.request} />
         <main>{children}</main>
         <Footer locale={locale as Locale} dict={dict} />
         <WhatsAppFloat label={dict.cta.whatsapp} />
+        <StickyCta href={`/${locale}/contact`} label={dict.cta.requestAccess} />
+        <Cursor />
+        {/* Grain cinéma, texture de la maison */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 z-[35] opacity-[0.05] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
+        />
       </body>
     </html>
   );

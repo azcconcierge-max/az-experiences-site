@@ -165,7 +165,171 @@ body {
   transform: scaleX(1);
 }
 
+/* ---- Préloader : le rideau de la maison ---- */
+@keyframes preloaderExit {
+  to {
+    transform: translateY(-101%);
+  }
+}
+
+@keyframes preloaderLine {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.preloader {
+  animation: preloaderExit 0.9s cubic-bezier(0.76, 0, 0.24, 1) 1.7s forwards;
+}
+
+.preloader-line {
+  transform-origin: left;
+  animation: preloaderLine 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+/* ---- Entrée de page (transition entre pages) ---- */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---- Halo WhatsApp : un battement discret ---- */
+@keyframes waPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(198, 166, 100, 0);
+  }
+  12% {
+    box-shadow: 0 0 0 10px rgba(198, 166, 100, 0.18);
+  }
+  24% {
+    box-shadow: 0 0 0 0 rgba(198, 166, 100, 0);
+  }
+}
+
+.wa-pulse {
+  animation: waPulse 8s ease-out 3s infinite;
+}
+
+/* ---- Reflet qui balaie les cartes au survol ---- */
+.card-shine {
+  position: relative;
+}
+
+.card-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(244, 239, 228, 0.09) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.card-shine:hover::after {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateX(120%);
+}
+
+/* ---- Marquee : pause au survol ---- */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ---- Curseur maison (desktop uniquement) ---- */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgba(198, 166, 100, 0.55);
+  border-radius: 9999px;
+  pointer-events: none;
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s,
+    opacity 0.3s;
+}
+
+.cursor-ring.is-active {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-color: var(--color-gold);
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 9999px;
+  background: var(--color-gold);
+  pointer-events: none;
+}
+
+/* ---- Barre CTA intelligente ---- */
+.sticky-cta {
+  transform: translateY(140%);
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s;
+  opacity: 0;
+}
+
+.sticky-cta.is-visible {
+  transform: none;
+  opacity: 1;
+}
+
+/* ---- Barre de progression de lecture ---- */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-gold-deep), var(--color-gold));
+  transform-origin: left;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
+  .page-enter,
+  .wa-pulse {
+    animation: none;
+  }
+  .card-shine::after {
+    display: none;
+  }
   html {
     scroll-behavior: auto;
   }

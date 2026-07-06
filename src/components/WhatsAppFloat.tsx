@@ -14,7 +14,7 @@ export function WhatsAppFloat({ label }: { label: string }) {
       target={wa ? "_blank" : undefined}
       rel={wa ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="group fixed right-5 bottom-5 z-50 flex items-center gap-3 rounded-full border border-gold/50 bg-noir/90 py-3 pr-6 pl-4 backdrop-blur-md transition-all duration-500 hover:border-gold hover:bg-gold"
+      className="wa-pulse group fixed right-5 bottom-5 z-50 flex items-center gap-3 rounded-full border border-gold/50 bg-noir/90 py-3 pr-6 pl-4 backdrop-blur-md transition-all duration-500 hover:border-gold hover:bg-gold"
     >
       <svg
         viewBox="0 0 24 24"
