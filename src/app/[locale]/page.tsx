@@ -10,7 +10,7 @@ import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { EventCard } from "@/components/EventCard";
-import { AmbientVideo } from "@/components/AmbientVideo";
+import { HeroShowreel } from "@/components/HeroShowreel";
 import { DestinationsStrip } from "@/components/DestinationsStrip";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Marquee } from "@/components/Marquee";
@@ -48,19 +48,16 @@ export default async function HomePage({
 
       {/* ---- HERO ---- */}
       <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0">
-          <AmbientVideo
-            sources={[
-              "/videos/hero-1.mp4",
-              "/videos/hero-2.mp4",
-              "/videos/hero-3.mp4",
-              "/videos/hero-4.mp4",
-            ]}
-            poster="/images/hero.jpg"
-            className="absolute inset-0"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-noir/75 via-noir/50 to-noir" />
-        </div>
+        <HeroShowreel
+          poster="/images/hero.jpg"
+          slides={[
+            { type: "video", src: "/videos/hero-3.mp4", label: "Roland-Garros" },
+            { type: "video", src: "/videos/hero-2.mp4", label: "Coupe du Monde FIFA 2026" },
+            { type: "video", src: "/videos/hero-gp.mp4", label: "Grand Prix de Monaco" },
+            { type: "video", src: "/videos/hero-1.mp4", label: "Céline Dion" },
+            { type: "video", src: "/videos/hero-4.mp4", label: "Super Bowl LXI" },
+          ]}
+        />
         <div className="relative z-10 mx-auto max-w-5xl px-5 pt-20 text-center">
           <p className="eyebrow hero-up mb-8" style={{ animationDelay: "0.1s" }}>
             {h.heroEyebrow}
