@@ -49,7 +49,16 @@ export default async function HomePage({
       {/* ---- HERO ---- */}
       <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0">
-          <AmbientVideo src="/videos/hero.mp4" poster="/images/hero.jpg" className="absolute inset-0" />
+          <AmbientVideo
+            sources={[
+              "/videos/hero-1.mp4",
+              "/videos/hero-2.mp4",
+              "/videos/hero-3.mp4",
+              "/videos/hero-4.mp4",
+            ]}
+            poster="/images/hero.jpg"
+            className="absolute inset-0"
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/75 via-noir/50 to-noir" />
         </div>
         <div className="relative z-10 mx-auto max-w-5xl px-5 pt-20 text-center">

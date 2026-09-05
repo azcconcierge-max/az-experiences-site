@@ -92,7 +92,7 @@ export default async function EventPage({
         {EVENT_VIDEOS.has(event.slug) ? (
           <>
             <AmbientVideo
-              src={`/videos/${event.slug}.mp4`}
+              sources={[`/videos/${event.slug}.mp4`]}
               poster={`/images/${event.slug}.jpg`}
               className="absolute inset-0"
             />
