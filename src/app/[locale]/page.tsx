@@ -10,6 +10,7 @@ import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { EventCard } from "@/components/EventCard";
+import { AmbientVideo } from "@/components/AmbientVideo";
 import { DestinationsStrip } from "@/components/DestinationsStrip";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Marquee } from "@/components/Marquee";
@@ -47,15 +48,8 @@ export default async function HomePage({
 
       {/* ---- HERO ---- */}
       <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
-        <div aria-hidden="true" className="kenburns absolute inset-0">
-          <Image
-            src="/images/hero.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+        <div aria-hidden="true" className="absolute inset-0">
+          <AmbientVideo src="/videos/hero.mp4" poster="/images/hero.jpg" className="absolute inset-0" />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/75 via-noir/50 to-noir" />
         </div>
         <div className="relative z-10 mx-auto max-w-5xl px-5 pt-20 text-center">

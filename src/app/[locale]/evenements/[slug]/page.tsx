@@ -8,6 +8,7 @@ import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { EventVisual } from "@/components/EventVisual";
+import { AmbientVideo } from "@/components/AmbientVideo";
 import { EventCard } from "@/components/EventCard";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
@@ -15,6 +16,9 @@ import { JsonLd } from "@/components/JsonLd";
 export function generateStaticParams() {
   return locales.flatMap((locale) => events.map((e) => ({ locale, slug: e.slug })));
 }
+
+/** Événements disposant d'un clip d'ambiance dans /public/videos. */
+const EVENT_VIDEOS = new Set(["celine-dion", "coupe-du-monde-2026"]);
 
 export async function generateMetadata({
   params,
@@ -83,9 +87,24 @@ export default async function EventPage({
       {eventJsonLd && <JsonLd data={eventJsonLd} />}
       <JsonLd data={faqJsonLd(d.faq)} />
 
-      {/* ---- HERO ---- */}
+      {/* ---- HERO : vidéo d'ambiance si un clip existe, sinon photo ---- */}
       <section className="relative flex min-h-[75svh] items-end overflow-hidden">
-        <EventVisual event={event} className="kenburns absolute inset-0 h-full w-full" />
+        {EVENT_VIDEOS.has(event.slug) ? (
+          <>
+            <AmbientVideo
+              src={`/videos/${event.slug}.mp4`}
+              poster={`/images/${event.slug}.jpg`}
+              className="absolute inset-0"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0"
+              style={{ background: "rgba(10,10,9,0.25)" }}
+            />
+          </>
+        ) : (
+          <EventVisual event={event} className="kenburns absolute inset-0 h-full w-full" />
+        )}
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-t from-noir via-noir/40 to-noir/25"
