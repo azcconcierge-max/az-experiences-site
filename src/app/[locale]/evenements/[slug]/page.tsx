@@ -11,6 +11,7 @@ import { EventVisual } from "@/components/EventVisual";
 import { AmbientVideo } from "@/components/AmbientVideo";
 import { EventCard } from "@/components/EventCard";
 import { Faq, faqJsonLd } from "@/components/Faq";
+import { VideoLightbox } from "@/components/VideoLightbox";
 import { JsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -19,6 +20,20 @@ export function generateStaticParams() {
 
 /** Événements disposant d'un clip d'ambiance dans /public/videos. */
 const EVENT_VIDEOS = new Set(["celine-dion", "coupe-du-monde-2026"]);
+
+/**
+ * Vidéos OFFICIELLES par événement (lecteur YouTube embarqué, chaînes des
+ * ayants droit : FORMULA 1, FIFA, NFL, Tennis TV, Wimbledon, US Open, VEVO).
+ */
+const YOUTUBE_VIDEOS: Record<string, string> = {
+  "roland-garros": "Pn0pUimSZxE",
+  "f1-monaco": "ipOT9ruRobc",
+  "super-bowl": "KDorKy-13ak",
+  "celine-dion": "IAuRoAUV19o",
+  "coupe-du-monde-2026": "6HaHNYjnghE",
+  wimbledon: "RP1v32jq5HY",
+  "us-open": "MZ-oMYEEQqs",
+};
 
 export async function generateMetadata({
   params,
@@ -126,6 +141,9 @@ export default async function EventPage({
             <p className="display mt-5 max-w-xl text-xl text-ivory/70 italic">
               {event.tagline[locale]}
             </p>
+            {YOUTUBE_VIDEOS[event.slug] && (
+              <VideoLightbox videoId={YOUTUBE_VIDEOS[event.slug]} label={d.watch} />
+            )}
           </Reveal>
         </div>
       </section>

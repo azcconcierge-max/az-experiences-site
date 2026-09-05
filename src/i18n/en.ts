@@ -161,6 +161,7 @@ export const en: Dict = {
       cta: "Bespoke request",
     },
     whatWeOffer: "What we offer",
+    watch: "Watch the atmosphere",
     facts: {
       title: "Key facts",
       date: "Date",

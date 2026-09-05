@@ -159,6 +159,7 @@ export const fr = {
       cta: "Demande sur mesure",
     },
     whatWeOffer: "Ce que nous proposons",
+    watch: "Voir l'ambiance",
     facts: {
       title: "Les faits clés",
       date: "Date",

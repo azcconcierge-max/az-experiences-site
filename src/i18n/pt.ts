@@ -161,6 +161,7 @@ export const pt: Dict = {
       cta: "Pedido à medida",
     },
     whatWeOffer: "O que propomos",
+    watch: "Ver o ambiente",
     facts: {
       title: "Os factos-chave",
       date: "Data",

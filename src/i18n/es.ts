@@ -161,6 +161,7 @@ export const es: Dict = {
       cta: "Solicitud a medida",
     },
     whatWeOffer: "Lo que proponemos",
+    watch: "Ver el ambiente",
     facts: {
       title: "Los datos clave",
       date: "Fecha",
