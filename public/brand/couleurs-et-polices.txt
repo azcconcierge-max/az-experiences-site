@@ -1,0 +1,35 @@
+AZ MANAGEMENT, COULEURS ET POLICES
+Charte de marque, version 1.0, septembre 2026
+
+COULEURS
+Vert club      #173A2C   RVB 23 58 44      couleur principale
+Vert nuit      #0E2419   RVB 14 36 25      fonds sombres, documents
+Sauge          #8FA58A   RVB 143 165 138   lumière des dégradés
+Laiton         #B8935A   RVB 184 147 90    détails, filets, logo sur vert
+Laiton clair   #D8BD8C   RVB 216 189 140   texte laiton sur fond vert
+Lin            #F7F8F5   RVB 247 248 245   fonds clairs, texte sur vert
+
+DÉGRADÉS
+Crépuscule   radial depuis le bas     or #DCC293 vers vert club #173A2C    avatar, site, mode
+Pelouse      linéaire haut vers bas   sauge claire #BACAB2 vers #1F4233    sport
+Nuit         radial depuis le haut    vert #557963 vers vert nuit #0E2419  réceptions, documents
+Grain        texture superposée à 3 % d'opacité
+
+Code CSS (Framer, site)
+.crepuscule { background: radial-gradient(130% 95% at 50% 112%, #DCC293 0%, #A7A171 16%, #6B8466 34%, #3A5B48 58%, #1E4232 80%, #173A2C 100%); }
+.pelouse    { background: linear-gradient(180deg, #BACAB2 0%, #86A186 28%, #4A6C56 62%, #1F4233 100%); }
+.nuit       { background: radial-gradient(120% 85% at 50% -12%, #557963 0%, #2C4E3D 38%, #173A2C 68%, #0E2419 100%); }
+
+POLICES
+Bodoni Moda      regular               titres, lieux en capitales, chiffres, légendes
+                 https://fonts.google.com/specimen/Bodoni+Moda
+Hanken Grotesk   light et regular      texte, boutons, mentions
+                 https://fonts.google.com/specimen/Hanken+Grotesk
+Secours          Georgia pour Bodoni, Arial pour Hanken (newsletter, Word)
+
+RÈGLES ESSENTIELLES
+Les lieux toujours en capitales Bodoni espacées. Aucun italique dans les textes.
+Jamais de gras en Bodoni.
+Mentions en minuscules espacées, capitales réservées aux lieux.
+Deux tailles de texte maximum par visuel.
+Le logo toujours à partir des fichiers du kit, jamais retapé au clavier.

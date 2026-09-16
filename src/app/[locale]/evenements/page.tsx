@@ -50,18 +50,18 @@ export default async function EventsPage({
             <Reveal delay={(events.length % 3) * 100}>
               <Link
                 href={`/${locale}/contact`}
-                className="group flex aspect-[4/3] flex-col items-center justify-center border border-gold/40 bg-noir-card p-8 text-center transition-colors duration-500 hover:border-gold"
+                className="group flex aspect-[4/3] flex-col items-center justify-center nuit grain rounded-[2px] border border-laiton/40 p-8 text-center transition-colors duration-500 hover:border-laiton-clair"
               >
-                <span className="display text-4xl text-gold/50 transition-colors duration-500 group-hover:text-gold">
+                <span className="display text-4xl text-laiton-clair/70 transition-colors duration-500 group-hover:text-laiton-clair">
                   +
                 </span>
-                <h3 className="display mt-4 text-2xl text-ivory">{d.custom.title}</h3>
-                <p className="mt-3 max-w-xs text-sm leading-relaxed text-ivory-dim">
+                <h3 className="display mt-4 text-2xl text-lin">{d.custom.title}</h3>
+                <p className="mt-3 max-w-xs text-sm leading-relaxed text-lin/75">
                   {d.custom.text}
                 </p>
-                <span className="mt-6 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.28em] text-gold uppercase">
+                <span className="mt-6 inline-flex items-center gap-3 text-[0.62rem] lowercase tracking-[0.12em]">
                   {d.custom.cta}
-                  <span className="inline-block h-px w-6 bg-gold transition-all duration-500 group-hover:w-12" />
+                  <span className="inline-block h-px w-6 bg-laiton-clair transition-all duration-500 group-hover:w-12" />
                 </span>
               </Link>
             </Reveal>

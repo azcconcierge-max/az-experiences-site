@@ -9,7 +9,6 @@ import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { Marquee } from "@/components/Marquee";
-import { Parallax } from "@/components/Parallax";
 import { JsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -63,7 +62,7 @@ export default async function DestinationPage({
 
       {/* ---- HERO plein écran ---- */}
       <section className="relative flex min-h-svh items-end overflow-hidden">
-        <div aria-hidden="true" className="kenburns absolute inset-0">
+        <div aria-hidden="true" className="absolute inset-0">
           <Image
             src={`/images/dest-${dest.slug}.jpg`}
             alt=""
@@ -78,13 +77,13 @@ export default async function DestinationPage({
           <Reveal>
             <Link
               href={`/${locale}/destinations`}
-              className="mb-8 inline-block text-[0.65rem] tracking-[0.25em] text-ivory-dim uppercase transition-colors hover:text-gold"
+              className="mb-8 inline-block text-[0.65rem] tracking-[0.12em] lowercase text-lin/75 transition-colors hover:text-laiton-clair"
             >
               ← {dict.nav.destinations}
             </Link>
             <p className="eyebrow mb-4">{dest.region[locale]}</p>
-            <h1 className="display text-6xl leading-[0.95] text-ivory md:text-9xl">{dest.name}</h1>
-            <p className="display mt-6 max-w-xl text-xl text-ivory/75 italic md:text-2xl">
+            <h1 className="display text-6xl leading-[0.95] text-lin md:text-9xl">{dest.name}</h1>
+            <p className="display mt-6 max-w-xl text-xl text-lin/80 md:text-2xl">
               {dest.tagline[locale]}
             </p>
           </Reveal>
@@ -95,7 +94,7 @@ export default async function DestinationPage({
       <section className="px-5 py-24 md:px-8">
         <div className="mx-auto max-w-3xl">
           <Reveal>
-            <p className="display text-2xl leading-relaxed text-ivory md:text-3xl">
+            <p className="display text-2xl leading-[1.35] md:text-3xl">
               {dest.intro[locale]}
             </p>
           </Reveal>
@@ -105,7 +104,7 @@ export default async function DestinationPage({
       <Marquee items={allSpots.map((s) => s.name)} />
 
       {/* ---- LE GUIDE DE LA MAISON (ivoire), 4 rubriques ---- */}
-      <section className="section-ivory px-5 py-24 md:px-8 md:py-32">
+      <section className="px-5 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <p className="eyebrow mb-5">{d.spotsLabel}</p>
@@ -126,20 +125,18 @@ export default async function DestinationPage({
               >
                 <Reveal className="lg:sticky lg:top-28">
                   <div className="img-reveal relative aspect-[4/3] overflow-hidden">
-                    <Parallax amount={24} className="absolute -inset-y-8 inset-x-0">
-                      <Image
-                        src={`/images/guide-${cat}.jpg`}
-                        alt={d.cats[cat]}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 42vw"
-                        className="object-cover"
-                      />
-                    </Parallax>
+                    <Image
+                      src={`/images/guide-${cat}.jpg`}
+                      alt={d.cats[cat]}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      className="object-cover"
+                    />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent"
+                      className="absolute inset-0 bg-gradient-to-t from-club/45 via-transparent to-transparent"
                     />
-                    <span className="display absolute bottom-5 left-6 text-3xl text-ivory italic">
+                    <span className="display absolute bottom-5 left-6 text-3xl text-lin">
                       {d.cats[cat]}
                     </span>
                   </div>
@@ -147,18 +144,18 @@ export default async function DestinationPage({
                 <div>
                   <Reveal>
                     <div className="mb-2 flex items-baseline gap-5">
-                      <span className="display text-sm text-gold-deep/70">
+                      <span className="display text-sm text-laiton">
                         {String(ci + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="display text-2xl text-gold-deep italic md:text-3xl">
+                      <h3 className="display text-2xl text-laiton md:text-3xl">
                         {d.cats[cat]}
                       </h3>
-                      <div className="gold-rule flex-1 opacity-30" />
+                      <div className="filet flex-1 opacity-30" />
                     </div>
                   </Reveal>
                   {dest.guide[cat].map((spot) => (
                     <Reveal key={spot.name}>
-                      <div className="group border-t border-ink/10 py-7">
+                      <div className="group border-t border-club/12 py-7">
                         <h4 className="display text-2xl transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
                           {spot.name}
                         </h4>
@@ -182,18 +179,18 @@ export default async function DestinationPage({
             <p className="eyebrow mb-5">{d.whatWeDo}</p>
             <ul className="flex flex-col gap-5">
               {dest.offers[locale].map((offer) => (
-                <li key={offer} className="flex items-start gap-4 text-lg text-ivory/90">
-                  <span aria-hidden="true" className="mt-3 h-px w-6 shrink-0 bg-gold" />
+                <li key={offer} className="flex items-start gap-4 text-lg font-light text-club/90">
+                  <span aria-hidden="true" className="filet mt-3 w-6 shrink-0" />
                   {offer}
                 </li>
               ))}
             </ul>
           </Reveal>
           <Reveal delay={150}>
-            <div className="border border-gold/30 bg-noir-card p-10 text-center">
-              <p className="display mb-3 text-2xl text-ivory">{dict.contact.title}</p>
-              <p className="mb-8 text-sm leading-relaxed text-ivory-dim">{dict.contact.intro}</p>
-              <GoldLink href={`/${locale}/contact`} solid>
+            <div className="nuit grain rounded-[2px] p-10 text-center">
+              <p className="display mb-3 text-2xl text-lin">{dict.contact.title}</p>
+              <p className="mb-8 text-sm leading-[1.7] font-light text-lin/80">{dict.contact.intro}</p>
+              <GoldLink href={`/${locale}/contact`}>
                 {dict.cta.request}
               </GoldLink>
             </div>
@@ -202,15 +199,15 @@ export default async function DestinationPage({
       </section>
 
       {/* ---- AUTRES DESTINATIONS ---- */}
-      <section className="border-t border-ivory/8 px-5 py-20 md:px-8">
+      <section className="border-t border-laiton/30 px-5 py-20 md:px-8">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <div className="grid grid-cols-2 gap-px border border-ivory/8 bg-ivory/8 md:grid-cols-5">
+            <div className="grid grid-cols-2 gap-px bg-club/12 md:grid-cols-5">
               {others.map((other) => (
                 <Link
                   key={other.slug}
                   href={`/${locale}/destinations/${other.slug}`}
-                  className="group relative block aspect-square overflow-hidden bg-noir"
+                  className="group relative block aspect-square overflow-hidden bg-club"
                 >
                   <Image
                     src={`/images/dest-${other.slug}.jpg`}
@@ -219,7 +216,7 @@ export default async function DestinationPage({
                     sizes="20vw"
                     className="object-cover opacity-50 transition-all duration-700 group-hover:scale-105 group-hover:opacity-90"
                   />
-                  <span className="display absolute inset-x-0 bottom-4 text-center text-lg text-ivory">
+                  <span className="display absolute inset-x-0 bottom-4 text-center text-lg text-lin">
                     {other.name}
                   </span>
                 </Link>

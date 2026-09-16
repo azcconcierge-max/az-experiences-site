@@ -2,6 +2,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import type { Dict } from "@/i18n";
 import { Logo } from "./Logo";
+import { Filet } from "./brand";
 
 export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
   const year = new Date().getFullYear();
@@ -15,11 +16,11 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
   ];
 
   return (
-    <footer className="border-t border-ivory/8 bg-noir-soft">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-4 md:px-8">
-        <div className="flex flex-col items-start gap-4">
-          <Logo locale={locale} />
-          <p className="text-sm text-ivory-dim italic">{dict.footer.tagline}</p>
+    <footer className="nuit grain">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-4 md:px-8">
+        <div className="flex flex-col items-start gap-5">
+          <Logo locale={locale} variant="lin" size={64} />
+          <p className="text-sm font-light text-lin/80">{dict.footer.tagline}</p>
         </div>
 
         <nav aria-label={dict.footer.navTitle}>
@@ -29,7 +30,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm text-ivory/70 transition-colors hover:text-gold"
+                  className="text-sm font-light text-lin/75 transition-colors hover:text-laiton-clair"
                 >
                   {item.label}
                 </Link>
@@ -40,9 +41,12 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
 
         <div>
           <h3 className="eyebrow mb-5">{dict.footer.contactTitle}</h3>
-          <ul className="flex flex-col gap-3 text-sm text-ivory/70">
+          <ul className="flex flex-col gap-3 text-sm font-light text-lin/75">
             <li>
-              <a href={`mailto:${site.email}`} className="transition-colors hover:text-gold">
+              <a
+                href={`mailto:${site.email}`}
+                className="transition-colors hover:text-laiton-clair"
+              >
                 {site.email}
               </a>
             </li>
@@ -56,11 +60,11 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
 
         <div>
           <h3 className="eyebrow mb-5">{dict.footer.legalTitle}</h3>
-          <ul className="flex flex-col gap-3 text-sm text-ivory/70">
+          <ul className="flex flex-col gap-3 text-sm font-light text-lin/75">
             <li>
               <Link
                 href={`/${locale}/mentions-legales`}
-                className="transition-colors hover:text-gold"
+                className="transition-colors hover:text-laiton-clair"
               >
                 {dict.footer.mentions}
               </Link>
@@ -68,7 +72,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               <Link
                 href={`/${locale}/confidentialite`}
-                className="transition-colors hover:text-gold"
+                className="transition-colors hover:text-laiton-clair"
               >
                 {dict.footer.privacy}
               </Link>
@@ -77,12 +81,13 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
         </div>
       </div>
 
-      <div className="border-t border-ivory/8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-ivory-dim md:flex-row md:px-8">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <Filet />
+        <div className="flex flex-col items-center justify-between gap-2 py-6 text-[0.75rem] font-light tracking-[0.12em] text-lin/60 md:flex-row">
           <span>
             © {year} {site.name}. {dict.footer.rights}
           </span>
-          <span className="tracking-[0.2em] uppercase">Paris</span>
+          <span className="city text-[0.7rem] text-lin/70">Paris</span>
         </div>
       </div>
     </footer>

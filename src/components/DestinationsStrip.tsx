@@ -39,23 +39,23 @@ export function DestinationsStrip({
           {/* Nom vertical quand le panneau est fermé (desktop) */}
           <span
             aria-hidden="true"
-            className="dest-name-v display absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-xl tracking-wide text-ivory [writing-mode:vertical-rl] lg:block"
+            className="dest-name-v display absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-xl tracking-wide text-lin [writing-mode:vertical-rl] lg:block"
           >
             {dest.name}
           </span>
 
           {/* Détail révélé à l'ouverture */}
           <div className="dest-detail absolute inset-x-0 bottom-0 p-6 md:p-8">
-            <p className="mb-2 text-[0.6rem] tracking-[0.3em] text-gold uppercase">
+            <p className="mb-2 text-[0.6rem] tracking-[0.12em] lowercase text-laiton-clair">
               {dest.region[locale]}
             </p>
-            <p className="display text-3xl text-ivory md:text-4xl">{dest.name}</p>
-            <p className="display mt-2 max-w-xs text-sm text-ivory/70 italic md:text-base">
+            <p className="display text-3xl text-lin md:text-4xl">{dest.name}</p>
+            <p className="display mt-2 max-w-xs text-sm text-lin/80 md:text-base">
               {dest.tagline[locale]}
             </p>
-            <span className="mt-4 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.28em] text-gold uppercase">
+            <span className="mt-4 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.12em] lowercase text-laiton-clair">
               {ctaLabel}
-              <span className="inline-block h-px w-6 bg-gold transition-all duration-500 group-hover:w-12" />
+              <span className="inline-block h-px w-6 bg-laiton-clair transition-all duration-500 group-hover:w-12" />
             </span>
           </div>
         </Link>

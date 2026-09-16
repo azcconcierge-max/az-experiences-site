@@ -40,13 +40,13 @@ export default async function ContactPage({
           </Reveal>
 
           <Reveal delay={150}>
-            <aside className="h-fit border border-ivory/10 bg-noir-card p-8">
+            <aside className="nuit grain h-fit rounded-[2px] p-8">
               <h2 className="eyebrow mb-6">{d.direct}</h2>
               <ul className="flex flex-col gap-4 text-sm">
                 <li>
                   <a
                     href={`mailto:${site.email}`}
-                    className="text-ivory transition-colors hover:text-gold"
+                    className="text-lin transition-colors hover:text-laiton-clair"
                   >
                     {site.email}
                   </a>
@@ -57,20 +57,20 @@ export default async function ContactPage({
                       href={wa}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-ivory transition-colors hover:text-gold"
+                      className="text-lin transition-colors hover:text-laiton-clair"
                     >
                       WhatsApp
                     </a>
                   </li>
                 )}
-                <li className="text-ivory-dim">
+                <li className="text-lin/75">
                   {site.address.street}
                   <br />
                   {site.address.postalCode} {site.address.city}
                 </li>
               </ul>
-              <div className="gold-line my-8" />
-              <p className="text-xs leading-relaxed text-ivory-dim italic">{d.confidential}</p>
+              <div className="filet my-8" />
+              <p className="text-xs leading-[1.7] font-light text-lin/70">{d.confidential}</p>
             </aside>
           </Reveal>
         </div>

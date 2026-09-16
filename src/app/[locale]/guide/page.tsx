@@ -50,21 +50,21 @@ export default async function GuidePage({
               <Reveal key={article.slug} delay={i * 80}>
                 <Link
                   href={`/${locale}/guide/${article.slug}`}
-                  className="group block border-t border-ivory/10 py-12"
+                  className="group block border-t border-club/12 py-12"
                 >
-                  <p className="mb-3 text-[0.62rem] tracking-[0.28em] text-gold uppercase">
+                  <p className="mb-3 text-[0.62rem] tracking-[0.12em] lowercase text-laiton">
                     {d.published} {formatDate(article.date, locale)}, {article.readingMinutes}{" "}
                     {d.reading}
                   </p>
-                  <h2 className="display text-3xl text-ivory transition-colors duration-300 group-hover:text-gold md:text-4xl">
+                  <h2 className="display text-3xl text-club transition-colors duration-300 group-hover:text-laiton md:text-4xl">
                     {article.title[locale]}
                   </h2>
-                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory-dim md:text-base">
+                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-dim md:text-base">
                     {article.excerpt[locale]}
                   </p>
-                  <span className="mt-6 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.28em] text-gold uppercase">
+                  <span className="mt-6 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.12em] lowercase text-laiton">
                     {dict.cta.readArticle}
-                    <span className="inline-block h-px w-6 bg-gold transition-all duration-500 group-hover:w-12" />
+                    <span className="inline-block h-px w-6 bg-laiton transition-all duration-500 group-hover:w-12" />
                   </span>
                 </Link>
               </Reveal>
@@ -72,12 +72,12 @@ export default async function GuidePage({
           </div>
 
           <Reveal>
-            <div className="mt-8 border border-gold/30 bg-noir-card p-12 text-center">
-              <h2 className="display mb-3 text-2xl text-ivory md:text-3xl">{d.ctaTitle}</h2>
-              <p className="mx-auto mb-8 max-w-xl text-sm leading-relaxed text-ivory-dim">
+            <div className="mt-8 nuit grain rounded-[2px] p-12 text-center">
+              <h2 className="display mb-3 text-2xl text-lin md:text-3xl">{d.ctaTitle}</h2>
+              <p className="mx-auto mb-8 max-w-xl text-sm leading-[1.7] font-light text-lin/80">
                 {d.ctaText}
               </p>
-              <GoldLink href={`/${locale}/contact`} solid>
+              <GoldLink href={`/${locale}/contact`}>
                 {dict.cta.request}
               </GoldLink>
             </div>

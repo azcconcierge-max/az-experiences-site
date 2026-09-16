@@ -1,6 +1,7 @@
 import { Reveal } from "./Reveal";
+import { Filet } from "./brand";
 
-/** En-tête éditorial commun aux pages intérieures. */
+/** En-tête éditorial commun aux pages intérieures, sur fond lin. */
 export function PageHero({
   eyebrow,
   title,
@@ -15,14 +16,14 @@ export function PageHero({
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="eyebrow mb-6">{eyebrow}</p>
-          <h1 className="display max-w-3xl text-4xl leading-tight text-ivory md:text-6xl">
-            {title}
-          </h1>
+          <h1 className="display max-w-3xl text-4xl leading-[0.98] md:text-6xl">{title}</h1>
           {intro && (
-            <p className="mt-8 max-w-2xl text-base leading-relaxed text-ivory-dim">{intro}</p>
+            <p className="mt-8 max-w-[65ch] text-base leading-[1.7] font-light text-ink-dim">
+              {intro}
+            </p>
           )}
         </Reveal>
-        <div className="gold-line mt-16" />
+        <Filet className="mt-16" />
       </div>
     </section>
   );

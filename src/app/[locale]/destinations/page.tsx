@@ -34,10 +34,10 @@ export default async function DestinationsPage({
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <p className="eyebrow mb-5">{d.eyebrow}</p>
-            <h1 className="display max-w-3xl text-5xl leading-[1.02] text-ivory md:text-7xl">
+            <h1 className="display max-w-3xl text-5xl leading-[1.02] text-club md:text-7xl">
               {d.title}
             </h1>
-            <p className="mt-7 max-w-xl text-base leading-relaxed text-ivory-dim md:text-lg">
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-ink-dim md:text-lg">
               {d.intro}
             </p>
           </Reveal>

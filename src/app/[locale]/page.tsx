@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { getDict, type Locale } from "@/i18n";
 import { events } from "@/data/events";
@@ -8,12 +7,12 @@ import { testimonials } from "@/data/testimonials";
 import { TypoPanel } from "@/components/TypoPanel";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
-import { GoldLink } from "@/components/GoldLink";
+import { Button } from "@/components/GoldLink";
 import { EventCard } from "@/components/EventCard";
-import { HeroShowreel } from "@/components/HeroShowreel";
 import { DestinationsStrip } from "@/components/DestinationsStrip";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Marquee } from "@/components/Marquee";
+import { OvalImage, Filet } from "@/components/brand";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -42,75 +41,91 @@ export default async function HomePage({
   const h = dict.home;
   const featured = events.slice(0, 6);
 
+  const stats = (
+    {
+      fr: [
+        { value: "24/7", label: "disponibilité" },
+        { value: "4", label: "langues parlées" },
+        { value: "Paris", label: "8e arrondissement" },
+        { value: "Monde", label: "terrain de jeu" },
+      ],
+      en: [
+        { value: "24/7", label: "availability" },
+        { value: "4", label: "languages spoken" },
+        { value: "Paris", label: "8th arrondissement" },
+        { value: "World", label: "playing field" },
+      ],
+      es: [
+        { value: "24/7", label: "disponibilidad" },
+        { value: "4", label: "idiomas" },
+        { value: "París", label: "distrito 8" },
+        { value: "Mundo", label: "terreno de juego" },
+      ],
+      pt: [
+        { value: "24/7", label: "disponibilidade" },
+        { value: "4", label: "línguas faladas" },
+        { value: "Paris", label: "8.º arrondissement" },
+        { value: "Mundo", label: "terreno de jogo" },
+      ],
+    } as const
+  )[locale];
+
   return (
     <>
       <JsonLd data={faqJsonLd(h.faq)} />
 
-      {/* ---- HERO ---- */}
-      <section className="relative flex min-h-svh items-center justify-center overflow-hidden">
-        <HeroShowreel
-          poster="/images/hero.jpg"
-          slides={[
-            { type: "video", src: "/videos/hero-3.mp4", label: "Roland-Garros" },
-            { type: "video", src: "/videos/hero-2.mp4", label: "Coupe du Monde FIFA 2026" },
-            { type: "video", src: "/videos/hero-gp.mp4", label: "Grand Prix de Monaco" },
-            { type: "video", src: "/videos/hero-1.mp4", label: "Céline Dion" },
-            { type: "video", src: "/videos/hero-4.mp4", label: "Super Bowl LXI" },
-          ]}
-        />
-        <div className="relative z-10 mx-auto max-w-5xl px-5 pt-20 text-center">
-          <p className="eyebrow hero-up mb-8" style={{ animationDelay: "0.1s" }}>
-            {h.heroEyebrow}
-          </p>
-          <h1 className="display text-6xl leading-[0.98] text-ivory md:text-8xl lg:text-9xl">
-            <span className="hero-up block" style={{ animationDelay: "0.25s" }}>
-              {h.heroLine1}
-            </span>
-            <span className="hero-up block italic" style={{ animationDelay: "0.45s" }}>
-              {h.heroLine2}
-            </span>
-          </h1>
-          <p
-            className="hero-up mx-auto mt-9 max-w-xl text-base leading-relaxed text-ivory-dim md:text-lg"
-            style={{ animationDelay: "0.65s" }}
-          >
-            {h.heroSubtitle}
-          </p>
-          <div
-            className="hero-up mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
-            style={{ animationDelay: "0.85s" }}
-          >
-            <GoldLink href={`/${locale}/contact`} solid>
-              {dict.cta.request}
-            </GoldLink>
-            <GoldLink href={`/${locale}/evenements`}>{dict.nav.events}</GoldLink>
+      {/* ---- HERO : Crépuscule, grain, image en ovale ---- */}
+      <section className="crepuscule grain relative overflow-hidden pt-20">
+        <div className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-6xl items-center gap-12 px-5 py-16 md:px-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <p className="eyebrow hero-up mb-7" style={{ animationDelay: "0.1s" }}>
+              {h.heroEyebrow}
+            </p>
+            <h1
+              className="display hero-up text-5xl leading-[0.98] text-lin md:text-7xl"
+              style={{ animationDelay: "0.25s" }}
+            >
+              {h.heroLine1} {h.heroLine2}
+            </h1>
+            <p
+              className="hero-up mt-8 max-w-[60ch] text-base leading-[1.7] font-light text-lin/85 md:text-lg"
+              style={{ animationDelay: "0.45s" }}
+            >
+              {h.heroSubtitle}
+            </p>
+            <div className="hero-up mt-10" style={{ animationDelay: "0.65s" }}>
+              <Button href={`/${locale}/contact`} variant="lin">
+                {dict.cta.request}
+              </Button>
+            </div>
+          </div>
+          <div className="hero-up mx-auto w-64 md:w-80" style={{ animationDelay: "0.5s" }}>
+            <OvalImage src="/images/voyages.jpg" alt="" priority />
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          className="absolute bottom-8 left-1/2 h-14 w-px -translate-x-1/2 bg-gradient-to-b from-transparent to-gold/60"
-        />
       </section>
 
-      {/* ---- MARQUEE ÉVÉNEMENTS ---- */}
+      {/* ---- Le carnet qui défile ---- */}
       <Marquee items={events.map((e) => e.name)} />
 
-      {/* ---- 01 QUI SOMMES-NOUS (ivoire) ---- */}
-      <section className="section-ivory px-5 py-28 md:px-8 md:py-36">
+      {/* ---- 01 Qui sommes-nous (lin) ---- */}
+      <section className="px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.15fr]">
           <Reveal>
             <TypoPanel name={dict.about.founder.name} role={dict.about.founder.role} />
           </Reveal>
           <Reveal delay={200}>
             <p className="eyebrow mb-6 flex items-baseline gap-4">
-              <span className="display text-sm tracking-normal opacity-70">01</span>
+              <span className="display text-sm normal-case tracking-normal">I</span>
               {h.aboutEyebrow}
             </p>
-            <h2 className="display text-4xl leading-[1.08] md:text-6xl">{h.aboutTitle}</h2>
-            <p className="mt-8 text-base leading-relaxed text-ink-dim md:text-lg">{h.aboutText}</p>
+            <h2 className="display text-4xl leading-[0.98] md:text-6xl">{h.aboutTitle}</h2>
+            <p className="mt-8 max-w-[65ch] text-base leading-[1.7] font-light text-ink-dim md:text-lg">
+              {h.aboutText}
+            </p>
             <Link
               href={`/${locale}/qui-sommes-nous`}
-              className="gold-underline mt-8 inline-block text-[0.68rem] tracking-[0.28em] text-gold-deep uppercase"
+              className="mt-8 inline-block text-[0.85rem] font-normal lowercase tracking-[0.12em] text-laiton transition-opacity hover:opacity-70"
             >
               {h.aboutLink} →
             </Link>
@@ -118,36 +133,36 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 02 SERVICES ---- */}
-      <section className="px-5 py-28 md:px-8 md:py-36">
+      {/* ---- 02 Services (vert club) ---- */}
+      <section className="bg-club px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-wrap items-end justify-between gap-8">
             <SectionHeader
-              num="02"
+              num="II"
               eyebrow={h.servicesEyebrow}
               title={h.servicesTitle}
               intro={h.servicesIntro}
             />
             <Reveal delay={150}>
-              <GoldLink href={`/${locale}/services`} className="mb-16">
+              <Button href={`/${locale}/services`} className="mb-16">
                 {dict.cta.allServices}
-              </GoldLink>
+              </Button>
             </Reveal>
           </div>
-          <div className="grid gap-px border border-ivory/8 bg-ivory/8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-px bg-lin/12 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <Reveal key={s.slug} delay={(i % 3) * 100} className="bg-noir">
+              <Reveal key={s.slug} delay={(i % 3) * 100} className="bg-club">
                 <Link
                   href={`/${locale}/services/${s.slug}`}
                   className="group block h-full p-8 transition-colors duration-500 hover:bg-noir-card"
                 >
-                  <span className="display text-sm text-gold/60">
+                  <span className="display text-sm text-laiton-clair">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="display mt-3 mb-2 text-xl text-ivory transition-colors duration-300 group-hover:text-gold md:text-2xl">
+                  <h3 className="display mt-3 mb-2 text-xl text-lin transition-colors duration-300 group-hover:text-laiton-clair md:text-2xl">
                     {s.title[locale]}
                   </h3>
-                  <p className="text-sm text-ivory-dim italic">{s.phrase[locale]}</p>
+                  <p className="text-sm font-light text-lin/70">{s.phrase[locale]}</p>
                 </Link>
               </Reveal>
             ))}
@@ -155,20 +170,20 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 03 ÉVÉNEMENTS ---- */}
-      <section className="bg-noir-soft px-5 py-28 md:px-8 md:py-36">
+      {/* ---- 03 Événements (lin) ---- */}
+      <section className="px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-wrap items-end justify-between gap-8">
             <SectionHeader
-              num="03"
+              num="III"
               eyebrow={h.eventsEyebrow}
               title={h.eventsTitle}
               intro={h.eventsIntro}
             />
             <Reveal delay={150}>
-              <GoldLink href={`/${locale}/evenements`} className="mb-16">
+              <Button href={`/${locale}/evenements`} className="mb-16">
                 {dict.cta.allEvents}
-              </GoldLink>
+              </Button>
             </Reveal>
           </div>
           <div className="grid gap-5 md:grid-cols-2">
@@ -188,20 +203,20 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 04 DESTINATIONS : le panorama ---- */}
-      <section className="py-28 md:py-36">
+      {/* ---- 04 Destinations : le panorama ---- */}
+      <section className="pb-24 md:pb-36">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <div className="flex flex-wrap items-end justify-between gap-8">
             <SectionHeader
-              num="04"
+              num="IV"
               eyebrow={dict.destinations.homeEyebrow}
               title={dict.destinations.homeTitle}
               intro={dict.destinations.intro}
             />
             <Reveal delay={150}>
-              <GoldLink href={`/${locale}/destinations`} className="mb-16">
+              <Button href={`/${locale}/destinations`} className="mb-16">
                 {dict.nav.destinations}
-              </GoldLink>
+              </Button>
             </Reveal>
           </div>
         </div>
@@ -212,17 +227,18 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 05 EXPÉRIENCE (ivoire) ---- */}
-      <section className="section-ivory px-5 py-28 md:px-8 md:py-36">
+      {/* ---- 05 L'expérience (lin, filets) ---- */}
+      <section className="px-5 pb-24 md:px-8 md:pb-36">
         <div className="mx-auto max-w-6xl">
-          <SectionHeader num="05" eyebrow={h.stepsEyebrow} title={h.stepsTitle} />
+          <SectionHeader num="V" eyebrow={h.stepsEyebrow} title={h.stepsTitle} />
           <div className="grid gap-12 md:grid-cols-3">
             {h.steps.map((step, i) => (
               <Reveal key={step.num} delay={i * 150}>
-                <div className="border-t border-ink/15 pt-6">
-                  <span className="display text-4xl text-gold-deep/60">{step.num}</span>
+                <div>
+                  <Filet className="mb-6" />
+                  <span className="display text-4xl text-laiton">{step.num}</span>
                   <h3 className="display mt-4 mb-3 text-2xl">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-ink-dim">{step.text}</p>
+                  <p className="text-sm leading-[1.7] font-light text-ink-dim">{step.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -230,66 +246,37 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- CHIFFRES ---- */}
-      <section className="border-b border-ivory/8 px-5 py-16 md:px-8">
+      {/* ---- Chiffres (Pelouse) ---- */}
+      <section className="pelouse grain px-5 py-16 md:px-8">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 md:grid-cols-4">
-          {(
-            {
-              fr: [
-                { value: "24/7", label: "Disponibilité" },
-                { value: "4", label: "Langues parlées" },
-                { value: "Paris", label: "8ᵉ arrondissement" },
-                { value: "Monde", label: "Terrain de jeu" },
-              ],
-              en: [
-                { value: "24/7", label: "Availability" },
-                { value: "4", label: "Languages spoken" },
-                { value: "Paris", label: "8th arrondissement" },
-                { value: "World", label: "Playing field" },
-              ],
-              es: [
-                { value: "24/7", label: "Disponibilidad" },
-                { value: "4", label: "Idiomas" },
-                { value: "París", label: "Distrito 8" },
-                { value: "Mundo", label: "Terreno de juego" },
-              ],
-              pt: [
-                { value: "24/7", label: "Disponibilidade" },
-                { value: "4", label: "Línguas faladas" },
-                { value: "Paris", label: "8.º arrondissement" },
-                { value: "Mundo", label: "Terreno de jogo" },
-              ],
-            } as const
-          )[locale].map((stat, i) => (
+          {stats.map((stat, i) => (
             <Reveal key={stat.value} delay={i * 100}>
               <div className="text-center">
-                <p className="display text-3xl text-gold md:text-4xl">{stat.value}</p>
-                <p className="mt-2 text-xs tracking-wide text-ivory-dim">{stat.label}</p>
+                <p className="display text-3xl text-lin md:text-4xl">{stat.value}</p>
+                <p className="mt-2 text-[0.78rem] font-normal lowercase tracking-[0.12em] text-lin/80">
+                  {stat.label}
+                </p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* ---- 05 AVIS ---- */}
-      <section className="px-5 py-28 md:px-8 md:py-36">
+      {/* ---- 06 Avis (lin) ---- */}
+      <section className="px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-6xl">
-          <SectionHeader num="06" eyebrow={h.avisEyebrow} title={h.avisTitle} intro={h.avisNote} />
-          <div className="grid gap-px border border-ivory/8 bg-ivory/8 md:grid-cols-3">
+          <SectionHeader num="VI" eyebrow={h.avisEyebrow} title={h.avisTitle} intro={h.avisNote} />
+          <div className="grid gap-px bg-club/12 md:grid-cols-3">
             {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={i * 130} className="bg-noir">
+              <Reveal key={t.name} delay={i * 130} className="bg-lin">
                 <figure className="flex h-full flex-col justify-between p-9">
                   <blockquote>
-                    <span aria-hidden="true" className="display block text-5xl leading-none text-gold/40">
-                      “
-                    </span>
-                    <p className="display mt-2 text-lg leading-relaxed text-ivory italic">
-                      {t.quote[locale]}
-                    </p>
+                    <p className="display text-lg leading-[1.4] text-club">{t.quote[locale]}</p>
                   </blockquote>
-                  <figcaption className="mt-8 border-t border-ivory/10 pt-5">
-                    <p className="text-sm text-ivory">{t.name}</p>
-                    <p className="mt-1 text-[0.62rem] tracking-[0.25em] text-gold uppercase">
+                  <figcaption className="mt-8">
+                    <Filet className="mb-5" />
+                    <p className="text-sm font-normal">{t.name}</p>
+                    <p className="mt-1 text-[0.75rem] font-normal lowercase tracking-[0.12em] text-laiton">
                       {t.context[locale]}
                     </p>
                   </figcaption>
@@ -300,18 +287,18 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 06 FAQ ---- */}
-      <section className="bg-noir-soft px-5 py-28 md:px-8 md:py-36">
+      {/* ---- 07 FAQ (Nuit) ---- */}
+      <section className="nuit grain px-5 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-3xl">
-          <SectionHeader num="07" eyebrow={h.faqEyebrow} title={h.faqTitle} />
+          <SectionHeader num="VII" eyebrow={h.faqEyebrow} title={h.faqTitle} />
           <Reveal delay={150}>
             <Faq items={h.faq} />
           </Reveal>
           <Reveal delay={250}>
             <div className="mt-14 text-center">
-              <GoldLink href={`/${locale}/contact`} solid>
+              <Button href={`/${locale}/contact`} variant="lin">
                 {dict.cta.request}
-              </GoldLink>
+              </Button>
             </div>
           </Reveal>
         </div>

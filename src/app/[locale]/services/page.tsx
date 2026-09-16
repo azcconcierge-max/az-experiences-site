@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getDict, type Locale } from "@/i18n";
 import { services } from "@/data/services";
 import { pageAlternates } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { GoldLink } from "@/components/GoldLink";
-import { Parallax } from "@/components/Parallax";
+import { Button } from "@/components/GoldLink";
+import { OvalImage, Filet } from "@/components/brand";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
 
@@ -57,60 +56,51 @@ export default async function ServicesPage({
             <Reveal key={service.slug}>
               <article
                 id={service.slug}
-                className={`grid items-center gap-10 border-t border-ivory/10 py-16 scroll-mt-28 lg:grid-cols-2 lg:gap-16 ${
+                className={`grid scroll-mt-28 items-center gap-10 py-16 lg:grid-cols-2 lg:gap-20 ${
                   i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <div className="img-reveal relative aspect-[4/3] overflow-hidden">
-                  <Parallax amount={26} className="absolute -inset-y-8 inset-x-0">
-                    <Image
-                      src={`/images/${service.slug}.jpg`}
-                      alt={service.title[locale]}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </Parallax>
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-noir/60 via-transparent to-transparent"
+                <div className="relative mx-auto w-64 md:w-80">
+                  <OvalImage
+                    src={`/images/${service.slug}.jpg`}
+                    alt={service.title[locale]}
+                    sizes="(max-width: 1024px) 70vw, 30vw"
                   />
-                  <span className="display absolute bottom-5 left-6 text-5xl text-ivory/90">
+                  <span className="display absolute -top-2 -left-2 text-4xl text-laiton">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 <div>
-                  <h2 className="display text-3xl text-ivory md:text-4xl">
-                    {service.title[locale]}
-                  </h2>
-                  <p className="display mt-3 text-lg text-gold italic">
-                    {service.phrase[locale]}
-                  </p>
-                  <p className="mt-6 text-sm leading-relaxed text-ivory-dim md:text-base">
+                  <h2 className="display text-3xl md:text-4xl">{service.title[locale]}</h2>
+                  <p className="mt-3 text-base font-light text-laiton">{service.phrase[locale]}</p>
+                  <p className="mt-6 max-w-[65ch] text-sm leading-[1.7] font-light text-ink-dim md:text-base">
                     {service.text[locale]}
                   </p>
                   <p className="eyebrow mt-8 mb-4">{d.pointsLabel}</p>
                   <ul className="flex flex-col gap-2.5">
                     {service.points[locale].map((point) => (
-                      <li key={point} className="flex items-start gap-3 text-sm text-ivory/85">
-                        <span aria-hidden="true" className="mt-2 h-px w-4 shrink-0 bg-gold" />
+                      <li key={point} className="flex items-start gap-3 text-sm font-light">
+                        <span aria-hidden="true" className="filet mt-2.5 w-4 shrink-0" />
                         {point}
                       </li>
                     ))}
                   </ul>
-                  <GoldLink href={`/${locale}/services/${service.slug}`} className="mt-9">
-                    {dict.cta.discover}
-                  </GoldLink>
+                  <div className="mt-9">
+                    <Button href={`/${locale}/services/${service.slug}`}>
+                      {dict.cta.discover}
+                    </Button>
+                  </div>
                 </div>
               </article>
+              {i < services.length - 1 && <Filet />}
             </Reveal>
           ))}
 
           <Reveal>
-            <div className="border-t border-ivory/10 pt-16 text-center">
-              <GoldLink href={`/${locale}/contact`} solid>
+            <div className="pt-16 text-center">
+              <Button href={`/${locale}/contact`} variant="club">
                 {dict.cta.request}
-              </GoldLink>
+              </Button>
             </div>
           </Reveal>
         </div>

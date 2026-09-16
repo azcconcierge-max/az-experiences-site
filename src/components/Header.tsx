@@ -8,6 +8,7 @@ import { Logo } from "./Logo";
 
 type NavItem = { href: string; label: string };
 
+/** En-tête clair : médaillon, navigation en mentions, bouton arrondi. */
 export function Header({
   locale,
   nav,
@@ -37,22 +38,22 @@ export function Header({
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled || open
-          ? "border-b border-ivory/8 bg-noir/92 backdrop-blur-md"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 bg-lin transition-shadow duration-500 ${
+        scrolled || open ? "border-b border-laiton/30 shadow-[0_1px_0_rgba(184,147,90,0.12)]" : ""
       }`}
     >
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 md:px-8">
-        <Logo locale={locale} />
+        <Logo locale={locale} variant="vert" size={52} />
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`gold-underline text-[0.68rem] uppercase tracking-[0.22em] transition-colors duration-300 ${
-                pathname?.startsWith(item.href) ? "text-gold" : "text-ivory/70 hover:text-ivory"
+              className={`text-[0.8rem] font-normal lowercase tracking-[0.12em] transition-colors duration-300 ${
+                pathname?.startsWith(item.href)
+                  ? "text-laiton"
+                  : "text-club/80 hover:text-club"
               }`}
             >
               {item.label}
@@ -61,14 +62,14 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-5">
-          <nav aria-label="Langues" className="hidden items-center gap-2 md:flex">
+          <nav aria-label="Langues" className="hidden items-center gap-2.5 md:flex">
             {locales.map((l) => (
               <Link
                 key={l}
                 href={localeHref(l)}
                 aria-current={l === locale ? "true" : undefined}
-                className={`text-[0.62rem] uppercase tracking-[0.15em] transition-colors ${
-                  l === locale ? "text-gold" : "text-ivory-dim hover:text-ivory"
+                className={`text-[0.7rem] lowercase tracking-[0.12em] transition-colors ${
+                  l === locale ? "text-laiton" : "text-club/50 hover:text-club"
                 }`}
               >
                 {l}
@@ -77,7 +78,7 @@ export function Header({
           </nav>
           <Link
             href={`/${locale}/contact`}
-            className="hidden border border-gold/60 px-5 py-2 text-[0.65rem] uppercase tracking-[0.25em] text-gold transition-all duration-500 hover:bg-gold hover:text-noir lg:inline-block"
+            className="hidden rounded-full bg-club px-6 py-2.5 text-[0.8rem] font-normal text-lin transition-colors duration-500 hover:bg-nuit lg:inline-block"
           >
             {ctaLabel}
           </Link>
@@ -89,12 +90,12 @@ export function Header({
             aria-expanded={open}
           >
             <span
-              className={`h-px w-6 bg-ivory transition-transform duration-300 ${
+              className={`h-px w-6 bg-club transition-transform duration-300 ${
                 open ? "translate-y-[3.5px] rotate-45" : ""
               }`}
             />
             <span
-              className={`h-px w-6 bg-ivory transition-transform duration-300 ${
+              className={`h-px w-6 bg-club transition-transform duration-300 ${
                 open ? "-translate-y-[3.5px] -rotate-45" : ""
               }`}
             />
@@ -104,7 +105,7 @@ export function Header({
 
       {open && (
         <nav
-          className="border-t border-ivory/8 bg-noir/95 px-5 py-8 backdrop-blur-md lg:hidden"
+          className="border-t border-laiton/30 bg-lin px-5 py-8 lg:hidden"
           aria-label="Navigation mobile"
         >
           <ul className="flex flex-col gap-5">
@@ -112,7 +113,7 @@ export function Header({
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="display text-2xl text-ivory transition-colors hover:text-gold"
+                  className="display text-2xl text-club transition-colors hover:text-laiton"
                 >
                   {item.label}
                 </Link>
@@ -121,7 +122,7 @@ export function Header({
             <li className="pt-3">
               <Link
                 href={`/${locale}/contact`}
-                className="inline-block border border-gold/60 px-6 py-3 text-[0.68rem] uppercase tracking-[0.25em] text-gold"
+                className="inline-block rounded-full bg-club px-7 py-3 text-[0.85rem] text-lin"
               >
                 {ctaLabel}
               </Link>
@@ -131,8 +132,8 @@ export function Header({
                 <Link
                   key={l}
                   href={localeHref(l)}
-                  className={`text-[0.68rem] uppercase tracking-[0.2em] ${
-                    l === locale ? "text-gold" : "text-ivory-dim"
+                  className={`text-[0.75rem] lowercase tracking-[0.12em] ${
+                    l === locale ? "text-laiton" : "text-club/50"
                   }`}
                 >
                   {l}

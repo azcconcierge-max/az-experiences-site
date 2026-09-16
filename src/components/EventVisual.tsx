@@ -2,9 +2,8 @@ import Image from "next/image";
 import type { EventItem } from "@/data/events";
 
 /**
- * Visuel d'un événement : photo /public/images/<slug>.jpg (convention),
- * voile sombre + légère teinte par-dessus pour rester dans l'ambiance noir & or.
- * Pour changer une photo : remplacer le fichier du même nom dans /public/images.
+ * Visuel d'un événement : photo /public/images/<slug>.jpg,
+ * absorbée par le vert club vers le bas (le fondu de la charte).
  */
 export function EventVisual({
   event,
@@ -28,10 +27,9 @@ export function EventVisual({
         className="object-cover"
       />
       <div
+        aria-hidden="true"
         className="absolute inset-0"
-        style={{
-          background: `linear-gradient(180deg, rgba(10,10,9,0.2), rgba(10,10,9,0.5)), hsla(${event.hue}, 30%, 12%, 0.15)`,
-        }}
+        style={{ background: "linear-gradient(180deg, rgba(23,58,44,0.08) 0%, rgba(23,58,44,0.35) 55%, #173A2C 100%)" }}
       />
     </div>
   );

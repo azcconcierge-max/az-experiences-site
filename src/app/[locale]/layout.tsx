@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Inter } from "next/font/google";
+import { Bodoni_Moda, Hanken_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
 import { getDict, isLocale, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
@@ -14,13 +14,16 @@ import "../globals.css";
 
 const bodoni = Bodoni_Moda({
   subsets: ["latin"],
+  weight: "400",
+  style: "normal",
   variable: "--font-bodoni",
   display: "swap",
 });
 
-const inter = Inter({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400"],
+  variable: "--font-hanken",
   display: "swap",
 });
 
@@ -52,6 +55,7 @@ export async function generateMetadata({
       siteName: site.name,
       locale: { fr: "fr_FR", en: "en_US", es: "es_ES", pt: "pt_PT" }[locale] ?? "fr_FR",
       type: "website",
+      images: [{ url: "/brand/images/AZ-partage-site-1200x630.png", width: 1200, height: 630 }],
     },
     robots: { index: true, follow: true },
   };
@@ -104,7 +108,7 @@ export default async function LocaleLayout({
   ];
 
   return (
-    <html lang={locale} className={`${bodoni.variable} ${inter.variable}`}>
+    <html lang={locale} className={`${bodoni.variable} ${hanken.variable}`}>
       <body>
         <Preloader />
         <JsonLd data={organizationJsonLd} />

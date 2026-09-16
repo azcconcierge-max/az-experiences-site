@@ -1,26 +1,30 @@
+import Image from "next/image";
 import Link from "next/link";
 
+/**
+ * Le médaillon de la maison, toujours à partir des fichiers du kit,
+ * jamais retapé au clavier. Version petites tailles sous 200 px.
+ */
 export function Logo({
   locale,
-  withWordmark = true,
+  variant = "vert",
+  size = 52,
 }: {
   locale: string;
-  withWordmark?: boolean;
+  variant?: "lin" | "vert" | "laiton";
+  size?: number;
 }) {
+  const file =
+    size < 200
+      ? `/brand/logos/AZ-medaillon-petites-tailles-${variant}.svg`
+      : `/brand/logos/AZ-medaillon-${variant}.svg`;
   return (
     <Link
       href={`/${locale}`}
-      className="group inline-flex flex-col items-center gap-1"
       aria-label="AZ Conciergerie | Accueil"
+      className="inline-flex items-center transition-opacity duration-300 hover:opacity-80"
     >
-      <span className="display text-3xl leading-none tracking-[-0.06em] text-ivory transition-colors duration-500 group-hover:text-gold">
-        AZ
-      </span>
-      {withWordmark && (
-        <span className="text-[0.5rem] tracking-[0.42em] text-ivory-dim uppercase">
-          Conciergerie
-        </span>
-      )}
+      <Image src={file} alt="AZ Conciergerie" width={size} height={size} priority />
     </Link>
   );
 }

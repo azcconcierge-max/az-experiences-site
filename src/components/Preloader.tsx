@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 /**
- * Rideau d'entrée de la maison : monogramme AZ, filet d'or qui se trace,
- * puis le voile se lève. Joué une fois par session, jamais si l'utilisateur
- * préfère réduire les animations.
+ * Rideau d'entrée : le médaillon sur fond Nuit, puis le voile se lève.
+ * Une fois par session, jamais si l'utilisateur réduit les animations.
  */
 export function Preloader() {
   const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ export function Preloader() {
     const t = setTimeout(() => {
       setShow(false);
       document.documentElement.style.overflow = "";
-    }, 2700);
+    }, 2500);
     return () => {
       clearTimeout(t);
       document.documentElement.style.overflow = "";
@@ -31,17 +31,13 @@ export function Preloader() {
   return (
     <div
       aria-hidden="true"
-      className="preloader fixed inset-0 z-[100] flex flex-col items-center justify-center bg-noir"
+      className="preloader nuit grain fixed inset-0 z-[100] flex flex-col items-center justify-center"
     >
-      <p className="hero-up display text-7xl text-gold md:text-8xl" style={{ animationDelay: "0.15s" }}>
-        AZ
-      </p>
-      <div className="preloader-line mt-6 h-px w-40 bg-gold/70" />
-      <p
-        className="hero-up mt-6 text-[0.6rem] tracking-[0.5em] text-ivory-dim uppercase"
-        style={{ animationDelay: "0.5s" }}
-      >
-        Conciergerie
+      <div className="hero-up" style={{ animationDelay: "0.15s" }}>
+        <Image src="/brand/logos/AZ-medaillon-lin.svg" alt="" width={130} height={130} />
+      </div>
+      <p className="eyebrow hero-up mt-8" style={{ animationDelay: "0.45s" }}>
+        sur recommandation
       </p>
     </div>
   );

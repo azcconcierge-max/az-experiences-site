@@ -4,10 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-/**
- * Barre d'appel discrète : apparaît après la moitié du parcours de lecture,
- * quand l'envie est là. Jamais sur la page contact.
- */
+/** Bouton d'appel discret, après la moitié du parcours. Jamais sur la page contact. */
 export function StickyCta({ href, label }: { href: string; label: string }) {
   const [visible, setVisible] = useState(false);
   const pathname = usePathname();
@@ -32,7 +29,7 @@ export function StickyCta({ href, label }: { href: string; label: string }) {
     >
       <Link
         href={href}
-        className="block border border-gold bg-noir/90 px-8 py-3.5 text-[0.68rem] tracking-[0.3em] text-gold uppercase backdrop-blur-md transition-colors duration-500 hover:bg-gold hover:text-noir"
+        className="block rounded-full border border-lin/25 bg-club px-8 py-3.5 text-[0.85rem] font-normal text-lin shadow-lg transition-colors duration-500 hover:bg-nuit"
       >
         {label}
       </Link>

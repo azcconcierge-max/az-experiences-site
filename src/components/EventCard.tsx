@@ -3,7 +3,7 @@ import type { EventItem } from "@/data/events";
 import type { Dict, Locale } from "@/i18n";
 import { EventVisual } from "./EventVisual";
 
-/** Carte événement, visuel plein cadre, titre sur l'image, façon TGZ. */
+/** Carte événement : photo en fondu vers le vert, ville en capitales, date en Hanken. */
 export function EventCard({
   event,
   locale,
@@ -18,34 +18,24 @@ export function EventCard({
   return (
     <Link
       href={`/${locale}/evenements/${event.slug}`}
-      className="card-shine group relative block overflow-hidden border border-ivory/8 transition-colors duration-500 hover:border-gold/40"
+      className="group relative block overflow-hidden rounded-[2px]"
     >
       <div className={`relative overflow-hidden ${large ? "aspect-[16/11]" : "aspect-[4/3]"}`}>
         <EventVisual
           event={event}
-          className="absolute inset-0 h-full w-full transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]"
+          className="absolute inset-0 h-full w-full transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
         />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-noir via-noir/30 to-transparent"
-        />
-        <span className="absolute top-5 left-5 border border-ivory/25 bg-noir/50 px-3 py-1 text-[0.58rem] tracking-[0.28em] text-ivory uppercase backdrop-blur-sm">
-          {dict.events.categories[event.category]}
-        </span>
-
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-          <p className="mb-2 truncate text-[0.62rem] tracking-[0.28em] text-gold uppercase">
-            {event.dateLabel[locale]}
-          </p>
-          <h3 className={`display text-ivory ${large ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"}`}>
+          <p className="city mb-2 text-[0.7rem] text-laiton-clair">{event.city}</p>
+          <h3 className={`display text-lin ${large ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"}`}>
             {event.name}
           </h3>
-          {large && (
-            <p className="mt-2 text-sm text-ivory/65 italic">{event.tagline[locale]}</p>
-          )}
-          <span className="mt-4 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.28em] text-gold uppercase">
+          <p className="mt-2 text-[0.8rem] font-light tracking-[0.04em] text-lin/75">
+            {event.dateLabel[locale]}
+          </p>
+          <span className="mt-4 inline-flex items-center gap-3 text-[0.78rem] font-normal lowercase tracking-[0.12em] text-laiton-clair">
             {dict.cta.requestAccess}
-            <span className="inline-block h-px w-6 bg-gold transition-all duration-500 group-hover:w-12" />
+            <span className="inline-block h-px w-6 bg-laiton-clair transition-all duration-500 group-hover:w-12" />
           </span>
         </div>
       </div>
