@@ -156,6 +156,7 @@ export const es: Dict = {
     title: "Todo lo que una casa puede hacer",
     intro:
       "Una conserjería total, construida en torno a una misma promesa: usted dice dónde quiere estar, nosotros nos ocupamos de todo lo demás. Cada servicio sigue la misma exigencia, claridad, precisión, discreción.",
+    introShort: "Usted dice dónde quiere estar, nosotros nos ocupamos de todo lo demás.",
     pointsLabel: "Lo que hacemos",
     orchestrationsLabel: "Lo que orquestamos",
     faqTitle: "Preguntas frecuentes",

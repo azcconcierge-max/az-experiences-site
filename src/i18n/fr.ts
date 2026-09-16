@@ -154,6 +154,8 @@ export const fr = {
     title: "Tout ce qu'une maison peut faire",
     intro:
       "Une conciergerie totale, construite autour d'une même promesse : vous dites où vous voulez être, nous nous occupons de tout le reste. Chaque service suit la même exigence, clarté, précision, discrétion.",
+    introShort:
+      "Vous dites où vous voulez être, nous nous occupons de tout le reste.",
     pointsLabel: "Ce que nous faisons",
     orchestrationsLabel: "Ce que nous orchestrons",
     faqTitle: "Questions fréquentes",

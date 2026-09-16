@@ -156,6 +156,7 @@ export const en: Dict = {
     title: "Everything a house can do",
     intro:
       "A total concierge, built around a single promise: you tell us where you want to be, we take care of everything else. Every service follows the same standard, clarity, precision, discretion.",
+    introShort: "You tell us where you want to be, we take care of everything else.",
     pointsLabel: "What we do",
     orchestrationsLabel: "What we orchestrate",
     faqTitle: "Frequently asked",

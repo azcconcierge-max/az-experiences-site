@@ -27,6 +27,9 @@ export function Preloader() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (sessionStorage.getItem("az-intro")) return;
+    // Appareil ou réseau lent : si l'hydratation arrive après 2,5 s, le hero
+    // est déjà lu, faire surgir le rideau maintenant serait pire que rien.
+    if (performance.now() > 2500) return;
     sessionStorage.setItem("az-intro", "1");
     setShow(true);
     document.documentElement.style.overflow = "hidden";

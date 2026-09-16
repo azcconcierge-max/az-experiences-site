@@ -49,7 +49,10 @@ export function Header({
   // Transparent uniquement au-dessus d'un hero sombre (liste tenue à jour
   // au fil de la refonte) ; ailleurs, fond lin permanent.
   const darkHeroRoutes = [`/${locale}`, `/${locale}/qui-sommes-nous`];
-  const hasDarkHero = darkHeroRoutes.includes(pathname ?? "");
+  const darkHeroPrefixes = [`/${locale}/services/`];
+  const hasDarkHero =
+    darkHeroRoutes.includes(pathname ?? "") ||
+    darkHeroPrefixes.some((p) => (pathname ?? "").startsWith(p));
   const solid = scrolled || open || !hasDarkHero;
   const linkBase = solid ? "text-club/80 hover:text-club" : "text-lin/85 hover:text-lin";
   const linkActive = solid ? "text-laiton-fonce" : "text-laiton-clair";

@@ -32,7 +32,9 @@ export function ServicesIndex({ locale }: { locale: Locale }) {
             src={`/images/${s.slug}.jpg`}
             alt=""
             fill
-            sizes="100vw"
+            priority={i === 0}
+            quality={60}
+            sizes="(min-width: 1024px) 128px, 100vw"
             className="object-cover transition-opacity duration-700"
             style={{ opacity: i === mobileActive ? 1 : 0 }}
           />
