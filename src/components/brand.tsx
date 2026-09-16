@@ -43,7 +43,7 @@ export function OvalImage({
   className?: string;
 }) {
   return (
-    <div className={`relative aspect-[3/4] overflow-hidden rounded-[50%] ${className}`}>
+    <div className={`photo-treated relative aspect-[3/4] overflow-hidden rounded-[50%] ${className}`}>
       <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
     </div>
   );
@@ -66,7 +66,7 @@ export function FadeImage({
   className?: string;
 }) {
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div className={`photo-treated relative overflow-hidden ${className}`}>
       <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
       <div
         aria-hidden="true"

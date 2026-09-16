@@ -62,7 +62,7 @@ export default async function DestinationPage({
 
       {/* ---- HERO plein écran ---- */}
       <section className="relative flex min-h-svh items-end overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0">
+        <div aria-hidden="true" className="photo-treated absolute inset-0">
           <Image
             src={`/images/dest-${dest.slug}.jpg`}
             alt=""
@@ -124,7 +124,7 @@ export default async function DestinationPage({
                 }`}
               >
                 <Reveal className="lg:sticky lg:top-28">
-                  <div className="img-reveal relative aspect-[4/3] overflow-hidden">
+                  <div className="img-reveal photo-treated relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={`/images/guide-${cat}.jpg`}
                       alt={d.cats[cat]}
@@ -207,7 +207,7 @@ export default async function DestinationPage({
                 <Link
                   key={other.slug}
                   href={`/${locale}/destinations/${other.slug}`}
-                  className="group relative block aspect-square overflow-hidden bg-club"
+                  className="group photo-treated relative block aspect-square overflow-hidden bg-club"
                 >
                   <Image
                     src={`/images/dest-${other.slug}.jpg`}

@@ -17,7 +17,7 @@ export function EventVisual({
   priority?: boolean;
 }) {
   return (
-    <div className={`${className} overflow-hidden`} aria-hidden="true">
+    <div className={`photo-treated ${className} overflow-hidden`} aria-hidden="true">
       <Image
         src={event.image ?? `/images/${event.slug}.jpg`}
         alt=""

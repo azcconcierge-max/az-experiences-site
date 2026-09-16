@@ -22,7 +22,7 @@ export function DestinationsStrip({
           href={`/${locale}/destinations/${dest.slug}`}
           className="dest-panel group"
         >
-          <div className="dest-photo absolute inset-0">
+          <div className="dest-photo photo-treated absolute inset-0">
             <Image
               src={`/images/dest-${dest.slug}.jpg`}
               alt={dest.name}
