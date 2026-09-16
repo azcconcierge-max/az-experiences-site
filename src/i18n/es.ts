@@ -102,6 +102,16 @@ export const es: Dict = {
     title: "La casa del acceso",
     intro:
       "AZ Conciergerie es una conserjería privada nacida de una convicción simple: el verdadero lujo no es poseer, sino acceder.",
+    heroPhrase: "Estamos especializados en lo que otros llaman imposible.",
+    manifestoShort: "Lo que está completo nunca lo está del todo.",
+    pillarsEyebrow: "Los pilares",
+    readStory: "Leer la historia",
+    founderShort: [
+      "Nací en Francia, en una familia de hoteleros.",
+      "Fue en Madrid, durante mi escuela de negocios, donde descubrí el interior de los grandes eventos.",
+      "AZ Conciergerie nació de esta doble cultura: la exigencia hotelera a la francesa y el arte del acceso.",
+    ],
+    stats: ["24/7", "4 idiomas", "París"],
     manifesto:
       "Estamos especializados en lo que otros llaman imposible: eventos agotados, mesas que no se reservan, accesos que se creen reservados a otros. Para cada solicitud, un interlocutor único le acompaña desde el primer mensaje hasta el último instante.",
     soldout: {
@@ -111,7 +121,7 @@ export const es: Dict = {
     pillars: [
       {
         title: "La red",
-        text: "Lo que está completo nunca lo está del todo. Nuestra red abre las puertas que se creen cerradas, en los cinco continentes.",
+        text: "Nuestra red abre las puertas que se creen cerradas, en los cinco continentes.",
       },
       {
         title: "La exigencia",

@@ -100,6 +100,16 @@ export const fr = {
     title: "La maison de l'accès",
     intro:
       "AZ Conciergerie est une conciergerie privée née d'une conviction simple : le vrai luxe n'est pas de posséder, mais d'accéder.",
+    heroPhrase: "Nous sommes spécialisés dans ce que les autres appellent impossible.",
+    manifestoShort: "Ce qui est complet ne l'est jamais vraiment.",
+    pillarsEyebrow: "Les piliers",
+    readStory: "Lire l'histoire",
+    founderShort: [
+      "Je suis né en France, dans une famille d'hôteliers.",
+      "C'est à Madrid, pendant mon école de commerce, que j'ai découvert l'envers des grands événements.",
+      "AZ Conciergerie est née de cette double culture : l'exigence hôtelière à la française et l'art de l'accès.",
+    ],
+    stats: ["24/7", "4 langues", "Paris"],
     manifesto:
       "Nous sommes spécialisés dans ce que les autres appellent impossible : les événements affichés complets, les tables que l'on ne réserve pas, les accès que l'on croit réservés à d'autres. Pour chaque demande, un interlocuteur unique vous accompagne du premier message au dernier instant.",
     soldout: {
@@ -109,7 +119,7 @@ export const fr = {
     pillars: [
       {
         title: "Le réseau",
-        text: "Ce qui est complet ne l'est jamais vraiment. Notre réseau ouvre les portes que l'on croit fermées, sur les cinq continents.",
+        text: "Notre réseau ouvre les portes que l'on croit fermées, sur les cinq continents.",
       },
       {
         title: "L'exigence",

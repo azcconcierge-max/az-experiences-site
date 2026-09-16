@@ -3,13 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDict, type Locale } from "@/i18n";
 import { events } from "@/data/events";
-import { contactHref } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/GoldLink";
 import { TitleReveal, LineMask } from "@/components/TitleReveal";
 import { ClipReveal } from "@/components/ClipReveal";
 import { HorizontalEvents } from "@/components/HorizontalEvents";
+import { AskSection } from "@/components/AskSection";
 import { DestinationsShowcase } from "@/components/DestinationsShowcase";
 import { ServicesIndex } from "@/components/ServicesIndex";
 import { TestimonialRotator } from "@/components/TestimonialRotator";
@@ -178,35 +178,8 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 7 · DEMANDE PRIVÉE (Crépuscule, plein écran) ---- */}
-      <section className="crepuscule grain flex min-h-svh items-center px-5 md:px-10">
-        <div className="mx-auto flex max-w-[900px] flex-col items-center py-28 text-center">
-          <Reveal>
-            <Image
-              src="/brand/logos/AZ-medaillon-lin.svg"
-              alt=""
-              width={110}
-              height={140}
-              className="mx-auto"
-            />
-          </Reveal>
-          <TitleReveal
-            text={h.askTitle}
-            className="display mt-12 text-[clamp(2.6rem,7vw,6.5rem)] leading-[1.02] text-lin"
-          />
-          <Reveal delay={200} className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
-            <Button href={`/${locale}/contact`} variant="lin">
-              {dict.cta.request}
-            </Button>
-            <a
-              href={contactHref("Bonjour, je souhaite faire une demande.")}
-              className="inline-block rounded-full border border-lin/60 px-8 py-3.5 text-[0.9rem] font-normal text-lin transition-opacity duration-500 hover:opacity-70"
-            >
-              {dict.cta.whatsapp}
-            </a>
-          </Reveal>
-        </div>
-      </section>
+      {/* ---- 7 · DEMANDE PRIVÉE partagée (Crépuscule, plein écran) ---- */}
+      <AskSection locale={locale} dict={dict} />
     </>
   );
 }

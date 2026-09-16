@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getDict, type Locale } from "@/i18n";
-import { testimonials } from "@/data/testimonials";
 import { pageAlternates } from "@/lib/seo";
-import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/GoldLink";
-import { TypoPanel } from "@/components/TypoPanel";
+import { TitleReveal, LineMask } from "@/components/TitleReveal";
+import { ClipReveal } from "@/components/ClipReveal";
+import { PillarsPinned } from "@/components/PillarsPinned";
+import { TestimonialRotator } from "@/components/TestimonialRotator";
+import { AskSection } from "@/components/AskSection";
 import { Filet } from "@/components/brand";
 
 export async function generateMetadata({
@@ -34,124 +36,142 @@ export default async function AboutPage({
 
   return (
     <>
-      <PageHero eyebrow={d.eyebrow} title={d.title} intro={d.intro} />
-
-      {/* Manifeste */}
-      <section className="px-5 pb-24 md:px-8">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <p className="display text-2xl leading-[1.35] md:text-3xl">{d.manifesto}</p>
-          </Reveal>
+      {/* ---- 1 · HERO 100svh : la maison de l'accès ---- */}
+      <section className="relative flex min-h-svh items-end overflow-hidden bg-nuit">
+        <div aria-hidden="true" className="photo-treated absolute inset-0 overflow-hidden">
+          <div className="hero-zoom absolute inset-0">
+            <Image
+              src="/images/sur-mesure.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(14,36,25,0.55) 0%, rgba(14,36,25,0.15) 30%, rgba(14,36,25,0.25) 60%, #0E2419 100%)",
+            }}
+          />
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-20 md:px-10 md:pb-24">
+          <LineMask delay={150}>
+            <p className="eyebrow">{d.eyebrow}</p>
+          </LineMask>
+          <h1 className="display mt-5 text-[clamp(2.8rem,7.5vw,8rem)] leading-[0.98] text-lin">
+            <LineMask delay={300}>
+              <span className="block">{d.title}.</span>
+            </LineMask>
+          </h1>
+          <LineMask delay={480}>
+            <p className="mt-7 max-w-xl text-base leading-[1.7] font-light text-lin/85 md:text-lg">
+              {d.heroPhrase}
+            </p>
+          </LineMask>
         </div>
       </section>
 
-      {/* Le fondateur, à la première personne */}
-      <section className="bg-club px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-          <Reveal>
-            <TypoPanel name={d.founder.name} role={d.founder.role} />
-          </Reveal>
-          <Reveal delay={180}>
+      {/* ---- 2 · MANIFESTE (lin) : une phrase, mot par mot ---- */}
+      <section className="px-5 py-32 md:px-10 md:py-44">
+        <div className="mx-auto max-w-[1100px] text-center">
+          <TitleReveal
+            text={d.manifestoShort}
+            as="p"
+            mode="scrub"
+            className="display text-[clamp(2.2rem,6vw,6.5rem)] leading-[1.05]"
+          />
+        </div>
+      </section>
+
+      {/* ---- 3 · LE FONDATEUR (vert club) : portrait, trois phrases, citation ---- */}
+      <section className="bg-club overflow-hidden">
+        <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <ClipReveal className="photo-treated relative aspect-[4/5] overflow-hidden rounded-[2px]">
+            <Image
+              src="/images/fondateur.jpg"
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="object-cover"
+            />
+          </ClipReveal>
+          <div>
             <p className="eyebrow mb-6">{d.founder.eyebrow}</p>
             <h2 className="display text-4xl text-lin md:text-6xl">{d.founder.name}</h2>
             <p className="mt-3 text-[0.8rem] font-normal lowercase tracking-[0.12em] text-laiton-clair">
               {d.founder.role} · AZ Management
             </p>
-            <div className="mt-9 flex flex-col gap-5 text-base leading-[1.7] font-light text-lin/85">
-              <p>{d.founder.p1}</p>
-              <p>{d.founder.p2}</p>
-              <p>{d.founder.p3}</p>
+            <div className="mt-9 flex flex-col gap-4 text-lg leading-[1.6] font-light text-lin/85">
+              {d.founderShort.map((phrase) => (
+                <p key={phrase}>{phrase}</p>
+              ))}
             </div>
-            <p className="display mt-9 border-l border-laiton pl-6 text-xl leading-[1.4] text-laiton-clair md:text-2xl">
+            <p className="display mt-10 border-l border-laiton pl-6 text-2xl leading-[1.35] text-laiton-clair md:text-3xl">
               {d.founder.quote}
             </p>
-          </Reveal>
-        </div>
-      </section>
 
-      {/* Spécialistes du sold out */}
-      <section className="px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[1fr_1.3fr]">
-          <Reveal>
-            <h2 className="display text-3xl leading-[0.98] md:text-5xl">{d.soldout.title}</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="max-w-[65ch] text-base leading-[1.7] font-light text-ink-dim md:text-lg lg:pt-3">
-              {d.soldout.text}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Les quatre valeurs de la maison */}
-      <section className="nuit grain px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {d.pillars.map((pillar, i) => (
-              <Reveal key={pillar.title} delay={i * 120}>
-                <div>
-                  <Filet className="mb-6" />
-                  <span className="display text-3xl text-laiton-clair">
-                    {["I", "II", "III", "IV"][i]}
-                  </span>
-                  <h2 className="display mt-4 mb-3 text-2xl text-lin">{pillar.title}</h2>
-                  <p className="text-sm leading-[1.7] font-light text-lin/75">{pillar.text}</p>
-                </div>
-              </Reveal>
-            ))}
+            {/* Le récit complet, replié (conservé intact) */}
+            <details className="group mt-10">
+              <summary className="eyebrow cursor-pointer list-none transition-opacity hover:opacity-70 [&::-webkit-details-marker]:hidden">
+                <span className="mr-2 inline-block transition-transform duration-300 group-open:rotate-45">
+                  +
+                </span>
+                {d.readStory}
+              </summary>
+              <div className="mt-7 flex max-w-[62ch] flex-col gap-5 text-base leading-[1.7] font-light text-lin/80">
+                <p>{d.founder.p1}</p>
+                <p>{d.founder.p2}</p>
+                <p>{d.founder.p3}</p>
+                <p>{d.soldout.text}</p>
+              </div>
+            </details>
           </div>
         </div>
       </section>
 
-      {/* Avis clients */}
-      <section className="px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto max-w-6xl">
-          <Reveal>
-            <p className="eyebrow mb-5">{dict.home.avisEyebrow}</p>
-            <h2 className="display mb-4 max-w-2xl text-3xl leading-[0.98] md:text-4xl">
-              {dict.home.avisTitle}
-            </h2>
-            <p className="mb-12 max-w-[65ch] text-sm font-light text-ink-dim">
-              {dict.home.avisNote}
-            </p>
-          </Reveal>
-          <div className="grid gap-px bg-club/12 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={i * 130} className="bg-lin">
-                <figure className="flex h-full flex-col justify-between p-8">
-                  <blockquote>
-                    <p className="display text-lg leading-[1.4]">{t.quote[locale]}</p>
-                  </blockquote>
-                  <figcaption className="mt-7">
-                    <Filet className="mb-4" />
-                    <p className="text-sm font-normal">{t.name}</p>
-                    <p className="mt-1 text-[0.75rem] font-normal lowercase tracking-[0.12em] text-laiton">
-                      {t.context[locale]}
-                    </p>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
+      {/* ---- 4 · LES PILIERS (vert nuit) : I → IV épinglés, chiffres dessous ---- */}
+      <section className="nuit grain">
+        <div className="mx-auto max-w-[1440px] px-5 pt-24 md:px-10 md:pt-32">
+          <p className="eyebrow mb-5">{d.pillarsEyebrow}</p>
+          <PillarsPinned pillars={d.pillars} />
+
+          {/* Les chiffres de la maison */}
+          <div className="pt-20 pb-24 md:pt-24 md:pb-32">
+            <Filet className="mb-14" />
+            <Reveal className="grid gap-10 text-center sm:grid-cols-3">
+              {d.stats.map((stat) => (
+                <p key={stat} className="display text-4xl text-lin md:text-5xl">
+                  {stat}
+                </p>
+              ))}
+            </Reveal>
+            <Reveal delay={150}>
+              <p className="mx-auto mt-12 max-w-[60ch] text-center text-sm leading-[1.7] font-light text-lin/70">
+                {d.closing}
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Fermeture */}
-      <section className="px-5 pb-28 md:px-8">
-        <div className="mx-auto max-w-6xl">
-          <Filet className="mb-20" />
+      {/* ---- 5 · TÉMOIGNAGE en grand (vert club) ---- */}
+      <section className="bg-club px-5 py-24 md:px-10 md:py-32">
+        <div className="mx-auto max-w-4xl">
           <Reveal>
-            <p className="mx-auto max-w-[60ch] text-center text-lg leading-[1.7] font-light">
-              {d.closing}
-            </p>
-            <div className="mt-12 text-center">
-              <Button href={`/${locale}/contact`} variant="club">
-                {dict.cta.request}
-              </Button>
-            </div>
+            <p className="eyebrow mb-12">{dict.home.avisEyebrow}</p>
+          </Reveal>
+          <TestimonialRotator locale={locale} />
+          <Reveal delay={150}>
+            <p className="mt-12 text-[0.8rem] font-light text-lin/60">{dict.home.avisNote}</p>
           </Reveal>
         </div>
       </section>
+
+      {/* ---- 6 · DEMANDE PRIVÉE partagée ---- */}
+      <AskSection locale={locale} dict={dict} />
     </>
   );
 }

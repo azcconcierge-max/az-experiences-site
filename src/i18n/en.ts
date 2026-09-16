@@ -102,6 +102,16 @@ export const en: Dict = {
     title: "The house of access",
     intro:
       "AZ Conciergerie is a private concierge born from a simple conviction: true luxury is not owning, but accessing.",
+    heroPhrase: "We specialise in what others call impossible.",
+    manifestoShort: "Sold out is never truly sold out.",
+    pillarsEyebrow: "The pillars",
+    readStory: "Read the story",
+    founderShort: [
+      "I was born in France, into a family of hoteliers.",
+      "It was in Madrid, during business school, that I discovered the inner workings of major events.",
+      "AZ Conciergerie was born of this dual culture: French hotel-trade standards and the art of access.",
+    ],
+    stats: ["24/7", "4 languages", "Paris"],
     manifesto:
       "We specialise in what others call impossible: sold-out events, tables that cannot be booked, access believed to be reserved for others. For every request, one dedicated contact accompanies you from the first message to the very last moment.",
     soldout: {
@@ -111,7 +121,7 @@ export const en: Dict = {
     pillars: [
       {
         title: "The network",
-        text: "Sold out is never truly sold out. Our network opens the doors believed to be closed, on five continents.",
+        text: "Our network opens the doors believed to be closed, on five continents.",
       },
       {
         title: "Standards",
