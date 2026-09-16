@@ -11,6 +11,8 @@ export type Article = {
   slug: string;
   date: string; // ISO
   readingMinutes: number;
+  /** Photo de couverture (liste magazine), chemin sous /public. */
+  image: string;
   title: L;
   excerpt: L;
   body: Record<Locale, ArticleBlock[]>;
@@ -21,6 +23,7 @@ export const articles: Article[] = [
     slug: "obtenir-billets-evenement-sold-out",
     date: "2026-07-01",
     readingMinutes: 4,
+    image: "/images/super-bowl.jpg",
     title: {
       fr: "Comment obtenir des billets pour un événement sold out ?",
       en: "How to get tickets for a sold-out event?",
@@ -78,6 +81,7 @@ export const articles: Article[] = [
   },
   {
     slug: "grand-prix-monaco-vip",
+    image: "/images/f1-monaco.jpg",
     date: "2026-06-15",
     readingMinutes: 5,
     title: {
@@ -129,6 +133,7 @@ export const articles: Article[] = [
   },
   {
     slug: "monaco-adresses",
+    image: "/images/dest-monaco.jpg",
     date: "2026-05-20",
     readingMinutes: 4,
     title: {

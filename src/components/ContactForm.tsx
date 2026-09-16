@@ -5,7 +5,7 @@ import { sendContact, type ContactState } from "@/app/actions/contact";
 import type { Dict } from "@/i18n";
 
 const inputClass =
-  "w-full rounded-[2px] border border-club/15 bg-lin px-4 py-3.5 text-sm font-light text-club placeholder:text-ink-dim/50 outline-none transition-colors duration-300 focus:border-laiton";
+  "w-full rounded-none border-0 border-b border-club/25 bg-transparent px-0 py-3 text-base font-light text-club placeholder:text-ink-dim/50 outline-none transition-colors duration-300 focus:border-laiton";
 
 export function ContactForm({ dict, email }: { dict: Dict; email: string }) {
   const [state, action, pending] = useActionState<ContactState, FormData>(sendContact, {
