@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { getDict, type Locale } from "@/i18n";
 import { pageAlternates } from "@/lib/seo";
-import { Reveal } from "@/components/Reveal";
+import { LineMask } from "@/components/TitleReveal";
 import { DestinationsStrip } from "@/components/DestinationsStrip";
+import { AskSection } from "@/components/AskSection";
 
 export async function generateMetadata({
   params,
@@ -30,25 +31,31 @@ export default async function DestinationsPage({
 
   return (
     <>
-      <section className="px-5 pt-40 pb-14 md:px-8">
-        <div className="mx-auto max-w-6xl">
-          <Reveal>
-            <p className="eyebrow mb-5">{d.eyebrow}</p>
-            <h1 className="display max-w-3xl text-5xl leading-[1.02] text-club md:text-7xl">
-              {d.title}
-            </h1>
-            <p className="mt-7 max-w-xl text-base leading-relaxed text-ink-dim md:text-lg">
-              {d.intro}
+      {/* ---- Ouverture (vert nuit) : un titre, une phrase ---- */}
+      <section className="nuit grain px-5 pt-36 pb-14 md:px-10 md:pt-44 md:pb-16">
+        <div className="mx-auto max-w-[1440px]">
+          <LineMask delay={100}>
+            <p className="eyebrow">{d.eyebrow}</p>
+          </LineMask>
+          <h1 className="display mt-5 text-[clamp(2.8rem,6.5vw,7rem)] leading-[0.98] text-lin">
+            <LineMask delay={250}>
+              <span className="block">{d.title}</span>
+            </LineMask>
+          </h1>
+          <LineMask delay={420}>
+            <p className="mt-7 max-w-xl text-base leading-[1.7] font-light text-lin/80 md:text-lg">
+              {d.introShort}
             </p>
-          </Reveal>
+          </LineMask>
         </div>
       </section>
 
-      <section className="px-2 pb-24 md:px-4">
-        <Reveal>
-          <DestinationsStrip locale={locale} ctaLabel={d.explore} />
-        </Reveal>
+      {/* ---- L'accordéon plein écran : six territoires ---- */}
+      <section className="bg-nuit">
+        <DestinationsStrip locale={locale} ctaLabel={d.explore} />
       </section>
+
+      <AskSection locale={locale} dict={dict} />
     </>
   );
 }

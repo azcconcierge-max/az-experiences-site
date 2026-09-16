@@ -213,6 +213,7 @@ export const fr = {
     title: "Le monde, en version privée",
     intro:
       "Six territoires où la maison a ses habitudes, ses tables et ses clés. Survolez, choisissez, nous nous occupons du reste.",
+    introShort: "Six territoires où la maison a ses habitudes, ses tables et ses clés.",
     homeEyebrow: "Nos destinations",
     homeTitle: "Là où la maison a ses clés",
     spotsLabel: "Le guide de la maison",

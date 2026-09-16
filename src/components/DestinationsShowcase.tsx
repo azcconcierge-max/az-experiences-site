@@ -12,24 +12,33 @@ import { destinations } from "@/data/destinations";
  * Sur mobile (sans survol), rotation automatique toutes les 4 s.
  * Même images et même voile sombre que l'accordéon de la page Destinations.
  */
-export function DestinationsShowcase({ locale, eyebrow }: { locale: Locale; eyebrow: string }) {
+export function DestinationsShowcase({
+  locale,
+  eyebrow,
+  exclude,
+}: {
+  locale: Locale;
+  eyebrow: string;
+  exclude?: string;
+}) {
+  const list = destinations.filter((d) => d.slug !== exclude);
   const [active, setActive] = useState(0);
   const auto = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (window.matchMedia("(hover: hover)").matches) return;
     auto.current = setInterval(() => {
-      setActive((a) => (a + 1) % destinations.length);
+      setActive((a) => (a + 1) % list.length);
     }, 4000);
     return () => {
       if (auto.current) clearInterval(auto.current);
     };
-  }, []);
+  }, [list.length]);
 
   return (
     <div className="relative min-h-svh overflow-hidden bg-nuit">
       {/* Images empilées, fondu enchaîné */}
-      {destinations.map((dest, i) => (
+      {list.map((dest, i) => (
         <div
           key={dest.slug}
           aria-hidden="true"
@@ -58,7 +67,7 @@ export function DestinationsShowcase({ locale, eyebrow }: { locale: Locale; eyeb
       <div className="relative z-10 mx-auto flex min-h-svh max-w-[1440px] flex-col justify-center px-5 py-28 md:px-10">
         <p className="eyebrow mb-10">{eyebrow}</p>
         <ul className="flex flex-col gap-2 md:gap-3">
-          {destinations.map((dest, i) => (
+          {list.map((dest, i) => (
             <li key={dest.slug}>
               <Link
                 href={`/${locale}/destinations/${dest.slug}`}

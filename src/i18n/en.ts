@@ -214,6 +214,7 @@ export const en: Dict = {
     title: "The world, in private",
     intro:
       "Six territories where the house has its habits, its tables and its keys. Hover, choose, we take care of the rest.",
+    introShort: "Six territories where the house has its habits, its tables and its keys.",
     homeEyebrow: "Our destinations",
     homeTitle: "Where the house holds the keys",
     spotsLabel: "The house guide",

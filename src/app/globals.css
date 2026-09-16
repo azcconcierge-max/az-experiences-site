@@ -430,10 +430,27 @@ body {
   min-height: 130px;
   flex: 1;
   transition: flex 1s cubic-bezier(0.22, 1, 0.36, 1);
+  /* entrée en scène : chaque panneau monte l'un après l'autre */
+  animation: panelUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+@keyframes panelUp {
+  from {
+    opacity: 0;
+    transform: translateY(6vh);
+  }
 }
 
 .dest-panel .dest-photo {
-  transition: filter 0.8s ease;
+  transition:
+    filter 0.8s ease,
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dest-panel:hover .dest-photo,
+.dest-panel:focus-visible .dest-photo {
+  transform: scale(1.035);
 }
 
 .dest-panel .dest-detail {
@@ -447,7 +464,7 @@ body {
 @media (min-width: 1024px) {
   .dest-strip {
     flex-direction: row;
-    height: 76vh;
+    height: 100svh;
   }
 
   .dest-panel {
@@ -480,7 +497,7 @@ body {
 
 @media (max-width: 1023px) {
   .dest-panel {
-    min-height: 190px;
+    min-height: 24svh;
   }
 
   .dest-panel .dest-detail {
@@ -502,6 +519,7 @@ body {
   .page-enter,
   .hero-zoom,
   .lineup,
+  .dest-panel,
   .preloader-oval,
   .preloader-fade {
     opacity: 1;

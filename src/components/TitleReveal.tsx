@@ -78,6 +78,49 @@ export function TitleReveal({
 }
 
 /**
+ * Révélation lettre à lettre, CSS pur : chaque lettre monte dans son cadre,
+ * l'une après l'autre. Pour les noms de villes en capitales.
+ * Démarre sans JavaScript, aucun impact sur le LCP.
+ */
+export function LetterMask({
+  text,
+  className = "",
+  delay = 0,
+  step = 45,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  step?: number;
+}) {
+  return (
+    <span className={className}>
+      <span className="sr-only">{text}</span>
+      {[...text].map((ch, i) =>
+        ch === " " ? (
+          <span key={i} aria-hidden="true">
+            {" "}
+          </span>
+        ) : (
+          <span
+            key={i}
+            aria-hidden="true"
+            className="inline-block overflow-hidden pb-[0.06em] align-top"
+          >
+            <span
+              className="lineup inline-block"
+              style={{ animationDelay: `${delay + i * step}ms` }}
+            >
+              {ch}
+            </span>
+          </span>
+        )
+      )}
+    </span>
+  );
+}
+
+/**
  * Variante pour un contenu déjà composé (ex. deux lignes) : masque par ligne.
  * Animation CSS pure : elle démarre dès le chargement de la feuille de style,
  * sans attendre JavaScript. Indispensable pour le titre du hero (LCP).

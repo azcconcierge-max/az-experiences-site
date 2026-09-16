@@ -7,8 +7,10 @@ import { destinations, getDestination, type GuideCategory } from "@/data/destina
 import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
-import { GoldLink } from "@/components/GoldLink";
-import { Marquee } from "@/components/Marquee";
+import { Button } from "@/components/GoldLink";
+import { TitleReveal, LineMask, LetterMask } from "@/components/TitleReveal";
+import { ClipReveal } from "@/components/ClipReveal";
+import { DestinationsShowcase } from "@/components/DestinationsShowcase";
 import { JsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -42,7 +44,6 @@ export default async function DestinationPage({
   if (!dest) notFound();
   const dict = getDict(locale);
   const d = dict.destinations;
-  const others = destinations.filter((x) => x.slug !== slug);
 
   const cats: GuideCategory[] = ["vivre", "tables", "verres", "nuit"];
   const allSpots = cats.flatMap((c) => dest.guide[c]);
@@ -60,171 +61,160 @@ export default async function DestinationPage({
     <>
       <JsonLd data={placeJsonLd} />
 
-      {/* ---- HERO plein écran ---- */}
-      <section className="relative flex min-h-svh items-end overflow-hidden">
-        <div aria-hidden="true" className="photo-treated absolute inset-0">
-          <Image
-            src={`/images/dest-${dest.slug}.jpg`}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
+      {/* ---- 1 · HERO : le nom de la ville, lettre à lettre ---- */}
+      <section className="relative flex min-h-svh items-end overflow-hidden bg-nuit">
+        <div aria-hidden="true" className="photo-treated absolute inset-0 overflow-hidden">
+          <div className="hero-zoom absolute inset-0">
+            <Image
+              src={`/images/dest-${dest.slug}.jpg`}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(14,36,25,0.6) 0%, rgba(14,36,25,0.18) 30%, rgba(14,36,25,0.35) 60%, #0E2419 100%)",
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/35 to-noir/25" />
         </div>
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20 md:px-8">
-          <Reveal>
+        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-16 md:px-10 md:pb-20">
+          <LineMask delay={100}>
             <Link
               href={`/${locale}/destinations`}
-              className="mb-8 inline-block text-[0.65rem] tracking-[0.12em] lowercase text-lin/75 transition-colors hover:text-laiton-clair"
+              className="mb-7 inline-block text-[0.8rem] font-normal lowercase tracking-[0.12em] text-lin/75 transition-colors hover:text-laiton-clair"
             >
               ← {dict.nav.destinations}
             </Link>
-            <p className="eyebrow mb-4">{dest.region[locale]}</p>
-            <h1 className="display text-6xl leading-[0.95] text-lin md:text-9xl">{dest.name}</h1>
-            <p className="display mt-6 max-w-xl text-xl text-lin/80 md:text-2xl">
+          </LineMask>
+          <LineMask delay={220}>
+            <p className="eyebrow">{dest.region[locale]}</p>
+          </LineMask>
+          <h1 className="city mt-4 text-[clamp(3.2rem,11.5vw,12rem)] leading-[0.95] text-lin">
+            <LetterMask text={dest.name} delay={350} step={55} />
+          </h1>
+          <LineMask delay={350 + dest.name.length * 55 + 200}>
+            <p className="display mt-6 max-w-2xl text-xl leading-[1.3] text-lin/85 md:text-2xl">
               {dest.tagline[locale]}
             </p>
-          </Reveal>
+          </LineMask>
         </div>
       </section>
 
-      {/* ---- STORYTELLING ---- */}
-      <section className="px-5 py-24 md:px-8">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <p className="display text-2xl leading-[1.35] md:text-3xl">
-              {dest.intro[locale]}
-            </p>
-          </Reveal>
+      {/* ---- 2 · RÉCIT (lin) : mot à mot au défilement ---- */}
+      <section className="px-5 py-28 md:px-10 md:py-40">
+        <div className="mx-auto max-w-[1100px]">
+          <TitleReveal
+            text={dest.intro[locale]}
+            as="p"
+            mode="scrub"
+            className="display text-[clamp(1.6rem,3.4vw,3.1rem)] leading-[1.3]"
+          />
         </div>
       </section>
 
-      <Marquee items={allSpots.map((s) => s.name)} />
-
-      {/* ---- LE GUIDE DE LA MAISON (ivoire), 4 rubriques ---- */}
-      <section className="px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto max-w-6xl">
+      {/* ---- 3 · LE GUIDE en quatre chapitres ---- */}
+      <section className="px-5 pb-10 md:px-10">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="eyebrow mb-5">{d.spotsLabel}</p>
+          <TitleReveal
+            text={d.spotsTitle}
+            className="display mb-4 max-w-2xl text-3xl leading-[1.02] md:text-5xl"
+          />
           <Reveal>
-            <p className="eyebrow mb-5">{d.spotsLabel}</p>
-            <h2 className="display mb-4 max-w-2xl text-3xl leading-[1.1] md:text-5xl">
-              {d.spotsTitle}
-            </h2>
-            <p className="mb-14 max-w-xl text-sm leading-relaxed text-ink-dim md:text-base">
+            <p className="max-w-xl text-sm leading-[1.7] font-light text-ink-dim md:text-base">
               {d.spotsNote}
             </p>
           </Reveal>
-          <div className="flex flex-col gap-20">
-            {cats.map((cat, ci) => (
+        </div>
+      </section>
+
+      {cats.map((cat, ci) => (
+        <section key={cat} className="px-5 py-12 md:px-10 md:py-16">
+          <div className="mx-auto max-w-[1440px]">
+            {/* Couverture du chapitre : image pleine largeur, titre posé dessus */}
+            <ClipReveal className="photo-treated relative aspect-[4/3] overflow-hidden rounded-[2px] md:aspect-[21/9]">
+              <Image
+                src={`/images/guide-${cat}.jpg`}
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 92vw"
+                className="object-cover"
+              />
               <div
-                key={cat}
-                className={`grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 ${
-                  ci % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-                }`}
-              >
-                <Reveal className="lg:sticky lg:top-28">
-                  <div className="img-reveal photo-treated relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={`/images/guide-${cat}.jpg`}
-                      alt={d.cats[cat]}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                      className="object-cover"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-club/45 via-transparent to-transparent"
-                    />
-                    <span className="display absolute bottom-5 left-6 text-3xl text-lin">
-                      {d.cats[cat]}
+                aria-hidden="true"
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(14,36,25,0.05) 40%, rgba(14,36,25,0.7) 100%)",
+                }}
+              />
+              <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between md:right-10 md:bottom-8 md:left-10">
+                <h3 className="display text-3xl text-lin md:text-6xl">{d.cats[cat]}</h3>
+                <span className="display mb-1 text-sm text-laiton-clair md:text-base">
+                  {String(ci + 1).padStart(2, "0")} / {String(cats.length).padStart(2, "0")}
+                </span>
+              </div>
+            </ClipReveal>
+
+            {/* Les trois adresses du chapitre */}
+            <div className="mx-auto mt-4 max-w-[1100px]">
+              {dest.guide[cat].map((spot, si) => (
+                <Reveal key={spot.name} delay={si * 90}>
+                  <div className="group grid gap-2 border-b border-club/12 py-8 md:grid-cols-[72px_1fr] md:gap-8 md:py-10">
+                    <span className="display pt-1 text-sm text-laiton-fonce">
+                      {String(si + 1).padStart(2, "0")}
                     </span>
+                    <div>
+                      <h4 className="display text-2xl transition-transform duration-500 group-hover:translate-x-2 md:text-4xl">
+                        {spot.name}
+                      </h4>
+                      <p className="mt-3 max-w-[60ch] text-sm leading-[1.7] font-light text-ink-dim md:text-base">
+                        {spot.text[locale]}
+                      </p>
+                    </div>
                   </div>
                 </Reveal>
-                <div>
-                  <Reveal>
-                    <div className="mb-2 flex items-baseline gap-5">
-                      <span className="display text-sm text-laiton">
-                        {String(ci + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="display text-2xl text-laiton md:text-3xl">
-                        {d.cats[cat]}
-                      </h3>
-                      <div className="filet flex-1 opacity-30" />
-                    </div>
-                  </Reveal>
-                  {dest.guide[cat].map((spot) => (
-                    <Reveal key={spot.name}>
-                      <div className="group border-t border-club/12 py-7">
-                        <h4 className="display text-2xl transition-transform duration-500 group-hover:translate-x-2 md:text-3xl">
-                          {spot.name}
-                        </h4>
-                        <p className="mt-2 text-sm leading-relaxed text-ink-dim md:text-base">
-                          {spot.text[locale]}
-                        </p>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      {/* ---- CE QUE NOUS ORCHESTRONS + CTA ---- */}
-      <section className="px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[1fr_1fr]">
-          <Reveal>
-            <p className="eyebrow mb-5">{d.whatWeDo}</p>
-            <ul className="flex flex-col gap-5">
-              {dest.offers[locale].map((offer) => (
-                <li key={offer} className="flex items-start gap-4 text-lg font-light text-club/90">
+      {/* ---- 4 · SUR PLACE, NOUS ORCHESTRONS (vert nuit) ---- */}
+      <section className="nuit grain mt-12 px-5 py-24 md:px-10 md:py-32">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="eyebrow mb-5">{d.whatWeDo}</p>
+          <TitleReveal
+            text={dest.tagline[locale]}
+            className="display mb-14 max-w-3xl text-3xl leading-[1.05] text-lin md:text-5xl"
+          />
+          <div className="grid gap-x-16 gap-y-6 md:grid-cols-2">
+            {dest.offers[locale].map((offer) => (
+              <Reveal key={offer}>
+                <p className="flex items-start gap-4 border-b border-lin/12 pb-6 text-base font-light text-lin/85 md:text-lg">
                   <span aria-hidden="true" className="filet mt-3 w-6 shrink-0" />
                   {offer}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+                </p>
+              </Reveal>
+            ))}
+          </div>
           <Reveal delay={150}>
-            <div className="nuit grain rounded-[2px] p-10 text-center">
-              <p className="display mb-3 text-2xl text-lin">{dict.contact.title}</p>
-              <p className="mb-8 text-sm leading-[1.7] font-light text-lin/80">{dict.contact.intro}</p>
-              <GoldLink href={`/${locale}/contact`}>
+            <div className="mt-14">
+              <Button href={`/${locale}/contact`} variant="lin">
                 {dict.cta.request}
-              </GoldLink>
+              </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ---- AUTRES DESTINATIONS ---- */}
-      <section className="border-t border-laiton/30 px-5 py-20 md:px-8">
-        <div className="mx-auto max-w-6xl">
-          <Reveal>
-            <div className="grid grid-cols-2 gap-px bg-club/12 md:grid-cols-5">
-              {others.map((other) => (
-                <Link
-                  key={other.slug}
-                  href={`/${locale}/destinations/${other.slug}`}
-                  className="group photo-treated relative block aspect-square overflow-hidden bg-club"
-                >
-                  <Image
-                    src={`/images/dest-${other.slug}.jpg`}
-                    alt={other.name}
-                    fill
-                    sizes="20vw"
-                    className="object-cover opacity-50 transition-all duration-700 group-hover:scale-105 group-hover:opacity-90"
-                  />
-                  <span className="display absolute inset-x-0 bottom-4 text-center text-lg text-lin">
-                    {other.name}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ---- 5 · CONTINUER LE VOYAGE : plein écran ---- */}
+      <DestinationsShowcase locale={locale} eyebrow={d.homeEyebrow} exclude={slug} />
     </>
   );
 }

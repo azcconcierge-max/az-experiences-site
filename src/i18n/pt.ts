@@ -214,6 +214,7 @@ export const pt: Dict = {
     title: "O mundo, em versão privada",
     intro:
       "Seis territórios onde a casa tem os seus hábitos, as suas mesas e as suas chaves. Sobrevoe, escolha, nós tratamos do resto.",
+    introShort: "Seis territórios onde a casa tem os seus hábitos, as suas mesas e as suas chaves.",
     homeEyebrow: "Os nossos destinos",
     homeTitle: "Onde a casa tem as chaves",
     spotsLabel: "O guia da casa",

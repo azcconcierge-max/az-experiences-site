@@ -49,7 +49,7 @@ export function Header({
   // Transparent uniquement au-dessus d'un hero sombre (liste tenue à jour
   // au fil de la refonte) ; ailleurs, fond lin permanent.
   const darkHeroRoutes = [`/${locale}`, `/${locale}/qui-sommes-nous`];
-  const darkHeroPrefixes = [`/${locale}/services/`];
+  const darkHeroPrefixes = [`/${locale}/services/`, `/${locale}/destinations`];
   const hasDarkHero =
     darkHeroRoutes.includes(pathname ?? "") ||
     darkHeroPrefixes.some((p) => (pathname ?? "").startsWith(p));

@@ -16,11 +16,12 @@ export function DestinationsStrip({
 }) {
   return (
     <div className="dest-strip">
-      {destinations.map((dest) => (
+      {destinations.map((dest, i) => (
         <Link
           key={dest.slug}
           href={`/${locale}/destinations/${dest.slug}`}
           className="dest-panel group"
+          style={{ "--i": i } as React.CSSProperties}
         >
           <div className="dest-photo photo-treated absolute inset-0">
             <Image
@@ -32,14 +33,18 @@ export function DestinationsStrip({
             />
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-noir/85 via-noir/25 to-noir/30"
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(14,36,25,0.3) 0%, rgba(14,36,25,0.4) 45%, rgba(14,36,25,0.9) 100%)",
+              }}
             />
           </div>
 
           {/* Nom vertical quand le panneau est fermé (desktop) */}
           <span
             aria-hidden="true"
-            className="dest-name-v display absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-xl tracking-wide text-lin [writing-mode:vertical-rl] lg:block"
+            className="dest-name-v city absolute bottom-8 left-1/2 hidden -translate-x-1/2 text-2xl text-lin [writing-mode:vertical-rl] lg:block"
           >
             {dest.name}
           </span>
