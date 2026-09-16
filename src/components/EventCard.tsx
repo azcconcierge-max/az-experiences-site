@@ -9,11 +9,13 @@ export function EventCard({
   locale,
   dict,
   large = false,
+  priority = false,
 }: {
   event: EventItem;
   locale: Locale;
   dict: Dict;
   large?: boolean;
+  priority?: boolean;
 }) {
   return (
     <Link
@@ -23,13 +25,14 @@ export function EventCard({
       <div className={`relative overflow-hidden ${large ? "aspect-[16/11]" : "aspect-[4/3]"}`}>
         <EventVisual
           event={event}
+          priority={priority}
           className="absolute inset-0 h-full w-full transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
         />
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
           <p className="city mb-2 text-[0.7rem] text-laiton-clair">{event.city}</p>
-          <h3 className={`display text-lin ${large ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"}`}>
+          <p className={`display text-lin ${large ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"}`}>
             {event.name}
-          </h3>
+          </p>
           <p className="mt-2 text-[0.8rem] font-light tracking-[0.04em] text-lin/75">
             {event.dateLabel[locale]}
           </p>

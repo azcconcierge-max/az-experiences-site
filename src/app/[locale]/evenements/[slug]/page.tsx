@@ -85,9 +85,9 @@ export default async function EventPage({
       <JsonLd data={faqJsonLd(d.faq)} />
 
       {/* ---- Hero : photo absorbée par le vert ---- */}
-      <section className="relative flex min-h-[70svh] items-end overflow-hidden bg-club pt-20">
+      <section className="relative flex min-h-svh items-end overflow-hidden bg-club pt-20">
         <EventVisual event={event} priority className="absolute inset-0 h-full w-full" />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 md:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-16 md:px-10 md:pb-20">
           <Reveal>
             <Link
               href={`/${locale}/evenements`}
@@ -96,7 +96,7 @@ export default async function EventPage({
               ← {dict.cta.backToEvents}
             </Link>
             <p className="city mb-4 text-[0.8rem] text-laiton-clair">{event.city}</p>
-            <h1 className="display max-w-5xl text-5xl leading-[0.95] text-lin md:text-8xl">
+            <h1 className="display max-w-5xl text-[clamp(2.8rem,7vw,8rem)] leading-[0.95] text-lin">
               {event.name}
             </h1>
             <p className="mt-5 max-w-xl text-lg font-light text-lin/80">
@@ -107,8 +107,8 @@ export default async function EventPage({
       </section>
 
       {/* ---- Contenu ---- */}
-      <section className="px-5 py-20 md:px-8">
-        <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1.4fr_1fr]">
+      <section className="px-5 py-20 md:px-10 md:py-28">
+        <div className="mx-auto grid max-w-[1440px] gap-16 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
             <div>
               <p className="max-w-[65ch] text-base leading-[1.7] font-light md:text-lg">
@@ -162,10 +162,10 @@ export default async function EventPage({
       </section>
 
       {/* ---- Autres rendez-vous ---- */}
-      <section className="bg-club px-5 py-24 md:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section className="bg-club px-5 py-24 md:px-10 md:py-28">
+        <div className="mx-auto max-w-[1440px]">
           <Reveal>
-            <h2 className="display mb-12 text-3xl text-lin md:text-4xl">{dict.cta.allEvents}</h2>
+            <h2 className="display mb-12 text-3xl text-lin md:text-5xl">{dict.cta.allEvents}</h2>
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((other, i) => (

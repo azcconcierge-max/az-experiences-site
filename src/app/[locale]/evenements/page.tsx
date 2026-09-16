@@ -3,10 +3,11 @@ import Link from "next/link";
 import { getDict, type Locale } from "@/i18n";
 import { events } from "@/data/events";
 import { pageAlternates } from "@/lib/seo";
-import { PageHero } from "@/components/PageHero";
+import { LineMask } from "@/components/TitleReveal";
 import { Reveal } from "@/components/Reveal";
 import { EventCard } from "@/components/EventCard";
 import { Marquee } from "@/components/Marquee";
+import { AskSection } from "@/components/AskSection";
 
 export async function generateMetadata({
   params,
@@ -34,15 +35,31 @@ export default async function EventsPage({
 
   return (
     <>
-      <PageHero eyebrow={d.eyebrow} title={d.title} intro={d.intro} />
+      <section className="px-5 pt-36 pb-16 md:px-10 md:pt-44 md:pb-20">
+        <div className="mx-auto max-w-[1440px]">
+          <LineMask delay={100}>
+            <p className="eyebrow">{d.eyebrow}</p>
+          </LineMask>
+          <h1 className="display mt-5 max-w-5xl text-[clamp(2.6rem,6vw,6.5rem)] leading-[0.98]">
+            <LineMask delay={250}>
+              <span className="block">{d.title}</span>
+            </LineMask>
+          </h1>
+          <LineMask delay={420}>
+            <p className="mt-7 max-w-xl text-base leading-[1.7] font-light text-ink-dim md:text-lg">
+              {d.intro}
+            </p>
+          </LineMask>
+        </div>
+      </section>
       <Marquee items={events.map((e) => e.name)} />
 
-      <section className="px-5 py-20 pb-28 md:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="px-5 py-16 pb-28 md:px-10">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {events.map((event, i) => (
               <Reveal key={event.slug} delay={(i % 3) * 100}>
-                <EventCard event={event} locale={locale} dict={dict} />
+                <EventCard event={event} locale={locale} dict={dict} priority={i === 0} />
               </Reveal>
             ))}
 
@@ -55,7 +72,7 @@ export default async function EventsPage({
                 <span className="display text-4xl text-laiton-clair/70 transition-colors duration-500 group-hover:text-laiton-clair">
                   +
                 </span>
-                <h3 className="display mt-4 text-2xl text-lin">{d.custom.title}</h3>
+                <p className="display mt-4 text-2xl text-lin">{d.custom.title}</p>
                 <p className="mt-3 max-w-xs text-sm leading-relaxed text-lin/75">
                   {d.custom.text}
                 </p>
@@ -68,6 +85,8 @@ export default async function EventsPage({
           </div>
         </div>
       </section>
+
+      <AskSection locale={locale} dict={dict} />
     </>
   );
 }
