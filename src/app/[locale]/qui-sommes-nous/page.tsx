@@ -4,7 +4,7 @@ import { getDict, type Locale } from "@/i18n";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { TitleReveal, LineMask } from "@/components/TitleReveal";
-import { ClipReveal } from "@/components/ClipReveal";
+import { OvalPortrait } from "@/components/OvalPortrait";
 import { PillarsPinned } from "@/components/PillarsPinned";
 import { TestimonialRotator } from "@/components/TestimonialRotator";
 import { AskSection } from "@/components/AskSection";
@@ -41,7 +41,7 @@ export default async function AboutPage({
         <div aria-hidden="true" className="photo-treated absolute inset-0 overflow-hidden">
           <div className="hero-zoom absolute inset-0">
             <Image
-              src="/images/sur-mesure.jpg"
+              src="/images/maison-hero.jpg"
               alt=""
               fill
               priority
@@ -53,7 +53,7 @@ export default async function AboutPage({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(14,36,25,0.55) 0%, rgba(14,36,25,0.15) 30%, rgba(14,36,25,0.25) 60%, #0E2419 100%)",
+                "linear-gradient(180deg, rgba(14,36,25,0.6) 0%, rgba(14,36,25,0.18) 30%, rgba(14,36,25,0.3) 60%, #0E2419 100%)",
             }}
           />
         </div>
@@ -61,7 +61,7 @@ export default async function AboutPage({
           <LineMask delay={150}>
             <p className="eyebrow">{d.eyebrow}</p>
           </LineMask>
-          <h1 className="display mt-5 text-[clamp(2.8rem,7.5vw,8rem)] leading-[0.98] text-lin">
+          <h1 className="display mt-5 text-[clamp(3rem,8.5vw,9.5rem)] leading-[0.95] text-lin">
             <LineMask delay={300}>
               <span className="block">{d.title}.</span>
             </LineMask>
@@ -86,48 +86,44 @@ export default async function AboutPage({
         </div>
       </section>
 
-      {/* ---- 3 · LE FONDATEUR (vert club) : portrait, trois phrases, citation ---- */}
+      {/* ---- 3 · LE FONDATEUR (vert club) : nom géant, grand ovale, citation ---- */}
       <section className="bg-club overflow-hidden">
-        <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <ClipReveal className="photo-treated relative aspect-[4/5] overflow-hidden rounded-[2px]">
-            <Image
-              src="/images/fondateur.jpg"
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-cover"
+        <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-36">
+          <p className="eyebrow mb-8">{d.founder.eyebrow}</p>
+          <TitleReveal
+            text={d.founder.name}
+            className="display text-[clamp(3rem,7.5vw,7.5rem)] leading-[0.98] text-lin"
+          />
+          <div className="mt-14 grid items-center gap-14 md:mt-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+            <OvalPortrait
+              src="/images/fondateur-portrait.jpg"
+              alt="Noam Azoulay"
+              className="mx-auto w-[78vw] max-w-[300px] lg:max-w-[420px]"
             />
-          </ClipReveal>
-          <div>
-            <p className="eyebrow mb-6">{d.founder.eyebrow}</p>
-            <h2 className="display text-4xl text-lin md:text-6xl">{d.founder.name}</h2>
-            <p className="mt-3 text-[0.8rem] font-normal lowercase tracking-[0.12em] text-laiton-clair">
-              {d.founder.role} · AZ Management
-            </p>
-            <div className="mt-9 flex flex-col gap-4 text-lg leading-[1.6] font-light text-lin/85">
-              {d.founderShort.map((phrase) => (
-                <p key={phrase}>{phrase}</p>
-              ))}
-            </div>
-            <p className="display mt-10 border-l border-laiton pl-6 text-2xl leading-[1.35] text-laiton-clair md:text-3xl">
-              {d.founder.quote}
-            </p>
+            <div>
+              <p className="text-[0.8rem] font-normal lowercase tracking-[0.12em] text-laiton-clair">
+                {d.founder.role} · AZ Management
+              </p>
+              <p className="display mt-8 text-3xl leading-[1.25] text-lin md:text-4xl lg:text-[2.9rem]">
+                {d.founder.quote}
+              </p>
 
-            {/* Le récit complet, replié (conservé intact) */}
-            <details className="group mt-10">
-              <summary className="eyebrow cursor-pointer list-none transition-opacity hover:opacity-70 [&::-webkit-details-marker]:hidden">
-                <span className="mr-2 inline-block transition-transform duration-300 group-open:rotate-45">
-                  +
-                </span>
-                {d.readStory}
-              </summary>
-              <div className="mt-7 flex max-w-[62ch] flex-col gap-5 text-base leading-[1.7] font-light text-lin/80">
-                <p>{d.founder.p1}</p>
-                <p>{d.founder.p2}</p>
-                <p>{d.founder.p3}</p>
-                <p>{d.soldout.text}</p>
-              </div>
-            </details>
+              {/* Le récit complet, replié (conservé intact) */}
+              <details className="group mt-12">
+                <summary className="eyebrow cursor-pointer list-none transition-opacity hover:opacity-70 [&::-webkit-details-marker]:hidden">
+                  <span className="mr-2 inline-block transition-transform duration-300 group-open:rotate-45">
+                    +
+                  </span>
+                  {d.readStory}
+                </summary>
+                <div className="mt-7 flex max-w-[62ch] flex-col gap-5 text-base leading-[1.7] font-light text-lin/80">
+                  <p>{d.founder.p1}</p>
+                  <p>{d.founder.p2}</p>
+                  <p>{d.founder.p3}</p>
+                  <p>{d.soldout.text}</p>
+                </div>
+              </details>
+            </div>
           </div>
         </div>
       </section>
@@ -143,7 +139,7 @@ export default async function AboutPage({
             <Filet className="mb-14" />
             <Reveal className="grid gap-10 text-center sm:grid-cols-3">
               {d.stats.map((stat) => (
-                <p key={stat} className="display text-4xl text-lin md:text-5xl">
+                <p key={stat} className="display text-5xl text-lin md:text-7xl">
                   {stat}
                 </p>
               ))}

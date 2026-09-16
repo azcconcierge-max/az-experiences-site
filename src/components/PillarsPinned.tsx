@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TitleReveal } from "./TitleReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +77,10 @@ export function PillarsPinned({ pillars }: { pillars: { title: string; text: str
             className="flex flex-col justify-center py-14 lg:min-h-[70svh] lg:py-0"
           >
             <span className="display text-4xl text-laiton-clair lg:hidden">{NUMERALS[i]}</span>
-            <h2 className="display mt-4 text-3xl text-lin md:text-5xl lg:mt-0">{pillar.title}</h2>
+            <TitleReveal
+              text={pillar.title}
+              className="display mt-4 text-4xl text-lin md:text-6xl lg:mt-0"
+            />
             <p className="mt-5 max-w-md text-base leading-[1.7] font-light text-lin/80">
               {pillar.text}
             </p>
