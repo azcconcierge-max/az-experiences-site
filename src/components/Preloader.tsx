@@ -36,7 +36,7 @@ export function Preloader() {
       <div className="hero-up" style={{ animationDelay: "0.15s" }}>
         <Image src="/brand/logos/AZ-medaillon-lin.svg" alt="" width={130} height={130} />
       </div>
-      <p className="eyebrow hero-up mt-8" style={{ animationDelay: "0.45s" }}>
+      <p lang="fr" className="eyebrow hero-up mt-8" style={{ animationDelay: "0.45s" }}>
         sur recommandation
       </p>
     </div>
