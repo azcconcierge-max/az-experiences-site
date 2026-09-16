@@ -21,8 +21,22 @@ export const site = {
   instagram: null as string | null, // ex: "https://instagram.com/azconciergerie"
 } as const;
 
+/**
+ * Numéro WhatsApp de la maison, format international sans « + ».
+ * À COMPLÉTER dès que le numéro est actif (ex. "33612345678").
+ * Tant qu'il est vide, tous les liens WhatsApp retombent sur l'email.
+ */
+export const WHATSAPP_NUMBER = site.whatsapp ?? "";
+
+/** L'unique URL WhatsApp du site : footer, section demande, barre mobile, contact. */
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
 export function whatsappHref(message?: string): string | null {
-  if (!site.whatsapp) return null;
-  const base = `https://wa.me/${site.whatsapp}`;
-  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+  if (!WHATSAPP_NUMBER) return null;
+  return message ? `${WHATSAPP_URL}?text=${encodeURIComponent(message)}` : WHATSAPP_URL;
+}
+
+/** Lien de contact direct : WhatsApp si le numéro est renseigné, sinon email. */
+export function contactHref(message?: string): string {
+  return whatsappHref(message) ?? `mailto:${site.email}`;
 }

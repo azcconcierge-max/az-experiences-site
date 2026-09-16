@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { site, whatsappHref } from "@/lib/site";
 import type { Dict } from "@/i18n";
 import { Logo } from "./Logo";
 import { Filet } from "./brand";
@@ -50,6 +50,16 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
                 {site.email}
               </a>
             </li>
+            {whatsappHref() ? (
+              <li>
+                <a
+                  href={whatsappHref()!}
+                  className="transition-colors hover:text-laiton-clair"
+                >
+                  {dict.cta.whatsapp}
+                </a>
+              </li>
+            ) : null}
             <li>
               {site.address.street}
               <br />

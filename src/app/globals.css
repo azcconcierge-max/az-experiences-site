@@ -13,6 +13,8 @@
   --color-sauge: #8fa58a;
   --color-laiton: #b8935a;
   --color-laiton-clair: #d8bd8c;
+  /* laiton foncé : pour le petit texte sur fond clair (contraste AA 4,5:1) */
+  --color-laiton-fonce: #8a6a3a;
   --color-lin: #f7f8f5;
 
   /* anciens noms, remappés */
@@ -70,7 +72,7 @@ body {
   font-size: 0.8125rem;
   letter-spacing: 0.12em;
   text-transform: lowercase;
-  color: var(--color-laiton);
+  color: var(--color-laiton-fonce);
 }
 
 /* Lieux : capitales Bodoni espacées. */
@@ -154,8 +156,8 @@ body {
 /* ---- Traitement photo de la maison ----
    À poser sur le CONTENEUR d'une photo, jamais sur un logo, un SVG ou une icône.
    Tons chauds adoucis, ombres teintées vert club, grain léger. */
+/* Le conteneur doit être positionné par l'appelant (relative ou absolute). */
 .photo-treated {
-  position: relative;
   isolation: isolate;
 }
 
@@ -195,29 +197,6 @@ body {
   opacity: 0.5;
 }
 
-/* ---- Révélation au scroll (fondu discret) ---- */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-.reveal .img-reveal {
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
-}
-
-.reveal.is-visible .img-reveal {
-  clip-path: inset(0 0 0 0);
-}
-
 /* ---- L'animation du hero (la seule au chargement) ---- */
 @keyframes heroUp {
   from {
@@ -235,7 +214,79 @@ body {
   animation: heroUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* ---- Préloader : le monogramme, puis le voile se lève ---- */
+/* ---- Zoom lent du hero : 1,08 vers 1 sur 8 s ---- */
+@keyframes heroZoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-zoom {
+  animation: heroZoom 8s ease-out forwards;
+  will-change: transform;
+}
+
+/* ---- Voile vert nuit entre les pages ---- */
+@keyframes veilOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ---- Masque de ligne (hero) : monte dans son cadre, CSS pur ---- */
+@keyframes lineUp {
+  from {
+    transform: translateY(110%);
+  }
+}
+.lineup {
+  animation: lineUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.page-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: #0e2419;
+  pointer-events: none;
+  animation: veilOut 0.5s ease 0.05s both;
+}
+
+/* ---- Préloader : l'ovale se dessine, le médaillon paraît ---- */
+@keyframes drawOval {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.preloader-oval {
+  animation: drawOval 0.55s ease-out 0.05s forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.preloader-fade {
+  opacity: 0;
+  animation: fadeUp 0.4s ease 0.3s forwards;
+}
+
+/* ---- Ancien préloader (conservé pour compat) ---- */
 @keyframes preloaderExit {
   to {
     transform: translateY(-101%);
@@ -447,18 +498,19 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .reveal,
   .hero-up,
-  .page-enter {
+  .page-enter,
+  .hero-zoom,
+  .lineup,
+  .preloader-oval,
+  .preloader-fade {
     opacity: 1;
     transform: none;
     transition: none;
     animation: none;
   }
-  .reveal .img-reveal {
-    clip-path: none;
-    transition: none;
-  }
+  /* le voile de transition resterait opaque sans animation : on le retire */
+  .page-veil,
   .preloader {
     display: none;
   }

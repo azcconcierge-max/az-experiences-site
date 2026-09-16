@@ -1,8 +1,16 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-/** Révèle son contenu en fondu + glissement à l'entrée dans le viewport. */
+gsap.registerPlugin(ScrollTrigger);
+
+/**
+ * Fondu discret à l'entrée dans l'écran (GSAP).
+ * Le contenu est rendu visible côté serveur : aucun texte caché
+ * pour les robots ni en cas d'échec du JavaScript.
+ */
 export function Reveal({
   children,
   delay = 0,
@@ -17,27 +25,24 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            el.classList.add("is-visible");
-            io.disconnect();
-          }
-        }
-      },
-      { threshold: 0.12 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const anim = gsap.from(el, {
+      autoAlpha: 0,
+      y: 22,
+      duration: 0.9,
+      delay: delay / 1000,
+      ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 88%", once: true },
+    });
+    return () => {
+      anim.scrollTrigger?.kill();
+      anim.kill();
+    };
+  }, [delay]);
 
   return (
-    <div
-      ref={ref}
-      className={`reveal ${className}`}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   );

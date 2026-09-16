@@ -1,4 +1,9 @@
-/** Transition d'entrée jouée à chaque changement de page. */
+/** Transition entre pages : un voile vert nuit qui se dissipe. */
 export default function Template({ children }: { children: React.ReactNode }) {
-  return <div className="page-enter">{children}</div>;
+  return (
+    <>
+      <div aria-hidden="true" className="page-veil" />
+      {children}
+    </>
+  );
 }

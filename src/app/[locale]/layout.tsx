@@ -8,6 +8,8 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/JsonLd";
 import { Preloader } from "@/components/Preloader";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { MobileBar } from "@/components/MobileBar";
 import { Cursor } from "@/components/Cursor";
 import { StickyCta } from "@/components/StickyCta";
 import "../globals.css";
@@ -110,13 +112,17 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${bodoni.variable} ${hanken.variable}`}>
       <body>
+        <SmoothScroll />
         <Preloader />
         <JsonLd data={organizationJsonLd} />
         <Header locale={locale} nav={nav} ctaLabel={dict.cta.request} />
         <main>{children}</main>
         <Footer locale={locale as Locale} dict={dict} />
-        <WhatsAppFloat label={dict.cta.whatsapp} />
-        <StickyCta href={`/${locale}/contact`} label={dict.cta.requestAccess} />
+        <div className="hidden md:block">
+          <WhatsAppFloat label={dict.cta.whatsapp} />
+          <StickyCta href={`/${locale}/contact`} label={dict.cta.requestAccess} />
+        </div>
+        <MobileBar locale={locale} requestLabel={dict.cta.request} />
         <Cursor />
         {/* Grain cinéma, texture de la maison */}
         <div

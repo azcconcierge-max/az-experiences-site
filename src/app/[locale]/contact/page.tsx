@@ -5,6 +5,8 @@ import { site, whatsappHref } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
+import { Faq, faqJsonLd } from "@/components/Faq";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
   params,
@@ -73,6 +75,12 @@ export default async function ContactPage({
               <p className="text-xs leading-[1.7] font-light text-lin/70">{d.confidential}</p>
             </aside>
           </Reveal>
+        </div>
+
+        <div className="mx-auto mt-24 max-w-3xl">
+          <JsonLd data={faqJsonLd(dict.home.faq)} />
+          <h2 className="display mb-10 text-3xl md:text-4xl">{dict.home.faqTitle}</h2>
+          <Faq items={dict.home.faq} />
         </div>
       </section>
     </>
