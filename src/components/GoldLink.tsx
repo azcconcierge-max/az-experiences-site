@@ -34,8 +34,23 @@ export function Button({
     if (ref.current) ref.current.style.transform = "";
   };
 
+  // Onde lin très douce depuis le point cliqué
+  const onClick = (e: MouseEvent) => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const rect = el.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const wave = document.createElement("span");
+    wave.className = "ripple";
+    wave.style.width = wave.style.height = `${size}px`;
+    wave.style.left = `${e.clientX - rect.left - size / 2}px`;
+    wave.style.top = `${e.clientY - rect.top - size / 2}px`;
+    el.appendChild(wave);
+    window.setTimeout(() => wave.remove(), 700);
+  };
+
   const base =
-    "inline-block rounded-full px-8 py-3.5 font-sans text-[0.9rem] font-normal tracking-[0.02em] transition-all duration-500 will-change-transform";
+    "group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full px-8 py-3.5 font-sans text-[0.9rem] font-normal tracking-[0.02em] transition-all duration-500 will-change-transform";
   const styles = {
     club: "bg-club text-lin hover:bg-nuit",
     lin: "bg-lin text-club hover:bg-ivory-soft",
@@ -48,9 +63,16 @@ export function Button({
       href={href}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      onClick={onClick}
       className={`${base} ${styles} ${className}`}
     >
       {children}
+      <span
+        aria-hidden="true"
+        className="inline-block transition-transform duration-500 group-hover:translate-x-1"
+      >
+        →
+      </span>
     </Link>
   );
 }

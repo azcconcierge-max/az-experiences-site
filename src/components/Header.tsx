@@ -53,7 +53,8 @@ export function Header({
   const hasDarkHero =
     darkHeroRoutes.includes(pathname ?? "") ||
     darkHeroPrefixes.some((p) => (pathname ?? "").startsWith(p));
-  const solid = scrolled || open || !hasDarkHero;
+  // Menu ouvert : l'en-tête passe en lin sur le dégradé Nuit du menu.
+  const solid = !open && (scrolled || !hasDarkHero);
   const linkBase = solid ? "text-club/80 hover:text-club" : "text-lin/85 hover:text-lin";
   const linkActive = solid ? "text-laiton-fonce" : "text-laiton-clair";
 
@@ -61,18 +62,26 @@ export function Header({
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,box-shadow] duration-500 ${
         hidden && !open ? "-translate-y-full" : ""
-      } ${solid ? "bg-lin/90 shadow-[0_1px_0_rgba(184,147,90,0.25)] backdrop-blur-md" : "bg-transparent"}`}
+      } ${
+        open
+          ? "bg-nuit"
+          : solid
+            ? "bg-lin/90 shadow-[0_1px_0_rgba(184,147,90,0.25)] backdrop-blur-md"
+            : "bg-transparent"
+      }`}
     >
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-10">
-        <Logo locale={locale} variant={solid ? "vert" : "lin"} size={50} withName className="max-sm:[&>span]:hidden" />
+        <div className={`origin-left transition-transform duration-500 ${scrolled ? "scale-[0.82]" : ""}`}>
+          <Logo locale={locale} variant={solid ? "vert" : "lin"} size={50} withName className="max-sm:[&>span]:hidden" />
+        </div>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-[0.8rem] font-normal lowercase tracking-[0.12em] transition-colors duration-300 ${
-                pathname?.startsWith(item.href) ? linkActive : linkBase
+              className={`u-line text-[0.8rem] font-normal lowercase tracking-[0.12em] transition-colors duration-300 ${
+                pathname?.startsWith(item.href) ? `nav-active ${linkActive}` : linkBase
               }`}
             >
               {item.label}
@@ -126,42 +135,47 @@ export function Header({
 
       {open && (
         <nav
-          className="border-t border-laiton/30 bg-lin px-5 py-8 lg:hidden"
+          className="nuit grain fixed inset-0 top-20 flex flex-col justify-between overflow-y-auto px-6 pt-10 pb-8 lg:hidden"
           aria-label="Navigation mobile"
         >
-          <ul className="flex flex-col gap-5">
-            {nav.map((item) => (
-              <li key={item.href}>
+          <ul className="flex flex-col gap-4">
+            {nav.map((item, i) => (
+              <li key={item.href} className="menu-link" style={{ "--i": i } as React.CSSProperties}>
                 <Link
                   href={item.href}
-                  className="display text-2xl text-club transition-colors hover:text-laiton"
+                  className={`display text-4xl leading-[1.15] transition-colors ${
+                    pathname?.startsWith(item.href) ? "text-laiton-clair" : "text-lin hover:text-laiton-clair"
+                  }`}
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li className="pt-3">
-              <Link
-                href={`/${locale}/contact`}
-                className="inline-block rounded-full bg-club px-7 py-3 text-[0.85rem] text-lin"
-              >
-                {ctaLabel}
-              </Link>
-            </li>
-            <li className="flex gap-4 pt-2">
+          </ul>
+          <div
+            className="menu-link flex items-center justify-between gap-6 pt-10"
+            style={{ "--i": nav.length } as React.CSSProperties}
+          >
+            <Link
+              href={`/${locale}/contact`}
+              className="inline-block rounded-full bg-lin px-7 py-3 text-[0.85rem] text-club"
+            >
+              {ctaLabel}
+            </Link>
+            <span className="flex gap-4">
               {locales.map((l) => (
                 <Link
                   key={l}
                   href={localeHref(l)}
-                  className={`text-[0.75rem] lowercase tracking-[0.12em] ${
-                    l === locale ? "text-laiton" : "text-club/50"
+                  className={`inline-flex h-6 min-w-6 items-center justify-center text-[0.8rem] lowercase tracking-[0.12em] ${
+                    l === locale ? "text-laiton-clair" : "text-lin/60"
                   }`}
                 >
                   {l}
                 </Link>
               ))}
-            </li>
-          </ul>
+            </span>
+          </div>
         </nav>
       )}
     </header>

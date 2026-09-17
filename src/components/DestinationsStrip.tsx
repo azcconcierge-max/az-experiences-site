@@ -21,6 +21,7 @@ export function DestinationsStrip({
           key={dest.slug}
           href={`/${locale}/destinations/${dest.slug}`}
           className="dest-panel group"
+          data-cursor="voir"
           style={{ "--i": i } as React.CSSProperties}
         >
           <div className="dest-photo photo-treated absolute inset-0">

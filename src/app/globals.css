@@ -46,13 +46,31 @@ body {
 }
 
 ::selection {
-  background: var(--color-laiton);
-  color: var(--color-lin);
+  background: var(--color-club);
+  color: var(--color-laiton-clair);
 }
 
 :focus-visible {
   outline: 2px solid var(--color-laiton);
   outline-offset: 3px;
+}
+
+/* Barre de défilement fine, vert club (ordinateur) */
+@media (pointer: fine) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-club) var(--color-lin);
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-lin);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-club);
+    border-radius: 4px;
+  }
 }
 
 /* ---- Typographie ---- */
@@ -138,15 +156,47 @@ body {
   isolation: isolate;
 }
 
+/* Grain vivant : la texture se décale par crans, 8 images par seconde */
+@keyframes grainShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  12.5% {
+    transform: translate(-42px, 26px);
+  }
+  25% {
+    transform: translate(28px, -38px);
+  }
+  37.5% {
+    transform: translate(-30px, -22px);
+  }
+  50% {
+    transform: translate(44px, 34px);
+  }
+  62.5% {
+    transform: translate(-24px, 40px);
+  }
+  75% {
+    transform: translate(36px, -28px);
+  }
+  87.5% {
+    transform: translate(-40px, -34px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 .grain::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -60px;
   z-index: 1;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
   opacity: 0.35;
+  animation: grainShift 1s steps(1) infinite;
 }
 
 .grain > * {
@@ -352,44 +402,183 @@ body {
   animation: waPulse 8s ease-out 3s infinite;
 }
 
-/* ---- Curseur maison, laiton ---- */
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 90;
-  width: 34px;
-  height: 34px;
-  margin: -17px 0 0 -17px;
-  border: 1px solid rgba(184, 147, 90, 0.55);
-  border-radius: 9999px;
-  pointer-events: none;
-  transition:
-    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    margin 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s,
-    opacity 0.3s;
-}
-
-.cursor-ring.is-active {
-  width: 56px;
-  height: 56px;
-  margin: -28px 0 0 -28px;
-  border-color: var(--color-laiton);
-}
-
+/* ---- Curseur maison : point laiton, anneau à mention sur les cibles ---- */
 .cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 90;
-  width: 5px;
-  height: 5px;
-  margin: -2.5px 0 0 -2.5px;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
   border-radius: 9999px;
   background: var(--color-laiton);
   pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border: 1px solid var(--color-laiton);
+  border-radius: 9999px;
+  background: rgba(14, 36, 25, 0.35);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s;
+}
+
+.cursor-ring .cursor-label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--color-lin);
+}
+
+.cursor-ring.is-open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Barre de progression du défilement : un filet laiton en haut de l'écran */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 95;
+  height: 1px;
+  background: var(--color-laiton);
+  transform-origin: left;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* Souligné qui se dessine depuis la gauche */
+.u-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left calc(100% - 0.05em);
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.u-line:hover,
+.u-line:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Onde très douce au clic d'un bouton */
+@keyframes ripple {
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(247, 248, 245, 0.35);
+  transform: scale(0);
+  animation: ripple 0.7s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Filet qui se trace sous la mention de section */
+main p.eyebrow {
+  position: relative;
+}
+
+main p.eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.55em;
+  width: min(64px, 100%);
+  height: 1px;
+  background: var(--color-laiton);
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+main p.eyebrow.filet-drawn::after {
+  transform: scaleX(1);
+}
+
+/* Lien actif du header : petit filet laiton dessous */
+.nav-active {
+  position: relative;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--color-laiton);
+}
+
+/* Image en cours de chargement : fond sauge, flou qui se dissipe */
+.photo-treated {
+  background-color: color-mix(in srgb, var(--color-sauge) 45%, var(--color-club));
+}
+
+img.img-loading {
+  opacity: 0;
+}
+
+img.img-loaded {
+  transition:
+    opacity 0.7s ease,
+    filter 1s ease;
+}
+
+.photo-treated img.img-loading {
+  filter: saturate(0.88) contrast(0.96) sepia(0.06) blur(16px);
+}
+
+/* Menu mobile plein écran : liens en cascade */
+@keyframes menuLink {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+.menu-link {
+  animation: menuLink 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 100ms);
+}
+
+/* Nom géant du footer, coupé à mi-hauteur */
+.footer-giant {
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  font-size: clamp(3.4rem, 12.5vw, 12rem);
+  line-height: 1;
+  color: var(--color-lin);
+  opacity: 0.08;
+  transform: translateY(46%);
+  user-select: none;
 }
 
 /* ---- Barre d'appel discrète ---- */
@@ -534,7 +723,32 @@ body {
     display: none;
   }
   .marquee-track,
-  .wa-pulse {
+  .wa-pulse,
+  .grain::after,
+  .menu-link,
+  .ripple {
     animation: none;
   }
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+  main p.eyebrow::after {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
+
+/* Révélation en montée (footer) : visible par défaut, animée si JS présent */
+.rise-init {
+  opacity: 0;
+  transform: translateY(48px);
+}
+
+.rise-init.risen {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s ease,
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
 }

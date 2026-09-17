@@ -23,11 +23,13 @@ export function ServicesStrip({
       <div className="mx-auto max-w-[1440px] px-5 md:px-10">
         <p className="eyebrow mb-10">{title}</p>
       </div>
-      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div data-cursor="glisser"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {others.map((service) => (
           <Link
             key={service.slug}
             href={`/${locale}/services/${service.slug}`}
+            data-cursor="voir"
             className="group relative aspect-[4/5] w-[62vw] shrink-0 snap-start overflow-hidden rounded-[2px] sm:w-[36vw] lg:w-[21vw]"
           >
             <div className="photo-treated absolute inset-0">

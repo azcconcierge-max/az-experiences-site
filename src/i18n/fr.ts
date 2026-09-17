@@ -19,6 +19,8 @@ export const fr = {
     backToEvents: "Tous les événements",
     backToGuide: "Retour au guide",
     contactUs: "Nous écrire",
+    cursorSee: "voir",
+    cursorDrag: "glisser",
   },
   home: {
     metaTitle: "AZ Experiences | Conciergerie privée & accès aux événements sold out",
@@ -272,6 +274,7 @@ export const fr = {
     confidential: "Chaque échange est strictement confidentiel.",
   },
   footer: {
+    backToTop: "retour en haut",
     tagline: "L'art de l'accès.",
     navTitle: "Explorer",
     contactTitle: "Contact",

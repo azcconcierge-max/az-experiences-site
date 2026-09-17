@@ -57,6 +57,7 @@ export function HorizontalEvents({
     <div ref={sectionRef} className="overflow-hidden">
       <div
         ref={trackRef}
+        data-cursor="glisser"
         className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-6 md:px-10 lg:snap-none lg:overflow-visible lg:pb-0"
       >
         {events.map((event, i) => (

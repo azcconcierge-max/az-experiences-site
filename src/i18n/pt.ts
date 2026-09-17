@@ -21,6 +21,8 @@ export const pt: Dict = {
     backToEvents: "Todos os eventos",
     backToGuide: "Voltar ao guia",
     contactUs: "Escreva-nos",
+    cursorSee: "ver",
+    cursorDrag: "arrastar",
   },
   home: {
     metaTitle: "AZ Experiences | Concierge privado e acesso a eventos esgotados",
@@ -274,6 +276,7 @@ export const pt: Dict = {
     confidential: "Cada troca é estritamente confidencial.",
   },
   footer: {
+    backToTop: "voltar ao topo",
     tagline: "A arte do acesso.",
     navTitle: "Explorar",
     contactTitle: "Contacto",

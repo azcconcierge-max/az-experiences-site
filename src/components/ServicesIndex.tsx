@@ -49,6 +49,7 @@ export function ServicesIndex({ locale }: { locale: Locale }) {
               onMouseEnter={() => setActive(i)}
               onMouseLeave={() => setActive(null)}
               onTouchStart={() => setMobileActive(i)}
+              data-cursor="voir"
               className="group flex items-baseline gap-6 py-6 md:py-7"
             >
               <span

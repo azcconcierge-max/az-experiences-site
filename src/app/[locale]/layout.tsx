@@ -11,6 +11,8 @@ import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { MobileBar } from "@/components/MobileBar";
 import { Cursor } from "@/components/Cursor";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { GlobalDetails } from "@/components/GlobalDetails";
 import { StickyCta } from "@/components/StickyCta";
 import "../globals.css";
 
@@ -46,7 +48,7 @@ export async function generateMetadata({
     metadataBase: new URL(site.baseUrl),
     title: {
       default: dict.home.metaTitle,
-      template: `%s, ${site.name}`,
+      template: `%s | ${site.name}`,
     },
     description: dict.home.metaDescription,
     alternates: {
@@ -116,6 +118,8 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${bodoni.variable} ${hanken.variable}`}>
       <body>
         <SmoothScroll />
+        <ScrollProgress />
+        <GlobalDetails />
         <Preloader />
         <JsonLd data={organizationJsonLd} />
         <Header locale={locale} nav={nav} ctaLabel={dict.cta.request} />
@@ -126,7 +130,7 @@ export default async function LocaleLayout({
           <StickyCta href={`/${locale}/contact`} label={dict.cta.requestAccess} />
         </div>
         <MobileBar locale={locale} requestLabel={dict.cta.request} />
-        <Cursor />
+        <Cursor labels={{ voir: dict.cta.cursorSee, glisser: dict.cta.cursorDrag }} />
         {/* Grain cinéma, texture de la maison */}
         <div
           aria-hidden="true"

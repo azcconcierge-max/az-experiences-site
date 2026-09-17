@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { site, whatsappHref } from "@/lib/site";
 import type { Dict } from "@/i18n";
+import { BRAND_NAME } from "@/lib/site";
 import { Logo } from "./Logo";
+import { BackToTop } from "./BackToTop";
 import { Filet } from "./brand";
 
 export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
@@ -30,7 +32,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm font-light text-lin/75 transition-colors hover:text-laiton-clair"
+                  className="u-line text-sm font-light text-lin/75 transition-colors hover:text-laiton-clair"
                 >
                   {item.label}
                 </Link>
@@ -45,7 +47,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-laiton-clair"
               >
                 {site.email}
               </a>
@@ -56,7 +58,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
                   href={whatsappHref()!}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-laiton-clair"
+                  className="u-line transition-colors hover:text-laiton-clair"
                 >
                   {dict.cta.whatsapp}
                 </a>
@@ -68,7 +70,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-laiton-clair"
+                  className="u-line transition-colors hover:text-laiton-clair"
                 >
                   LinkedIn
                 </a>
@@ -88,7 +90,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               <Link
                 href={`/${locale}/mentions-legales`}
-                className="transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-laiton-clair"
               >
                 {dict.footer.mentions}
               </Link>
@@ -96,7 +98,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               <Link
                 href={`/${locale}/confidentialite`}
-                className="transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-laiton-clair"
               >
                 {dict.footer.privacy}
               </Link>
@@ -107,12 +109,20 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
 
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <Filet />
-        <div className="flex flex-col items-center justify-between gap-2 py-6 text-[0.75rem] font-light tracking-[0.12em] text-lin/60 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 py-6 text-[0.75rem] font-light tracking-[0.12em] text-lin/60 md:flex-row">
           <span>
             © {year} {site.name}. {dict.footer.rights}
           </span>
-          <span className="city text-[0.7rem] text-lin/70">Paris</span>
+          <span className="flex items-center gap-6">
+            <span className="city text-[0.7rem] text-lin/70">Paris</span>
+            <BackToTop label={dict.footer.backToTop} />
+          </span>
         </div>
+      </div>
+
+      {/* Le nom de la maison en très grand, coupé par le bas de la page */}
+      <div aria-hidden="true" data-rise className="overflow-hidden">
+        <p className="footer-giant city select-none">{BRAND_NAME}</p>
       </div>
     </footer>
   );

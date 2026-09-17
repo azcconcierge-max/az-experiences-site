@@ -53,6 +53,7 @@ export default async function GuidePage({
       <section className="relative flex min-h-svh items-end overflow-hidden bg-nuit">
         <Link
           href={`/${locale}/guide/${cover.slug}`}
+          data-cursor="voir"
           className="group absolute inset-0 z-10"
           aria-label={cover.title[locale]}
         />
@@ -101,7 +102,7 @@ export default async function GuidePage({
           <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((article, i) => (
               <Reveal key={article.slug} delay={(i % 3) * 110}>
-                <Link href={`/${locale}/guide/${article.slug}`} className="group block">
+                <Link href={`/${locale}/guide/${article.slug}`} data-cursor="voir" className="group block">
                   <ClipReveal className="photo-treated relative aspect-[4/5] overflow-hidden rounded-[2px]">
                     <Image
                       src={article.image}

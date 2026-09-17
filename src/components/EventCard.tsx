@@ -20,6 +20,7 @@ export function EventCard({
   return (
     <Link
       href={`/${locale}/evenements/${event.slug}`}
+      data-cursor="voir"
       className="group relative block overflow-hidden rounded-[2px]"
     >
       <div className={`relative overflow-hidden ${large ? "aspect-[16/11]" : "aspect-[4/3]"}`}>
