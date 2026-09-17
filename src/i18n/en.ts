@@ -97,6 +97,12 @@ export const en: Dict = {
       },
     ],
   },
+  selection: {
+    metaTitle: "The current selection | AZ Experiences",
+    title: "The current selection",
+    empty: "The selection is being refreshed, write to us.",
+    updated: "updated on",
+  },
   about: {
     metaTitle: "About us | AZ Experiences",
     metaDescription:

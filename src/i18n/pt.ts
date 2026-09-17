@@ -97,6 +97,12 @@ export const pt: Dict = {
       },
     ],
   },
+  selection: {
+    metaTitle: "A seleção do momento | AZ Experiences",
+    title: "A seleção do momento",
+    empty: "A seleção está a ser renovada, escreva-nos.",
+    updated: "atualizada a",
+  },
   about: {
     metaTitle: "Quem somos | AZ Experiences",
     metaDescription:

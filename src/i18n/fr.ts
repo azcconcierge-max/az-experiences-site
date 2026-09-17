@@ -95,6 +95,12 @@ export const fr = {
       },
     ],
   },
+  selection: {
+    metaTitle: "La sélection du moment | AZ Experiences",
+    title: "La sélection du moment",
+    empty: "La sélection se renouvelle en ce moment, écrivez-nous.",
+    updated: "mise à jour le",
+  },
   about: {
     metaTitle: "Qui sommes-nous | AZ Experiences",
     metaDescription:
