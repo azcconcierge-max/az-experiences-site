@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
     // AVIF d'abord : les photos denses (foules, stades) pèsent 2 à 3 fois moins
     formats: ["image/avif", "image/webp"],
     qualities: [60, 75],
+    // pas de palier 4K : personne n'affiche ces photos à 3840 px
+    deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1920],
   },
   async redirects() {
     return [

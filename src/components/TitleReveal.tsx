@@ -78,7 +78,11 @@ export function TitleReveal({
         <span
           key={i}
           aria-hidden="true"
-          className={mode === "words" ? "inline-block overflow-hidden pb-[0.08em] align-top" : ""}
+          className={
+            mode === "words"
+              ? "inline-block overflow-hidden pb-[0.08em] align-top whitespace-nowrap"
+              : "whitespace-nowrap"
+          }
         >
           <span data-word className="inline-block">
             {w}
