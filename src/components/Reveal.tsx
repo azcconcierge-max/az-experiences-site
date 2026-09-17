@@ -27,17 +27,31 @@ export function Reveal({
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const anim = gsap.from(el, {
-      autoAlpha: 0,
-      y: 22,
-      duration: 0.9,
-      delay: delay / 1000,
-      ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 88%", once: true },
-    });
+    let anim: gsap.core.Tween | null = null;
+    try {
+      anim = gsap.from(el, {
+        autoAlpha: 0,
+        y: 22,
+        duration: 0.9,
+        delay: delay / 1000,
+        ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      });
+    } catch {
+      gsap.set(el, { clearProps: "all" });
+      return;
+    }
+    // Garde-fou : si le déclencheur ne part jamais (JS dégradé) alors que
+    // l'élément est à l'écran, on force l'apparition.
+    const failsafe = window.setTimeout(() => {
+      if (anim && anim.progress() === 0 && el.getBoundingClientRect().top < window.innerHeight) {
+        anim.progress(1);
+      }
+    }, 3000);
     return () => {
-      anim.scrollTrigger?.kill();
-      anim.kill();
+      window.clearTimeout(failsafe);
+      anim?.scrollTrigger?.kill();
+      anim?.kill();
     };
   }, [delay]);
 

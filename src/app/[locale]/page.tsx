@@ -69,8 +69,10 @@ export default async function HomePage({
             <p className="eyebrow">{h.heroEyebrow}</p>
           </LineMask>
           <h1 className="display mt-5 text-[clamp(3.2rem,9.5vw,10.5rem)] leading-[0.95] text-lin">
+            {/* L'espace après la ligne 1 garde « L'accès est notre métier »
+                lisible d'un trait par les moteurs et lecteurs d'écran. */}
             <LineMask delay={300}>
-              <span className="block">{h.heroLine1}</span>
+              <span className="block">{h.heroLine1} </span>
             </LineMask>
             <LineMask delay={430}>
               <span className="block">{h.heroLine2}</span>

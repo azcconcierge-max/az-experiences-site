@@ -32,24 +32,36 @@ export function TitleReveal({
 
     const words = el.querySelectorAll<HTMLElement>("[data-word]");
     let anim: gsap.core.Tween;
-    if (mode === "scrub") {
-      // 0.6 minimum : reste lisible (contraste AA grand texte) avant le défilement
-      anim = gsap.from(words, {
-        autoAlpha: 0.6,
-        stagger: 0.08,
-        ease: "none",
-        scrollTrigger: { trigger: el, start: "top 80%", end: "top 30%", scrub: 0.4 },
-      });
-    } else {
-      anim = gsap.from(words, {
-        yPercent: 110,
-        duration: 0.9,
-        stagger: 0.045,
-        ease: "power4.out",
-        scrollTrigger: { trigger: el, start: "top 88%", once: true },
-      });
+    try {
+      if (mode === "scrub") {
+        // 0.6 minimum : reste lisible (contraste AA grand texte) avant le défilement
+        anim = gsap.from(words, {
+          autoAlpha: 0.6,
+          stagger: 0.08,
+          ease: "none",
+          scrollTrigger: { trigger: el, start: "top 80%", end: "top 30%", scrub: 0.4 },
+        });
+      } else {
+        anim = gsap.from(words, {
+          yPercent: 110,
+          duration: 0.9,
+          stagger: 0.045,
+          ease: "power4.out",
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        });
+      }
+    } catch {
+      gsap.set(words, { clearProps: "all" });
+      return;
     }
+    // Garde-fou : jamais un titre bloqué invisible si le déclencheur échoue.
+    const failsafe = window.setTimeout(() => {
+      if (anim.progress() === 0 && el.getBoundingClientRect().top < window.innerHeight) {
+        anim.progress(1);
+      }
+    }, 3000);
     return () => {
+      window.clearTimeout(failsafe);
       anim.scrollTrigger?.kill();
       anim.kill();
     };
