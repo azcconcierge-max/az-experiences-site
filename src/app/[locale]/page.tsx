@@ -57,13 +57,7 @@ export default async function HomePage({
           />
         </div>
 
-        {/* Cadre lin qui se dessine, détails de coin, indicateur */}
-        <div aria-hidden="true" className="hero-frame hidden md:block">
-          <span className="f-top" />
-          <span className="f-right" />
-          <span className="f-bottom" />
-          <span className="f-left" />
-        </div>
+        {/* Détails de coin et indicateur */}
         <p
           aria-hidden="true"
           className="absolute top-24 right-9 z-20 hidden text-[0.72rem] font-normal lowercase tracking-[0.16em] text-lin/70 md:block"

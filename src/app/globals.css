@@ -733,13 +733,6 @@ img.img-loaded {
   .ripple {
     animation: none;
   }
-  .hero-frame .f-top,
-  .hero-frame .f-bottom,
-  .hero-frame .f-left,
-  .hero-frame .f-right {
-    animation: none;
-    transform: none;
-  }
   .cursor-dot,
   .cursor-ring {
     display: none;
@@ -771,69 +764,6 @@ img.img-loaded {
   }
   to {
     transform: scaleX(1);
-  }
-}
-
-/* Cadre lin à 20 px des bords, qui se dessine au chargement */
-.hero-frame {
-  position: absolute;
-  inset: 20px;
-  z-index: 15;
-  pointer-events: none;
-}
-
-.hero-frame span {
-  position: absolute;
-  background: rgba(247, 248, 245, 0.3);
-}
-
-.hero-frame .f-top,
-.hero-frame .f-bottom {
-  left: 0;
-  right: 0;
-  height: 1px;
-  transform: scaleX(0);
-  animation: frameX 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.hero-frame .f-left,
-.hero-frame .f-right {
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  transform: scaleY(0);
-  animation: frameY 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
-}
-
-.hero-frame .f-top {
-  top: 0;
-  transform-origin: left;
-}
-
-.hero-frame .f-bottom {
-  bottom: 0;
-  transform-origin: right;
-}
-
-.hero-frame .f-left {
-  left: 0;
-  transform-origin: bottom;
-}
-
-.hero-frame .f-right {
-  right: 0;
-  transform-origin: top;
-}
-
-@keyframes frameX {
-  to {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes frameY {
-  to {
-    transform: scaleY(1);
   }
 }
 
