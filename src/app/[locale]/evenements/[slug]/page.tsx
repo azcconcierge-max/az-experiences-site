@@ -12,6 +12,7 @@ import { EventCard } from "@/components/EventCard";
 import { Filet } from "@/components/brand";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => events.map((e) => ({ locale, slug: e.slug })));
@@ -87,14 +88,16 @@ export default async function EventPage({
       {/* ---- Hero : photo absorbée par le vert ---- */}
       <section className="relative flex min-h-svh items-end overflow-hidden bg-club pt-20">
         <EventVisual event={event} priority className="absolute inset-0 h-full w-full" />
+        <Breadcrumb
+          ariaLabel={dict.nav.events}
+          items={[
+            { href: `/${locale}`, label: dict.nav.home },
+            { href: `/${locale}/evenements`, label: dict.nav.events },
+            { label: event.name.toLowerCase() },
+          ]}
+        />
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-16 md:px-10 md:pb-20">
           <Reveal>
-            <Link
-              href={`/${locale}/evenements`}
-              className="mb-8 inline-block text-[0.8rem] font-normal lowercase tracking-[0.12em] text-lin/75 transition-colors hover:text-laiton-clair"
-            >
-              ← {dict.cta.backToEvents}
-            </Link>
             <p className="city mb-4 text-[0.8rem] text-laiton-clair">{event.city}</p>
             <h1 className="display max-w-5xl text-[clamp(2.8rem,7vw,8rem)] leading-[0.95] text-lin">
               {event.name}

@@ -11,6 +11,7 @@ import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/GoldLink";
 import { TitleReveal, LineMask } from "@/components/TitleReveal";
 import { ServicesStrip } from "@/components/ServicesStrip";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -82,15 +83,15 @@ export default async function ServicePage({
             }}
           />
         </div>
+        <Breadcrumb
+          ariaLabel={dict.nav.services}
+          items={[
+            { href: `/${locale}`, label: dict.nav.home },
+            { href: `/${locale}/services`, label: dict.nav.services },
+            { label: service.title[locale] },
+          ]}
+        />
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-20 md:px-10 md:pb-24">
-          <LineMask delay={100}>
-            <Link
-              href={`/${locale}/services`}
-              className="mb-7 inline-block text-[0.8rem] font-normal lowercase tracking-[0.12em] text-lin/75 transition-colors hover:text-laiton-clair"
-            >
-              ← {dict.nav.services}
-            </Link>
-          </LineMask>
           <h1 className="display text-[clamp(2.6rem,7vw,7.5rem)] leading-[0.98] text-lin">
             <LineMask delay={250}>
               <span className="block">{service.title[locale]}</span>

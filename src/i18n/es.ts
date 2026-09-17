@@ -3,6 +3,7 @@ import type { Dict } from "./fr";
 export const es: Dict = {
   locale: "es",
   nav: {
+    home: "inicio",
     about: "Quiénes somos",
     services: "Servicios",
     events: "Eventos",

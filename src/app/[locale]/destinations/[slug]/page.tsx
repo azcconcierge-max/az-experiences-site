@@ -12,6 +12,7 @@ import { TitleReveal, LineMask, LetterMask } from "@/components/TitleReveal";
 import { ClipReveal } from "@/components/ClipReveal";
 import { DestinationsShowcase } from "@/components/DestinationsShowcase";
 import { JsonLd } from "@/components/JsonLd";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => destinations.map((d) => ({ locale, slug: d.slug })));
@@ -82,15 +83,15 @@ export default async function DestinationPage({
             }}
           />
         </div>
+        <Breadcrumb
+          ariaLabel={dict.nav.destinations}
+          items={[
+            { href: `/${locale}`, label: dict.nav.home },
+            { href: `/${locale}/destinations`, label: dict.nav.destinations },
+            { label: dest.name.toLowerCase() },
+          ]}
+        />
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-16 md:px-10 md:pb-20">
-          <LineMask delay={100}>
-            <Link
-              href={`/${locale}/destinations`}
-              className="mb-7 inline-block text-[0.8rem] font-normal lowercase tracking-[0.12em] text-lin/75 transition-colors hover:text-laiton-clair"
-            >
-              ← {dict.nav.destinations}
-            </Link>
-          </LineMask>
           <LineMask delay={220}>
             <p className="eyebrow">{dest.region[locale]}</p>
           </LineMask>

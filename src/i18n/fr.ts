@@ -1,6 +1,7 @@
 export const fr = {
   locale: "fr",
   nav: {
+    home: "accueil",
     about: "Qui sommes-nous",
     services: "Services",
     events: "Événements",

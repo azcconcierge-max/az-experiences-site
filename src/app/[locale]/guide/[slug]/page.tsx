@@ -8,7 +8,7 @@ import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { JsonLd } from "@/components/JsonLd";
-import { ReadingProgress } from "@/components/ReadingProgress";
+import { ReadingCounter } from "@/components/ReadingCounter";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => articles.map((a) => ({ locale, slug: a.slug })));
@@ -64,7 +64,7 @@ export default async function ArticlePage({
   return (
     <>
       <JsonLd data={articleJsonLd} />
-      <ReadingProgress />
+      <ReadingCounter />
 
       <article className="px-5 pt-40 pb-28 md:px-8">
         <div className="mx-auto max-w-3xl">
