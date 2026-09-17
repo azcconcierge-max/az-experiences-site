@@ -54,9 +54,23 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
               <li>
                 <a
                   href={whatsappHref()!}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="transition-colors hover:text-laiton-clair"
                 >
                   {dict.cta.whatsapp}
+                </a>
+              </li>
+            ) : null}
+            {site.linkedin ? (
+              <li>
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-laiton-clair"
+                >
+                  LinkedIn
                 </a>
               </li>
             ) : null}

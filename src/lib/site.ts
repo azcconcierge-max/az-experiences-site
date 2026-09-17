@@ -5,12 +5,10 @@
 export const site = {
   name: "AZ Conciergerie",
   legalName: "AZ Management",
-  baseUrl: "https://azconciergerie.com", // à remplacer par le vrai domaine
+  baseUrl: "https://azexperiences.com",
   email: "azcconcierge@gmail.com",
-  // Numéro WhatsApp au format international sans "+" (ex: "33612345678").
-  // Laisser null tant que le numéro n'est pas disponible : les boutons
-  // WhatsApp basculent automatiquement vers l'email.
-  whatsapp: null as string | null,
+  // Numéro WhatsApp au format international sans "+".
+  whatsapp: "33651733987" as string | null,
   address: {
     street: "11 Avenue Myron Herrick",
     postalCode: "75008",
@@ -19,6 +17,7 @@ export const site = {
   },
   foundingYear: 2024,
   instagram: null as string | null, // ex: "https://instagram.com/azconciergerie"
+  linkedin: "https://www.linkedin.com/company/146265280/" as string | null,
 } as const;
 
 /**

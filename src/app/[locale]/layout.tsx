@@ -82,9 +82,12 @@ const organizationJsonLd = {
   },
   areaServed: ["Paris", "France", "Europe", "Worldwide"],
   knowsLanguage: ["fr", "en", "es", "pt"],
+  telephone: site.whatsapp ? `+${site.whatsapp}` : undefined,
+  sameAs: [site.linkedin, site.instagram].filter(Boolean),
   contactPoint: {
     "@type": "ContactPoint",
     email: site.email,
+    telephone: site.whatsapp ? `+${site.whatsapp}` : undefined,
     contactType: "customer service",
     availableLanguage: ["French", "English", "Spanish", "Portuguese"],
   },
