@@ -13,7 +13,9 @@ import { AskSection } from "@/components/AskSection";
 import { DestinationsShowcase } from "@/components/DestinationsShowcase";
 import { ServicesIndex } from "@/components/ServicesIndex";
 import { TestimonialRotator } from "@/components/TestimonialRotator";
-import { Marquee } from "@/components/Marquee";
+import { CrossMarquee } from "@/components/CrossMarquee";
+import { HeroSlideshow, ParisClock } from "@/components/HeroSlideshow";
+import { MedallionDraw } from "@/components/MedallionDraw";
 
 export async function generateMetadata({
   params,
@@ -41,29 +43,41 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ---- 1 · HERO 100svh : photo plein cadre, presque rien d'autre ---- */}
+      {/* ---- 1 · HERO 100svh : diaporama lent, cadre, heure de Paris ---- */}
       <section className="relative flex min-h-svh items-end overflow-hidden bg-nuit">
         <div aria-hidden="true" className="photo-treated absolute inset-0 overflow-hidden">
-          <div className="hero-zoom absolute inset-0">
-            <Image
-              src="/images/hero.jpg"
-              alt=""
-              fill
-              priority
-              quality={60}
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
+          <HeroSlideshow />
           {/* léger voile en haut pour le header, fondu vert en bas */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 z-10"
             style={{
               background:
                 "linear-gradient(180deg, rgba(14,36,25,0.55) 0%, rgba(14,36,25,0.12) 26%, rgba(14,36,25,0.15) 55%, #0E2419 100%)",
             }}
           />
         </div>
+
+        {/* Cadre lin qui se dessine, détails de coin, indicateur */}
+        <div aria-hidden="true" className="hero-frame hidden md:block">
+          <span className="f-top" />
+          <span className="f-right" />
+          <span className="f-bottom" />
+          <span className="f-left" />
+        </div>
+        <p
+          aria-hidden="true"
+          className="absolute top-24 right-9 z-20 hidden text-[0.72rem] font-normal lowercase tracking-[0.16em] text-lin/70 md:block"
+        >
+          <ParisClock />
+        </p>
+        <p
+          aria-hidden="true"
+          className="absolute bottom-9 left-9 z-20 hidden text-[0.72rem] font-normal lowercase tracking-[0.16em] text-lin/60 md:block"
+        >
+          48.8698° n, 2.2963° e
+        </p>
+        <div aria-hidden="true" className="scroll-hint hidden md:block" />
+
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-20 md:px-10 md:pb-24">
           <LineMask delay={150}>
             <p className="eyebrow">{h.heroEyebrow}</p>
@@ -100,12 +114,8 @@ export default async function HomePage({
             className="display text-[clamp(2.2rem,6vw,6.5rem)] leading-[1.05]"
           />
           <Reveal delay={200} className="mt-14 flex flex-col items-center gap-4">
-            <Image
-              src="/brand/logos/AZ-medaillon-petites-tailles-vert.svg"
-              alt=""
-              width={44}
-              height={56}
-            />
+            {/* l'ovale se dessine quand la phrase est entièrement révélée */}
+            <MedallionDraw variant="vert" width={44} start="top 62%" />
             <p className="eyebrow">{h.manifestoSignature}</p>
           </Reveal>
         </div>
@@ -129,8 +139,9 @@ export default async function HomePage({
           </div>
         </div>
         <HorizontalEvents events={events} locale={locale} ctaLabel={dict.cta.requestAccess} />
-        <div className="pt-14">
-          <Marquee items={events.map((e) => e.name)} />
+        {/* Deux bandeaux croisés, en sens inverse */}
+        <div className="pt-8">
+          <CrossMarquee items={events.map((e) => e.name)} />
         </div>
       </section>
 

@@ -34,9 +34,10 @@ export function TitleReveal({
     let anim: gsap.core.Tween;
     try {
       if (mode === "scrub") {
-        // 0.6 minimum : reste lisible (contraste AA grand texte) avant le défilement
+        // L'encre se pose : de sauge assombrie (AA grand texte garanti sur
+        // lin comme sur les fonds sombres) vers la couleur du contexte.
         anim = gsap.from(words, {
-          autoAlpha: 0.6,
+          color: "#6B856E",
           stagger: 0.08,
           ease: "none",
           scrollTrigger: { trigger: el, start: "top 80%", end: "top 30%", scrub: 0.4 },

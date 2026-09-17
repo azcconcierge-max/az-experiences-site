@@ -2,24 +2,47 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/i18n";
 import { services } from "@/data/services";
 
 /**
- * Index éditorial des services : grands titres Bodoni séparés de filets,
- * zéro descriptif. Au survol, une grande image portrait suit le curseur
- * et le numéro passe en laiton. Mobile : liste simple, image en fondu au-dessus.
+ * Index éditorial des services : grands titres Bodoni séparés de filets.
+ * Au survol, un fond vert club se remplit derrière la ligne (titre en lin,
+ * numéro en laiton), et une grande image portrait suit le curseur avec un
+ * léger retard et une rotation de 2° maximum qui se redresse à l'arrêt.
+ * Mobile : liste simple, image en fondu au-dessus.
  */
 export function ServicesIndex({ locale }: { locale: Locale }) {
   const [active, setActive] = useState<number | null>(null);
   const [mobileActive, setMobileActive] = useState(0);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const pos = useRef({ x: -9999, y: -9999, cx: -9999, cy: -9999, rot: 0 });
+  const rafRef = useRef(0);
 
-  const onMove = (e: React.MouseEvent) => {
+  useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const el = cursorRef.current;
     if (!el) return;
-    el.style.transform = `translate(${e.clientX + 24}px, ${e.clientY - 190}px)`;
+    const p = pos.current;
+    const loop = () => {
+      const prevX = p.cx;
+      p.cx += (p.x - p.cx) * 0.14;
+      p.cy += (p.y - p.cy) * 0.14;
+      // rotation liée à la vitesse, 2° maximum, se redresse à l'arrêt
+      const target = Math.max(-2, Math.min(2, (p.cx - prevX) * 0.35));
+      p.rot += (target - p.rot) * 0.1;
+      el.style.transform = `translate(${p.cx + 24}px, ${p.cy - 190}px) rotate(${p.rot}deg)`;
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    rafRef.current = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  const onMove = (e: React.MouseEvent) => {
+    pos.current.x = e.clientX;
+    pos.current.y = e.clientY;
   };
 
   return (
@@ -50,18 +73,23 @@ export function ServicesIndex({ locale }: { locale: Locale }) {
               onMouseLeave={() => setActive(null)}
               onTouchStart={() => setMobileActive(i)}
               data-cursor="voir"
-              className="group flex items-baseline gap-6 py-6 md:py-7"
+              className="group relative flex items-baseline gap-6 overflow-hidden py-6 md:py-7"
             >
+              {/* le fond vert club se remplit de gauche à droite */}
               <span
-                className={`display w-10 shrink-0 text-sm transition-colors duration-300 ${
-                  active === i ? "text-laiton-fonce" : "text-club/70"
+                aria-hidden="true"
+                className="absolute inset-0 origin-left scale-x-0 bg-club transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+              />
+              <span
+                className={`display relative z-10 w-10 shrink-0 pl-3 text-sm transition-colors duration-300 md:pl-4 ${
+                  active === i ? "text-laiton-clair" : "text-club/70"
                 }`}
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span
-                className={`display text-3xl leading-[1.05] transition-transform duration-500 md:text-5xl ${
-                  active === i ? "translate-x-3" : ""
+                className={`display relative z-10 pr-3 text-3xl leading-[1.05] transition-[transform,color] duration-500 md:text-5xl ${
+                  active === i ? "translate-x-3 text-lin" : ""
                 }`}
               >
                 {s.title[locale]}
@@ -75,7 +103,7 @@ export function ServicesIndex({ locale }: { locale: Locale }) {
       <div
         ref={cursorRef}
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 z-30 hidden lg:block"
+        className="pointer-events-none fixed top-0 left-0 z-30 hidden will-change-transform lg:block"
         style={{ transform: "translate(-9999px, -9999px)" }}
       >
         <div
