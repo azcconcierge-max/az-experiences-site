@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // www -> domaine nu (une seule adresse canonique)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.azexperiences.com" }],
+        destination: "https://azexperiences.com/:path*",
+        permanent: true,
+      },
       {
         source: "/",
         destination: "/fr",
