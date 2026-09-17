@@ -23,9 +23,9 @@ export const en: Dict = {
     contactUs: "Write to us",
   },
   home: {
-    metaTitle: "AZ Conciergerie | Private concierge & access to sold-out events",
+    metaTitle: "AZ Experiences | Private concierge & access to sold-out events",
     metaDescription:
-      "AZ Conciergerie, Paris-based private concierge specialised in access to sold-out events: VIP tickets, hospitality, private jet, yachts, security, bespoke travel. World Cup, Monaco F1, Super Bowl, Fashion Week.",
+      "AZ Experiences, Paris-based private concierge specialised in access to sold-out events: VIP tickets, hospitality, private jet, yachts, security, bespoke travel. World Cup, Monaco F1, Super Bowl, Fashion Week.",
     heroEyebrow: "Private concierge, Paris · Worldwide",
     heroLine1: "Access",
     heroLine2: "is our craft.",
@@ -34,7 +34,7 @@ export const en: Dict = {
     aboutEyebrow: "About us",
     aboutTitle: "A private club for the great occasions",
     aboutText:
-      "AZ Conciergerie is a private house. One enters by recommendation and returns for the welcome: fully booked occasions, coveted tables, access arranged from start to finish. One request, one dedicated contact.",
+      "AZ Experiences is a private house. One enters by recommendation and returns for the welcome: fully booked occasions, coveted tables, access arranged from start to finish. One request, one dedicated contact.",
     aboutLink: "Discover the house",
     servicesEyebrow: "Our services",
     servicesTitle: "From the private jet to the dinner table",
@@ -73,8 +73,8 @@ export const en: Dict = {
     faqTitle: "All your questions, all our answers",
     faq: [
       {
-        q: "What is AZ Conciergerie?",
-        a: "AZ Conciergerie is a private concierge based in Paris, specialised in access to sold-out events: VIP tickets, hospitality packages, private boxes. The house also arranges private jets, yachts, hotels, close protection and bespoke travel.",
+        q: "What is AZ Experiences?",
+        a: "AZ Experiences is a private concierge based in Paris, specialised in access to sold-out events: VIP tickets, hospitality packages, private boxes. The house also arranges private jets, yachts, hotels, close protection and bespoke travel.",
       },
       {
         q: "Can you get tickets for a sold-out event?",
@@ -95,13 +95,13 @@ export const en: Dict = {
     ],
   },
   about: {
-    metaTitle: "About us | AZ Conciergerie",
+    metaTitle: "About us | AZ Experiences",
     metaDescription:
-      "AZ Conciergerie: Paris-based private concierge, specialist in access to sold-out events and bespoke requests. Access, standards, discretion.",
+      "AZ Experiences: Paris-based private concierge, specialist in access to sold-out events and bespoke requests. Access, standards, discretion.",
     eyebrow: "About us",
     title: "The house of access",
     intro:
-      "AZ Conciergerie is a private concierge born from a simple conviction: true luxury is not owning, but accessing.",
+      "AZ Experiences is a private concierge born from a simple conviction: true luxury is not owning, but accessing.",
     heroPhrase: "We specialise in what others call impossible.",
     manifestoShort: "Sold out is never truly sold out.",
     pillarsEyebrow: "The pillars",
@@ -109,7 +109,7 @@ export const en: Dict = {
     founderShort: [
       "I was born in France, into a family of hoteliers.",
       "It was in Madrid, during business school, that I discovered the inner workings of major events.",
-      "AZ Conciergerie was born of this dual culture: French hotel-trade standards and the art of access.",
+      "AZ Experiences was born of this dual culture: French hotel-trade standards and the art of access.",
     ],
     stats: ["24/7", "4 languages", "Paris"],
     manifesto:
@@ -144,14 +144,14 @@ export const en: Dict = {
       role: "Founder",
       p1: "I was born in France, into a family of hoteliers. I grew up with one certainty: service is not a job, it is an upbringing. Watch, anticipate, never keep anyone waiting.",
       p2: "It was in Madrid, during business school, that I discovered the inner workings of major events and began building what is now the house's strength: a network. Official holders, organisers, hospitality houses: years of experience and travel to forge relationships that cannot be bought.",
-      p3: "AZ Conciergerie was born of this dual culture: French hotel-trade standards and the art of access. I now put it at the service of clients who share my conviction: an experience is only worth having if it is flawless.",
+      p3: "AZ Experiences was born of this dual culture: French hotel-trade standards and the art of access. I now put it at the service of clients who share my conviction: an experience is only worth having if it is flawless.",
       quote: "Access is only valuable if everything else is impeccable.",
     },
   },
   services: {
-    metaTitle: "Our services, bespoke private concierge | AZ Conciergerie",
+    metaTitle: "Our services, bespoke private concierge | AZ Experiences",
     metaDescription:
-      "Sold-out events & tickets, gastronomy, private jet, yachts, hotels, chauffeured transport, close protection, bespoke travel: the services of AZ Conciergerie.",
+      "Sold-out events & tickets, gastronomy, private jet, yachts, hotels, chauffeured transport, close protection, bespoke travel: the services of AZ Experiences.",
     eyebrow: "Our services",
     title: "Everything a house can do",
     intro:
@@ -162,9 +162,9 @@ export const en: Dict = {
     faqTitle: "Frequently asked",
   },
   events: {
-    metaTitle: "Sold-out events, VIP tickets & hospitality | AZ Conciergerie",
+    metaTitle: "Sold-out events, VIP tickets & hospitality | AZ Experiences",
     metaDescription:
-      "World Cup 2026, Wimbledon, US Open, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week, Roland-Garros: premium tickets and hospitality through AZ Conciergerie.",
+      "World Cup 2026, Wimbledon, US Open, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week, Roland-Garros: premium tickets and hospitality through AZ Experiences.",
     eyebrow: "Events",
     title: "Where there is no room left, we find one",
     intro:
@@ -207,9 +207,9 @@ export const en: Dict = {
     },
   },
   destinations: {
-    metaTitle: "Destinations, the world in private | AZ Conciergerie",
+    metaTitle: "Destinations, the world in private | AZ Experiences",
     metaDescription:
-      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York: the destinations where AZ Conciergerie has its habits. Villas, tables, beach clubs, nights and access by introduction.",
+      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York: the destinations where AZ Experiences has its habits. Villas, tables, beach clubs, nights and access by introduction.",
     eyebrow: "Destinations",
     title: "The world, in private",
     intro:
@@ -230,9 +230,9 @@ export const en: Dict = {
     },
   },
   guide: {
-    metaTitle: "The Guide, advice & addresses by AZ Conciergerie",
+    metaTitle: "The Guide, advice & addresses by AZ Experiences",
     metaDescription:
-      "The AZ Conciergerie guide: how to access sold-out events, experience the great occasions as a VIP, and the addresses worth knowing. All your questions, all our answers.",
+      "The AZ Experiences guide: how to access sold-out events, experience the great occasions as a VIP, and the addresses worth knowing. All your questions, all our answers.",
     eyebrow: "The Guide",
     title: "All your questions, all our answers",
     intro:
@@ -244,9 +244,9 @@ export const en: Dict = {
       "The guide gives the general answers. For your specific case, write to us, the answer arrives within hours.",
   },
   contact: {
-    metaTitle: "Contact, private request | AZ Conciergerie",
+    metaTitle: "Contact, private request | AZ Experiences",
     metaDescription:
-      "Send your private request to AZ Conciergerie: sold-out event tickets, hospitality, private jet, bespoke travel. Fast, confidential answer, 7 days a week.",
+      "Send your private request to AZ Experiences: sold-out event tickets, hospitality, private jet, bespoke travel. Fast, confidential answer, 7 days a week.",
     eyebrow: "Contact",
     title: "Your private request",
     intro:

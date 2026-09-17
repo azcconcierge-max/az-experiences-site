@@ -23,9 +23,9 @@ export const es: Dict = {
     contactUs: "Escríbanos",
   },
   home: {
-    metaTitle: "AZ Conciergerie | Conserjería privada y acceso a eventos sold out",
+    metaTitle: "AZ Experiences | Conserjería privada y acceso a eventos sold out",
     metaDescription:
-      "AZ Conciergerie, conserjería privada de París especializada en el acceso a eventos agotados: entradas VIP, hospitality, jet privado, yates, seguridad, viajes a medida. Mundial, F1 Mónaco, Super Bowl, Fashion Week.",
+      "AZ Experiences, conserjería privada de París especializada en el acceso a eventos agotados: entradas VIP, hospitality, jet privado, yates, seguridad, viajes a medida. Mundial, F1 Mónaco, Super Bowl, Fashion Week.",
     heroEyebrow: "Conserjería privada, París · Mundo",
     heroLine1: "El acceso",
     heroLine2: "es nuestro oficio.",
@@ -34,7 +34,7 @@ export const es: Dict = {
     aboutEyebrow: "Quiénes somos",
     aboutTitle: "Un club privado de las grandes citas",
     aboutText:
-      "AZ Conciergerie es una casa privada. Se entra por recomendación y se vuelve por la calidad de la acogida: citas agotadas, mesas codiciadas, accesos organizados de principio a fin. Una solicitud, un interlocutor.",
+      "AZ Experiences es una casa privada. Se entra por recomendación y se vuelve por la calidad de la acogida: citas agotadas, mesas codiciadas, accesos organizados de principio a fin. Una solicitud, un interlocutor.",
     aboutLink: "Descubrir la casa",
     servicesEyebrow: "Nuestros servicios",
     servicesTitle: "Del jet privado a la mesa de la cena",
@@ -73,8 +73,8 @@ export const es: Dict = {
     faqTitle: "Todas sus preguntas, todas nuestras respuestas",
     faq: [
       {
-        q: "¿Qué es AZ Conciergerie?",
-        a: "AZ Conciergerie es una conserjería privada con sede en París, especializada en el acceso a eventos agotados: entradas VIP, paquetes de hospitality, palcos privados. La casa también organiza jets privados, yates, hoteles, protección personal y viajes a medida.",
+        q: "¿Qué es AZ Experiences?",
+        a: "AZ Experiences es una conserjería privada con sede en París, especializada en el acceso a eventos agotados: entradas VIP, paquetes de hospitality, palcos privados. La casa también organiza jets privados, yates, hoteles, protección personal y viajes a medida.",
       },
       {
         q: "¿Pueden conseguir entradas para un evento agotado?",
@@ -95,13 +95,13 @@ export const es: Dict = {
     ],
   },
   about: {
-    metaTitle: "Quiénes somos | AZ Conciergerie",
+    metaTitle: "Quiénes somos | AZ Experiences",
     metaDescription:
-      "AZ Conciergerie: conserjería privada de París, especialista en el acceso a eventos agotados y en lo hecho a medida. Acceso, exigencia, discreción.",
+      "AZ Experiences: conserjería privada de París, especialista en el acceso a eventos agotados y en lo hecho a medida. Acceso, exigencia, discreción.",
     eyebrow: "Quiénes somos",
     title: "La casa del acceso",
     intro:
-      "AZ Conciergerie es una conserjería privada nacida de una convicción simple: el verdadero lujo no es poseer, sino acceder.",
+      "AZ Experiences es una conserjería privada nacida de una convicción simple: el verdadero lujo no es poseer, sino acceder.",
     heroPhrase: "Estamos especializados en lo que otros llaman imposible.",
     manifestoShort: "Lo que está completo nunca lo está del todo.",
     pillarsEyebrow: "Los pilares",
@@ -109,7 +109,7 @@ export const es: Dict = {
     founderShort: [
       "Nací en Francia, en una familia de hoteleros.",
       "Fue en Madrid, durante mi escuela de negocios, donde descubrí el interior de los grandes eventos.",
-      "AZ Conciergerie nació de esta doble cultura: la exigencia hotelera a la francesa y el arte del acceso.",
+      "AZ Experiences nació de esta doble cultura: la exigencia hotelera a la francesa y el arte del acceso.",
     ],
     stats: ["24/7", "4 idiomas", "París"],
     manifesto:
@@ -144,14 +144,14 @@ export const es: Dict = {
       role: "Fundador",
       p1: "Nací en Francia, en una familia de hoteleros. Crecí con una certeza: el servicio no es un oficio, es una educación. Observar, anticipar, no hacer esperar jamás.",
       p2: "Fue en Madrid, durante mi escuela de negocios, donde descubrí el interior de los grandes eventos y empecé a construir lo que hoy es la fuerza de la casa: una red. Titulares oficiales, organizadores, casas de hospitality: años de experiencia y de viajes para tejer relaciones que no se compran.",
-      p3: "AZ Conciergerie nació de esta doble cultura: la exigencia hotelera a la francesa y el arte del acceso. Hoy la pongo al servicio de una clientela que comparte mi convicción: una experiencia solo vale si es perfecta.",
+      p3: "AZ Experiences nació de esta doble cultura: la exigencia hotelera a la francesa y el arte del acceso. Hoy la pongo al servicio de una clientela que comparte mi convicción: una experiencia solo vale si es perfecta.",
       quote: "Un acceso solo tiene valor si todo lo demás es impecable.",
     },
   },
   services: {
-    metaTitle: "Nuestros servicios, conserjería privada a medida | AZ Conciergerie",
+    metaTitle: "Nuestros servicios, conserjería privada a medida | AZ Experiences",
     metaDescription:
-      "Eventos y entradas sold out, gastronomía, jet privado, yates, hoteles, transporte con chófer, protección personal, viajes a medida: los servicios de AZ Conciergerie.",
+      "Eventos y entradas sold out, gastronomía, jet privado, yates, hoteles, transporte con chófer, protección personal, viajes a medida: los servicios de AZ Experiences.",
     eyebrow: "Nuestros servicios",
     title: "Todo lo que una casa puede hacer",
     intro:
@@ -162,9 +162,9 @@ export const es: Dict = {
     faqTitle: "Preguntas frecuentes",
   },
   events: {
-    metaTitle: "Eventos sold out, entradas VIP y hospitality | AZ Conciergerie",
+    metaTitle: "Eventos sold out, entradas VIP y hospitality | AZ Experiences",
     metaDescription:
-      "Mundial 2026, Wimbledon, US Open, F1 Mónaco, Super Bowl, Festival de Cannes, Balón de Oro, Fashion Week, Roland-Garros: entradas premium y hospitality con AZ Conciergerie.",
+      "Mundial 2026, Wimbledon, US Open, F1 Mónaco, Super Bowl, Festival de Cannes, Balón de Oro, Fashion Week, Roland-Garros: entradas premium y hospitality con AZ Experiences.",
     eyebrow: "Eventos",
     title: "Donde ya no queda sitio, encontramos uno",
     intro:
@@ -207,9 +207,9 @@ export const es: Dict = {
     },
   },
   destinations: {
-    metaTitle: "Destinos, el mundo en versión privada | AZ Conciergerie",
+    metaTitle: "Destinos, el mundo en versión privada | AZ Experiences",
     metaDescription:
-      "Mónaco, Costa Azul, París, Mykonos, Ibiza, Nueva York: los destinos donde AZ Conciergerie tiene sus costumbres. Villas, mesas, beach clubs, noches y accesos por introducción.",
+      "Mónaco, Costa Azul, París, Mykonos, Ibiza, Nueva York: los destinos donde AZ Experiences tiene sus costumbres. Villas, mesas, beach clubs, noches y accesos por introducción.",
     eyebrow: "Destinos",
     title: "El mundo, en versión privada",
     intro:
@@ -230,9 +230,9 @@ export const es: Dict = {
     },
   },
   guide: {
-    metaTitle: "La Guía, consejos y direcciones de AZ Conciergerie",
+    metaTitle: "La Guía, consejos y direcciones de AZ Experiences",
     metaDescription:
-      "La guía de AZ Conciergerie: cómo acceder a eventos agotados, vivir las grandes citas en VIP y las direcciones que hay que conocer. Todas sus preguntas, todas nuestras respuestas.",
+      "La guía de AZ Experiences: cómo acceder a eventos agotados, vivir las grandes citas en VIP y las direcciones que hay que conocer. Todas sus preguntas, todas nuestras respuestas.",
     eyebrow: "La Guía",
     title: "Todas sus preguntas, todas nuestras respuestas",
     intro:
@@ -244,9 +244,9 @@ export const es: Dict = {
       "La guía da las respuestas generales. Para su caso concreto, escríbanos, la respuesta llega en pocas horas.",
   },
   contact: {
-    metaTitle: "Contacto, solicitud privada | AZ Conciergerie",
+    metaTitle: "Contacto, solicitud privada | AZ Experiences",
     metaDescription:
-      "Envíe su solicitud privada a AZ Conciergerie: entradas para eventos agotados, hospitality, jet privado, viajes a medida. Respuesta rápida y confidencial, 7 días a la semana.",
+      "Envíe su solicitud privada a AZ Experiences: entradas para eventos agotados, hospitality, jet privado, viajes a medida. Respuesta rápida y confidencial, 7 días a la semana.",
     eyebrow: "Contacto",
     title: "Su solicitud privada",
     intro:

@@ -21,9 +21,9 @@ export const fr = {
     contactUs: "Nous écrire",
   },
   home: {
-    metaTitle: "AZ Conciergerie | Conciergerie privée & accès aux événements sold out",
+    metaTitle: "AZ Experiences | Conciergerie privée & accès aux événements sold out",
     metaDescription:
-      "AZ Conciergerie, conciergerie privée parisienne spécialisée dans l'accès aux événements sold out : billets VIP, hospitality, jet privé, yachts, sécurité, voyages sur mesure. Coupe du Monde, F1 Monaco, Super Bowl, Fashion Week.",
+      "AZ Experiences, conciergerie privée parisienne spécialisée dans l'accès aux événements sold out : billets VIP, hospitality, jet privé, yachts, sécurité, voyages sur mesure. Coupe du Monde, F1 Monaco, Super Bowl, Fashion Week.",
     heroEyebrow: "Conciergerie privée, Paris · Monde",
     heroLine1: "L'accès",
     heroLine2: "est notre métier.",
@@ -32,7 +32,7 @@ export const fr = {
     aboutEyebrow: "Qui sommes-nous",
     aboutTitle: "Un club privé des grands rendez-vous",
     aboutText:
-      "AZ Conciergerie est une maison privée. On y entre sur recommandation, on y revient pour la qualité de l'accueil : rendez-vous affichés complets, tables convoitées, accès organisés de A à Z. Une demande, un interlocuteur.",
+      "AZ Experiences est une maison privée. On y entre sur recommandation, on y revient pour la qualité de l'accueil : rendez-vous affichés complets, tables convoitées, accès organisés de A à Z. Une demande, un interlocuteur.",
     aboutLink: "Découvrir la maison",
     servicesEyebrow: "Nos services",
     servicesTitle: "Du jet privé à la table du dîner",
@@ -71,8 +71,8 @@ export const fr = {
     faqTitle: "Toutes vos questions, toutes nos réponses",
     faq: [
       {
-        q: "Qu'est-ce qu'AZ Conciergerie ?",
-        a: "AZ Conciergerie est une conciergerie privée basée à Paris, spécialisée dans l'accès aux événements sold out : billets VIP, packages hospitality, loges privées. La maison propose également jet privé, yachts, hôtels, sécurité rapprochée et voyages sur mesure.",
+        q: "Qu'est-ce qu'AZ Experiences ?",
+        a: "AZ Experiences est une conciergerie privée basée à Paris, spécialisée dans l'accès aux événements sold out : billets VIP, packages hospitality, loges privées. La maison propose également jet privé, yachts, hôtels, sécurité rapprochée et voyages sur mesure.",
       },
       {
         q: "Pouvez-vous obtenir des billets pour un événement affiché complet ?",
@@ -93,13 +93,13 @@ export const fr = {
     ],
   },
   about: {
-    metaTitle: "Qui sommes-nous | AZ Conciergerie",
+    metaTitle: "Qui sommes-nous | AZ Experiences",
     metaDescription:
-      "AZ Conciergerie : conciergerie privée parisienne, spécialiste de l'accès aux événements sold out et du sur-mesure. Accès, exigence, discrétion.",
+      "AZ Experiences : conciergerie privée parisienne, spécialiste de l'accès aux événements sold out et du sur-mesure. Accès, exigence, discrétion.",
     eyebrow: "Qui sommes-nous",
     title: "La maison de l'accès",
     intro:
-      "AZ Conciergerie est une conciergerie privée née d'une conviction simple : le vrai luxe n'est pas de posséder, mais d'accéder.",
+      "AZ Experiences est une conciergerie privée née d'une conviction simple : le vrai luxe n'est pas de posséder, mais d'accéder.",
     heroPhrase: "Nous sommes spécialisés dans ce que les autres appellent impossible.",
     manifestoShort: "Ce qui est complet ne l'est jamais vraiment.",
     pillarsEyebrow: "Les piliers",
@@ -107,7 +107,7 @@ export const fr = {
     founderShort: [
       "Je suis né en France, dans une famille d'hôteliers.",
       "C'est à Madrid, pendant mon école de commerce, que j'ai découvert l'envers des grands événements.",
-      "AZ Conciergerie est née de cette double culture : l'exigence hôtelière à la française et l'art de l'accès.",
+      "AZ Experiences est née de cette double culture : l'exigence hôtelière à la française et l'art de l'accès.",
     ],
     stats: ["24/7", "4 langues", "Paris"],
     manifesto:
@@ -142,14 +142,14 @@ export const fr = {
       role: "Fondateur",
       p1: "Je suis né en France, dans une famille d'hôteliers. J'ai grandi avec une certitude : le service n'est pas un métier, c'est une éducation. Regarder, anticiper, ne jamais faire attendre.",
       p2: "C'est à Madrid, pendant mon école de commerce, que j'ai découvert l'envers des grands événements et commencé à construire ce qui fait aujourd'hui la force de la maison : un réseau. Détenteurs officiels, organisateurs, maisons d'hospitality : des années d'expérience et de voyages pour nouer des relations qui ne s'achètent pas.",
-      p3: "AZ Conciergerie est née de cette double culture : l'exigence hôtelière à la française et l'art de l'accès. Je la mets aujourd'hui au service d'une clientèle qui partage ma conviction : une expérience ne vaut que si elle est parfaite.",
+      p3: "AZ Experiences est née de cette double culture : l'exigence hôtelière à la française et l'art de l'accès. Je la mets aujourd'hui au service d'une clientèle qui partage ma conviction : une expérience ne vaut que si elle est parfaite.",
       quote: "Un accès n'a de valeur que si tout le reste est impeccable.",
     },
   },
   services: {
-    metaTitle: "Nos services, conciergerie privée sur mesure | AZ Conciergerie",
+    metaTitle: "Nos services, conciergerie privée sur mesure | AZ Experiences",
     metaDescription:
-      "Événements & billets sold out, gastronomie, jet privé, yachts, hôtels, transport avec chauffeur, sécurité rapprochée, voyages sur mesure : les services d'AZ Conciergerie.",
+      "Événements & billets sold out, gastronomie, jet privé, yachts, hôtels, transport avec chauffeur, sécurité rapprochée, voyages sur mesure : les services d'AZ Experiences.",
     eyebrow: "Nos services",
     title: "Tout ce qu'une maison peut faire",
     intro:
@@ -161,9 +161,9 @@ export const fr = {
     faqTitle: "Questions fréquentes",
   },
   events: {
-    metaTitle: "Événements sold out, billets VIP & hospitality | AZ Conciergerie",
+    metaTitle: "Événements sold out, billets VIP & hospitality | AZ Experiences",
     metaDescription:
-      "Coupe du Monde 2026, Wimbledon, US Open, F1 Monaco, Super Bowl, Festival de Cannes, Ballon d'Or, Fashion Week, Roland-Garros : billets premium et hospitality via AZ Conciergerie.",
+      "Coupe du Monde 2026, Wimbledon, US Open, F1 Monaco, Super Bowl, Festival de Cannes, Ballon d'Or, Fashion Week, Roland-Garros : billets premium et hospitality via AZ Experiences.",
     eyebrow: "Événements",
     title: "Là où il n'y a plus de place, nous en trouvons une",
     intro:
@@ -206,9 +206,9 @@ export const fr = {
     },
   },
   destinations: {
-    metaTitle: "Destinations, le monde en version privée | AZ Conciergerie",
+    metaTitle: "Destinations, le monde en version privée | AZ Experiences",
     metaDescription:
-      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York : les destinations où AZ Conciergerie a ses habitudes. Villas, tables, beach clubs, nuits et accès par introduction.",
+      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York : les destinations où AZ Experiences a ses habitudes. Villas, tables, beach clubs, nuits et accès par introduction.",
     eyebrow: "Destinations",
     title: "Le monde, en version privée",
     intro:
@@ -229,9 +229,9 @@ export const fr = {
     },
   },
   guide: {
-    metaTitle: "Le Guide, conseils & adresses d'AZ Conciergerie",
+    metaTitle: "Le Guide, conseils & adresses d'AZ Experiences",
     metaDescription:
-      "Le guide d'AZ Conciergerie : comment accéder aux événements sold out, vivre les grands rendez-vous en VIP, et les adresses à connaître. Toutes vos questions, toutes nos réponses.",
+      "Le guide d'AZ Experiences : comment accéder aux événements sold out, vivre les grands rendez-vous en VIP, et les adresses à connaître. Toutes vos questions, toutes nos réponses.",
     eyebrow: "Le Guide",
     title: "Toutes vos questions, toutes nos réponses",
     intro:
@@ -242,9 +242,9 @@ export const fr = {
     ctaText: "Le guide donne les réponses générales. Pour votre cas précis, écrivez-nous, la réponse arrive en quelques heures.",
   },
   contact: {
-    metaTitle: "Contact, demande privée | AZ Conciergerie",
+    metaTitle: "Contact, demande privée | AZ Experiences",
     metaDescription:
-      "Adressez votre demande privée à AZ Conciergerie : billets d'événements sold out, hospitality, jet privé, voyages sur mesure. Réponse rapide et confidentielle, 7j/7.",
+      "Adressez votre demande privée à AZ Experiences : billets d'événements sold out, hospitality, jet privé, voyages sur mesure. Réponse rapide et confidentielle, 7j/7.",
     eyebrow: "Contact",
     title: "Votre demande privée",
     intro:

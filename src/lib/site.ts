@@ -2,8 +2,11 @@
  * Configuration centrale du site, tout ce qui change souvent est ici.
  * Modifier ce fichier suffit pour mettre à jour WhatsApp, email, adresse, etc.
  */
+/** Nom de marque officiel, orthographe validée par Noam. */
+export const BRAND_NAME = "AZ Experiences";
+
 export const site = {
-  name: "AZ Conciergerie",
+  name: BRAND_NAME,
   legalName: "AZ Management",
   baseUrl: "https://azexperiences.com",
   email: "azcconcierge@gmail.com",

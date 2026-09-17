@@ -64,7 +64,7 @@ export function Header({
       } ${solid ? "bg-lin/90 shadow-[0_1px_0_rgba(184,147,90,0.25)] backdrop-blur-md" : "bg-transparent"}`}
     >
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-10">
-        <Logo locale={locale} variant={solid ? "vert" : "lin"} size={50} />
+        <Logo locale={locale} variant={solid ? "vert" : "lin"} size={50} withName className="max-sm:[&>span]:hidden" />
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
           {nav.map((item) => (

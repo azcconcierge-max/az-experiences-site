@@ -14,10 +14,10 @@ export type ServiceDetail = {
 export const serviceDetails: Record<string, ServiceDetail> = {
   evenements: {
     intro: {
-      fr: "Les plus grandes soirées de sport et de musique n'ont pas de billetterie : elles ont un cercle. AZ Conciergerie vous y fait entrer, de l'ouverture du tournoi au rappel final.",
-      en: "The greatest nights in sport and music have no box office: they have a circle. AZ Conciergerie brings you inside it, from the opening match to the final encore.",
-      es: "Las mayores noches del deporte y de la música no tienen taquilla: tienen un círculo. AZ Conciergerie le hace entrar en él, de la apertura del torneo al último bis.",
-      pt: "As maiores noites do desporto e da música não têm bilheteira: têm um círculo. A AZ Conciergerie fá-lo entrar nele, da abertura do torneio ao último encore.",
+      fr: "Les plus grandes soirées de sport et de musique n'ont pas de billetterie : elles ont un cercle. AZ Experiences vous y fait entrer, de l'ouverture du tournoi au rappel final.",
+      en: "The greatest nights in sport and music have no box office: they have a circle. AZ Experiences brings you inside it, from the opening match to the final encore.",
+      es: "Las mayores noches del deporte y de la música no tienen taquilla: tienen un círculo. AZ Experiences le hace entrar en él, de la apertura del torneo al último bis.",
+      pt: "As maiores noites do desporto e da música não têm bilheteira: têm um círculo. A AZ Experiences fá-lo entrar nele, da abertura do torneio ao último encore.",
     },
     orchestrations: {
       fr: [
@@ -115,10 +115,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 
   gastronomie: {
     intro: {
-      fr: "Certaines tables n'ont pas de liste d'attente : elles se transmettent. AZ Conciergerie vous installe là où l'on ne réserve pas, à Paris comme à l'étranger, et fait venir les plus grands chefs jusqu'à votre table.",
-      en: "Some tables have no waiting list: they are passed on. AZ Conciergerie seats you where one does not simply book, in Paris and abroad, and brings the greatest chefs to your own table.",
-      es: "Algunas mesas no tienen lista de espera: se transmiten. AZ Conciergerie le sienta donde no se reserva, en París y en el extranjero, y lleva a los más grandes chefs hasta su mesa.",
-      pt: "Algumas mesas não têm lista de espera: transmitem-se. A AZ Conciergerie senta-o onde não se reserva, em Paris e no estrangeiro, e leva os maiores chefs até à sua mesa.",
+      fr: "Certaines tables n'ont pas de liste d'attente : elles se transmettent. AZ Experiences vous installe là où l'on ne réserve pas, à Paris comme à l'étranger, et fait venir les plus grands chefs jusqu'à votre table.",
+      en: "Some tables have no waiting list: they are passed on. AZ Experiences seats you where one does not simply book, in Paris and abroad, and brings the greatest chefs to your own table.",
+      es: "Algunas mesas no tienen lista de espera: se transmiten. AZ Experiences le sienta donde no se reserva, en París y en el extranjero, y lleva a los más grandes chefs hasta su mesa.",
+      pt: "Algumas mesas não têm lista de espera: transmitem-se. A AZ Experiences senta-o onde não se reserva, em Paris e no estrangeiro, e leva os maiores chefs até à sua mesa.",
     },
     orchestrations: {
       fr: [
