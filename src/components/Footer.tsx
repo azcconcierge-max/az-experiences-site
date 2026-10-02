@@ -103,6 +103,22 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
                 {dict.footer.privacy}
               </Link>
             </li>
+            <li>
+              <Link
+                href={`/${locale}/conditions-generales`}
+                className="u-line transition-colors hover:text-laiton-clair"
+              >
+                {dict.footer.terms}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`/${locale}/remboursements`}
+                className="u-line transition-colors hover:text-laiton-clair"
+              >
+                {dict.footer.refunds}
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
