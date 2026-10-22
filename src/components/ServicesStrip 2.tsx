@@ -42,7 +42,7 @@ export function ServicesStrip({
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(14,36,25,0) 40%, rgba(14,36,25,0.82) 100%)",
+                    "linear-gradient(180deg, rgba(13,13,12,0) 40%, rgba(13,13,12,0.82) 100%)",
                 }}
               />
             </div>

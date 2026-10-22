@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { EventItem } from "@/data/events";
 import type { Locale } from "@/i18n";
+import { EVENT_FRAMES, frameUniverse, universeSrc } from "@/lib/universes";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -90,21 +91,25 @@ export function HorizontalEvents({
             href={`/${locale}/evenements/${event.slug}`}
             className="group relative block w-[76vw] shrink-0 snap-center overflow-hidden rounded-[2px] sm:w-[46vw] lg:w-[26vw]"
           >
-            <div className="photo-treated relative aspect-[4/5] overflow-hidden">
+            <div className="photo-treated photo-brand relative aspect-[4/5] overflow-hidden">
               <Image
-                src={`/images/${event.slug}.jpg`}
+                src={universeSrc(frameUniverse(EVENT_FRAMES[event.slug] ?? { universe: "concerts" }), "1080")}
                 alt={event.name}
                 fill
                 sizes="(max-width: 1024px) 76vw, 26vw"
                 priority={i < 2}
-                className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]"
+                className="object-cover"
+                style={{
+                  objectPosition: (EVENT_FRAMES[event.slug]?.position) ?? "50% 50%",
+                  transform: EVENT_FRAMES[event.slug]?.zoom ? `scale(${EVENT_FRAMES[event.slug]!.zoom})` : undefined,
+                }}
               />
               <div
                 aria-hidden="true"
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(14,36,25,0.12) 0%, rgba(14,36,25,0.2) 55%, rgba(14,36,25,0.88) 100%)",
+                    "linear-gradient(180deg, rgba(13,13,12,0.1) 0%, rgba(13,13,12,0.25) 55%, rgba(13,13,12,0.9) 100%)",
                 }}
               />
               {/* Date en pastille */}

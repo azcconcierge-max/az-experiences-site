@@ -72,15 +72,15 @@ export function Header({
     >
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-10">
         <div className={`origin-left transition-transform duration-500 ${scrolled ? "scale-[0.82]" : ""}`}>
-          <Logo locale={locale} variant={solid ? "vert" : "lin"} size={50} withName className="max-sm:[&>span]:hidden" />
+          <Logo locale={locale} variant={solid ? "vert" : "lin"} size={48} />
         </div>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Navigation principale">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`u-line text-[0.8rem] font-normal lowercase tracking-[0.12em] transition-colors duration-300 ${
+              className={`u-line text-[0.68rem] font-medium uppercase tracking-[0.18em] whitespace-nowrap transition-colors duration-300 ${
                 pathname?.startsWith(item.href) ? `nav-active ${linkActive}` : linkBase
               }`}
             >
@@ -106,8 +106,10 @@ export function Header({
           </nav>
           <Link
             href={`/${locale}/contact`}
-            className={`hidden rounded-full px-6 py-2.5 text-[0.8rem] font-normal transition-colors duration-500 lg:inline-block ${
-              solid ? "bg-club text-lin hover:bg-nuit" : "bg-lin text-club hover:bg-ivory-soft"
+            className={`hidden px-5 py-2.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] transition-colors duration-500 lg:inline-block ${
+              solid
+                ? "bg-az-black text-az-ivory hover:bg-graphite"
+                : "bg-az-ivory text-az-black hover:bg-stone"
             }`}
           >
             {ctaLabel}

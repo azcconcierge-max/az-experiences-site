@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/i18n";
 import { services } from "@/data/services";
+import { SERVICE_FRAMES, frameUniverse, universeSrc } from "@/lib/universes";
 
 /**
  * Bande horizontale des autres services : cartes portrait 4:5 en défilement
@@ -32,19 +33,24 @@ export function ServicesStrip({
             data-cursor="voir"
             className="group relative aspect-[4/5] w-[62vw] shrink-0 snap-start overflow-hidden rounded-[2px] sm:w-[36vw] lg:w-[21vw]"
           >
-            <div className="photo-treated absolute inset-0">
-              <Image
-                src={`/images/${service.slug}.jpg`}
-                alt=""
-                fill
-                sizes="(max-width: 640px) 62vw, (max-width: 1024px) 36vw, 21vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-              />
+            <div className="photo-treated photo-brand absolute inset-0">
+              {SERVICE_FRAMES[service.slug] ? (
+                <Image
+                  src={universeSrc(frameUniverse(SERVICE_FRAMES[service.slug]!), "540")}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 62vw, (max-width: 1024px) 36vw, 21vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  style={{ objectPosition: SERVICE_FRAMES[service.slug]!.position ?? "50% 50%" }}
+                />
+              ) : (
+                <div className="absolute inset-0 bg-graphite" />
+              )}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(14,36,25,0) 40%, rgba(14,36,25,0.82) 100%)",
+                    "linear-gradient(180deg, rgba(13,13,12,0) 40%, rgba(13,13,12,0.85) 100%)",
                 }}
               />
             </div>

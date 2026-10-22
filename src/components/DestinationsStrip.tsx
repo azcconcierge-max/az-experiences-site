@@ -37,7 +37,7 @@ export function DestinationsStrip({
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(14,36,25,0.3) 0%, rgba(14,36,25,0.4) 45%, rgba(14,36,25,0.9) 100%)",
+                  "linear-gradient(180deg, rgba(13,13,12,0.3) 0%, rgba(13,13,12,0.4) 45%, rgba(13,13,12,0.9) 100%)",
               }}
             />
           </div>

@@ -58,7 +58,7 @@ export function DestinationsShowcase({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(90deg, rgba(14,36,25,0.86) 0%, rgba(14,36,25,0.55) 45%, rgba(14,36,25,0.25) 100%)",
+                "linear-gradient(90deg, rgba(13,13,12,0.86) 0%, rgba(13,13,12,0.55) 45%, rgba(13,13,12,0.25) 100%)",
             }}
           />
         </div>

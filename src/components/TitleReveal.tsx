@@ -37,7 +37,7 @@ export function TitleReveal({
         // L'encre se pose : de sauge assombrie (AA grand texte garanti sur
         // lin comme sur les fonds sombres) vers la couleur du contexte.
         anim = gsap.from(words, {
-          color: "#6B856E",
+          color: "#5F5B52",
           stagger: 0.08,
           ease: "none",
           scrollTrigger: { trigger: el, start: "top 80%", end: "top 30%", scrub: 0.4 },

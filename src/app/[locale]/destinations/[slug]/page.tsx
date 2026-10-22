@@ -79,7 +79,7 @@ export default async function DestinationPage({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(14,36,25,0.6) 0%, rgba(14,36,25,0.18) 30%, rgba(14,36,25,0.35) 60%, #0E2419 100%)",
+                "linear-gradient(180deg, rgba(13,13,12,0.6) 0%, rgba(13,13,12,0.18) 30%, rgba(13,13,12,0.35) 60%, #0D0D0C 100%)",
             }}
           />
         </div>
@@ -151,7 +151,7 @@ export default async function DestinationPage({
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(14,36,25,0.05) 40%, rgba(14,36,25,0.7) 100%)",
+                    "linear-gradient(180deg, rgba(13,13,12,0.05) 40%, rgba(13,13,12,0.7) 100%)",
                 }}
               />
               <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between md:right-10 md:bottom-8 md:left-10">

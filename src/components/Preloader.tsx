@@ -54,27 +54,14 @@ export function Preloader() {
         leaving ? "-translate-y-full" : ""
       }`}
     >
-      <div className="relative flex h-32 w-32 items-center justify-center">
-        <svg viewBox="0 0 100 130" className="absolute inset-0 h-full w-full" fill="none">
-          <ellipse
-            cx="50"
-            cy="65"
-            rx="46"
-            ry="61"
-            stroke="#D8BD8C"
-            strokeWidth="1"
-            pathLength="1"
-            strokeDasharray="1"
-            strokeDashoffset="1"
-            className="preloader-oval"
-          />
-        </svg>
+      <div className="flex flex-col items-center gap-7">
         <div className="preloader-fade">
-          <Image src="/brand/logos/AZ-medaillon-lin.svg" alt="" width={92} height={120} />
+          <Image src="/brand2/logos/az-monogram-ivory.svg" alt="" width={84} height={61} />
         </div>
+        <span aria-hidden="true" className="preloader-line block h-px w-14 bg-stone/70" />
       </div>
-      <p lang="fr" className="eyebrow preloader-fade mt-6" style={{ animationDelay: "0.45s" }}>
-        sur recommandation
+      <p lang="fr" className="eyebrow preloader-fade mt-7" style={{ animationDelay: "0.45s" }}>
+        L&apos;art de l&apos;acc&egrave;s.
       </p>
     </div>
   );

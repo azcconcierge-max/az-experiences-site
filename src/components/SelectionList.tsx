@@ -55,7 +55,7 @@ export function SelectionList({
     <div>
       <ul>
         {dispo.events.map((e, i) => (
-          <li key={i} className="border-b border-club/12 first:border-t">
+          <li key={i} className="border-b border-stone/20 first:border-t">
             <a
               href={
                 whatsappHref(`Bonjour, je souhaite des informations sur ${e.title}.`) ??
@@ -66,7 +66,7 @@ export function SelectionList({
               data-cursor="voir"
               className="group flex flex-wrap items-baseline gap-x-8 gap-y-1 py-7 md:py-8"
             >
-              <span className="display w-10 shrink-0 text-sm text-club/70">
+              <span className="display w-10 shrink-0 text-sm text-stone/70">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="min-w-0 flex-1">

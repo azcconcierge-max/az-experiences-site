@@ -7,30 +7,42 @@
   remappés vers la nouvelle palette pour ne rien casser.
 */
 @theme {
-  /* palette officielle */
-  --color-club: #173a2c;
-  --color-nuit: #0e2419;
-  --color-sauge: #8fa58a;
-  --color-laiton: #b8935a;
-  --color-laiton-clair: #d8bd8c;
-  /* laiton foncé : pour le petit texte sur fond clair (contraste AA 4,5:1) */
-  --color-laiton-fonce: #8a6a3a;
-  --color-lin: #f7f8f5;
+  /* AZ Management V1.2 : Noir et Ivoire portent la marque */
+  --color-az-black: #0d0d0c;
+  --color-az-ivory: #efe8da;
+  --color-stone: #bfb8a8;
+  --color-graphite: #1c1b19;
 
-  /* anciens noms, remappés */
-  --color-noir: #173a2c;
-  --color-noir-soft: #153427;
-  --color-noir-card: #1e4232;
-  --color-ivory: #f7f8f5;
-  --color-ivory-soft: #ecefe9;
-  --color-ivory-dim: #b9c6b4;
-  --color-ink: #173a2c;
-  --color-ink-dim: #46604f;
-  --color-gold: #d8bd8c;
-  --color-gold-deep: #b8935a;
+  /* Teintes d'univers : en aplat à côté de leur image, jamais en texte */
+  --color-tone-amber: #c98a4b;
+  --color-tone-dusk: #e8a066;
+  --color-tone-ember: #a3161b;
+  --color-tone-pitch: #17301f;
+  --color-tone-clay: #b2563a;
+  --color-tone-stage: #13256b;
+  --color-tone-asphalt: #2c302e;
 
-  --font-display: var(--font-bodoni), "Georgia", serif;
-  --font-sans: var(--font-hanken), "Arial", ui-sans-serif, system-ui, sans-serif;
+  /* Anciens noms de tokens, remappés vers la palette V1.2 (vert et or retirés) */
+  --color-club: #0d0d0c;
+  --color-nuit: #0d0d0c;
+  --color-sauge: #bfb8a8;
+  --color-laiton: #bfb8a8;
+  --color-laiton-clair: #bfb8a8;
+  --color-laiton-fonce: #5f5b52;
+  --color-lin: #efe8da;
+  --color-noir: #0d0d0c;
+  --color-noir-soft: #1c1b19;
+  --color-noir-card: #1c1b19;
+  --color-ivory: #efe8da;
+  --color-ivory-soft: #e4dccb;
+  --color-ivory-dim: #bfb8a8;
+  --color-ink: #0d0d0c;
+  --color-ink-dim: #5f5b52;
+  --color-gold: #bfb8a8;
+  --color-gold-deep: #bfb8a8;
+
+  --font-display: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 html {
@@ -38,20 +50,22 @@ html {
 }
 
 body {
-  background: var(--color-lin);
-  color: var(--color-club);
+  background: var(--color-az-black);
+  color: var(--color-az-ivory);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-club);
-  color: var(--color-laiton-clair);
+  background: var(--color-az-ivory);
+  color: var(--color-az-black);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-laiton);
+  outline: 1px solid var(--color-az-ivory);
   outline-offset: 3px;
 }
 
@@ -59,46 +73,45 @@ body {
 @media (pointer: fine) {
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-club) var(--color-lin);
+    scrollbar-color: var(--color-graphite) var(--color-az-black);
   }
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-lin);
+    background: var(--color-az-black);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-club);
+    background: var(--color-graphite);
     border-radius: 4px;
   }
 }
 
-/* ---- Typographie ---- */
-/* Titres : Bodoni regular, jamais gras, jamais italique. */
+/* ---- Typographie V1.2 : Inter seul, trois graisses, jamais de gras ---- */
 .display {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
 }
 
-/* Mention : Hanken regular, minuscules espacées. Capitales réservées aux lieux. */
+/* Label : Medium 500, capitales, interlettrage 0,25 em (kickers, dates, catégories) */
 .eyebrow {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.8125rem;
-  letter-spacing: 0.12em;
-  text-transform: lowercase;
-  color: var(--color-laiton-fonce);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-stone);
 }
 
-/* Lieux : capitales Bodoni espacées. */
+/* Lieux et grands repères : même langage que les labels, en Light */
 .city {
-  font-family: var(--font-display);
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.14em;
 }
 
 /* ---- Fonds sombres : texte lin, laiton clair pour les accents ---- */
@@ -120,34 +133,30 @@ body {
 .bg-noir .eyebrow,
 .bg-noir-soft .eyebrow,
 .bg-noir-card .eyebrow {
-  color: var(--color-laiton-clair);
+  color: var(--color-stone);
+}
+
+/* Sections ivoire (rares, 8 % de la marque) : texte noir, labels graphite */
+.bg-ivory-section {
+  background: var(--color-az-ivory);
+  color: var(--color-az-black);
+}
+
+.bg-ivory-section .eyebrow {
+  color: var(--color-laiton-fonce);
 }
 
 /* ---- Les trois lumières ---- */
 .crepuscule {
-  background: radial-gradient(
-    130% 95% at 50% 112%,
-    #dcc293 0%,
-    #a7a171 16%,
-    #6b8466 34%,
-    #3a5b48 58%,
-    #1e4232 80%,
-    #173a2c 100%
-  );
+  background: var(--color-az-black);
 }
 
 .pelouse {
-  background: linear-gradient(180deg, #bacab2 0%, #86a186 28%, #4a6c56 62%, #1f4233 100%);
+  background: var(--color-graphite);
 }
 
 .nuit {
-  background: radial-gradient(
-    120% 85% at 50% -12%,
-    #557963 0%,
-    #2c4e3d 38%,
-    #173a2c 68%,
-    #0e2419 100%
-  );
+  background: var(--color-az-black);
 }
 
 /* ---- Grain : texture légère en superposition ---- */
@@ -214,7 +223,7 @@ body {
 
 .photo-treated > img,
 .photo-treated img {
-  filter: saturate(0.88) contrast(0.96) sepia(0.06);
+  filter: saturate(0.55) contrast(1.04) brightness(0.82);
 }
 
 .photo-treated::before {
@@ -223,9 +232,12 @@ body {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: #173a2c;
-  opacity: 0.07;
-  mix-blend-mode: soft-light;
+  background: radial-gradient(90% 90% at 50% 45%, transparent 45%, rgba(13, 13, 12, 0.55) 100%);
+}
+
+/* Les images de la bibliothèque V1.2 sont déjà étalonnées : vignette et grain seuls */
+.photo-brand img {
+  filter: none;
 }
 
 .photo-treated::after {
@@ -305,7 +317,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 70;
-  background: #0e2419;
+  background: #0d0d0c;
   pointer-events: none;
   animation: veilOut 0.5s ease 0.05s both;
 }
@@ -319,6 +331,19 @@ body {
 
 .preloader-oval {
   animation: drawOval 0.55s ease-out 0.05s forwards;
+}
+
+/* Trait du préloader V1.2 : se trace au centre */
+@keyframes lineGrow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.preloader-line {
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: lineGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
 }
 
 @keyframes fadeUp {
@@ -844,7 +869,7 @@ img.img-loaded {
 /* ---- Titre fantôme de la section demande ---- */
 .ghost-title {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(184, 147, 90, 0.15);
+  -webkit-text-stroke: 1px rgba(191, 184, 168, 0.14);
 }
 
 /* ---- Dérive lente de la lumière du Crépuscule ---- */

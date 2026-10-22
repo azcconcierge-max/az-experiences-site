@@ -53,7 +53,7 @@ export function OvalImage({
 export function FadeImage({
   src,
   alt = "",
-  to = "#173A2C",
+  to = "#0D0D0C",
   sizes = "100vw",
   priority = false,
   className = "",

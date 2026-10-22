@@ -8,8 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Le médaillon dont l'ovale se dessine à l'entrée dans l'écran
- * (ou au moment voulu via `start`). Sans JavaScript : trait visible.
+ * Le monogramme AZ qui paraît à l'entrée dans l'écran, souligné d'un
+ * trait qui se trace. Sans JavaScript : visible directement.
  */
 export function MedallionDraw({
   variant = "vert",
@@ -23,25 +23,25 @@ export function MedallionDraw({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const height = Math.round((width * 130) / 100);
-  const stroke = variant === "vert" ? "#B8935A" : "#D8BD8C";
+  const color = variant === "vert" ? "black" : "ivory";
+  const height = Math.round((width * 471) / 646);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const ellipse = el.querySelector("ellipse");
     const img = el.querySelector("img");
-    if (!ellipse || !img) return;
+    const line = el.querySelector("[data-line]");
+    if (!img || !line) return;
     let tl: gsap.core.Timeline;
     try {
       tl = gsap.timeline({ scrollTrigger: { trigger: el, start, once: true } });
-      tl.fromTo(
-        ellipse,
-        { strokeDashoffset: 1 },
-        { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" },
-        0
-      ).from(img, { autoAlpha: 0, duration: 0.7, ease: "power2.out" }, 0.45);
+      tl.from(img, { autoAlpha: 0, y: 10, duration: 0.8, ease: "power2.out" }, 0).fromTo(
+        line,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.9, ease: "power2.inOut" },
+        0.3
+      );
     } catch {
       return;
     }
@@ -52,27 +52,17 @@ export function MedallionDraw({
   }, [start]);
 
   return (
-    <div ref={ref} className={`relative ${className}`} style={{ width, height }}>
-      <svg viewBox="0 0 100 130" className="absolute inset-0 h-full w-full" fill="none">
-        <ellipse
-          cx="50"
-          cy="65"
-          rx="49"
-          ry="64"
-          stroke={stroke}
-          strokeWidth="1.4"
-          pathLength="1"
-          strokeDasharray="1"
-          strokeDashoffset="0"
-        />
-      </svg>
-      {/* monogramme seul : l'ovale est dessiné par le trait ci-dessus */}
+    <div ref={ref} className={`flex flex-col items-center gap-5 ${className}`}>
       <Image
-        src={`/brand/logos/AZ-monogramme-petites-tailles-${variant === "vert" ? "vert" : "lin"}.svg`}
+        src={`/brand2/logos/az-monogram-${color}${width < 64 ? "-small-sizes" : ""}.svg`}
         alt=""
-        width={Math.round(width * 0.52)}
-        height={Math.round(width * 0.52)}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        width={width}
+        height={height}
+      />
+      <span
+        data-line
+        aria-hidden="true"
+        className={`block h-px w-12 origin-center ${variant === "vert" ? "bg-az-black/40" : "bg-stone/70"}`}
       />
     </div>
   );

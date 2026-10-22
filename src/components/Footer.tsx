@@ -21,7 +21,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
     <footer className="nuit grain">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-4 md:px-8">
         <div className="flex flex-col items-start gap-5">
-          <Logo locale={locale} variant="lin" size={64} withName />
+          <Logo locale={locale} variant="lin" size={56} />
           <p className="text-sm font-light text-lin/80">{dict.footer.tagline}</p>
         </div>
 

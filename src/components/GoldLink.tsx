@@ -50,10 +50,10 @@ export function Button({
   };
 
   const base =
-    "group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full px-8 py-3.5 font-sans text-[0.9rem] font-normal tracking-[0.02em] transition-all duration-500 will-change-transform";
+    "group relative inline-flex items-center gap-2.5 overflow-hidden px-6 py-4 font-sans text-[0.72rem] font-medium uppercase tracking-[0.15em] transition-all duration-500 will-change-transform";
   const styles = {
-    club: "bg-club text-lin hover:bg-nuit",
-    lin: "bg-lin text-club hover:bg-ivory-soft",
+    club: "bg-az-ivory text-az-black hover:bg-stone",
+    lin: "bg-az-ivory text-az-black hover:bg-stone",
     outline: "border border-current opacity-90 hover:opacity-60",
   }[variant];
 

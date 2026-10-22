@@ -79,7 +79,7 @@ export function HorizontalEvents({
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(14,36,25,0.12) 0%, rgba(14,36,25,0.2) 55%, rgba(14,36,25,0.88) 100%)",
+                    "linear-gradient(180deg, rgba(13,13,12,0.12) 0%, rgba(13,13,12,0.2) 55%, rgba(13,13,12,0.88) 100%)",
                 }}
               />
               <div className="absolute inset-x-0 bottom-0 p-6">

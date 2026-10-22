@@ -52,7 +52,7 @@ export default async function HomePage({
             className="absolute inset-0 z-10"
             style={{
               background:
-                "linear-gradient(180deg, rgba(14,36,25,0.55) 0%, rgba(14,36,25,0.12) 26%, rgba(14,36,25,0.15) 55%, #0E2419 100%)",
+                "linear-gradient(180deg, rgba(13,13,12,0.55) 0%, rgba(13,13,12,0.12) 26%, rgba(13,13,12,0.15) 55%, #0D0D0C 100%)",
             }}
           />
         </div>
@@ -98,8 +98,8 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---- 2 · MANIFESTE (lin) : une phrase, mot par mot ---- */}
-      <section className="px-5 py-32 md:px-10 md:py-44">
+      {/* ---- 2 · MANIFESTE : la respiration ivoire de la page ---- */}
+      <section className="bg-ivory-section px-5 py-32 md:px-10 md:py-44">
         <div className="mx-auto max-w-[1100px] text-center">
           <TitleReveal
             text={h.manifesto}

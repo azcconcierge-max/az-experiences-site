@@ -19,7 +19,7 @@ export function AskSection({ locale, dict }: { locale: string; dict: Dict }) {
         className="light-drift pointer-events-none absolute inset-[-12%]"
         style={{
           background:
-            "radial-gradient(60% 45% at 50% 108%, rgba(220,194,147,0.5) 0%, rgba(220,194,147,0) 70%)",
+            "radial-gradient(60% 45% at 50% 108%, rgba(239,232,218,0.1) 0%, rgba(239,232,218,0) 70%)",
         }}
       />
 
@@ -34,7 +34,7 @@ export function AskSection({ locale, dict }: { locale: string; dict: Dict }) {
               key={k}
               className="ghost-title city pr-16 text-[clamp(6rem,16vw,15rem)] leading-none whitespace-nowrap"
             >
-              sur recommandation
+              l&apos;art de l&apos;acc&egrave;s
             </span>
           ))}
         </div>

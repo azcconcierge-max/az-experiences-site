@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+// Quatre univers de la bibliothèque V1.2, recadrés en bannière
 const SLIDES = [
-  "/images/hero.jpg",
-  "/images/celine-dion.jpg",
-  "/images/jet-prive.jpg",
-  "/images/dest-new-york.jpg",
+  "/images/universes/AZ-05-football_pitch-banner-1080x608.webp",
+  "/images/universes/AZ-07-concerts_stage-banner-1080x608.webp",
+  "/images/universes/AZ-06-tennis_clay-banner-1080x608.webp",
+  "/images/universes/AZ-02-private-jet-chauffeur_dusk-banner-1080x608.webp",
 ];
 
 const DURATION = 6000;

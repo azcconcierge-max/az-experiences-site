@@ -72,7 +72,7 @@ export default async function GuidePage({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(14,36,25,0.6) 0%, rgba(14,36,25,0.2) 32%, rgba(14,36,25,0.45) 62%, #0E2419 100%)",
+                "linear-gradient(180deg, rgba(13,13,12,0.6) 0%, rgba(13,13,12,0.2) 32%, rgba(13,13,12,0.45) 62%, #0D0D0C 100%)",
             }}
           />
         </div>

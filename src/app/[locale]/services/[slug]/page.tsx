@@ -79,7 +79,7 @@ export default async function ServicePage({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(14,36,25,0.72) 0%, rgba(14,36,25,0.2) 32%, rgba(14,36,25,0.35) 60%, #0E2419 100%)",
+                "linear-gradient(180deg, rgba(13,13,12,0.72) 0%, rgba(13,13,12,0.2) 32%, rgba(13,13,12,0.35) 60%, #0D0D0C 100%)",
             }}
           />
         </div>
