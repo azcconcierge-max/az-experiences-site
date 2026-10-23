@@ -34,8 +34,8 @@ export default async function DestinationsPage({
 
   return (
     <>
-      <PosterHero
-        visual={visuals.monaco}
+      <PosterHero locale={locale}
+        visual={visuals.destinationsHero}
         label={d.eyebrow}
         title={d.title}
         chapter="04"
@@ -52,7 +52,7 @@ export default async function DestinationsPage({
         <div className="wrap grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
           {destinations.map((dest, i) => (
             <Reveal key={dest.slug} delay={(i % 3) * 80}>
-              <UniverseTile
+              <UniverseTile locale={locale}
                 href={`/${locale}/destinations/${dest.slug}`}
                 visual={destinationVisual(dest.slug)}
                 label={`${dest.name} · ${dest.region[locale]}`}

@@ -26,12 +26,22 @@ export async function generateMetadata({
   const event = getEvent(slug);
   if (!event) return {};
   const l = locale as Locale;
-  const suffix = {
-    fr: "Billets VIP & hospitality",
-    en: "VIP tickets & hospitality",
-    es: "Entradas VIP y hospitality",
-    pt: "Bilhetes VIP e hospitality",
-  }[l];
+  // une soirée sur invitation ne se vend pas en billets : on parle du séjour
+  const suffix = (
+    event.invitationOnly
+      ? {
+          fr: "Séjour & conciergerie",
+          en: "Stay & concierge",
+          es: "Estancia y conserjería",
+          pt: "Estadia e concierge",
+        }
+      : {
+          fr: "Billets VIP & hospitality",
+          en: "VIP tickets & hospitality",
+          es: "Entradas VIP y hospitality",
+          pt: "Bilhetes VIP e hospitality",
+        }
+  )[l];
   return {
     title: { absolute: `${event.name}, ${suffix} | ${site.name}` },
     description: event.description[l],
@@ -87,7 +97,7 @@ export default async function EventPage({
 
       {/* ---- Hero : l'univers du rendez-vous, son nom, sa phrase ---- */}
       <div className="relative">
-        <PosterHero
+        <PosterHero locale={locale}
           visual={visual}
           label={event.city}
           title={event.name}
@@ -155,7 +165,7 @@ export default async function EventPage({
       </section>
 
       {/* ---- Autres rendez-vous ---- */}
-      <RelatedPosters
+      <RelatedPosters locale={locale}
         title={dict.cta.allEvents}
         items={others.map((o) => ({
           href: `/${locale}/evenements/${o.slug}`,

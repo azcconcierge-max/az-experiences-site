@@ -34,7 +34,7 @@ export default async function EventsPage({
 
   return (
     <>
-      <PosterHero
+      <PosterHero locale={locale}
         visual={visuals.concerts}
         label={d.eyebrow}
         title={d.title}

@@ -21,11 +21,14 @@ export function universeLabel(visual: Visual, locale: Locale) {
 /** Une image du brand book, en plein cadre dans son conteneur. */
 export function Illustration({
   visual,
+  locale,
   priority = false,
   sizes = "100vw",
   className = "",
 }: {
   visual: Visual;
+  /** langue du texte alternatif ; sans elle, l'image est décorative */
+  locale?: Locale;
   priority?: boolean;
   sizes?: string;
   /** conservé pour compatibilité : les images du brand book sont carrées */
@@ -35,7 +38,7 @@ export function Illustration({
   return (
     <Image
       src={visual.image}
-      alt=""
+      alt={locale && visual.alt ? visual.alt[locale] : ""}
       fill
       priority={priority}
       sizes={sizes}
@@ -52,6 +55,7 @@ export function Illustration({
  */
 export function PosterHero({
   visual,
+  locale,
   label,
   title,
   aside,
@@ -64,6 +68,7 @@ export function PosterHero({
   subtitle,
 }: {
   visual: Visual;
+  locale?: Locale;
   /** label au-dessus du titre (« CHAPITRE 02 », une porte, une région) */
   label?: ReactNode;
   title: ReactNode;
@@ -87,18 +92,20 @@ export function PosterHero({
     <section
       className={`relative flex flex-col justify-end overflow-hidden bg-graphite ${short ? "min-h-[84svh]" : "min-h-svh"}`}
     >
-      <div aria-hidden="true" className="absolute inset-0">
+      <div className="absolute inset-0">
         {/* l'image arrive (flou → net) puis glisse moins vite que la page */}
         <Parallax>
           <div className="cover-arrive absolute inset-0">
-            <Illustration visual={visual} priority={priority} />
+            <Illustration visual={visual} locale={locale} priority={priority} />
           </div>
         </Parallax>
         <div
+          aria-hidden="true"
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(180deg, rgba(13,13,12,0.35) 0%, rgba(13,13,12,0) 25%, rgba(13,13,12,0) 45%, rgba(13,13,12,0.6) 100%)",
+            background: visual.light
+              ? "linear-gradient(180deg, rgba(13,13,12,0.45) 0%, rgba(13,13,12,0.1) 25%, rgba(13,13,12,0.25) 45%, rgba(13,13,12,0.85) 100%)"
+              : "linear-gradient(180deg, rgba(13,13,12,0.35) 0%, rgba(13,13,12,0) 25%, rgba(13,13,12,0) 45%, rgba(13,13,12,0.6) 100%)",
           }}
         />
       </div>
@@ -143,12 +150,14 @@ export function PosterHero({
 export function PosterCard({
   href,
   visual,
+  locale,
   label,
   title,
   sizes = "(max-width: 768px) 100vw, 33vw",
 }: {
   href: string;
   visual: Visual;
+  locale?: Locale;
   label?: ReactNode;
   title: ReactNode;
   /** conservé pour compatibilité, non affiché */
@@ -160,6 +169,7 @@ export function PosterCard({
       <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
         <Illustration
           visual={visual}
+          locale={locale}
           sizes={sizes}
           className="transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
         />
@@ -174,6 +184,7 @@ export function PosterCard({
 export function UniverseTile({
   href,
   visual,
+  locale,
   label,
   caption,
   sizes = "(max-width: 768px) 50vw, 25vw",
@@ -181,6 +192,7 @@ export function UniverseTile({
 }: {
   href: string;
   visual: Visual;
+  locale?: Locale;
   label: ReactNode;
   /** phrase sous le label (ex. l'accroche d'une destination) */
   caption?: ReactNode;
@@ -192,8 +204,17 @@ export function UniverseTile({
     <Link href={href} className={`door group relative block aspect-square overflow-hidden bg-graphite ${className}`}>
       <Illustration
         visual={visual}
+        locale={locale}
         sizes={sizes}
         className="transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+      />
+      {/* ombre légère sous le label, plus dense sur une image claire */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
+        style={{
+          background: `linear-gradient(0deg, rgba(13,13,12,${visual.light ? 0.75 : 0.45}) 0%, rgba(13,13,12,0) 100%)`,
+        }}
       />
       <span className="absolute right-4 bottom-4 left-4 md:right-6 md:bottom-6 md:left-6">
         <span className="label door-label block text-ivory">{label}</span>
@@ -261,6 +282,7 @@ export function EventPoster({ event, locale, cta }: { event: EventItem; locale: 
       <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
         <Illustration
           visual={eventVisual(event.slug)}
+          locale={locale}
           sizes="(max-width: 768px) 100vw, 33vw"
           className="transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
         />

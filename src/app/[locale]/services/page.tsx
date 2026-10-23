@@ -50,7 +50,7 @@ export default async function ServicesPage({
       <JsonLd data={servicesJsonLd} />
 
       {/* ---- Un titre, une phrase, puis un poster par service ---- */}
-      <PosterHero
+      <PosterHero locale={locale}
         visual={visuals.palaces}
         label={d.eyebrow}
         title={d.title}
@@ -66,7 +66,7 @@ export default async function ServicesPage({
         <div className="wrap grid gap-6 md:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={(i % 3) * 80} className="h-full">
-              <PosterCard
+              <PosterCard locale={locale}
                 href={`/${locale}/services/${s.slug}`}
                 visual={serviceVisual(s.slug)}
                 label={String(i + 1).padStart(2, "0")}

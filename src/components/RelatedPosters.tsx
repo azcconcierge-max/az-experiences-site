@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Visual } from "@/lib/univers";
+import type { Locale } from "@/i18n";
 import { PosterCard } from "./poster";
 import { Reveal } from "./Reveal";
 
@@ -7,8 +8,10 @@ import { Reveal } from "./Reveal";
 export function RelatedPosters({
   title,
   items,
+  locale,
 }: {
   title: ReactNode;
+  locale?: Locale;
   items: { href: string; visual: Visual; label?: ReactNode; title: ReactNode; mention?: ReactNode }[];
 }) {
   return (
@@ -18,7 +21,7 @@ export function RelatedPosters({
         <div className="grid gap-x-6 gap-y-12 md:grid-cols-3">
           {items.slice(0, 3).map((item, i) => (
             <Reveal key={item.href} delay={i * 80} className="h-full">
-              <PosterCard {...item} />
+              <PosterCard {...item} locale={locale} />
             </Reveal>
           ))}
         </div>

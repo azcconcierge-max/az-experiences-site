@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { visuals } from "@/lib/univers";
 import { Illustration } from "@/components/poster";
-import { getDict } from "@/i18n";
+import { getDict, type Locale } from "@/i18n";
 import { pageAlternates } from "@/lib/seo";
 import { site, whatsappHref } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
@@ -42,7 +42,7 @@ export default async function ContactPage({
           className="relative flex min-h-[80svh] flex-col justify-end overflow-hidden bg-graphite lg:min-h-0"
         >
           <div aria-hidden="true" className="absolute inset-0">
-            <Illustration visual={visuals.palaces} priority sizes="(max-width: 1024px) 100vw, 45vw" />
+            <Illustration locale={locale as Locale} visual={visuals.palaces} priority sizes="(max-width: 1024px) 100vw, 45vw" />
             <div
               className="absolute inset-0"
               style={{ background: "linear-gradient(180deg, rgba(13,13,12,0.2) 0%, rgba(13,13,12,0) 40%, rgba(13,13,12,0.75) 100%)" }}

@@ -35,7 +35,7 @@ export default async function AboutPage({
   return (
     <>
       {/* ---- 1 · HERO : la porte entrouverte, la maison ---- */}
-      <PosterHero
+      <PosterHero locale={locale}
         visual={visuals.jet}
         label={d.eyebrow}
         title={`${d.title}.`}

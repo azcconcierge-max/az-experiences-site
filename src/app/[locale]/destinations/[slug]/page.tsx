@@ -63,7 +63,7 @@ export default async function DestinationPage({
 
       {/* ---- 1 · HERO : le territoire, sa couleur, son nom ---- */}
       <div className="relative">
-        <PosterHero visual={visual} label={dest.region[locale]} title={dest.name} subtitle={dest.tagline[locale]} chapter="04" footer={`AZ Experiences — ${dict.nav.destinations}`} short />
+        <PosterHero locale={locale} visual={visual} label={dest.region[locale]} title={dest.name} subtitle={dest.tagline[locale]} chapter="04" footer={`AZ Experiences — ${dict.nav.destinations}`} short />
         <Breadcrumb
           ariaLabel={dict.nav.destinations}
           items={[
@@ -99,7 +99,7 @@ export default async function DestinationPage({
               <div key={cat} className="mt-20 grid gap-8 md:grid-cols-12 md:gap-6">
                 <Reveal className="md:col-span-4">
                   <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
-                    <Illustration visual={chapter} portrait={false} sizes="(max-width: 768px) 100vw, 30vw" />
+                    <Illustration locale={locale} visual={chapter} portrait={false} sizes="(max-width: 768px) 100vw, 30vw" />
                   </div>
                   <div className="mt-4 flex items-baseline justify-between">
                     <h3 className="t-h2 text-ivory">{d.cats[cat]}</h3>
@@ -154,7 +154,7 @@ export default async function DestinationPage({
             {destinations
               .filter((o) => o.slug !== slug)
               .map((o) => (
-                <UniverseTile
+                <UniverseTile locale={locale}
                   key={o.slug}
                   href={`/${locale}/destinations/${o.slug}`}
                   visual={destinationVisual(o.slug)}

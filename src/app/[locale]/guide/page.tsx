@@ -49,7 +49,7 @@ export default async function GuidePage({
   return (
     <>
       {/* ---- COUVERTURE : le dernier article, en poster ---- */}
-      <PosterHero
+      <PosterHero locale={locale}
         visual={articleVisual(cover.slug)}
         label={`${d.eyebrow} · ${formatDate(cover.date, locale)}`}
         title={frPunct(cover.title[locale])}
@@ -67,7 +67,7 @@ export default async function GuidePage({
           <div className="wrap grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {rest.map((article, i) => (
               <Reveal key={article.slug} delay={(i % 3) * 80} className="h-full">
-                <PosterCard
+                <PosterCard locale={locale}
                   href={`/${locale}/guide/${article.slug}`}
                   visual={articleVisual(article.slug)}
                   label={formatDate(article.date, locale)}

@@ -83,7 +83,7 @@ export default async function HomePage({
       <section aria-label={h.eventsTitle} className="doors grid grid-cols-2 md:grid-cols-4">
         {doors.map((d, i) => (
           <Reveal key={d.href} delay={(i % 4) * 90}>
-            <UniverseTile href={`/${locale}${d.href}`} visual={d.visual} label={d.label} />
+            <UniverseTile locale={locale} href={`/${locale}${d.href}`} visual={d.visual} label={d.label} />
           </Reveal>
         ))}
       </section>
@@ -93,7 +93,7 @@ export default async function HomePage({
         <div className="wrap grid items-center gap-12 md:grid-cols-12 md:gap-6">
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
-              <Illustration visual={visuals.palaces} sizes="(max-width: 768px) 100vw, 40vw" />
+              <Illustration locale={locale} visual={visuals.palaces} sizes="(max-width: 768px) 100vw, 40vw" />
             </div>
           </Reveal>
           <Reveal delay={150} className="md:col-span-6 md:col-start-7">
@@ -134,7 +134,7 @@ export default async function HomePage({
         <div className="doors grid grid-cols-2 md:grid-cols-3">
           {destinations.map((d, i) => (
             <Reveal key={d.slug} delay={(i % 3) * 90}>
-            <UniverseTile
+            <UniverseTile locale={locale}
               href={`/${locale}/destinations/${d.slug}`}
               visual={destinationVisual(d.slug)}
               label={d.name}

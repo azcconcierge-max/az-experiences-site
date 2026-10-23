@@ -22,6 +22,8 @@ export type EventItem = {
   offers: Record<Locale, string[]>;
   image?: string;
   hue: number;
+  /** soirée sur invitation : nous orchestrons autour, sans vendre de billet */
+  invitationOnly?: boolean;
 };
 
 export const events: EventItem[] = [
@@ -335,6 +337,74 @@ export const events: EventItem[] = [
       pt: ["Subida dos degraus", "Projeções oficiais", "Festas e iates da Croisette"],
     },
     hue: 0,
+  },
+  {
+    slug: "met-gala",
+    category: "mode",
+    name: "Met Gala",
+    city: "New York",
+    country: "US",
+    venue: "Metropolitan Museum of Art",
+    dateLabel: {
+      fr: "Dates sur demande · New York",
+      en: "Dates on request · New York",
+      es: "Fechas bajo petición · Nueva York",
+      pt: "Datas sob pedido · Nova Iorque",
+    },
+    tagline: {
+      fr: "La soirée la plus regardée de la mode.",
+      en: "Fashion's most watched night.",
+      es: "La noche más observada de la moda.",
+      pt: "A noite mais vista da moda.",
+    },
+    description: {
+      fr: "Le Met Gala se vit sur invitation. Autour de la soirée, nous orchestrons tout ce qui se réserve : suites à Manhattan, chauffeur et protection, tables et soirées de la semaine new-yorkaise. Sur demande, en toute discrétion.",
+      en: "The Met Gala is invitation-only. Around the night, we arrange everything that can be booked: Manhattan suites, chauffeur and protection, tables and parties during New York's week. On request, with complete discretion.",
+      es: "La Met Gala se vive por invitación. En torno a la noche, organizamos todo lo que se reserva: suites en Manhattan, chófer y protección, mesas y fiestas de la semana neoyorquina. Bajo petición, con total discreción.",
+      pt: "A Met Gala vive-se por convite. Em torno da noite, organizamos tudo o que se reserva: suites em Manhattan, motorista e proteção, mesas e festas da semana nova-iorquina. Sob pedido, com total discrição.",
+    },
+    offers: {
+      fr: ["Suites et séjours à Manhattan", "Chauffeur et protection pour la soirée", "Tables et soirées de la semaine"],
+      en: ["Manhattan suites and stays", "Chauffeur and protection for the night", "Tables and parties during the week"],
+      es: ["Suites y estancias en Manhattan", "Chófer y protección para la noche", "Mesas y fiestas de la semana"],
+      pt: ["Suites e estadias em Manhattan", "Motorista e proteção para a noite", "Mesas e festas da semana"],
+    },
+    hue: 350,
+    invitationOnly: true,
+  },
+  {
+    slug: "oscars",
+    category: "ceremonie",
+    name: "Oscars",
+    city: "Los Angeles",
+    country: "US",
+    venue: "Hollywood",
+    dateLabel: {
+      fr: "Dates sur demande · Los Angeles",
+      en: "Dates on request · Los Angeles",
+      es: "Fechas bajo petición · Los Ángeles",
+      pt: "Datas sob pedido · Los Angeles",
+    },
+    tagline: {
+      fr: "La nuit d'Hollywood.",
+      en: "Hollywood's night.",
+      es: "La noche de Hollywood.",
+      pt: "A noite de Hollywood.",
+    },
+    description: {
+      fr: "La cérémonie des Oscars se vit sur invitation. Autour d'elle, nous orchestrons la semaine à Los Angeles : villas et hôtels, chauffeur et protection, dîners et soirées qui suivent la cérémonie. Sur demande, en toute discrétion.",
+      en: "The Oscars ceremony is invitation-only. Around it, we arrange your week in Los Angeles: villas and hotels, chauffeur and protection, dinners and the parties that follow the ceremony. On request, with complete discretion.",
+      es: "La ceremonia de los Oscar se vive por invitación. En torno a ella, organizamos la semana en Los Ángeles: villas y hoteles, chófer y protección, cenas y fiestas posteriores a la ceremonia. Bajo petición, con total discreción.",
+      pt: "A cerimónia dos Óscares vive-se por convite. Em torno dela, organizamos a semana em Los Angeles: villas e hotéis, motorista e proteção, jantares e festas que se seguem à cerimónia. Sob pedido, com total discrição.",
+    },
+    offers: {
+      fr: ["Villas et hôtels à Los Angeles", "Chauffeur et protection", "Dîners et soirées d'après-cérémonie"],
+      en: ["Villas and hotels in Los Angeles", "Chauffeur and protection", "Dinners and after-ceremony parties"],
+      es: ["Villas y hoteles en Los Ángeles", "Chófer y protección", "Cenas y fiestas posteriores a la ceremonia"],
+      pt: ["Villas e hotéis em Los Angeles", "Motorista e proteção", "Jantares e festas pós-cerimónia"],
+    },
+    hue: 0,
+    invitationOnly: true,
   },
   {
     slug: "celine-dion",

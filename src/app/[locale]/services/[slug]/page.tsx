@@ -64,7 +64,7 @@ export default async function ServicePage({
 
       {/* ---- 1 · HERO : l'illustration de l'univers, le nom du service ---- */}
       <div className="relative">
-        <PosterHero visual={visual} title={service.title[locale]} chapter="02" footer={`AZ Experiences — ${dict.nav.services}`} short />
+        <PosterHero locale={locale} visual={visual} title={service.title[locale]} chapter="02" footer={`AZ Experiences — ${dict.nav.services}`} short />
         <Breadcrumb
           ariaLabel={dict.nav.services}
           items={[
@@ -136,7 +136,7 @@ export default async function ServicePage({
       </section>
 
       {/* ---- 6 · AUTRES SERVICES ---- */}
-      <RelatedPosters
+      <RelatedPosters locale={locale}
         title={dict.cta.allServices}
         items={services
           .filter((s) => s.slug !== slug)

@@ -69,7 +69,7 @@ export default async function ArticlePage({
       <JsonLd data={articleJsonLd} />
       <ReadingCounter />
 
-      <PosterHero
+      <PosterHero locale={locale}
         visual={visual}
         label={`${d.published} ${formatDate(article.date, locale)} · ${article.readingMinutes} ${d.reading}`}
         title={article.title[locale]}
