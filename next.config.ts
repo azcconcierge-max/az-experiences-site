@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         destination: "/:locale/evenements/tennis-tour",
         permanent: true,
       },
+      // le service « Accès sur mesure » a été retiré
+      {
+        source: "/:locale(fr|en|es|pt)/services/sur-mesure",
+        destination: "/:locale/services",
+        permanent: true,
+      },
     ];
   },
 };

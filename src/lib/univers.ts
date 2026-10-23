@@ -71,7 +71,6 @@ export const visuals = {
   chauffeur: scene("AZ-18-transport-chauffeur", "#C98A4B", "Transport & chauffeur", "Transport & Chauffeur", "Transporte y chófer", "Transporte e motorista"),
   yacht: scene("AZ-19-yacht", "#E8A066", "Yachts", "Yachts", "Yates", "Iates"),
   security: scene("AZ-20-security", "#1C1B19", "Sécurité", "Security", "Seguridad", "Segurança"),
-  bespokeAccess: scene("AZ-21-bespoke-access", "#E8A066", "Accès sur mesure", "Bespoke Access", "Acceso a medida", "Acesso à medida"),
   bespokeTravel: scene("AZ-22-bespoke-travel", "#E8A066", "Voyages sur mesure", "Bespoke Travel", "Viajes a medida", "Viagens à medida"),
 } satisfies Record<string, Visual>;
 
@@ -92,9 +91,9 @@ const ALTS: Record<keyof typeof visuals, L> = {
   mykonos: alt("Village blanc des Cyclades au-dessus de la mer bleue", "White Cycladic village above the blue sea", "Pueblo blanco de las Cícladas sobre el mar azul", "Aldeia branca das Cíclades sobre o mar azul"),
   paris: alt("La Seine à l'heure bleue, toits haussmanniens et tour illuminée", "The Seine at blue hour, Haussmann rooftops and the lit tower", "El Sena a la hora azul, tejados haussmannianos y la torre iluminada", "O Sena à hora azul, telhados haussmannianos e a torre iluminada"),
   ibiza: alt("Soleil couchant sur la mer à côté d'un îlot rocheux", "Sun setting over the sea beside a rocky islet", "Sol poniente sobre el mar junto a un islote rocoso", "Sol poente sobre o mar junto a um ilhéu rochoso"),
-  dubai: alt("Skyline de Dubaï au crépuscule au-dessus du désert", "Dubai skyline at dusk above the desert", "Skyline de Dubái al atardecer sobre el desierto", "Skyline do Dubai ao entardecer sobre o deserto"),
-  london: alt("La Tamise à la nuit tombée, ponts illuminés", "The Thames at nightfall, bridges lit up", "El Támesis al anochecer, puentes iluminados", "O Tamisa ao anoitecer, pontes iluminadas"),
-  miami: alt("Front de mer de Miami Beach au coucher du soleil", "Miami Beach waterfront at sunset", "Frente marítimo de Miami Beach al atardecer", "Frente marítima de Miami Beach ao pôr do sol"),
+  dubai: alt("Burj Khalifa au-dessus de Downtown Dubaï au crépuscule, reflétée dans l'eau", "Burj Khalifa above Downtown Dubai at dusk, reflected in the water", "Burj Khalifa sobre Downtown Dubái al atardecer, reflejado en el agua", "Burj Khalifa sobre a Downtown Dubai ao entardecer, refletido na água"),
+  london: alt("Big Ben illuminé la nuit sous la pluie, un bus rouge à impériale qui passe", "Big Ben lit at night in the rain, a red double-decker bus passing", "Big Ben iluminado de noche bajo la lluvia, un autobús rojo de dos pisos que pasa", "Big Ben iluminado à noite à chuva, um autocarro vermelho de dois andares a passar"),
+  miami: alt("Palmiers et skyline de Miami de l'autre côté de la baie, au crépuscule rose", "Palm trees and the Miami skyline across the bay at a pink dusk", "Palmeras y el skyline de Miami al otro lado de la bahía, en un atardecer rosado", "Palmeiras e o skyline de Miami do outro lado da baía, num entardecer cor-de-rosa"),
   newYork: alt("Skyline de Manhattan se reflétant dans le fleuve au crépuscule", "Manhattan skyline reflected in the river at dusk", "Skyline de Manhattan reflejado en el río al atardecer", "Skyline de Manhattan refletido no rio ao entardecer"),
   usOpen: alt("Court de tennis bleu la nuit, lignes et balle en mouvement", "Blue tennis court at night, lines and a ball in motion", "Pista de tenis azul de noche, líneas y bola en movimiento", "Court de ténis azul à noite, linhas e bola em movimento"),
   superBowl: alt("Poteaux jaunes devant le terrain, feux d'artifice au-dessus du stade", "Yellow goalposts before the field, fireworks above the stadium", "Postes amarillos ante el campo, fuegos artificiales sobre el estadio", "Postes amarelos diante do campo, fogo de artifício sobre o estádio"),
@@ -110,7 +109,6 @@ const ALTS: Record<keyof typeof visuals, L> = {
   chauffeur: alt("Chauffeur debout près d'une berline, la nuit", "Chauffeur standing by a sedan at night", "Chófer de pie junto a una berlina, de noche", "Motorista de pé junto a uma berlina, à noite"),
   yacht: alt("Superyacht au crépuscule au large de la Riviera", "Superyacht at dusk off the Riviera", "Superyate al atardecer frente a la Riviera", "Superiate ao entardecer ao largo da Riviera"),
   security: alt("Silhouette d'un agent de protection face aux flashs", "Silhouette of a protection officer facing the flashes", "Silueta de un escolta frente a los flashes", "Silhueta de um agente de proteção diante dos flashes"),
-  bespokeAccess: alt("Jet privé sur le tarmac au coucher du soleil, passerelle ouverte", "Private jet on the tarmac at sunset, stairs lowered", "Jet privado en la pista al atardecer, escalerilla abierta", "Jato privado na pista ao pôr do sol, escada aberta"),
   bespokeTravel: alt("Hélicoptère au-dessus d'une falaise et de la mer au crépuscule", "Helicopter over a cliff and the sea at dusk", "Helicóptero sobre un acantilado y el mar al atardecer", "Helicóptero sobre uma falésia e o mar ao entardecer"),
 };
 for (const key of Object.keys(ALTS) as (keyof typeof visuals)[]) {
@@ -147,7 +145,6 @@ const byService: Record<string, Visual> = {
   transport: visuals.chauffeur,
   securite: visuals.security,
   voyages: visuals.bespokeTravel,
-  "sur-mesure": visuals.bespokeAccess,
 };
 
 const byEvent: Record<string, Visual> = {
@@ -170,12 +167,9 @@ const byDestination: Record<string, Visual> = {
   mykonos: visuals.mykonos,
   ibiza: visuals.ibiza,
   "new-york": visuals.newYork,
-  // TODO : brancher visuals.dubai, visuals.london et visuals.miami quand
-  // AZ-23-dubai.jpg, AZ-24-london.jpg et AZ-25-miami.jpg seront déposés
-  // dans public/az/events-destinations/ (en attendant, l'image du hublot)
-  dubai: visuals.destinationsHero,
-  london: visuals.destinationsHero,
-  miami: visuals.destinationsHero,
+  dubai: visuals.dubai,
+  london: visuals.london,
+  miami: visuals.miami,
 };
 
 const byGuide: Record<string, Visual> = {

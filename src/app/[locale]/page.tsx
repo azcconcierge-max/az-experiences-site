@@ -62,9 +62,9 @@ export default async function HomePage({
     <>
       {/* ---- COUVERTURE (p.01) : noir, un titre Thin, deux labels ---- */}
       <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-black pt-32">
-        {/* le monogramme en fond : ivoire à 6 %, flou, derrière le texte */}
+        {/* le monogramme en fond : ivoire à 16 %, flou, derrière le texte */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <Monogram width={1100} className="h-auto w-[92vw] max-w-[1100px] opacity-[0.06] blur-[40px]" />
+          <Monogram width={1100} className="h-auto w-[92vw] max-w-[1100px] opacity-[0.16] blur-[18px]" />
         </div>
         <div className="wrap relative pb-8">
           <p className="label fade-late mb-8" style={{ "--d": "100ms" } as CSSProperties}>
