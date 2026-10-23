@@ -29,13 +29,13 @@ export default async function RefundsPage({
   return (
     <>
       <PageHero eyebrow={fr ? "Légal" : "Legal"} title={dict.legal.refundsTitle} />
-      <section className="px-5 pb-28 md:px-8">
-        <div className="mx-auto max-w-3xl text-sm leading-relaxed text-ink-dim [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-medium [&_h2]:text-club [&_p]:mb-3">
+      <section className="pb-24">
+        <div className="wrap t-small max-w-[56rem] text-ivory/70 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-medium [&_h2]:text-ivory [&_p]:mb-3">
           {fr ? (
             <>
               <p>
                 Version en vigueur au 2 octobre 2026. La présente politique complète les{" "}
-                <Link href={`/${locale}/conditions-generales`} className="text-laiton">
+                <Link href={`/${locale}/conditions-generales`} className="text-stone">
                   conditions générales de vente
                 </Link>{" "}
                 de {site.legalName} (marque AZ Experiences) et fait foi dans sa version française.
@@ -102,7 +102,7 @@ export default async function RefundsPage({
             <>
               <p>
                 Version in force as of October 2, 2026. This policy supplements the{" "}
-                <Link href={`/${locale}/conditions-generales`} className="text-laiton">
+                <Link href={`/${locale}/conditions-generales`} className="text-stone">
                   Terms of Service
                 </Link>{" "}
                 of {site.legalName} (brand AZ Experiences); the French version is authoritative.

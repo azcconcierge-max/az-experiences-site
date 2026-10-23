@@ -31,7 +31,7 @@ export function ReadingCounter() {
   return (
     <p
       aria-hidden="true"
-      className={`fixed right-5 bottom-5 z-40 hidden text-[0.72rem] font-normal tracking-[0.16em] text-laiton-fonce transition-opacity duration-500 md:block ${
+      className={`fixed right-5 bottom-5 z-40 hidden text-[0.72rem] font-normal tracking-[0.16em] text-stone transition-opacity duration-500 md:block ${
         percent > 2 && percent < 100 ? "opacity-100" : "opacity-0"
       }`}
     >

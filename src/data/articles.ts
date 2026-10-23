@@ -12,7 +12,6 @@ export type Article = {
   date: string; // ISO
   readingMinutes: number;
   /** Photo de couverture (liste magazine), chemin sous /public. */
-  image: string;
   title: L;
   excerpt: L;
   body: Record<Locale, ArticleBlock[]>;
@@ -23,7 +22,6 @@ export const articles: Article[] = [
     slug: "obtenir-billets-evenement-sold-out",
     date: "2026-07-01",
     readingMinutes: 4,
-    image: "/images/super-bowl.jpg",
     title: {
       fr: "Comment obtenir des billets pour un événement sold out ?",
       en: "How to get tickets for a sold-out event?",
@@ -42,7 +40,7 @@ export const articles: Article[] = [
         { h: "Où vont les places que le public ne voit pas" },
         { p: "Fédérations, sponsors, partenaires hospitality, détenteurs de loges à l'année : les grands événements réservent une partie de leur capacité à des circuits officiels parallèles. Ces places existent, elles sont légales et souvent de meilleure qualité que celles de la vente publique, mais elles ne s'achètent pas en ligne. Elles s'obtiennent par relation." },
         { h: "Le rôle d'une conciergerie spécialisée" },
-        { p: "C'est exactement le métier d'AZ Experiences : des années passées sur ce marché nous ont construit un réseau de détenteurs officiels et de partenaires hospitality sur les grands rendez-vous, Coupe du Monde, Grand Prix de Monaco, Wimbledon, Super Bowl, Fashion Week. Quand un client nous écrit, nous savons qui appeler, à quel prix, et ce qui est réellement livrable." },
+        { p: "C'est exactement le métier d'AZ Experiences : des années passées sur ce marché nous ont construit un réseau de détenteurs officiels et de partenaires hospitality sur les grands rendez-vous, Ligue des champions, Grand Prix de Monaco, Wimbledon, Super Bowl, Fashion Week. Quand un client nous écrit, nous savons qui appeler, à quel prix, et ce qui est réellement livrable." },
         { h: "Les bons réflexes" },
         { p: "Premier réflexe : anticiper quand c'est possible, plus la demande arrive tôt, plus les options sont larges. Deuxième réflexe : exiger une confirmation écrite avant tout paiement, avec catégorie et conditions précises ; une maison sérieuse ne confirme que ce qu'elle sait livrer. Troisième réflexe : se méfier des places « trop belles » sur les plateformes de revente anonymes, où les billets invalides sont fréquents sur les très grands événements." },
         { p: "Un événement complet vous fait envie ? Écrivez-nous par WhatsApp ou via notre formulaire privé : nous répondons en quelques heures avec les options réelles du moment." },
@@ -52,7 +50,7 @@ export const articles: Article[] = [
         { h: "Where the seats the public never sees actually go" },
         { p: "Federations, sponsors, hospitality partners, year-round box holders: major events reserve part of their capacity for parallel official channels. These seats exist, they are legitimate and often better than what public sales offer, but they cannot be bought online. They are obtained through relationships." },
         { h: "The role of a specialised concierge" },
-        { p: "That is precisely AZ Experiences's craft: years on this market have built us a network of official holders and hospitality partners at the great occasions, World Cup, Monaco Grand Prix, Wimbledon, Super Bowl, Fashion Week. When a client writes to us, we know who to call, at what price, and what is genuinely deliverable." },
+        { p: "That is precisely AZ Experiences's craft: years on this market have built us a network of official holders and hospitality partners at the great occasions, Champions League, Monaco Grand Prix, Wimbledon, Super Bowl, Fashion Week. When a client writes to us, we know who to call, at what price, and what is genuinely deliverable." },
         { h: "The right reflexes" },
         { p: "First: anticipate when possible, the earlier the request, the wider the options. Second: demand written confirmation before any payment, with precise category and conditions; a serious house only confirms what it knows it can deliver. Third: beware of deals that look too good on anonymous resale platforms, where invalid tickets are common at the biggest events." },
         { p: "Tempted by a sold-out event? Write to us on WhatsApp or through our private form: we answer within hours with the real options of the moment." },
@@ -62,7 +60,7 @@ export const articles: Article[] = [
         { h: "A dónde van las plazas que el público no ve" },
         { p: "Federaciones, patrocinadores, socios de hospitality, titulares de palcos anuales: los grandes eventos reservan parte de su capacidad a circuitos oficiales paralelos. Esas plazas existen, son legítimas y a menudo mejores que las de la venta pública, pero no se compran en línea. Se obtienen por relación." },
         { h: "El papel de una conserjería especializada" },
-        { p: "Ese es exactamente el oficio de AZ Experiences: años en este mercado nos han construido una red de titulares oficiales y socios de hospitality en las grandes citas, Mundial, Gran Premio de Mónaco, Wimbledon, Super Bowl, Fashion Week. Cuando un cliente nos escribe, sabemos a quién llamar, a qué precio y qué es realmente entregable." },
+        { p: "Ese es exactamente el oficio de AZ Experiences: años en este mercado nos han construido una red de titulares oficiales y socios de hospitality en las grandes citas, Champions League, Gran Premio de Mónaco, Wimbledon, Super Bowl, Fashion Week. Cuando un cliente nos escribe, sabemos a quién llamar, a qué precio y qué es realmente entregable." },
         { h: "Los buenos reflejos" },
         { p: "Primero: anticipar cuando sea posible, cuanto antes llega la solicitud, más amplias son las opciones. Segundo: exigir una confirmación escrita antes de cualquier pago, con categoría y condiciones precisas; una casa seria solo confirma lo que sabe entregar. Tercero: desconfiar de las gangas en plataformas de reventa anónimas, donde las entradas inválidas son frecuentes en los grandes eventos." },
         { p: "¿Le tienta un evento agotado? Escríbanos por WhatsApp o mediante nuestro formulario privado: respondemos en pocas horas con las opciones reales del momento." },
@@ -72,7 +70,7 @@ export const articles: Article[] = [
         { h: "Para onde vão os lugares que o público não vê" },
         { p: "Federações, patrocinadores, parceiros de hospitality, detentores de camarotes anuais: os grandes eventos reservam parte da sua capacidade a circuitos oficiais paralelos. Esses lugares existem, são legítimos e muitas vezes melhores do que os da venda pública, mas não se compram online. Obtêm-se por relação." },
         { h: "O papel de um concierge especializado" },
-        { p: "É exatamente o ofício da AZ Experiences: anos neste mercado construíram-nos uma rede de detentores oficiais e parceiros de hospitality nos grandes encontros, Mundial, Grande Prémio do Mónaco, Wimbledon, Super Bowl, Fashion Week. Quando um cliente nos escreve, sabemos a quem ligar, a que preço, e o que é realmente entregável." },
+        { p: "É exatamente o ofício da AZ Experiences: anos neste mercado construíram-nos uma rede de detentores oficiais e parceiros de hospitality nos grandes encontros, Liga dos Campeões, Grande Prémio do Mónaco, Wimbledon, Super Bowl, Fashion Week. Quando um cliente nos escreve, sabemos a quem ligar, a que preço, e o que é realmente entregável." },
         { h: "Os bons reflexos" },
         { p: "Primeiro: antecipar quando possível, quanto mais cedo chega o pedido, mais amplas são as opções. Segundo: exigir uma confirmação escrita antes de qualquer pagamento, com categoria e condições precisas; uma casa séria só confirma o que sabe entregar. Terceiro: desconfiar das pechinchas em plataformas de revenda anónimas, onde os bilhetes inválidos são frequentes nos grandes eventos." },
         { p: "Tentado por um evento esgotado? Escreva-nos por WhatsApp ou através do nosso formulário privado: respondemos em poucas horas com as opções reais do momento." },
@@ -81,7 +79,6 @@ export const articles: Article[] = [
   },
   {
     slug: "grand-prix-monaco-vip",
-    image: "/images/f1-monaco.jpg",
     date: "2026-06-15",
     readingMinutes: 5,
     title: {
@@ -133,7 +130,6 @@ export const articles: Article[] = [
   },
   {
     slug: "monaco-adresses",
-    image: "/images/dest-monaco.jpg",
     date: "2026-05-20",
     readingMinutes: 4,
     title: {

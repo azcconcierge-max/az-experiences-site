@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDict, locales, type Locale } from "@/i18n";
 import { events, getEvent, organizers } from "@/data/events";
@@ -7,9 +6,9 @@ import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/GoldLink";
-import { EventVisual } from "@/components/EventVisual";
-import { EventCard } from "@/components/EventCard";
-import { Filet } from "@/components/brand";
+import { eventVisual } from "@/lib/univers";
+import { PosterHero } from "@/components/poster";
+import { RelatedPosters } from "@/components/RelatedPosters";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -27,12 +26,22 @@ export async function generateMetadata({
   const event = getEvent(slug);
   if (!event) return {};
   const l = locale as Locale;
-  const suffix = {
-    fr: "Billets VIP & hospitality",
-    en: "VIP tickets & hospitality",
-    es: "Entradas VIP y hospitality",
-    pt: "Bilhetes VIP e hospitality",
-  }[l];
+  // une soirée sur invitation ne se vend pas en billets : on parle du séjour
+  const suffix = (
+    event.invitationOnly
+      ? {
+          fr: "Séjour & conciergerie",
+          en: "Stay & concierge",
+          es: "Estancia y conserjería",
+          pt: "Estadia e concierge",
+        }
+      : {
+          fr: "Billets VIP & hospitality",
+          en: "VIP tickets & hospitality",
+          es: "Entradas VIP y hospitality",
+          pt: "Bilhetes VIP e hospitality",
+        }
+  )[l];
   return {
     title: { absolute: `${event.name}, ${suffix} | ${site.name}` },
     description: event.description[l],
@@ -52,6 +61,7 @@ export default async function EventPage({
   const dict = getDict(locale);
   const d = dict.events;
   const others = events.filter((e) => e.slug !== slug).slice(0, 3);
+  const visual = eventVisual(slug);
 
   const eventJsonLd = event.startDate
     ? {
@@ -85,49 +95,42 @@ export default async function EventPage({
       {eventJsonLd && <JsonLd data={eventJsonLd} />}
       <JsonLd data={faqJsonLd(d.faq)} />
 
-      {/* ---- Hero : photo absorbée par le vert ---- */}
-      <section className="relative flex min-h-svh items-end overflow-hidden bg-club pt-20">
-        <EventVisual event={event} priority className="absolute inset-0 h-full w-full" />
+      {/* ---- Hero : l'univers du rendez-vous, son nom, sa phrase ---- */}
+      <div className="relative">
+        <PosterHero locale={locale}
+          visual={visual}
+          label={event.city}
+          title={event.name}
+          subtitle={event.tagline[locale]}
+          chapter="03"
+          footer={`AZ Experiences — ${dict.nav.events}`}
+          short
+        />
         <Breadcrumb
           ariaLabel={dict.nav.events}
           items={[
             { href: `/${locale}`, label: dict.nav.home },
             { href: `/${locale}/evenements`, label: dict.nav.events },
-            { label: event.name.toLowerCase() },
+            { label: event.name },
           ]}
         />
-        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-16 md:px-10 md:pb-20">
-          <Reveal>
-            <p className="city mb-4 text-[0.8rem] text-laiton-clair">{event.city}</p>
-            <h1 className="display max-w-5xl text-[clamp(2.8rem,7vw,8rem)] leading-[0.95] text-lin">
-              {event.name}
-            </h1>
-            <p className="mt-5 max-w-xl text-lg font-light text-lin/80">
-              {event.tagline[locale]}
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      </div>
 
-      {/* ---- Contenu ---- */}
-      <section className="px-5 py-20 md:px-10 md:py-28">
-        <div className="mx-auto grid max-w-[1440px] gap-16 lg:grid-cols-[1.4fr_1fr]">
-          <Reveal>
-            <div>
-              <p className="max-w-[65ch] text-base leading-[1.7] font-light md:text-lg">
-                {event.description[locale]}
-              </p>
-              <div className="mt-16">
-                <h2 className="display mb-8 text-2xl">{d.faqTitle}</h2>
-                <Faq items={d.faq} />
-              </div>
+      {/* ---- Contenu : une colonne de lecture, la fiche à côté ---- */}
+      <section className="py-24">
+        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+          <Reveal className="md:col-span-7">
+            <p className="t-h2 text-ivory">{event.description[locale]}</p>
+            <div className="mt-16">
+              <h2 className="t-h2 mb-8 text-ivory">{d.faqTitle}</h2>
+              <Faq items={d.faq} />
             </div>
           </Reveal>
 
-          <Reveal delay={150}>
-            <aside className="nuit grain h-fit rounded-[2px] p-8 lg:sticky lg:top-28">
-              <h2 className="eyebrow mb-5">{d.facts.title}</h2>
-              <dl className="mb-8 flex flex-col gap-3 pb-2">
+          <Reveal delay={120} className="md:col-span-4 md:col-start-9">
+            <aside className="h-fit bg-graphite p-8 md:sticky md:top-28">
+              <h2 className="label mb-5 text-ivory/75">{d.facts.title}</h2>
+              <dl className="mb-8 flex flex-col">
                 {[
                   { label: d.facts.date, value: event.dateLabel[locale] },
                   { label: d.facts.venue, value: event.venue },
@@ -136,49 +139,41 @@ export default async function EventPage({
                 ]
                   .filter((f) => f.value)
                   .map((fact) => (
-                    <div key={fact.label} className="flex items-baseline justify-between gap-6">
-                      <dt className="shrink-0 text-[0.78rem] font-normal lowercase tracking-[0.12em] text-lin/60">
-                        {fact.label}
-                      </dt>
-                      <dd className="text-right text-sm font-light text-lin">{fact.value}</dd>
+                    <div
+                      key={fact.label}
+                      className="flex items-baseline justify-between gap-6 border-b border-ivory/15 py-3"
+                    >
+                      <dt className="label shrink-0 text-ivory/65">{fact.label}</dt>
+                      <dd className="t-small text-right text-ivory">{fact.value}</dd>
                     </div>
                   ))}
               </dl>
-              <Filet className="mb-8" />
-              <h2 className="eyebrow mb-6">{d.whatWeOffer}</h2>
-              <ul className="flex flex-col gap-4">
+              <h2 className="label mb-4 text-ivory/75">{d.whatWeOffer}</h2>
+              <ul className="mb-8 flex flex-col">
                 {event.offers[locale].map((offer) => (
-                  <li key={offer} className="flex items-start gap-3 text-sm font-light text-lin/90">
-                    <span aria-hidden="true" className="filet mt-2.5 w-4 shrink-0" />
+                  <li key={offer} className="t-small border-b border-ivory/15 py-3 text-ivory">
                     {offer}
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 text-center">
-                <Button href={`/${locale}/contact`} variant="lin">
-                  {dict.cta.requestAccess}
-                </Button>
-              </div>
+              <Button href={`/${locale}/contact`} variant="lin">
+                {dict.cta.requestAccess}
+              </Button>
             </aside>
           </Reveal>
         </div>
       </section>
 
       {/* ---- Autres rendez-vous ---- */}
-      <section className="bg-club px-5 py-24 md:px-10 md:py-28">
-        <div className="mx-auto max-w-[1440px]">
-          <Reveal>
-            <h2 className="display mb-12 text-3xl text-lin md:text-5xl">{dict.cta.allEvents}</h2>
-          </Reveal>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {others.map((other, i) => (
-              <Reveal key={other.slug} delay={i * 100}>
-                <EventCard event={other} locale={locale} dict={dict} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <RelatedPosters locale={locale}
+        title={dict.cta.allEvents}
+        items={others.map((o) => ({
+          href: `/${locale}/evenements/${o.slug}`,
+          visual: eventVisual(o.slug),
+          label: o.dateLabel[locale],
+          title: o.name,
+        }))}
+      />
     </>
   );
 }

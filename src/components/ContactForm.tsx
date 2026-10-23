@@ -5,7 +5,7 @@ import { sendContact, type ContactState } from "@/app/actions/contact";
 import type { Dict } from "@/i18n";
 
 const inputClass =
-  "w-full rounded-none border-0 border-b border-club/25 bg-transparent px-0 py-3 text-base font-light text-club placeholder:text-ink-dim/50 outline-none transition-colors duration-300 focus:border-laiton";
+  "w-full rounded-none border-0 border-b border-ivory/25 bg-transparent px-0 py-3 text-base text-ivory placeholder:text-stone/60 outline-none transition-colors duration-300 focus:border-stone";
 
 export function ContactForm({ dict, email }: { dict: Dict; email: string }) {
   const [state, action, pending] = useActionState<ContactState, FormData>(sendContact, {
@@ -15,9 +15,9 @@ export function ContactForm({ dict, email }: { dict: Dict; email: string }) {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-[2px] border border-laiton/40 bg-lin p-10 text-center">
-        <p className="display mb-2 text-2xl text-laiton">✓</p>
-        <p className="font-light text-club">{f.success}</p>
+      <div className="border border-ivory/15 bg-graphite p-10 text-center">
+        <p className="display mb-2 text-2xl text-ivory">✓</p>
+        <p className="text-ivory">{f.success}</p>
       </div>
     );
   }
@@ -54,7 +54,7 @@ export function ContactForm({ dict, email }: { dict: Dict; email: string }) {
           <span className="eyebrow">{f.type}</span>
           <select name="type" className={inputClass} defaultValue={f.types[0]}>
             {f.types.map((t) => (
-              <option key={t} value={t} className="bg-lin text-club">
+              <option key={t} value={t} className="bg-graphite text-ivory">
                 {t}
               </option>
             ))}
@@ -74,7 +74,7 @@ export function ContactForm({ dict, email }: { dict: Dict; email: string }) {
       </label>
 
       {state.status === "error" && (
-        <p className="text-sm text-laiton">
+        <p className="text-sm text-stone">
           {f.error}{" "}
           <a href={`mailto:${email}`} className="underline underline-offset-4">
             {email}
@@ -85,7 +85,7 @@ export function ContactForm({ dict, email }: { dict: Dict; email: string }) {
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 cursor-pointer self-start rounded-full bg-club px-10 py-4 text-[0.9rem] font-normal text-lin transition-colors duration-500 hover:bg-nuit disabled:opacity-50"
+        className="mt-2 cursor-pointer self-start btn-label border border-ivory bg-ivory px-10 py-4 text-black transition-colors duration-500 hover:bg-transparent hover:text-ivory disabled:opacity-50"
       >
         {pending ? f.sending : f.submit}
       </button>

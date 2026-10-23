@@ -229,31 +229,4 @@ export const services: Service[] = [
       pt: ["Itinerários à medida", "Villas e alugueres excecionais", "Concierge durante a estadia"],
     },
   },
-  {
-    slug: "sur-mesure",
-    title: {
-      fr: "Accès sur mesure",
-      en: "Bespoke access",
-      es: "Accesos a medida",
-      pt: "Acessos à medida",
-    },
-    phrase: {
-      fr: "Ce qui ne se demande nulle part ailleurs.",
-      en: "What cannot be asked anywhere else.",
-      es: "Lo que no se pide en ningún otro sitio.",
-      pt: "O que não se pede em mais lado nenhum.",
-    },
-    text: {
-      fr: "Cadeaux introuvables, rencontres exceptionnelles, demandes de dernière minute, projets inclassables : dites-nous quoi, nous trouvons comment.",
-      en: "Unfindable gifts, exceptional encounters, last-minute requests, unclassifiable projects: tell us what, we will find how.",
-      es: "Regalos imposibles de encontrar, encuentros excepcionales, peticiones de última hora, proyectos inclasificables: díganos qué, nosotros encontramos cómo.",
-      pt: "Presentes impossíveis de encontrar, encontros excecionais, pedidos de última hora, projetos inclassificáveis: diga-nos o quê, nós encontramos o como.",
-    },
-    points: {
-      fr: ["Demandes spéciales", "Urgences dernière minute", "Un interlocuteur unique, 7j/7"],
-      en: ["Special requests", "Last-minute emergencies", "One dedicated contact, 7/7"],
-      es: ["Peticiones especiales", "Urgencias de última hora", "Un interlocutor único, 7/7"],
-      pt: ["Pedidos especiais", "Urgências de última hora", "Um interlocutor único, 7/7"],
-    },
-  },
 ];

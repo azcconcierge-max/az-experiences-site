@@ -8,10 +8,14 @@ const DURATION = 6000;
 
 /**
  * Un seul témoignage à la fois, en grand, fondu enchaîné toutes les 6 s.
- * Grands guillemets Bodoni laiton derrière la citation ; trois traits fins
+ * Trois traits fins
  * qui se remplissent pour montrer la progression, cliquables.
  */
-export function TestimonialRotator({ locale }: { locale: Locale }) {
+export function TestimonialRotator({ locale, onLight = false }: { locale: Locale; onLight?: boolean }) {
+  const ink = onLight ? "text-black" : "text-ivory";
+  const meta = onLight ? "text-black/70" : "text-stone";
+  const bar = onLight ? "bg-black" : "bg-ivory";
+  const track = onLight ? "bg-black/20" : "bg-ivory/20";
   const [active, setActive] = useState(0);
   const [animate, setAnimate] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -38,14 +42,7 @@ export function TestimonialRotator({ locale }: { locale: Locale }) {
 
   return (
     <div>
-      <div className="relative min-h-[16rem]">
-        {/* Grands guillemets derrière la citation */}
-        <span
-          aria-hidden="true"
-          className="display pointer-events-none absolute -top-24 -left-4 text-[clamp(9rem,16vw,15rem)] leading-none text-laiton/10 select-none"
-        >
-          «
-        </span>
+      <div className="relative min-h-[14rem]">
         {testimonials.map((t, i) => (
           <figure
             key={t.name}
@@ -54,11 +51,11 @@ export function TestimonialRotator({ locale }: { locale: Locale }) {
             aria-hidden={i !== active}
           >
             <blockquote>
-              <p className="display relative text-2xl leading-[1.35] text-lin md:text-3xl lg:text-4xl">
+              <p className={`t-h1 relative ${ink}`}>
                 {t.quote[locale]}
               </p>
             </blockquote>
-            <figcaption className="mt-8 text-[0.8rem] font-normal lowercase tracking-[0.12em] text-laiton-clair">
+            <figcaption className={`mt-8 label ${meta}`}>
               {t.name} · {t.context[locale]}
             </figcaption>
           </figure>
@@ -76,9 +73,9 @@ export function TestimonialRotator({ locale }: { locale: Locale }) {
             aria-current={i === active ? "true" : undefined}
             className="group flex h-6 flex-1 cursor-pointer items-center"
           >
-            <span className="relative block h-px w-full overflow-hidden bg-lin/20 transition-colors group-hover:bg-lin/35">
+            <span className={`relative block h-px w-full overflow-hidden ${track} transition-colors`}>
               <span
-                className="absolute inset-0 origin-left bg-laiton-clair"
+                className={`absolute inset-0 origin-left ${bar}`}
                 style={
                   i === active && animate
                     ? { animation: `fillTick ${DURATION}ms linear forwards` }

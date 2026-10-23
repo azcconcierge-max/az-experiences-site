@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDict, locales, type Locale } from "@/i18n";
 import { services } from "@/data/services";
@@ -9,8 +7,9 @@ import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/GoldLink";
-import { TitleReveal, LineMask } from "@/components/TitleReveal";
-import { ServicesStrip } from "@/components/ServicesStrip";
+import { serviceVisual } from "@/lib/univers";
+import { PosterHero } from "@/components/poster";
+import { RelatedPosters, ToneBand } from "@/components/RelatedPosters";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
@@ -47,6 +46,7 @@ export default async function ServicePage({
   if (!service || !detail) notFound();
   const dict = getDict(locale);
   const d = dict.services;
+  const visual = serviceVisual(slug);
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -62,27 +62,9 @@ export default async function ServicePage({
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={faqJsonLd(detail.faq[locale])} />
 
-      {/* ---- 1 · HERO plein écran : photo, titre, une ligne ---- */}
-      <section className="relative flex min-h-svh items-end overflow-hidden bg-nuit">
-        <div aria-hidden="true" className="photo-treated absolute inset-0 overflow-hidden">
-          <div className="hero-zoom absolute inset-0">
-            <Image
-              src={`/images/${service.slug}.jpg`}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(14,36,25,0.72) 0%, rgba(14,36,25,0.2) 32%, rgba(14,36,25,0.35) 60%, #0E2419 100%)",
-            }}
-          />
-        </div>
+      {/* ---- 1 · HERO : l'illustration de l'univers, le nom du service ---- */}
+      <div className="relative">
+        <PosterHero locale={locale} visual={visual} title={service.title[locale]} chapter="02" footer={`AZ Experiences — ${dict.nav.services}`} short />
         <Breadcrumb
           ariaLabel={dict.nav.services}
           items={[
@@ -91,70 +73,41 @@ export default async function ServicePage({
             { label: service.title[locale] },
           ]}
         />
-        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-20 md:px-10 md:pb-24">
-          <h1 className="display text-[clamp(2.6rem,7vw,7.5rem)] leading-[0.98] text-lin">
-            <LineMask delay={250}>
-              <span className="block">{service.title[locale]}</span>
-            </LineMask>
-          </h1>
-        </div>
-      </section>
+      </div>
 
-      {/* ---- 2 · PROMESSE (lin) : textes intacts en colonne ---- */}
-      <section className="px-5 py-24 md:px-10 md:py-36">
-        <div className="mx-auto max-w-[1440px] lg:grid lg:grid-cols-[1.2fr_1fr] lg:gap-24">
-          <Reveal>
-            <p className="display max-w-3xl text-2xl leading-[1.35] md:text-3xl lg:text-4xl">
-              {detail.intro[locale]}
-            </p>
+      {/* ---- 2 · LA PROMESSE : une colonne de lecture, les points à côté ---- */}
+      <section className="py-24">
+        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+          <Reveal className="md:col-span-6">
+            <p className="t-h2 text-ivory">{detail.intro[locale]}</p>
+            <p className="t-body measure mt-8 text-ivory/75">{service.text[locale]}</p>
           </Reveal>
-          <Reveal delay={150}>
-            <div className="mt-12 lg:mt-2">
-              <p className="max-w-[60ch] text-base leading-[1.7] font-light text-ink-dim">
-                {service.text[locale]}
-              </p>
-              <p className="eyebrow mt-10 mb-4">{d.pointsLabel}</p>
-              <ul className="flex flex-col gap-2.5">
-                {service.points[locale].map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-sm font-light">
-                    <span aria-hidden="true" className="filet mt-2.5 w-4 shrink-0" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <Reveal delay={120} className="md:col-span-4 md:col-start-9">
+            <p className="label mb-6">{d.pointsLabel}</p>
+            <ul className="border-t border-graphite">
+              {service.points[locale].map((point) => (
+                <li key={point} className="t-body border-b border-graphite py-4 text-ivory">
+                  {point}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
 
-      {/* ---- 3 · LA PHRASE SIGNATURE en très grand (vert nuit) ---- */}
-      <section className="nuit grain flex min-h-[70svh] items-center px-5 py-28 md:px-10">
-        <div className="mx-auto max-w-[1200px] text-center">
-          <TitleReveal
-            text={service.phrase[locale]}
-            as="p"
-            mode="scrub"
-            className="display text-[clamp(2.2rem,5.5vw,5.5rem)] leading-[1.08] text-lin"
-          />
-        </div>
-      </section>
+      {/* ---- 3 · LA PHRASE SIGNATURE, sur la couleur de l'univers ---- */}
+      <ToneBand visual={visual}>{service.phrase[locale]}</ToneBand>
 
-      {/* ---- 4 · CE QUE NOUS ORCHESTRONS (vert club) ---- */}
-      <section className="bg-club px-5 py-24 md:px-10 md:py-32">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="eyebrow mb-5">{d.orchestrationsLabel}</p>
-          <TitleReveal
-            text={service.title[locale]}
-            className="display mb-14 max-w-2xl text-3xl leading-[0.98] text-lin md:text-5xl"
-          />
-          <div className="grid gap-px bg-lin/12 sm:grid-cols-2 lg:grid-cols-3">
+      {/* ---- 4 · CE QUE NOUS ORCHESTRONS ---- */}
+      <section className="py-24">
+        <div className="wrap">
+          <p className="label mb-12">{d.orchestrationsLabel}</p>
+          <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3">
             {detail.orchestrations[locale].map((item, i) => (
-              <Reveal key={item} delay={(i % 3) * 100} className="bg-club">
-                <div className="flex h-full flex-col gap-4 p-8">
-                  <span className="display text-2xl text-laiton-clair">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-sm leading-[1.7] font-light text-lin/85 md:text-base">{item}</p>
+              <Reveal key={item} delay={(i % 3) * 80}>
+                <div className="border-t border-graphite pt-6">
+                  <span className="label">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="t-body mt-4 text-ivory/85">{item}</p>
                 </div>
               </Reveal>
             ))}
@@ -162,34 +115,37 @@ export default async function ServicePage({
         </div>
       </section>
 
-      {/* ---- 5 · FAQ + demande (lin) ---- */}
-      <section className="px-5 py-24 md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-[1440px] gap-16 lg:grid-cols-[1.3fr_1fr]">
-          <Reveal>
-            <div>
-              <h2 className="display mb-10 text-3xl md:text-4xl">{d.faqTitle}</h2>
-              <Faq items={detail.faq[locale]} />
-            </div>
+      {/* ---- 5 · FAQ + demande ---- */}
+      <section className="border-t border-graphite py-24">
+        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+          <Reveal className="md:col-span-7">
+            <h2 className="t-h2 mb-8 text-ivory">{d.faqTitle}</h2>
+            <Faq items={detail.faq[locale]} />
           </Reveal>
-          <Reveal delay={150}>
-            <aside className="nuit grain h-fit rounded-[2px] p-9 text-center lg:sticky lg:top-28">
-              <p className="display mb-3 text-2xl text-lin">{dict.contact.title}</p>
-              <p className="mb-8 text-sm leading-[1.7] font-light text-lin/80">
-                {dict.contact.intro}
-              </p>
+          <Reveal delay={120} className="md:col-span-4 md:col-start-9">
+            <aside className="h-fit bg-graphite p-8 md:sticky md:top-28">
+              <p className="t-h3 mb-3 text-ivory">{dict.contact.title}</p>
+              <p className="t-small mb-8 text-ivory/80">{dict.contact.intro}</p>
               <Button href={`/${locale}/contact`} variant="lin">
                 {dict.cta.request}
               </Button>
-              <p className="mt-6 text-[0.75rem] font-normal lowercase tracking-[0.12em] text-lin/60">
-                {dict.contact.confidential}
-              </p>
+              <p className="caption mt-6 !text-ivory/70">{dict.contact.confidential}</p>
             </aside>
           </Reveal>
         </div>
       </section>
 
-      {/* ---- 6 · AUTRES SERVICES en défilement horizontal ---- */}
-      <ServicesStrip locale={locale} exclude={slug} title={dict.cta.allServices} />
+      {/* ---- 6 · AUTRES SERVICES ---- */}
+      <RelatedPosters locale={locale}
+        title={dict.cta.allServices}
+        items={services
+          .filter((s) => s.slug !== slug)
+          .map((s) => ({
+            href: `/${locale}/services/${s.slug}`,
+            visual: serviceVisual(s.slug),
+            title: s.title[locale],
+          }))}
+      />
     </>
   );
 }

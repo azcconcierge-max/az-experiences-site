@@ -9,8 +9,9 @@ import { Logo } from "./Logo";
 type NavItem = { href: string; label: string };
 
 /**
- * En-tête : transparent au-dessus du hero (texte lin), lin flouté au
- * défilement, masqué quand on descend, visible quand on remonte.
+ * En-tête : transparent au-dessus du hero, noir flouté au défilement,
+ * masqué quand on descend, visible quand on remonte. Toujours ivoire sur noir.
+ * Logo en haut à gauche, 48 px de large (guidelines §5).
  */
 export function Header({
   locale,
@@ -47,16 +48,15 @@ export function Header({
     pathname?.replace(new RegExp(`^/${locale}`), `/${target}`) || `/${target}`;
 
   // Transparent uniquement au-dessus d'un hero sombre (liste tenue à jour
-  // au fil de la refonte) ; ailleurs, fond lin permanent.
+  // au fil de la refonte) ; ailleurs, fond noir permanent.
   const darkHeroRoutes = [`/${locale}`, `/${locale}/qui-sommes-nous`, `/${locale}/guide`];
   const darkHeroPrefixes = [`/${locale}/services/`, `/${locale}/destinations`];
   const hasDarkHero =
     darkHeroRoutes.includes(pathname ?? "") ||
     darkHeroPrefixes.some((p) => (pathname ?? "").startsWith(p));
-  // Menu ouvert : l'en-tête passe en lin sur le dégradé Nuit du menu.
   const solid = !open && (scrolled || !hasDarkHero);
-  const linkBase = solid ? "text-club/80 hover:text-club" : "text-lin/85 hover:text-lin";
-  const linkActive = solid ? "text-laiton-fonce" : "text-laiton-clair";
+  const linkBase = "text-ivory/75 hover:text-ivory";
+  const linkActive = "text-ivory";
 
   return (
     <header
@@ -64,23 +64,23 @@ export function Header({
         hidden && !open ? "-translate-y-full" : ""
       } ${
         open
-          ? "bg-nuit"
+          ? "bg-black"
           : solid
-            ? "bg-lin/90 shadow-[0_1px_0_rgba(184,147,90,0.25)] backdrop-blur-md"
+            ? "bg-black/90 shadow-[0_1px_0_var(--color-graphite)] backdrop-blur-md"
             : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-10">
+      <div className="wrap flex h-20 items-center justify-between">
         <div className={`origin-left transition-transform duration-500 ${scrolled ? "scale-[0.82]" : ""}`}>
-          <Logo locale={locale} variant={solid ? "vert" : "lin"} size={50} withName className="max-sm:[&>span]:hidden" />
+          <Logo locale={locale} size={40} />
         </div>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center gap-8 xl:flex" aria-label="Navigation principale">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`u-line text-[0.8rem] font-normal lowercase tracking-[0.12em] transition-colors duration-300 ${
+              className={`label u-line whitespace-nowrap transition-colors duration-300 ${
                 pathname?.startsWith(item.href) ? `nav-active ${linkActive}` : linkBase
               }`}
             >
@@ -96,8 +96,8 @@ export function Header({
                 key={l}
                 href={localeHref(l)}
                 aria-current={l === locale ? "true" : undefined}
-                className={`inline-flex h-6 min-w-6 items-center justify-center text-[0.7rem] lowercase tracking-[0.12em] transition-colors ${
-                  l === locale ? linkActive : solid ? "text-club/50 hover:text-club" : "text-lin/60 hover:text-lin"
+                className={`label inline-flex h-6 min-w-6 items-center justify-center !tracking-[0.15em] transition-colors ${
+                  l === locale ? linkActive : "text-ivory/50 hover:text-ivory"
                 }`}
               >
                 {l}
@@ -106,26 +106,24 @@ export function Header({
           </nav>
           <Link
             href={`/${locale}/contact`}
-            className={`hidden rounded-full px-6 py-2.5 text-[0.8rem] font-normal transition-colors duration-500 lg:inline-block ${
-              solid ? "bg-club text-lin hover:bg-nuit" : "bg-lin text-club hover:bg-ivory-soft"
-            }`}
+            className="btn-label hidden border border-ivory bg-ivory px-6 py-3 text-black transition-colors duration-500 hover:bg-transparent hover:text-ivory xl:inline-block"
           >
             {ctaLabel}
           </Link>
           <button
             type="button"
             onClick={() => setOpen(!open)}
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 xl:hidden"
             aria-label="Menu"
             aria-expanded={open}
           >
             <span
-              className={`h-px w-6 transition-transform duration-300 ${solid ? "bg-club" : "bg-lin"} ${
+              className={`h-px w-6 transition-transform duration-300 bg-ivory ${
                 open ? "translate-y-[3.5px] rotate-45" : ""
               }`}
             />
             <span
-              className={`h-px w-6 transition-transform duration-300 ${solid ? "bg-club" : "bg-lin"} ${
+              className={`h-px w-6 transition-transform duration-300 bg-ivory ${
                 open ? "-translate-y-[3.5px] -rotate-45" : ""
               }`}
             />
@@ -135,7 +133,7 @@ export function Header({
 
       {open && (
         <nav
-          className="nuit grain fixed inset-0 top-20 flex flex-col justify-between overflow-y-auto px-6 pt-10 pb-8 lg:hidden"
+          className="fixed inset-0 top-20 flex flex-col justify-between overflow-y-auto bg-black px-4 pt-10 pb-8 xl:hidden"
           aria-label="Navigation mobile"
         >
           <ul className="flex flex-col gap-4">
@@ -143,8 +141,8 @@ export function Header({
               <li key={item.href} className="menu-link" style={{ "--i": i } as React.CSSProperties}>
                 <Link
                   href={item.href}
-                  className={`display text-4xl leading-[1.15] transition-colors ${
-                    pathname?.startsWith(item.href) ? "text-laiton-clair" : "text-lin hover:text-laiton-clair"
+                  className={`t-h1 transition-colors ${
+                    pathname?.startsWith(item.href) ? "text-ivory" : "text-ivory/60 hover:text-ivory"
                   }`}
                 >
                   {item.label}
@@ -158,7 +156,7 @@ export function Header({
           >
             <Link
               href={`/${locale}/contact`}
-              className="inline-block rounded-full bg-lin px-7 py-3 text-[0.85rem] text-club"
+              className="btn-label inline-block bg-ivory px-7 py-4 text-black"
             >
               {ctaLabel}
             </Link>
@@ -167,8 +165,8 @@ export function Header({
                 <Link
                   key={l}
                   href={localeHref(l)}
-                  className={`inline-flex h-6 min-w-6 items-center justify-center text-[0.8rem] lowercase tracking-[0.12em] ${
-                    l === locale ? "text-laiton-clair" : "text-lin/60"
+                  className={`label inline-flex h-6 min-w-6 items-center justify-center !tracking-[0.15em] ${
+                    l === locale ? "text-ivory" : "text-ivory/50"
                   }`}
                 >
                   {l}

@@ -1,8 +1,8 @@
 import { Reveal } from "./Reveal";
 
 /**
- * En-tête de section standardisé : numéro Bodoni laiton, mention,
- * grand titre Bodoni. La couleur du titre hérite du fond de la section.
+ * En-tête de section standardisé : numéro, label,
+ * grand titre Inter Light. La couleur du titre hérite du fond de la section.
  */
 export function SectionHeader({
   num,
@@ -26,7 +26,7 @@ export function SectionHeader({
         </p>
         <h2 className="display text-3xl leading-[0.98] md:text-5xl">{title}</h2>
         {intro && (
-          <p className="mt-6 max-w-[65ch] text-base leading-[1.7] font-light opacity-75">{intro}</p>
+          <p className="mt-6 max-w-[65ch] text-base leading-[1.7] opacity-75">{intro}</p>
         )}
       </div>
     </Reveal>

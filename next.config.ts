@@ -22,6 +22,24 @@ const nextConfig: NextConfig = {
         destination: "/fr",
         permanent: false,
       },
+      // la Coupe du Monde 2026 a laissé sa place à la Ligue des champions
+      {
+        source: "/:locale(fr|en|es|pt)/evenements/coupe-du-monde-2026",
+        destination: "/:locale/evenements/champions-league",
+        permanent: true,
+      },
+      // Wimbledon, US Open et Roland-Garros sont regroupés dans le Tennis Tour
+      {
+        source: "/:locale(fr|en|es|pt)/evenements/:slug(wimbledon|us-open|roland-garros)",
+        destination: "/:locale/evenements/tennis-tour",
+        permanent: true,
+      },
+      // le service « Accès sur mesure » a été retiré
+      {
+        source: "/:locale(fr|en|es|pt)/services/sur-mesure",
+        destination: "/:locale/services",
+        permanent: true,
+      },
     ];
   },
 };

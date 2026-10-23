@@ -34,10 +34,9 @@ export function TitleReveal({
     let anim: gsap.core.Tween;
     try {
       if (mode === "scrub") {
-        // L'encre se pose : de sauge assombrie (AA grand texte garanti sur
-        // lin comme sur les fonds sombres) vers la couleur du contexte.
+        // L'encre se pose : de l'ivoire éteint vers la couleur du contexte.
         anim = gsap.from(words, {
-          color: "#6B856E",
+          color: "rgba(239, 232, 218, 0.22)",
           stagger: 0.08,
           ease: "none",
           scrollTrigger: { trigger: el, start: "top 80%", end: "top 30%", scrub: 0.4 },

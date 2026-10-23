@@ -9,6 +9,8 @@ import { Reveal } from "@/components/Reveal";
 import { GoldLink } from "@/components/GoldLink";
 import { JsonLd } from "@/components/JsonLd";
 import { ReadingCounter } from "@/components/ReadingCounter";
+import { articleVisual } from "@/lib/univers";
+import { PosterHero } from "@/components/poster";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => articles.map((a) => ({ locale, slug: a.slug })));
@@ -48,6 +50,7 @@ export default async function ArticlePage({
   if (!article) notFound();
   const dict = getDict(locale);
   const d = dict.guide;
+  const visual = articleVisual(slug);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -66,55 +69,54 @@ export default async function ArticlePage({
       <JsonLd data={articleJsonLd} />
       <ReadingCounter />
 
-      <article className="px-5 pt-40 pb-28 md:px-8">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
+      <PosterHero locale={locale}
+        visual={visual}
+        label={`${d.published} ${formatDate(article.date, locale)} · ${article.readingMinutes} ${d.reading}`}
+        title={article.title[locale]}
+        chapter="05"
+        footer={`AZ Experiences — ${dict.nav.guide}`}
+        short
+      />
+
+      <article className="py-24">
+        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+          <div className="md:col-span-3">
             <Link
               href={`/${locale}/guide`}
-              className="mb-10 inline-block text-[0.65rem] tracking-[0.12em] lowercase text-ink-dim transition-colors hover:text-laiton"
+              className="label text-ivory transition-opacity hover:opacity-60"
             >
               ← {dict.cta.backToGuide}
             </Link>
-            <p className="eyebrow mb-5">
-              {d.published} {formatDate(article.date, locale)}, {article.readingMinutes}{" "}
-              {d.reading}
-            </p>
-            <h1 className="display text-4xl leading-[1.08] text-club md:text-6xl">
-              {article.title[locale]}
-            </h1>
-            <p className="mt-7 text-lg leading-relaxed text-ink-dim">
-              {article.excerpt[locale]}
-            </p>
-            <div className="filet my-12" />
-          </Reveal>
-
-          <Reveal delay={150}>
-            <div className="flex flex-col gap-6">
-              {article.body[locale].map((block, i) =>
-                block.h ? (
-                  <h2 key={i} className="display mt-6 text-2xl text-club md:text-3xl">
-                    {block.h}
-                  </h2>
-                ) : (
-                  <p key={i} className="text-base leading-relaxed text-club/85">
-                    {block.p}
-                  </p>
-                )
-              )}
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <div className="mt-16 nuit grain rounded-[2px] p-10 text-center">
-              <h2 className="display mb-3 text-2xl text-lin">{d.ctaTitle}</h2>
-              <p className="mx-auto mb-7 max-w-md text-sm leading-[1.7] font-light text-lin/80">
-                {d.ctaText}
-              </p>
-              <GoldLink href={`/${locale}/contact`}>
-                {dict.cta.request}
-              </GoldLink>
-            </div>
-          </Reveal>
+          </div>
+          <div className="md:col-span-7 md:col-start-5">
+            <Reveal>
+              <p className="t-h2 text-ivory">{article.excerpt[locale]}</p>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="mt-12 flex flex-col gap-6">
+                {article.body[locale].map((block, i) =>
+                  block.h ? (
+                    <h2 key={i} className="t-h2 mt-6 text-ivory">
+                      {block.h}
+                    </h2>
+                  ) : (
+                    <p key={i} className="t-body measure text-ivory/80">
+                      {block.p}
+                    </p>
+                  )
+                )}
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="mt-16 bg-graphite p-8">
+                <h2 className="t-h3 mb-3 text-ivory">{d.ctaTitle}</h2>
+                <p className="t-small mb-8 text-ivory/80">{d.ctaText}</p>
+                <GoldLink href={`/${locale}/contact`} solid>
+                  {dict.cta.request}
+                </GoldLink>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </article>
     </>

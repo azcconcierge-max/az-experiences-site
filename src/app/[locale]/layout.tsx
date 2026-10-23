@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Hanken_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { getDict, isLocale, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
@@ -7,27 +7,19 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/JsonLd";
-import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { MobileBar } from "@/components/MobileBar";
-import { Cursor } from "@/components/Cursor";
-import { ScrollProgress } from "@/components/ScrollProgress";
 import { GlobalDetails } from "@/components/GlobalDetails";
-import { StickyCta } from "@/components/StickyCta";
+import { SideIndex } from "@/components/SideIndex";
+import { RevealObserver } from "@/components/RevealObserver";
 import "../globals.css";
 
-const bodoni = Bodoni_Moda({
+// Une seule famille : Thin 100, Light 300, Regular 400, Medium 500 (brand book p.18)
+const inter = Inter({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["100", "300", "400", "500"],
   style: "normal",
-  variable: "--font-bodoni",
-  display: "swap",
-});
-
-const hanken = Hanken_Grotesk({
-  subsets: ["latin"],
-  weight: ["300", "400"],
-  variable: "--font-hanken",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -115,31 +107,28 @@ export default async function LocaleLayout({
   ];
 
   return (
-    <html lang={locale} className={`${bodoni.variable} ${hanken.variable}`}>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+      <head>
+        {/* active les apparitions seulement si le JavaScript tourne */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
+        <div aria-hidden="true" className="read-progress" />
+        <RevealObserver />
         <SmoothScroll />
-        <ScrollProgress />
         <GlobalDetails />
-        <Preloader />
         <JsonLd data={organizationJsonLd} />
         <Header locale={locale} nav={nav} ctaLabel={dict.cta.request} />
+        <SideIndex
+          locale={locale}
+          items={[...nav, { href: `/${locale}/contact`, label: dict.nav.contact }]}
+        />
         <main>{children}</main>
         <Footer locale={locale as Locale} dict={dict} />
         <div className="hidden md:block">
           <WhatsAppFloat label={dict.cta.whatsapp} />
-          <StickyCta href={`/${locale}/contact`} label={dict.cta.requestAccess} />
         </div>
         <MobileBar locale={locale} requestLabel={dict.cta.request} />
-        <Cursor labels={{ voir: dict.cta.cursorSee, glisser: dict.cta.cursorDrag }} />
-        {/* Grain cinéma, texture de la maison */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 z-[35] opacity-[0.05] mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          }}
-        />
       </body>
     </html>
   );

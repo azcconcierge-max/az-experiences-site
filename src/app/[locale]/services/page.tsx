@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { serviceVisual, visuals } from "@/lib/univers";
 import { getDict, type Locale } from "@/i18n";
 import { services } from "@/data/services";
 import { pageAlternates } from "@/lib/seo";
-import { TitleReveal, LineMask } from "@/components/TitleReveal";
-import { ServicesIndex } from "@/components/ServicesIndex";
+import { PosterCard, PosterHero } from "@/components/poster";
+import { Reveal } from "@/components/Reveal";
 import { AskSection } from "@/components/AskSection";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
@@ -48,25 +49,31 @@ export default async function ServicesPage({
     <>
       <JsonLd data={servicesJsonLd} />
 
-      {/* ---- Index éditorial : un titre, une phrase, neuf lignes ---- */}
-      <section className="px-5 pt-36 pb-24 md:px-10 md:pt-44 md:pb-32">
-        <div className="mx-auto max-w-[1440px]">
-          <LineMask delay={100}>
-            <p className="eyebrow">{d.eyebrow}</p>
-          </LineMask>
-          <h1 className="display mt-5 text-[clamp(2.8rem,7vw,7.5rem)] leading-[0.98]">
-            <LineMask delay={250}>
-              <span className="block">{d.title}</span>
-            </LineMask>
-          </h1>
-          <LineMask delay={420}>
-            <p className="mt-7 max-w-xl text-base leading-[1.7] font-light text-ink-dim md:text-lg">
-              {d.introShort}
-            </p>
-          </LineMask>
-          <div className="mt-16 md:mt-24">
-            <ServicesIndex locale={locale} />
-          </div>
+      {/* ---- Un titre, une phrase, puis un poster par service ---- */}
+      <PosterHero locale={locale}
+        visual={visuals.palaces}
+        label={d.eyebrow}
+        title={d.title}
+        chapter="02"
+        footer={`AZ Experiences — ${dict.nav.services}`}
+      />
+      <section className="pt-24 pb-12">
+        <div className="wrap">
+          <p className="t-h2 max-w-[40rem] text-ivory">{d.introShort}</p>
+        </div>
+      </section>
+      <section className="pb-24">
+        <div className="wrap grid gap-6 md:grid-cols-3">
+          {services.map((s, i) => (
+            <Reveal key={s.slug} delay={(i % 3) * 80} className="h-full">
+              <PosterCard locale={locale}
+                href={`/${locale}/services/${s.slug}`}
+                visual={serviceVisual(s.slug)}
+                label={String(i + 1).padStart(2, "0")}
+                title={s.title[locale]}
+              />
+            </Reveal>
+          ))}
         </div>
       </section>
 

@@ -1,15 +1,9 @@
-"use client";
-
-import { useEffect, useRef, type ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import type { CSSProperties, ReactNode } from "react";
 
 /**
- * Fondu discret à l'entrée dans l'écran (GSAP).
- * Le contenu est rendu visible côté serveur : aucun texte caché
- * pour les robots ni en cas d'échec du JavaScript.
+ * Bloc qui apparaît à l'entrée dans l'écran : du flou au net, une légère
+ * montée (classe `.reveal`, pilotée par RevealObserver). Sans JavaScript ou
+ * si l'observateur échoue, le contenu reste visible (garde-fou CSS).
  */
 export function Reveal({
   children,
@@ -20,43 +14,8 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let anim: gsap.core.Tween | null = null;
-    try {
-      anim = gsap.from(el, {
-        autoAlpha: 0,
-        y: 22,
-        duration: 0.9,
-        delay: delay / 1000,
-        ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 88%", once: true },
-      });
-    } catch {
-      gsap.set(el, { clearProps: "all" });
-      return;
-    }
-    // Garde-fou : si le déclencheur ne part jamais (JS dégradé) alors que
-    // l'élément est à l'écran, on force l'apparition.
-    const failsafe = window.setTimeout(() => {
-      if (anim && anim.progress() === 0 && el.getBoundingClientRect().top < window.innerHeight) {
-        anim.progress(1);
-      }
-    }, 3000);
-    return () => {
-      window.clearTimeout(failsafe);
-      anim?.scrollTrigger?.kill();
-      anim?.kill();
-    };
-  }, [delay]);
-
   return (
-    <div ref={ref} className={className}>
+    <div className={`reveal ${className}`} style={{ "--d": `${delay}ms` } as CSSProperties}>
       {children}
     </div>
   );

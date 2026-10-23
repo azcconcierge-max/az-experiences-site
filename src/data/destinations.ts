@@ -4,7 +4,7 @@ import type { L, Locale } from "@/i18n";
  * LES DESTINATIONS · les territoires où la maison a ses habitudes.
  * Chaque destination = storytelling + guide en 4 rubriques :
  * vivre (expériences), tables (restaurants), verres (bars), nuit (clubs).
- * Toutes les adresses se réservent via la maison. Photo : /images/dest-<slug>.jpg
+ * Toutes les adresses se réservent via la maison. Visuel : src/lib/univers.ts
  */
 export type GuideCategory = "vivre" | "tables" | "verres" | "nuit";
 
@@ -868,6 +868,429 @@ export const destinations: Destination[] = [
       en: ["Manhattan's private tables and clubs", "US Open, NBA and Broadway from the front row", "Suites overlooking Central Park"],
       es: ["Mesas y clubes privados de Manhattan", "US Open, NBA y Broadway en primera fila", "Suites con vistas a Central Park"],
       pt: ["Mesas e clubes privados de Manhattan", "US Open, NBA e Broadway na primeira fila", "Suites com vista para o Central Park"],
+    },
+  },
+  {
+    slug: "dubai",
+    name: "Dubai",
+    region: { fr: "Émirats arabes unis", en: "United Arab Emirates", es: "Emiratos Árabes Unidos", pt: "Emirados Árabes Unidos" },
+    tagline: {
+      fr: "La ville qui réinvente l'exception chaque saison.",
+      en: "The city that reinvents the exceptional every season.",
+      es: "La ciudad que reinventa lo excepcional cada temporada.",
+      pt: "A cidade que reinventa o excecional a cada estação.",
+    },
+    intro: {
+      fr: "À Dubaï, tout se réserve longtemps à l'avance : les tables qui comptent, les suites face au Golfe, les soirées du désert. Nous ouvrons les portes avant qu'elles ne se ferment, avec la discrétion que la ville exige.",
+      en: "In Dubai, everything is booked long in advance: the tables that matter, the suites facing the Gulf, the desert evenings. We open the doors before they close, with the discretion the city demands.",
+      es: "En Dubái, todo se reserva con mucha antelación: las mesas que cuentan, las suites frente al Golfo, las veladas del desierto. Abrimos las puertas antes de que se cierren, con la discreción que la ciudad exige.",
+      pt: "No Dubai, tudo se reserva com muita antecedência: as mesas que contam, as suites de frente para o Golfo, os serões no deserto. Abrimos as portas antes que se fechem, com a discrição que a cidade exige.",
+    },
+    guide: {
+      vivre: [
+        {
+          name: "Dîner privé dans le désert",
+          text: {
+            fr: "Une table dressée dans les dunes au coucher du soleil, loin de tout.",
+            en: "A table set in the dunes at sunset, far from everything.",
+            es: "Una mesa servida en las dunas al atardecer, lejos de todo.",
+            pt: "Uma mesa posta nas dunas ao pôr do sol, longe de tudo.",
+          },
+        },
+        {
+          name: "La Marina en yacht",
+          text: {
+            fr: "Croisière privée entre la Marina et Palm Jumeirah, skyline en toile de fond.",
+            en: "A private cruise between the Marina and Palm Jumeirah, the skyline as a backdrop.",
+            es: "Crucero privado entre la Marina y Palm Jumeirah, con el skyline de fondo.",
+            pt: "Cruzeiro privado entre a Marina e Palm Jumeirah, com o skyline como pano de fundo.",
+          },
+        },
+        {
+          name: "Burj Khalifa au sommet",
+          text: {
+            fr: "Les étages les plus hauts de la tour, à l'heure où la ville s'allume.",
+            en: "The tower's highest floors, at the hour the city lights up.",
+            es: "Las plantas más altas de la torre, a la hora en que la ciudad se ilumina.",
+            pt: "Os andares mais altos da torre, à hora em que a cidade se ilumina.",
+          },
+        },
+      ],
+      tables: [
+        {
+          name: "Ossiano",
+          text: {
+            fr: "Un dîner sous l'eau, face à l'aquarium géant : la table la plus singulière de la ville.",
+            en: "Dinner underwater, facing the giant aquarium: the city's most singular table.",
+            es: "Una cena bajo el agua, frente al acuario gigante: la mesa más singular de la ciudad.",
+            pt: "Um jantar debaixo de água, diante do aquário gigante: a mesa mais singular da cidade.",
+          },
+        },
+        {
+          name: "Trèsind Studio",
+          text: {
+            fr: "Quelques couverts seulement pour une cuisine indienne réinventée, très demandée.",
+            en: "Only a handful of covers for reinvented Indian cuisine, in high demand.",
+            es: "Solo unos pocos cubiertos para una cocina india reinventada, muy solicitada.",
+            pt: "Apenas alguns lugares para uma cozinha indiana reinventada, muito procurada.",
+          },
+        },
+        {
+          name: "Il Ristorante – Niko Romito",
+          text: {
+            fr: "L'Italie la plus pure, face à la mer, sur l'île de Jumeira Bay.",
+            en: "Italy at its purest, facing the sea, on Jumeira Bay island.",
+            es: "Italia en su forma más pura, frente al mar, en la isla de Jumeira Bay.",
+            pt: "A Itália no seu estado mais puro, de frente para o mar, na ilha de Jumeira Bay.",
+          },
+        },
+      ],
+      verres: [
+        {
+          name: "Gold On 27",
+          text: {
+            fr: "Cocktails au 27e étage du Burj Al Arab, le Golfe à perte de vue.",
+            en: "Cocktails on the 27th floor of the Burj Al Arab, the Gulf as far as the eye can see.",
+            es: "Cócteles en la planta 27 del Burj Al Arab, el Golfo hasta donde alcanza la vista.",
+            pt: "Cocktails no 27.º andar do Burj Al Arab, o Golfo a perder de vista.",
+          },
+        },
+        {
+          name: "Cé La Vi",
+          text: {
+            fr: "Le rooftop face à la tour, pour le premier verre de la soirée.",
+            en: "The rooftop facing the tower, for the evening's first drink.",
+            es: "El rooftop frente a la torre, para la primera copa de la noche.",
+            pt: "O rooftop de frente para a torre, para o primeiro copo da noite.",
+          },
+        },
+        {
+          name: "Zuma",
+          text: {
+            fr: "Le rendez-vous du DIFC, où les soirées commencent sans jamais vraiment finir.",
+            en: "The DIFC meeting point, where evenings begin and never quite end.",
+            es: "El punto de encuentro del DIFC, donde las noches empiezan sin terminar del todo.",
+            pt: "O ponto de encontro do DIFC, onde as noites começam sem nunca acabar de verdade.",
+          },
+        },
+      ],
+      nuit: [
+        {
+          name: "WHITE Dubai",
+          text: {
+            fr: "Le club à ciel ouvert sur les toits de Meydan, au son des plus grands DJ.",
+            en: "The open-air club on the rooftops of Meydan, to the sound of the biggest DJs.",
+            es: "El club al aire libre en las azoteas de Meydan, con los mejores DJ.",
+            pt: "O clube ao ar livre nos terraços de Meydan, ao som dos maiores DJ.",
+          },
+        },
+        {
+          name: "Soho Garden",
+          text: {
+            fr: "Plusieurs salles, plusieurs ambiances, une seule nuit qui s'étire.",
+            en: "Several rooms, several moods, one night that stretches on.",
+            es: "Varias salas, varios ambientes, una sola noche que se alarga.",
+            pt: "Várias salas, vários ambientes, uma só noite que se prolonga.",
+          },
+        },
+        {
+          name: "Base Dubai",
+          text: {
+            fr: "Le grand club du Design District, quand la ville veut danser.",
+            en: "The Design District's big club, for when the city wants to dance.",
+            es: "El gran club del Design District, cuando la ciudad quiere bailar.",
+            pt: "O grande clube do Design District, quando a cidade quer dançar.",
+          },
+        },
+      ],
+    },
+    offers: {
+      fr: ["Villas et suites face au Golfe", "Désert, yacht et hélicoptère privés", "Tables et clubs les plus demandés"],
+      en: ["Villas and suites facing the Gulf", "Private desert, yacht and helicopter", "The most sought-after tables and clubs"],
+      es: ["Villas y suites frente al Golfo", "Desierto, yate y helicóptero privados", "Las mesas y clubes más solicitados"],
+      pt: ["Villas e suites de frente para o Golfo", "Deserto, iate e helicóptero privados", "As mesas e clubes mais procurados"],
+    },
+  },
+  {
+    slug: "london",
+    name: "London",
+    region: { fr: "Royaume-Uni", en: "United Kingdom", es: "Reino Unido", pt: "Reino Unido" },
+    tagline: {
+      fr: "La ville des clubs fermés et des portes discrètes.",
+      en: "The city of closed clubs and discreet doors.",
+      es: "La ciudad de los clubes cerrados y las puertas discretas.",
+      pt: "A cidade dos clubes fechados e das portas discretas.",
+    },
+    intro: {
+      fr: "À Londres, les meilleures adresses ne s'affichent pas : clubs privés de Mayfair, tables réservées des mois à l'avance, loges des grands rendez-vous. Nous connaissons les portes, et ceux qui les tiennent.",
+      en: "In London, the best addresses are never advertised: Mayfair's private clubs, tables booked months ahead, boxes at the great occasions. We know the doors, and those who hold them.",
+      es: "En Londres, las mejores direcciones no se anuncian: clubes privados de Mayfair, mesas reservadas con meses de antelación, palcos en las grandes citas. Conocemos las puertas, y a quienes las guardan.",
+      pt: "Em Londres, as melhores moradas não se anunciam: clubes privados de Mayfair, mesas reservadas com meses de antecedência, camarotes nos grandes encontros. Conhecemos as portas, e quem as guarda.",
+    },
+    guide: {
+      vivre: [
+        {
+          name: "Royal Ascot",
+          text: {
+            fr: "Les courses de juin dans l'enceinte royale, tenue de rigueur.",
+            en: "June racing inside the Royal Enclosure, dress code required.",
+            es: "Las carreras de junio en el recinto real, etiqueta obligatoria.",
+            pt: "As corridas de junho no recinto real, com código de vestuário.",
+          },
+        },
+        {
+          name: "Mayfair en privé",
+          text: {
+            fr: "Galeries, tailleurs de Savile Row et maisons de joaillerie, sur rendez-vous.",
+            en: "Galleries, Savile Row tailors and jewellery houses, by appointment.",
+            es: "Galerías, sastres de Savile Row y casas de joyería, con cita previa.",
+            pt: "Galerias, alfaiates de Savile Row e casas de joalharia, por marcação.",
+          },
+        },
+        {
+          name: "La Tamise en bateau privé",
+          text: {
+            fr: "De Westminster à Greenwich, la ville vue depuis l'eau.",
+            en: "From Westminster to Greenwich, the city seen from the water.",
+            es: "De Westminster a Greenwich, la ciudad vista desde el agua.",
+            pt: "De Westminster a Greenwich, a cidade vista da água.",
+          },
+        },
+      ],
+      tables: [
+        {
+          name: "Core by Clare Smyth",
+          text: {
+            fr: "La grande table de Notting Hill, l'une des plus demandées de la ville.",
+            en: "Notting Hill's great table, one of the most sought-after in the city.",
+            es: "La gran mesa de Notting Hill, una de las más solicitadas de la ciudad.",
+            pt: "A grande mesa de Notting Hill, uma das mais procuradas da cidade.",
+          },
+        },
+        {
+          name: "The Ledbury",
+          text: {
+            fr: "Une cuisine précise, une salle intime, des réservations rares.",
+            en: "Precise cooking, an intimate room, rare reservations.",
+            es: "Una cocina precisa, una sala íntima, reservas escasas.",
+            pt: "Uma cozinha precisa, uma sala íntima, reservas raras.",
+          },
+        },
+        {
+          name: "Scott's",
+          text: {
+            fr: "Fruits de mer et terrasse de Mount Street : le classique de Mayfair.",
+            en: "Seafood and the Mount Street terrace: the Mayfair classic.",
+            es: "Marisco y la terraza de Mount Street: el clásico de Mayfair.",
+            pt: "Marisco e o terraço de Mount Street: o clássico de Mayfair.",
+          },
+        },
+      ],
+      verres: [
+        {
+          name: "Connaught Bar",
+          text: {
+            fr: "Le martini servi au chariot, parmi les meilleurs bars du monde.",
+            en: "The martini served from the trolley, among the world's best bars.",
+            es: "El martini servido en carrito, entre los mejores bares del mundo.",
+            pt: "O martini servido no carrinho, entre os melhores bares do mundo.",
+          },
+        },
+        {
+          name: "American Bar",
+          text: {
+            fr: "Le bar Art déco du Savoy, où le cocktail a ses lettres de noblesse.",
+            en: "The Savoy's Art Deco bar, where the cocktail earned its pedigree.",
+            es: "El bar Art déco del Savoy, donde el cóctel se ganó su nobleza.",
+            pt: "O bar Art déco do Savoy, onde o cocktail ganhou os seus pergaminhos.",
+          },
+        },
+        {
+          name: "Satan's Whiskers",
+          text: {
+            fr: "Une petite adresse de Bethnal Green que les initiés gardent pour eux.",
+            en: "A small Bethnal Green spot that insiders keep to themselves.",
+            es: "Una pequeña dirección de Bethnal Green que los iniciados guardan para sí.",
+            pt: "Uma pequena morada de Bethnal Green que os iniciados guardam para si.",
+          },
+        },
+      ],
+      nuit: [
+        {
+          name: "Annabel's",
+          text: {
+            fr: "Le club privé de Berkeley Square, membres et invités seulement.",
+            en: "Berkeley Square's private club, members and guests only.",
+            es: "El club privado de Berkeley Square, solo socios e invitados.",
+            pt: "O clube privado de Berkeley Square, só membros e convidados.",
+          },
+        },
+        {
+          name: "Tramp",
+          text: {
+            fr: "Une institution de Jermyn Street, discrète depuis des décennies.",
+            en: "A Jermyn Street institution, discreet for decades.",
+            es: "Una institución de Jermyn Street, discreta desde hace décadas.",
+            pt: "Uma instituição de Jermyn Street, discreta há décadas.",
+          },
+        },
+        {
+          name: "Loulou's",
+          text: {
+            fr: "Sous le 5 Hertford Street, la nuit la plus fermée de Mayfair.",
+            en: "Beneath 5 Hertford Street, Mayfair's most closed night.",
+            es: "Bajo el 5 Hertford Street, la noche más cerrada de Mayfair.",
+            pt: "Debaixo do 5 Hertford Street, a noite mais fechada de Mayfair.",
+          },
+        },
+      ],
+    },
+    offers: {
+      fr: ["Clubs privés de Mayfair", "Royal Ascot, Premier League et West End au premier rang", "Suites à Mayfair et Knightsbridge"],
+      en: ["Mayfair's private clubs", "Royal Ascot, Premier League and the West End from the front row", "Suites in Mayfair and Knightsbridge"],
+      es: ["Clubes privados de Mayfair", "Royal Ascot, Premier League y West End en primera fila", "Suites en Mayfair y Knightsbridge"],
+      pt: ["Clubes privados de Mayfair", "Royal Ascot, Premier League e West End na primeira fila", "Suites em Mayfair e Knightsbridge"],
+    },
+  },
+  {
+    slug: "miami",
+    name: "Miami",
+    region: { fr: "États-Unis", en: "United States", es: "Estados Unidos", pt: "Estados Unidos" },
+    tagline: {
+      fr: "La ville où la saison ne s'arrête jamais.",
+      en: "The city where the season never ends.",
+      es: "La ciudad donde la temporada nunca termina.",
+      pt: "A cidade onde a temporada nunca acaba.",
+    },
+    intro: {
+      fr: "À Miami, l'hiver est la haute saison : yachts sur Biscayne Bay, foires d'art, Grand Prix et tables complètes des semaines à l'avance. Nous réservons ce qui ne se trouve plus, de South Beach au Design District.",
+      en: "In Miami, winter is high season: yachts on Biscayne Bay, art fairs, the Grand Prix and tables booked weeks ahead. We secure what can no longer be found, from South Beach to the Design District.",
+      es: "En Miami, el invierno es temporada alta: yates en Biscayne Bay, ferias de arte, el Gran Premio y mesas completas con semanas de antelación. Reservamos lo que ya no se encuentra, de South Beach al Design District.",
+      pt: "Em Miami, o inverno é a época alta: iates na Biscayne Bay, feiras de arte, o Grande Prémio e mesas esgotadas com semanas de antecedência. Reservamos o que já não se encontra, de South Beach ao Design District.",
+    },
+    guide: {
+      vivre: [
+        {
+          name: "Biscayne Bay en yacht",
+          text: {
+            fr: "Une journée en mer entre les îles, retour au coucher du soleil.",
+            en: "A day at sea between the islands, back at sunset.",
+            es: "Un día en el mar entre las islas, regreso al atardecer.",
+            pt: "Um dia no mar entre as ilhas, regresso ao pôr do sol.",
+          },
+        },
+        {
+          name: "Art Basel Miami Beach",
+          text: {
+            fr: "La foire de décembre, ses vernissages et ses dîners privés.",
+            en: "The December fair, its previews and private dinners.",
+            es: "La feria de diciembre, sus inauguraciones y cenas privadas.",
+            pt: "A feira de dezembro, as suas inaugurações e jantares privados.",
+          },
+        },
+        {
+          name: "Le Design District en privé",
+          text: {
+            fr: "Boutiques et galeries ouvertes pour vous, avant ou après l'heure.",
+            en: "Boutiques and galleries opened for you, before or after hours.",
+            es: "Boutiques y galerías abiertas para usted, antes o después del horario.",
+            pt: "Boutiques e galerias abertas para si, antes ou depois da hora.",
+          },
+        },
+      ],
+      tables: [
+        {
+          name: "Carbone Miami",
+          text: {
+            fr: "La table italo-américaine la plus convoitée de South Beach.",
+            en: "South Beach's most coveted Italian-American table.",
+            es: "La mesa italoamericana más codiciada de South Beach.",
+            pt: "A mesa ítalo-americana mais cobiçada de South Beach.",
+          },
+        },
+        {
+          name: "Le Jardinier",
+          text: {
+            fr: "Une cuisine française légère au cœur du Design District.",
+            en: "Light French cooking in the heart of the Design District.",
+            es: "Una cocina francesa ligera en el corazón del Design District.",
+            pt: "Uma cozinha francesa leve no coração do Design District.",
+          },
+        },
+        {
+          name: "Joe's Stone Crab",
+          text: {
+            fr: "L'institution de South Pointe, depuis plus d'un siècle.",
+            en: "The South Pointe institution, for more than a century.",
+            es: "La institución de South Pointe, desde hace más de un siglo.",
+            pt: "A instituição de South Pointe, há mais de um século.",
+          },
+        },
+      ],
+      verres: [
+        {
+          name: "Sweet Liberty",
+          text: {
+            fr: "Le bar de South Beach que les barmen du monde entier viennent visiter.",
+            en: "The South Beach bar that bartenders from around the world come to visit.",
+            es: "El bar de South Beach que visitan los bartenders de todo el mundo.",
+            pt: "O bar de South Beach que os bartenders de todo o mundo vêm visitar.",
+          },
+        },
+        {
+          name: "Broken Shaker",
+          text: {
+            fr: "Cocktails au bord de la piscine, dans un jardin tropical.",
+            en: "Poolside cocktails in a tropical garden.",
+            es: "Cócteles junto a la piscina, en un jardín tropical.",
+            pt: "Cocktails à beira da piscina, num jardim tropical.",
+          },
+        },
+        {
+          name: "Faena Hotel",
+          text: {
+            fr: "Le salon rouge et or du Faena, pour le verre avant la nuit.",
+            en: "The Faena's red and gold lounge, for the drink before the night.",
+            es: "El salón rojo y dorado del Faena, para la copa antes de la noche.",
+            pt: "O salão vermelho e dourado do Faena, para o copo antes da noite.",
+          },
+        },
+      ],
+      nuit: [
+        {
+          name: "LIV",
+          text: {
+            fr: "Le club du Fontainebleau, où se croisent sport et musique.",
+            en: "The Fontainebleau's club, where sport and music meet.",
+            es: "El club del Fontainebleau, donde se cruzan deporte y música.",
+            pt: "O clube do Fontainebleau, onde se cruzam desporto e música.",
+          },
+        },
+        {
+          name: "E11EVEN",
+          text: {
+            fr: "Le club qui ne ferme jamais, au cœur de Downtown.",
+            en: "The club that never closes, in the heart of Downtown.",
+            es: "El club que nunca cierra, en el corazón de Downtown.",
+            pt: "O clube que nunca fecha, no coração de Downtown.",
+          },
+        },
+        {
+          name: "Club Space",
+          text: {
+            fr: "La terrasse au lever du soleil, pour ceux qui finissent tard.",
+            en: "The terrace at sunrise, for those who finish late.",
+            es: "La terraza al amanecer, para quienes terminan tarde.",
+            pt: "O terraço ao nascer do sol, para quem acaba tarde.",
+          },
+        },
+      ],
+    },
+    offers: {
+      fr: ["Villas et yachts à Miami Beach", "Art Basel, Grand Prix et NBA au premier rang", "Tables et clubs les plus demandés"],
+      en: ["Villas and yachts in Miami Beach", "Art Basel, the Grand Prix and the NBA from the front row", "The most sought-after tables and clubs"],
+      es: ["Villas y yates en Miami Beach", "Art Basel, el Gran Premio y la NBA en primera fila", "Las mesas y clubes más solicitados"],
+      pt: ["Villas e iates em Miami Beach", "Art Basel, o Grande Prémio e a NBA na primeira fila", "As mesas e clubes mais procurados"],
     },
   },
 ];
