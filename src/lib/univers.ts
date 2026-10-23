@@ -57,6 +57,7 @@ export const visuals = {
   dubai: place("AZ-23-dubai", "Dubai"),
   london: place("AZ-24-london", "London"),
   miami: place("AZ-25-miami", "Miami"),
+  guideMap: place("AZ-26-guide-map-monaco", "Monaco"),
   usOpen: scene("AZ-01-us-open-court", "#13256B", "US Open"),
   superBowl: scene("AZ-02-super-bowl", "#17301F", "Super Bowl"),
   monacoGrandPrix: scene("AZ-03-monaco-grand-prix", "#2C302E", "Grand Prix de Monaco", "Monaco Grand Prix", "Gran Premio de Mónaco", "Grande Prémio do Mónaco"),
@@ -94,6 +95,7 @@ const ALTS: Record<keyof typeof visuals, L> = {
   dubai: alt("Burj Khalifa au-dessus de Downtown Dubaï au crépuscule, reflétée dans l'eau", "Burj Khalifa above Downtown Dubai at dusk, reflected in the water", "Burj Khalifa sobre Downtown Dubái al atardecer, reflejado en el agua", "Burj Khalifa sobre a Downtown Dubai ao entardecer, refletido na água"),
   london: alt("Big Ben illuminé la nuit sous la pluie, un bus rouge à impériale qui passe", "Big Ben lit at night in the rain, a red double-decker bus passing", "Big Ben iluminado de noche bajo la lluvia, un autobús rojo de dos pisos que pasa", "Big Ben iluminado à noite à chuva, um autocarro vermelho de dois andares a passar"),
   miami: alt("Palmiers et skyline de Miami de l'autre côté de la baie, au crépuscule rose", "Palm trees and the Miami skyline across the bay at a pink dusk", "Palmeras y el skyline de Miami al otro lado de la bahía, en un atardecer rosado", "Palmeiras e o skyline de Miami do outro lado da baía, num entardecer cor-de-rosa"),
+  guideMap: alt("Carte de Monaco la nuit : le port, le Rocher et quelques adresses en ambre", "Night map of Monaco: the port, the Rock and a few addresses lit in amber", "Mapa nocturno de Mónaco: el puerto, la Roca y algunas direcciones en ámbar", "Mapa noturno do Mónaco: o porto, o Rochedo e alguns endereços em âmbar"),
   newYork: alt("Skyline de Manhattan se reflétant dans le fleuve au crépuscule", "Manhattan skyline reflected in the river at dusk", "Skyline de Manhattan reflejado en el río al atardecer", "Skyline de Manhattan refletido no rio ao entardecer"),
   usOpen: alt("Court de tennis bleu la nuit, lignes et balle en mouvement", "Blue tennis court at night, lines and a ball in motion", "Pista de tenis azul de noche, líneas y bola en movimiento", "Court de ténis azul à noite, linhas e bola em movimento"),
   superBowl: alt("Poteaux jaunes devant le terrain, feux d'artifice au-dessus du stade", "Yellow goalposts before the field, fireworks above the stadium", "Postes amarillos ante el campo, fuegos artificiales sobre el estadio", "Postes amarelos diante do campo, fogo de artifício sobre o estádio"),
@@ -182,7 +184,7 @@ const byGuide: Record<string, Visual> = {
 const byArticle: Record<string, Visual> = {
   "obtenir-billets-evenement-sold-out": visuals.concerts,
   "grand-prix-monaco-vip": visuals.formulaOne,
-  "monaco-adresses": visuals.monaco,
+  "monaco-adresses": visuals.guideMap,
 };
 
 export const serviceVisual = (slug: string) => byService[slug] ?? visuals.palaces;
