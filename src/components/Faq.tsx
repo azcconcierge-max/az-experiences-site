@@ -3,19 +3,19 @@ type Item = { q: string; a: string };
 /** FAQ accessible (details/summary), balisée en Schema.org FAQPage. */
 export function Faq({ items }: { items: Item[] }) {
   return (
-    <div className="divide-y divide-laiton/25 border-y border-laiton/25">
+    <div className="divide-y divide-graphite border-y border-graphite">
       {items.map((item) => (
         <details key={item.q} className="group">
-          <summary className="flex cursor-pointer items-center justify-between gap-6 py-6 text-left text-base font-light transition-opacity hover:opacity-70 [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer items-center justify-between gap-6 py-5 text-left t-body text-ivory transition-opacity hover:opacity-70 [&::-webkit-details-marker]:hidden">
             <span>{item.q}</span>
             <span
               aria-hidden="true"
-              className="text-laiton transition-transform duration-300 group-open:rotate-45"
+              className="text-stone transition-transform duration-300 group-open:rotate-45"
             >
               +
             </span>
           </summary>
-          <p className="max-w-[65ch] pb-6 text-sm leading-[1.7] font-light opacity-75">{item.a}</p>
+          <p className="t-small measure pb-6 text-ivory/70">{item.a}</p>
         </details>
       ))}
     </div>

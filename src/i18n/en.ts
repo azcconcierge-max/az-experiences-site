@@ -28,7 +28,7 @@ export const en: Dict = {
   home: {
     metaTitle: "AZ Experiences | Private concierge & access to sold-out events",
     metaDescription:
-      "AZ Experiences, Paris-based private concierge specialised in access to sold-out events: VIP tickets, hospitality, private jet, yachts, security, bespoke travel. World Cup, Monaco F1, Super Bowl, Fashion Week.",
+      "AZ Experiences, Paris-based private concierge specialised in access to sold-out events: VIP tickets, hospitality, private jet, yachts, security, bespoke travel. Champions League, Monaco F1, Super Bowl, Fashion Week.",
     heroEyebrow: "Private concierge, Paris · Worldwide",
     heroLine1: "Access",
     heroLine2: "is our craft.",
@@ -81,7 +81,7 @@ export const en: Dict = {
       },
       {
         q: "Can you get tickets for a sold-out event?",
-        a: "Yes, that is precisely our speciality. Through our network of official holders and hospitality partners, we secure access to most sold-out events: World Cup, Monaco Grand Prix, Super Bowl, Wimbledon, Fashion Week, major concerts.",
+        a: "Yes, that is precisely our speciality. Through our network of official holders and hospitality partners, we secure access to most sold-out events: Champions League, Monaco Grand Prix, Super Bowl, Wimbledon, Fashion Week, major concerts.",
       },
       {
         q: "How does a request work?",
@@ -173,7 +173,7 @@ export const en: Dict = {
   events: {
     metaTitle: "Sold-out events, VIP tickets & hospitality | AZ Experiences",
     metaDescription:
-      "World Cup 2026, Wimbledon, US Open, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week, Roland-Garros: premium tickets and hospitality through AZ Experiences.",
+      "Champions League, Wimbledon, US Open, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week, Roland-Garros: premium tickets and hospitality through AZ Experiences.",
     eyebrow: "Events",
     title: "Where there is no room left, we find one",
     intro:

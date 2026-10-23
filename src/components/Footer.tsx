@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { site, whatsappHref } from "@/lib/site";
 import type { Dict } from "@/i18n";
-import { BRAND_NAME } from "@/lib/site";
 import { Logo } from "./Logo";
 import { BackToTop } from "./BackToTop";
-import { Filet } from "./brand";
 
 export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
   const year = new Date().getFullYear();
@@ -18,11 +16,11 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
   ];
 
   return (
-    <footer className="nuit grain">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-4 md:px-8">
+    <footer className="border-t border-graphite bg-black">
+      <div className="wrap grid gap-12 py-24 md:grid-cols-4">
         <div className="flex flex-col items-start gap-5">
-          <Logo locale={locale} variant="lin" size={64} withName />
-          <p className="text-sm font-light text-lin/80">{dict.footer.tagline}</p>
+          <Logo locale={locale} size={64} />
+          <p className="text-sm text-ivory/80">{dict.footer.tagline}</p>
         </div>
 
         <nav aria-label={dict.footer.navTitle}>
@@ -32,7 +30,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="u-line text-sm font-light text-lin/75 transition-colors hover:text-laiton-clair"
+                  className="u-line text-sm text-ivory/75 transition-colors hover:text-ivory"
                 >
                   {item.label}
                 </Link>
@@ -43,11 +41,11 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
 
         <div>
           <h3 className="eyebrow mb-5">{dict.footer.contactTitle}</h3>
-          <ul className="flex flex-col gap-3 text-sm font-light text-lin/75">
+          <ul className="flex flex-col gap-3 text-sm text-ivory/75">
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="u-line transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-ivory"
               >
                 {site.email}
               </a>
@@ -58,7 +56,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
                   href={whatsappHref()!}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="u-line transition-colors hover:text-laiton-clair"
+                  className="u-line transition-colors hover:text-ivory"
                 >
                   {dict.cta.whatsapp}
                 </a>
@@ -70,7 +68,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="u-line transition-colors hover:text-laiton-clair"
+                  className="u-line transition-colors hover:text-ivory"
                 >
                   LinkedIn
                 </a>
@@ -86,11 +84,11 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
 
         <div>
           <h3 className="eyebrow mb-5">{dict.footer.legalTitle}</h3>
-          <ul className="flex flex-col gap-3 text-sm font-light text-lin/75">
+          <ul className="flex flex-col gap-3 text-sm text-ivory/75">
             <li>
               <Link
                 href={`/${locale}/mentions-legales`}
-                className="u-line transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-ivory"
               >
                 {dict.footer.mentions}
               </Link>
@@ -98,7 +96,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               <Link
                 href={`/${locale}/confidentialite`}
-                className="u-line transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-ivory"
               >
                 {dict.footer.privacy}
               </Link>
@@ -106,7 +104,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               <Link
                 href={`/${locale}/conditions-generales`}
-                className="u-line transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-ivory"
               >
                 {dict.footer.terms}
               </Link>
@@ -114,7 +112,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               <Link
                 href={`/${locale}/remboursements`}
-                className="u-line transition-colors hover:text-laiton-clair"
+                className="u-line transition-colors hover:text-ivory"
               >
                 {dict.footer.refunds}
               </Link>
@@ -123,23 +121,19 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <Filet />
-        <div className="flex flex-col items-center justify-between gap-4 py-6 text-[0.75rem] font-light tracking-[0.12em] text-lin/60 md:flex-row">
+      <div className="wrap">
+        <div className="h-px bg-graphite" />
+        <div className="flex flex-col items-center justify-between gap-4 py-6 caption !text-stone md:flex-row">
           <span>
             © {year} {site.name}. {dict.footer.rights}
           </span>
           <span className="flex items-center gap-6">
-            <span className="city text-[0.7rem] text-lin/70">Paris</span>
+            <span className="city text-[0.7rem] text-ivory/70">Paris</span>
             <BackToTop label={dict.footer.backToTop} />
           </span>
         </div>
       </div>
 
-      {/* Le nom de la maison en très grand, coupé par le bas de la page */}
-      <div aria-hidden="true" data-rise className="overflow-hidden">
-        <p className="footer-giant city select-none">{BRAND_NAME}</p>
-      </div>
     </footer>
   );
 }

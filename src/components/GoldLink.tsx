@@ -1,12 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { useRef, type ReactNode, type MouseEvent } from "react";
+import type { ReactNode } from "react";
 
 /**
- * Bouton de la maison : entièrement arrondi, Hanken regular.
- * Variantes : club (vert sur lin), lin (lin sur dégradé), outline (hérite la
- * couleur du contexte). Légèrement magnétique au survol.
+ * Bouton de la maison : rectangle net, Inter Medium 500, capitales espacées
+ * à 15 % (guidelines §4, style Button). Variantes : club (noir sur noir,
+ * filet ivoire), lin (ivoire plein, texte noir : l'action principale),
+ * outline (hérite la couleur du contexte). Aucun effet : la retenue d'abord.
  */
 export function Button({
   href,
@@ -19,51 +18,17 @@ export function Button({
   variant?: "club" | "lin" | "outline";
   className?: string;
 }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-
-  const onMove = (e: MouseEvent) => {
-    const el = ref.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const rect = el.getBoundingClientRect();
-    const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-    const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-    el.style.transform = `translate(${dx * 4}px, ${dy * 3}px)`;
-  };
-
-  const onLeave = () => {
-    if (ref.current) ref.current.style.transform = "";
-  };
-
-  // Onde lin très douce depuis le point cliqué
-  const onClick = (e: MouseEvent) => {
-    const el = ref.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const rect = el.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const wave = document.createElement("span");
-    wave.className = "ripple";
-    wave.style.width = wave.style.height = `${size}px`;
-    wave.style.left = `${e.clientX - rect.left - size / 2}px`;
-    wave.style.top = `${e.clientY - rect.top - size / 2}px`;
-    el.appendChild(wave);
-    window.setTimeout(() => wave.remove(), 700);
-  };
-
   const base =
-    "group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full px-8 py-3.5 font-sans text-[0.9rem] font-normal tracking-[0.02em] transition-all duration-500 will-change-transform";
+    "group relative inline-flex items-center gap-2.5 btn-label px-8 py-4 transition-colors duration-500";
   const styles = {
-    club: "bg-club text-lin hover:bg-nuit",
-    lin: "bg-lin text-club hover:bg-ivory-soft",
+    club: "border border-ivory/60 bg-black text-ivory hover:border-ivory",
+    lin: "border border-ivory bg-ivory text-black hover:bg-transparent hover:text-ivory",
     outline: "border border-current opacity-90 hover:opacity-60",
   }[variant];
 
   return (
     <Link
-      ref={ref}
       href={href}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      onClick={onClick}
       className={`${base} ${styles} ${className}`}
     >
       {children}
@@ -77,7 +42,7 @@ export function Button({
   );
 }
 
-/** Compatibilité avec l'ancien nom : solid = vert club, sinon contour. */
+/** Compatibilité avec l'ancien nom : solid = action principale ivoire, sinon contour. */
 export function GoldLink({
   href,
   children,
@@ -90,7 +55,7 @@ export function GoldLink({
   className?: string;
 }) {
   return (
-    <Button href={href} variant={solid ? "club" : "outline"} className={className}>
+    <Button href={href} variant={solid ? "lin" : "outline"} className={className}>
       {children}
     </Button>
   );

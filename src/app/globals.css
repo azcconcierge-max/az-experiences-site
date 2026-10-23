@@ -1,153 +1,219 @@
 @import "tailwindcss";
 
 /*
-  AZ Experiences · identité "club privé" (charte v1.0, septembre 2026)
-  Fond lin, texte vert club. Le laiton éclaire, ne domine jamais.
-  Les anciens noms de tokens (noir, ivory, gold…) sont conservés et
-  remappés vers la nouvelle palette pour ne rien casser.
+  AZ Experiences · Brand & Art Direction Guidelines, version 1 (octobre 2026)
+  Deux couleurs : AZ Black porte la page, AZ Ivory porte le texte et le logo.
+  Stone pour les lignes secondaires, Graphite pour les panneaux et filets.
+  La couleur vient des photos, jamais de l'interface.
+  Proportions visées : 70 % noir, 20 % image, 8 % ivoire, 2 % stone.
+  Ni blanc pur ni noir pur. L'ancien vert et l'ancien laiton sont retirés.
 */
 @theme {
   /* palette officielle */
-  --color-club: #173a2c;
-  --color-nuit: #0e2419;
-  --color-sauge: #8fa58a;
-  --color-laiton: #b8935a;
-  --color-laiton-clair: #d8bd8c;
-  /* laiton foncé : pour le petit texte sur fond clair (contraste AA 4,5:1) */
-  --color-laiton-fonce: #8a6a3a;
-  --color-lin: #f7f8f5;
+  --color-black: #0d0d0c;
+  --color-ivory: #efe8da;
+  --color-stone: #bfb8a8;
+  --color-graphite: #1c1b19;
 
-  /* anciens noms, remappés */
-  --color-noir: #173a2c;
-  --color-noir-soft: #153427;
-  --color-noir-card: #1e4232;
-  --color-ivory: #f7f8f5;
-  --color-ivory-soft: #ecefe9;
-  --color-ivory-dim: #b9c6b4;
-  --color-ink: #173a2c;
-  --color-ink-dim: #46604f;
-  --color-gold: #d8bd8c;
-  --color-gold-deep: #b8935a;
-
-  --font-display: var(--font-bodoni), "Georgia", serif;
-  --font-sans: var(--font-hanken), "Arial", ui-sans-serif, system-ui, sans-serif;
+  /* Inter seule, trois graisses : 300, 400, 500 */
+  --font-display: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* Body : Regular 400, 15 / 24 px, ivoire sur noir */
 body {
-  background: var(--color-lin);
-  color: var(--color-club);
+  background: var(--color-black);
+  color: var(--color-ivory);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-club);
-  color: var(--color-laiton-clair);
+  background: var(--color-ivory);
+  color: var(--color-black);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-laiton);
+  outline: 1px solid var(--color-ivory);
   outline-offset: 3px;
 }
 
-/* Barre de défilement fine, vert club (ordinateur) */
+/* Barre de défilement fine, graphite (ordinateur) */
 @media (pointer: fine) {
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-club) var(--color-lin);
+    scrollbar-color: var(--color-graphite) var(--color-black);
   }
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-lin);
+    background: var(--color-black);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-club);
-    border-radius: 4px;
+    background: var(--color-graphite);
   }
 }
 
-/* ---- Typographie ---- */
-/* Titres : Bodoni regular, jamais gras, jamais italique. */
-.display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: -0.02em;
-  line-height: 1;
+/* ---- Typographie ----
+   Jamais de gras (600 et plus), jamais d'italique, jamais d'empattement.
+   Seuls les labels et les boutons passent en capitales. */
+
+@layer components {
+  /* Display et Headline 1 : Light 300, phrase normale */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: 0.006em;
+    line-height: 1.15;
+  }
+
+  /* Échelle écran du brand book (§4). Une seule taille Display ou Headline
+     par bloc, plus un label et un texte courant. */
+  /* Couvertures et chapitres : Inter Thin 100 (brand book p.18) */
+  .t-cover {
+    font-weight: 100;
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  @media (min-width: 768px) {
+    .t-cover {
+      font-size: 6.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .t-cover {
+      font-size: 8.5rem;
+    }
+  }
+
+  .t-display {
+    font-weight: 300;
+    font-size: 2.25rem;
+    line-height: 2.625rem;
+    letter-spacing: 0.009em;
+  }
+  .t-h1 {
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    letter-spacing: 0.006em;
+  }
+  .t-h2 {
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  .t-h3 {
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+  }
+  .t-body {
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+  }
+  .t-small {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .t-display {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+    .t-h1 {
+      font-size: 2.25rem;
+      line-height: 2.75rem;
+    }
+    .t-h2 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+
+  /* Grille du site : 1200 px de contenu, marges 16 px (mobile) et 80 px */
+  .wrap {
+    width: 100%;
+    max-width: calc(1200px + 2 * 5rem);
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .wrap {
+      padding-inline: 5rem;
+    }
+  }
+
+  /* Label : Medium 500, 12 / 16 px, capitales espacées à 25 % */
+  .eyebrow,
+  .label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+  }
+
+  /* Lieux, dates, catégories : même style que le label, couleur du contexte */
+  .city {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+  }
+
+  /* Bouton : Medium 500, 12 / 16 px, capitales espacées à 15 % */
+  .btn-label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* Caption : Regular 400, 11 / 16 px, en Stone */
+  .caption {
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    letter-spacing: 0.02em;
+    color: var(--color-stone);
+  }
+
+  /* Texte courant : 45 à 70 caractères par ligne */
+  .measure {
+    max-width: 62ch;
+  }
 }
 
-/* Mention : Hanken regular, minuscules espacées. Capitales réservées aux lieux. */
-.eyebrow {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.8125rem;
-  letter-spacing: 0.12em;
-  text-transform: lowercase;
-  color: var(--color-laiton-fonce);
-}
-
-/* Lieux : capitales Bodoni espacées. */
-.city {
-  font-family: var(--font-display);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-}
-
-/* ---- Fonds sombres : texte lin, laiton clair pour les accents ---- */
+/* ---- Fonds : noir plat ou très sombre, texte ivoire ---- */
 .crepuscule,
 .pelouse,
 .nuit,
-.bg-club,
-.bg-noir,
-.bg-noir-soft,
-.bg-noir-card {
-  color: var(--color-lin);
+.bg-black,
+.bg-graphite {
+  color: var(--color-ivory);
 }
 
-.crepuscule .eyebrow,
-.pelouse .eyebrow,
-.nuit .eyebrow,
-.bg-nuit .eyebrow,
-.bg-club .eyebrow,
-.bg-noir .eyebrow,
-.bg-noir-soft .eyebrow,
-.bg-noir-card .eyebrow {
-  color: var(--color-laiton-clair);
-}
-
-/* ---- Les trois lumières ---- */
-.crepuscule {
-  background: radial-gradient(
-    130% 95% at 50% 112%,
-    #dcc293 0%,
-    #a7a171 16%,
-    #6b8466 34%,
-    #3a5b48 58%,
-    #1e4232 80%,
-    #173a2c 100%
-  );
-}
-
-.pelouse {
-  background: linear-gradient(180deg, #bacab2 0%, #86a186 28%, #4a6c56 62%, #1f4233 100%);
-}
-
+/* Les anciens dégradés de couleur deviennent des fonds noirs plats :
+   la couleur vient des images seules (guidelines §2 et §3). */
+.crepuscule,
+.pelouse,
 .nuit {
-  background: radial-gradient(
-    120% 85% at 50% -12%,
-    #557963 0%,
-    #2c4e3d 38%,
-    #173a2c 68%,
-    #0e2419 100%
-  );
+  background: var(--color-black);
 }
 
 /* ---- Grain : texture légère en superposition ---- */
@@ -156,41 +222,43 @@ body {
   isolation: isolate;
 }
 
-/* Grain vivant : la texture se décale par crans, 8 images par seconde */
+/* Grain vivant : la texture se décale par crans, 8 images par seconde.
+   Le calque reste dans la boîte de la section (inset 0) : débordant, il
+   apparaîtrait en bande grise hors du fond noir. */
 @keyframes grainShift {
   0% {
-    transform: translate(0, 0);
+    background-position: 0 0;
   }
   12.5% {
-    transform: translate(-42px, 26px);
+    background-position: -42px 26px;
   }
   25% {
-    transform: translate(28px, -38px);
+    background-position: 28px -38px;
   }
   37.5% {
-    transform: translate(-30px, -22px);
+    background-position: -30px -22px;
   }
   50% {
-    transform: translate(44px, 34px);
+    background-position: 44px 34px;
   }
   62.5% {
-    transform: translate(-24px, 40px);
+    background-position: -24px 40px;
   }
   75% {
-    transform: translate(36px, -28px);
+    background-position: 36px -28px;
   }
   87.5% {
-    transform: translate(-40px, -34px);
+    background-position: -40px -34px;
   }
   100% {
-    transform: translate(0, 0);
+    background-position: 0 0;
   }
 }
 
 .grain::after {
   content: "";
   position: absolute;
-  inset: -60px;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -204,48 +272,21 @@ body {
   z-index: 2;
 }
 
-/* ---- Traitement photo de la maison ----
-   À poser sur le CONTENEUR d'une photo, jamais sur un logo, un SVG ou une icône.
-   Tons chauds adoucis, ombres teintées vert club, grain léger. */
-/* Le conteneur doit être positionné par l'appelant (relative ou absolute). */
+/* ---- Illustrations ----
+   Les visuels des univers portent déjà leur couleur, leur grain et leur
+   lumière : aucun filtre par-dessus. Le conteneur reste positionné. */
 .photo-treated {
   isolation: isolate;
+  background-color: var(--color-graphite);
 }
 
-.photo-treated > img,
-.photo-treated img {
-  filter: saturate(0.88) contrast(0.96) sepia(0.06);
-}
-
-.photo-treated::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: #173a2c;
-  opacity: 0.07;
-  mix-blend-mode: soft-light;
-}
-
-.photo-treated::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
-  opacity: 0.35;
-}
-
-/* ---- Le filet : un trait laiton, pour séparer seulement ---- */
+/* ---- Le filet : un trait graphite, pour séparer seulement ---- */
 .gold-line,
 .gold-rule,
 .filet {
   height: 1px;
-  background: var(--color-laiton);
-  opacity: 0.5;
+  background: var(--color-ivory);
+  opacity: 0.12;
 }
 
 /* ---- L'animation du hero (la seule au chargement) ---- */
@@ -280,7 +321,7 @@ body {
   will-change: transform;
 }
 
-/* ---- Voile vert nuit entre les pages ---- */
+/* ---- Voile noir entre les pages ---- */
 @keyframes veilOut {
   from {
     opacity: 1;
@@ -305,7 +346,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 70;
-  background: #0e2419;
+  background: #0d0d0c;
   pointer-events: none;
   animation: veilOut 0.5s ease 0.05s both;
 }
@@ -388,13 +429,13 @@ body {
 @keyframes waPulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(184, 147, 90, 0);
+    box-shadow: 0 0 0 0 rgba(239, 232, 218, 0);
   }
   12% {
-    box-shadow: 0 0 0 10px rgba(184, 147, 90, 0.16);
+    box-shadow: 0 0 0 10px rgba(239, 232, 218, 0.16);
   }
   24% {
-    box-shadow: 0 0 0 0 rgba(184, 147, 90, 0);
+    box-shadow: 0 0 0 0 rgba(239, 232, 218, 0);
   }
 }
 
@@ -402,7 +443,7 @@ body {
   animation: waPulse 8s ease-out 3s infinite;
 }
 
-/* ---- Curseur maison : point laiton, anneau à mention sur les cibles ---- */
+/* ---- Curseur maison : point ivoire, anneau à mention sur les cibles ---- */
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -412,7 +453,7 @@ body {
   height: 8px;
   margin: -4px 0 0 -4px;
   border-radius: 9999px;
-  background: var(--color-laiton);
+  background: var(--color-stone);
   pointer-events: none;
   transition: opacity 0.3s;
 }
@@ -428,9 +469,9 @@ body {
   width: 64px;
   height: 64px;
   margin: -32px 0 0 -32px;
-  border: 1px solid var(--color-laiton);
+  border: 1px solid var(--color-stone);
   border-radius: 9999px;
-  background: rgba(14, 36, 25, 0.35);
+  background: rgba(13, 13, 12, 0.35);
   backdrop-filter: blur(2px);
   pointer-events: none;
   transform: scale(0);
@@ -442,11 +483,11 @@ body {
 
 .cursor-ring .cursor-label {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-transform: lowercase;
-  color: var(--color-lin);
+  font-weight: 500;
+  font-size: 0.56rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
 }
 
 .cursor-ring.is-open {
@@ -454,13 +495,13 @@ body {
   opacity: 1;
 }
 
-/* Barre de progression du défilement : un filet laiton en haut de l'écran */
+/* Barre de progression du défilement : un filet stone en haut de l'écran */
 .scroll-progress {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 95;
   height: 1px;
-  background: var(--color-laiton);
+  background: var(--color-stone);
   transform-origin: left;
   transform: scaleX(0);
   pointer-events: none;
@@ -491,36 +532,13 @@ body {
 .ripple {
   position: absolute;
   border-radius: 9999px;
-  background: rgba(247, 248, 245, 0.35);
+  background: rgba(239, 232, 218, 0.35);
   transform: scale(0);
   animation: ripple 0.7s ease-out forwards;
   pointer-events: none;
 }
 
-/* Filet qui se trace sous la mention de section */
-main p.eyebrow {
-  position: relative;
-}
-
-main p.eyebrow::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.55em;
-  width: min(64px, 100%);
-  height: 1px;
-  background: var(--color-laiton);
-  opacity: 0.6;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
-}
-
-main p.eyebrow.filet-drawn::after {
-  transform: scaleX(1);
-}
-
-/* Lien actif du header : petit filet laiton dessous */
+/* Lien actif du header : petit filet ivoire dessous */
 .nav-active {
   position: relative;
 }
@@ -532,12 +550,12 @@ main p.eyebrow.filet-drawn::after {
   right: 0;
   bottom: -6px;
   height: 1px;
-  background: var(--color-laiton);
+  background: var(--color-ivory);
 }
 
-/* Image en cours de chargement : fond sauge, flou qui se dissipe */
+/* Image en cours de chargement : fond graphite, flou qui se dissipe */
 .photo-treated {
-  background-color: color-mix(in srgb, var(--color-sauge) 45%, var(--color-club));
+  background-color: var(--color-graphite);
 }
 
 img.img-loading {
@@ -551,7 +569,7 @@ img.img-loaded {
 }
 
 .photo-treated img.img-loading {
-  filter: saturate(0.88) contrast(0.96) sepia(0.06) blur(16px);
+  filter: blur(16px);
 }
 
 /* Menu mobile plein écran : liens en cascade */
@@ -575,7 +593,7 @@ img.img-loaded {
   white-space: nowrap;
   font-size: clamp(3.4rem, 12.5vw, 12rem);
   line-height: 1;
-  color: var(--color-lin);
+  color: var(--color-ivory);
   opacity: 0.08;
   transform: translateY(46%);
   user-select: none;
@@ -602,7 +620,7 @@ img.img-loaded {
   left: 0;
   z-index: 60;
   height: 2px;
-  background: var(--color-laiton);
+  background: var(--color-stone);
   transform-origin: left;
 }
 
@@ -775,7 +793,7 @@ img.img-loaded {
   z-index: 20;
   width: 1px;
   height: 44px;
-  background: rgba(247, 248, 245, 0.3);
+  background: rgba(239, 232, 218, 0.3);
   overflow: hidden;
 }
 
@@ -787,7 +805,7 @@ img.img-loaded {
   width: 4px;
   height: 4px;
   border-radius: 9999px;
-  background: var(--color-laiton-clair);
+  background: var(--color-ivory);
   animation: hintDrop 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
@@ -844,7 +862,7 @@ img.img-loaded {
 /* ---- Titre fantôme de la section demande ---- */
 .ghost-title {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(184, 147, 90, 0.15);
+  -webkit-text-stroke: 1px rgba(239, 232, 218, 0.15);
 }
 
 /* ---- Dérive lente de la lumière du Crépuscule ---- */
@@ -863,4 +881,216 @@ img.img-loaded {
 .light-drift {
   animation: lightDrift 20s ease-in-out infinite;
   will-change: transform;
+}
+
+/* ======================================================================
+   MOUVEMENT · brand book « Kinetic » : flou de mouvement, lumière,
+   sensation d'arriver. Discret et précis : transform, opacity et filter
+   seulement (aucun décalage de mise en page), jamais de contenu caché
+   sans garde-fou, tout s'éteint avec prefers-reduced-motion.
+   ====================================================================== */
+:root {
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -- Apparition : du flou au net, une légère montée --
+   Masqué seulement si le JavaScript est là (html.js) ; garde-fou CSS :
+   tout réapparaît après 3,5 s quoi qu'il arrive. */
+html.js .reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  filter: blur(8px);
+  transition:
+    opacity 0.9s var(--ease-arrive),
+    transform 1.1s var(--ease-arrive),
+    filter 1s var(--ease-arrive);
+  transition-delay: var(--d, 0ms);
+  animation: revealFailsafe 0s 3.5s forwards;
+}
+html.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  animation: none;
+}
+@keyframes revealFailsafe {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* -- Couverture : l'image arrive (zoom arrière, flou qui se dissipe) -- */
+@keyframes coverArrive {
+  from {
+    transform: scale(1.12);
+    filter: blur(14px) brightness(0.6);
+  }
+  to {
+    transform: scale(1.02);
+    filter: none;
+  }
+}
+.cover-arrive {
+  transform: scale(1.02);
+  animation: coverArrive 2.2s var(--ease-arrive) both;
+  will-change: transform;
+}
+
+/* Titre de couverture : chaque ligne monte dans son cadre */
+@keyframes riseIn {
+  from {
+    transform: translate3d(0, 105%, 0);
+  }
+}
+.rise-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.rise-mask > span {
+  display: inline-block;
+  animation: riseIn 1.3s var(--ease-arrive) both;
+  animation-delay: var(--d, 250ms);
+}
+
+/* Labels et filets qui arrivent après le titre */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+.fade-late {
+  animation: fadeIn 1.2s ease both;
+  animation-delay: var(--d, 700ms);
+}
+
+/* -- Les portes : la lumière se concentre sur celle qu'on survole -- */
+.doors .door img {
+  transition:
+    transform 1.4s var(--ease-arrive),
+    filter 0.8s ease;
+}
+@media (hover: hover) {
+  .doors:hover .door:not(:hover) img {
+    filter: brightness(0.4) saturate(0.7);
+  }
+  .doors .door:hover img {
+    transform: scale(1.06);
+  }
+}
+/* le label glisse d'un cran et un filet se trace sous lui */
+.door-label::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 0.6em;
+  width: 2.5rem;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease-arrive);
+}
+.group:hover .door-label::after,
+.group:focus-visible .door-label::after {
+  transform: scaleX(1);
+}
+
+/* -- Listes à filets : un trait ivoire se trace, le titre avance -- */
+.ruled-row {
+  position: relative;
+}
+.ruled-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--color-ivory);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease-arrive);
+}
+.ruled-row:hover::before,
+.ruled-row:focus-within::before {
+  transform: scaleX(1);
+}
+.ruled-row .ruled-title {
+  transition:
+    transform 0.7s var(--ease-arrive),
+    opacity 0.4s ease;
+}
+.ruled-row:hover .ruled-title {
+  transform: translateX(0.75rem);
+}
+
+/* -- Flèche des actions : elle avance au survol -- */
+.arrow-link .arrow {
+  display: inline-block;
+  transition: transform 0.6s var(--ease-arrive);
+}
+.arrow-link:hover .arrow,
+.group:hover .arrow {
+  transform: translateX(0.4rem);
+}
+
+/* -- Monogramme qui se trace d'un seul trait -- */
+.mono-draw polyline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+html.js .mono-draw:not(.is-in) polyline {
+  stroke-dashoffset: 1;
+}
+html.js .mono-draw polyline {
+  transition: stroke-dashoffset 1.8s var(--ease-arrive);
+}
+html.js .mono-draw polyline + polyline {
+  transition-delay: 0.35s;
+}
+
+/* -- Progression de lecture : un filet ivoire, sans JavaScript -- */
+@supports (animation-timeline: scroll()) {
+  .read-progress {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 60;
+    height: 1px;
+    background: var(--color-ivory);
+    opacity: 0.6;
+    transform-origin: left;
+    animation: readGrow linear both;
+    animation-timeline: scroll(root);
+    pointer-events: none;
+  }
+  @keyframes readGrow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal,
+  .cover-arrive,
+  .rise-mask > span,
+  .fade-late {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+    transition: none;
+  }
+  html.js .mono-draw polyline {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .read-progress {
+    display: none;
+  }
 }

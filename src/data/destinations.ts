@@ -4,7 +4,7 @@ import type { L, Locale } from "@/i18n";
  * LES DESTINATIONS · les territoires où la maison a ses habitudes.
  * Chaque destination = storytelling + guide en 4 rubriques :
  * vivre (expériences), tables (restaurants), verres (bars), nuit (clubs).
- * Toutes les adresses se réservent via la maison. Photo : /images/dest-<slug>.jpg
+ * Toutes les adresses se réservent via la maison. Visuel : src/lib/univers.ts
  */
 export type GuideCategory = "vivre" | "tables" | "verres" | "nuit";
 

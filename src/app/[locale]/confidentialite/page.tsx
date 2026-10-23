@@ -28,8 +28,8 @@ export default async function PrivacyPage({
   return (
     <>
       <PageHero eyebrow={fr ? "Légal" : "Legal"} title={dict.legal.privacyTitle} />
-      <section className="px-5 pb-28 md:px-8">
-        <div className="mx-auto max-w-3xl text-sm leading-relaxed text-ink-dim [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-medium [&_h2]:text-club">
+      <section className="pb-24">
+        <div className="wrap t-small max-w-[56rem] text-ivory/70 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-medium [&_h2]:text-ivory">
           <h2>{fr ? "Données collectées" : "Data collected"}</h2>
           <p>
             {fr
@@ -41,7 +41,7 @@ export default async function PrivacyPage({
             {fr
               ? "Vos données ne sont jamais vendues ni partagées avec des tiers. La discrétion est le fondement de notre maison. Vous pouvez demander la suppression de vos données à tout moment en écrivant à "
               : "Your data is never sold or shared with third parties. Discretion is the foundation of our house. You may request deletion of your data at any time by writing to "}
-            <a href={`mailto:${site.email}`} className="text-laiton">
+            <a href={`mailto:${site.email}`} className="text-stone">
               {site.email}
             </a>
             .

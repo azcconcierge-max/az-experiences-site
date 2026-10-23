@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { destinationVisual, visuals } from "@/lib/univers";
 import { getDict, type Locale } from "@/i18n";
 import { pageAlternates } from "@/lib/seo";
-import { LineMask } from "@/components/TitleReveal";
-import { DestinationsStrip } from "@/components/DestinationsStrip";
+import { destinations } from "@/data/destinations";
+import { PosterHero, UniverseTile } from "@/components/poster";
+import { Reveal } from "@/components/Reveal";
 import { AskSection } from "@/components/AskSection";
 
 export async function generateMetadata({
@@ -31,28 +34,40 @@ export default async function DestinationsPage({
 
   return (
     <>
-      {/* ---- Ouverture (vert nuit) : un titre, une phrase ---- */}
-      <section className="nuit grain px-5 pt-36 pb-14 md:px-10 md:pt-44 md:pb-16">
-        <div className="mx-auto max-w-[1440px]">
-          <LineMask delay={100}>
-            <p className="eyebrow">{d.eyebrow}</p>
-          </LineMask>
-          <h1 className="display mt-5 text-[clamp(2.8rem,6.5vw,7rem)] leading-[0.98] text-lin">
-            <LineMask delay={250}>
-              <span className="block">{d.title}</span>
-            </LineMask>
-          </h1>
-          <LineMask delay={420}>
-            <p className="mt-7 max-w-xl text-base leading-[1.7] font-light text-lin/80 md:text-lg">
-              {d.introShort}
-            </p>
-          </LineMask>
+      <PosterHero
+        visual={visuals.monaco}
+        label={d.eyebrow}
+        title={d.title}
+        chapter="04"
+        footer={`AZ Experiences — ${dict.nav.destinations}`}
+      />
+      <section className="pt-24 pb-12">
+        <div className="wrap">
+          <p className="t-h2 max-w-[40rem] text-ivory">{d.introShort}</p>
         </div>
       </section>
 
-      {/* ---- L'accordéon plein écran : six territoires ---- */}
-      <section className="bg-nuit">
-        <DestinationsStrip locale={locale} ctaLabel={d.explore} />
+      {/* ---- Six territoires, une couleur chacun ---- */}
+      <section className="pb-24">
+        <div className="wrap grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
+          {destinations.map((dest, i) => (
+            <Reveal key={dest.slug} delay={(i % 3) * 80}>
+              <UniverseTile
+                href={`/${locale}/destinations/${dest.slug}`}
+                visual={destinationVisual(dest.slug)}
+                label={`${dest.name} · ${dest.region[locale]}`}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <p className="t-small mt-3 text-ivory/70">{dest.tagline[locale]}</p>
+              <Link
+                href={`/${locale}/destinations/${dest.slug}`}
+                className="label mt-4 inline-block text-ivory transition-opacity hover:opacity-60"
+              >
+                {d.explore} →
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <AskSection locale={locale} dict={dict} />

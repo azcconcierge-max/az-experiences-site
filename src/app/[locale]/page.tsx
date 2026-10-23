@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { getDict, type Locale } from "@/i18n";
 import { events } from "@/data/events";
+import { destinations } from "@/data/destinations";
+import { services } from "@/data/services";
 import { pageAlternates } from "@/lib/seo";
+import { destinationVisual, universes, visuals } from "@/lib/univers";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/GoldLink";
-import { TitleReveal, LineMask } from "@/components/TitleReveal";
-import { ClipReveal } from "@/components/ClipReveal";
-import { HorizontalEvents } from "@/components/HorizontalEvents";
 import { AskSection } from "@/components/AskSection";
-import { DestinationsShowcase } from "@/components/DestinationsShowcase";
-import { ServicesIndex } from "@/components/ServicesIndex";
+import { ParisClock } from "@/components/ParisClock";
 import { TestimonialRotator } from "@/components/TestimonialRotator";
-import { CrossMarquee } from "@/components/CrossMarquee";
-import { HeroSlideshow, ParisClock } from "@/components/HeroSlideshow";
-import { MedallionDraw } from "@/components/MedallionDraw";
+import { EventPoster, Illustration, RuledRow, SectionHead, UniverseTile } from "@/components/poster";
 
 export async function generateMetadata({
   params,
@@ -31,6 +28,10 @@ export async function generateMetadata({
   };
 }
 
+/*
+  L'accueil se lit comme le brand book : couverture, les huit portes,
+  manifeste, sommaire, rendez-vous, destinations, page ivoire, clôture.
+*/
 export default async function HomePage({
   params,
 }: {
@@ -40,153 +41,155 @@ export default async function HomePage({
   const locale = rawLocale as Locale;
   const dict = getDict(locale);
   const h = dict.home;
+  const serviceTitle = (slug: string) => services.find((x) => x.slug === slug)?.title[locale] ?? "";
+  const eventName = (slug: string) => events.find((x) => x.slug === slug)?.name ?? "";
+  const doors = universes.map((u) => {
+    const [, kind, slug] = u.href.split("/");
+    return { ...u, label: kind === "services" ? serviceTitle(slug) : eventName(slug) };
+  });
 
   return (
     <>
-      {/* ---- 1 · HERO 100svh : diaporama lent, cadre, heure de Paris ---- */}
-      <section className="relative flex min-h-svh items-end overflow-hidden bg-nuit">
-        <div aria-hidden="true" className="photo-treated absolute inset-0 overflow-hidden">
-          <HeroSlideshow />
-          {/* léger voile en haut pour le header, fondu vert en bas */}
-          <div
-            className="absolute inset-0 z-10"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(14,36,25,0.55) 0%, rgba(14,36,25,0.12) 26%, rgba(14,36,25,0.15) 55%, #0E2419 100%)",
-            }}
-          />
-        </div>
-
-        {/* Détails de coin et indicateur */}
-        <p
-          aria-hidden="true"
-          className="absolute top-24 right-9 z-20 hidden text-[0.72rem] font-normal lowercase tracking-[0.16em] text-lin/70 md:block"
-        >
-          <ParisClock />
-        </p>
-        <p
-          aria-hidden="true"
-          className="absolute bottom-9 left-9 z-20 hidden text-[0.72rem] font-normal lowercase tracking-[0.16em] text-lin/60 md:block"
-        >
-          48.8698° n, 2.2963° e
-        </p>
-        <div aria-hidden="true" className="scroll-hint hidden md:block" />
-
-        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-20 md:px-10 md:pb-24">
-          <LineMask delay={150}>
-            <p className="eyebrow">{h.heroEyebrow}</p>
-          </LineMask>
-          <h1 className="display mt-5 text-[clamp(3.2rem,9.5vw,10.5rem)] leading-[0.95] text-lin">
-            {/* L'espace après la ligne 1 garde « L'accès est notre métier »
-                lisible d'un trait par les moteurs et lecteurs d'écran. */}
-            <LineMask delay={300}>
-              <span className="block">{h.heroLine1} </span>
-            </LineMask>
-            <LineMask delay={430}>
-              <span className="block">{h.heroLine2}</span>
-            </LineMask>
+      {/* ---- COUVERTURE (p.01) : noir, un titre Thin, deux labels ---- */}
+      <section className="flex min-h-svh flex-col justify-end pt-32">
+        <div className="wrap pb-8">
+          <p className="label fade-late mb-8" style={{ "--d": "100ms" } as CSSProperties}>
+            {h.heroEyebrow}
+          </p>
+          <h1 className="t-cover max-w-[64rem] text-ivory">
+            <span className="rise-mask">
+              <span style={{ "--d": "250ms" } as CSSProperties}>{h.heroLine1}</span>
+            </span>{" "}
+            <span className="rise-mask">
+              <span style={{ "--d": "400ms" } as CSSProperties}>{h.heroLine2}</span>
+            </span>
           </h1>
-          <div className="mt-10">
-            <LineMask delay={620}>
-              <span className="inline-block">
-                <Button href={`/${locale}/contact`} variant="lin">
-                  {dict.cta.request}
-                </Button>
-              </span>
-            </LineMask>
+          <div className="fade-late mt-12" style={{ "--d": "900ms" } as CSSProperties}>
+            <Button href={`/${locale}/contact`} variant="lin">
+              {dict.cta.request}
+            </Button>
+          </div>
+          <div className="fade-late mt-20 flex items-center justify-between gap-6" style={{ "--d": "1100ms" } as CSSProperties}>
+            <span className="label">AZ Experiences · Paris</span>
+            <span className="label">
+              <ParisClock />
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ---- 2 · MANIFESTE (lin) : une phrase, mot par mot ---- */}
-      <section className="px-5 py-32 md:px-10 md:py-44">
-        <div className="mx-auto max-w-[1100px] text-center">
-          <TitleReveal
-            text={h.manifesto}
-            as="p"
-            mode="scrub"
-            className="display text-[clamp(2.2rem,6vw,6.5rem)] leading-[1.05]"
-          />
-          <Reveal delay={200} className="mt-14 flex flex-col items-center gap-4">
-            {/* l'ovale se dessine quand la phrase est entièrement révélée */}
-            <MedallionDraw variant="vert" width={44} start="top 62%" />
-            <p className="eyebrow">{h.manifestoSignature}</p>
+      {/* ---- LES HUIT PORTES (p.22) : la grille d'images, bord à bord ----
+          Chaque porte ouvre une page du site et porte son nom d'origine. */}
+      <section aria-label={h.eventsTitle} className="doors grid grid-cols-2 md:grid-cols-4">
+        {doors.map((d, i) => (
+          <Reveal key={d.href} delay={(i % 4) * 90}>
+            <UniverseTile href={`/${locale}${d.href}`} visual={d.visual} label={d.label} />
+          </Reveal>
+        ))}
+      </section>
+
+      {/* ---- MANIFESTE (p.04) : une phrase, la signature ---- */}
+      <section className="py-24">
+        <div className="wrap grid items-center gap-12 md:grid-cols-12 md:gap-6">
+          <Reveal className="md:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
+              <Illustration visual={visuals.palaces} sizes="(max-width: 768px) 100vw, 40vw" />
+            </div>
+          </Reveal>
+          <Reveal delay={150} className="md:col-span-6 md:col-start-7">
+            <p className="t-h1 text-ivory">{h.manifesto}</p>
+            <p className="label mt-8">{h.manifestoSignature}</p>
           </Reveal>
         </div>
       </section>
 
-      {/* ---- 3 · LES RENDEZ-VOUS (vert nuit) : défilement horizontal ---- */}
-      <section className="nuit grain">
-        <div className="mx-auto max-w-[1440px] px-5 pt-24 md:px-10 md:pt-32">
-          <p className="eyebrow mb-5">{h.eventsEyebrow}</p>
-          <div className="flex flex-wrap items-end justify-between gap-8 pb-14">
-            <TitleReveal
-              text={h.eventsTitle}
-              className="display text-[clamp(2.6rem,6vw,6rem)] leading-[0.98] text-lin"
-            />
-            <div className="max-w-sm">
-              <p className="text-base leading-[1.7] font-light text-lin/80">{h.eventsIntro}</p>
-              <div className="mt-6">
-                <Button href={`/${locale}/evenements`}>{dict.cta.allEvents}</Button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <HorizontalEvents events={events} locale={locale} ctaLabel={dict.cta.requestAccess} />
-        {/* Deux bandeaux croisés, en sens inverse */}
-        <div className="pt-8">
-          <CrossMarquee items={events.map((e) => e.name)} />
-        </div>
-      </section>
-
-      {/* ---- 4 · DESTINATIONS plein écran ---- */}
-      <DestinationsShowcase locale={locale} eyebrow={dict.destinations.homeEyebrow} />
-
-      {/* ---- 5 · SERVICES (lin) : index éditorial ---- */}
-      <section className="px-5 py-28 md:px-10 md:py-40">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="eyebrow mb-5">{h.servicesEyebrow}</p>
-          <div className="flex flex-wrap items-end justify-between gap-8 pb-12">
-            <TitleReveal
-              text={h.servicesTitle}
-              className="display max-w-4xl text-[clamp(2.4rem,5vw,5rem)] leading-[1.02]"
-            />
-            <Button href={`/${locale}/services`} className="mb-2">
-              {dict.cta.allServices}
-            </Button>
-          </div>
-          <ServicesIndex locale={locale} />
-        </div>
-      </section>
-
-      {/* ---- 6 · LA MAISON (vert club) : photo + un témoignage ---- */}
-      <section className="bg-club overflow-hidden">
-        <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-2 lg:gap-20">
-          <ClipReveal className="photo-treated relative aspect-[4/5] overflow-hidden rounded-[2px]">
-            <Image
-              src="/images/dest-paris.jpg"
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </ClipReveal>
-          <div>
-            <p className="eyebrow mb-10">{h.avisEyebrow}</p>
-            <TestimonialRotator locale={locale} />
-            <div className="mt-12">
-              <Link
-                href={`/${locale}/qui-sommes-nous`}
-                className="text-[0.85rem] font-normal lowercase tracking-[0.12em] text-laiton-clair transition-opacity hover:opacity-70"
-              >
-                {h.aboutLink} →
+      {/* ---- LES RENDEZ-VOUS (p.06) : image, titre, légende ---- */}
+      <section className="py-24">
+        <div className="wrap">
+          <SectionHead
+            kicker={h.eventsEyebrow}
+            title={h.eventsTitle}
+            aside={
+              <Link href={`/${locale}/evenements`} className="transition-opacity hover:opacity-60">
+                {dict.cta.allEvents} →
               </Link>
-            </div>
+            }
+          />
+          <p className="t-body measure -mt-6 mb-12 text-stone">{h.eventsIntro}</p>
+          <div className="grid gap-x-6 gap-y-12 md:grid-cols-3">
+            {events.map((e, i) => (
+              <Reveal key={e.slug} delay={(i % 3) * 90}>
+                <EventPoster event={e} locale={locale} cta={dict.cta.requestAccess} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ---- 7 · DEMANDE PRIVÉE partagée (Crépuscule, plein écran) ---- */}
+      {/* ---- DESTINATIONS (p.23) : six images bord à bord, légendées ---- */}
+      <section className="pt-24">
+        <div className="wrap">
+          <p className="label mb-12">{dict.destinations.homeEyebrow}</p>
+        </div>
+        <div className="doors grid grid-cols-2 md:grid-cols-3">
+          {destinations.map((d, i) => (
+            <Reveal key={d.slug} delay={(i % 3) * 90}>
+            <UniverseTile
+              href={`/${locale}/destinations/${d.slug}`}
+              visual={destinationVisual(d.slug)}
+              label={d.name}
+              caption={d.tagline[locale]}
+              sizes="(max-width: 768px) 50vw, 33vw"
+            />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ---- LES SERVICES (p.02) : liste à filets ---- */}
+      <section className="py-24">
+        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+          <div className="md:col-span-4">
+            <p className="label mb-6">{h.servicesEyebrow}</p>
+            <h2 className="t-h1 text-ivory">{h.servicesTitle}</h2>
+            <Link
+              href={`/${locale}/services`}
+              className="label mt-10 inline-block text-ivory transition-opacity hover:opacity-60"
+            >
+              {dict.cta.allServices} →
+            </Link>
+          </div>
+          <ul className="md:col-span-7 md:col-start-6">
+            {services.map((s, i) => (
+              <RuledRow
+                delay={i * 60}
+                key={s.slug}
+                href={`/${locale}/services/${s.slug}`}
+                num={String(i + 1).padStart(2, "0")}
+                title={s.title[locale]}
+              />
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ---- LA MAISON (p.05, page ivoire) : la voix des clients ---- */}
+      <section className="bg-ivory py-24 text-black">
+        <div className="wrap">
+          <p className="label mb-8 text-black/70">{h.avisEyebrow}</p>
+          <div className="max-w-[44rem]">
+            <TestimonialRotator locale={locale} onLight />
+          </div>
+          <Link
+            href={`/${locale}/qui-sommes-nous`}
+            className="label mt-12 inline-block text-black transition-opacity hover:opacity-60"
+          >
+            {h.aboutLink} →
+          </Link>
+        </div>
+      </section>
+
+      {/* ---- CLÔTURE (p.28) ---- */}
       <AskSection locale={locale} dict={dict} />
     </>
   );

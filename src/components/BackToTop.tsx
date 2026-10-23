@@ -1,23 +1,15 @@
 "use client";
 
-import Image from "next/image";
-
-/** Retour en haut de page, avec le petit médaillon. */
+/** Retour en haut de page : un label, sans logo (sous 40 px, le monogramme ne s'utilise pas). */
 export function BackToTop({ label }: { label: string }) {
   return (
     <button
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label={label}
-      className="group inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-lin/30 transition-colors duration-500 hover:border-laiton-clair"
+      className="label cursor-pointer text-ivory/75 transition-colors hover:text-ivory"
     >
-      <Image
-        src="/brand/logos/AZ-medaillon-petites-tailles-lin.svg"
-        alt=""
-        width={22}
-        height={28}
-        className="transition-transform duration-500 group-hover:-translate-y-0.5"
-      />
+      ↑
     </button>
   );
 }

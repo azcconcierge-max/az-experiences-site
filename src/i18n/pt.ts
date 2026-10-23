@@ -28,7 +28,7 @@ export const pt: Dict = {
   home: {
     metaTitle: "AZ Experiences | Concierge privado e acesso a eventos esgotados",
     metaDescription:
-      "AZ Experiences, concierge privado de Paris especializado no acesso a eventos esgotados: bilhetes VIP, hospitality, jato privado, iates, segurança, viagens à medida. Mundial, F1 Mónaco, Super Bowl, Fashion Week.",
+      "AZ Experiences, concierge privado de Paris especializado no acesso a eventos esgotados: bilhetes VIP, hospitality, jato privado, iates, segurança, viagens à medida. Liga dos Campeões, F1 Mónaco, Super Bowl, Fashion Week.",
     heroEyebrow: "Concierge privado, Paris · Mundo",
     heroLine1: "O acesso",
     heroLine2: "é o nosso ofício.",
@@ -81,7 +81,7 @@ export const pt: Dict = {
       },
       {
         q: "Conseguem bilhetes para um evento esgotado?",
-        a: "Sim, é precisamente a nossa especialidade. Graças à nossa rede de detentores oficiais e parceiros de hospitality, obtemos acessos para a maioria dos eventos esgotados: Mundial, Grande Prémio do Mónaco, Super Bowl, Wimbledon, Fashion Week, grandes concertos.",
+        a: "Sim, é precisamente a nossa especialidade. Graças à nossa rede de detentores oficiais e parceiros de hospitality, obtemos acessos para a maioria dos eventos esgotados: Liga dos Campeões, Grande Prémio do Mónaco, Super Bowl, Wimbledon, Fashion Week, grandes concertos.",
       },
       {
         q: "Como funciona um pedido?",
@@ -173,7 +173,7 @@ export const pt: Dict = {
   events: {
     metaTitle: "Eventos esgotados, bilhetes VIP e hospitality | AZ Experiences",
     metaDescription:
-      "Mundial 2026, Wimbledon, US Open, F1 Mónaco, Super Bowl, Festival de Cannes, Bola de Ouro, Fashion Week, Roland-Garros: bilhetes premium e hospitality com a AZ Experiences.",
+      "Liga dos Campeões, Wimbledon, US Open, F1 Mónaco, Super Bowl, Festival de Cannes, Bola de Ouro, Fashion Week, Roland-Garros: bilhetes premium e hospitality com a AZ Experiences.",
     eyebrow: "Eventos",
     title: "Onde já não há lugar, encontramos um",
     intro:

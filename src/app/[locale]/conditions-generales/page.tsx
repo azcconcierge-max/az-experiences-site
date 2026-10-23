@@ -29,8 +29,8 @@ export default async function TermsPage({
   return (
     <>
       <PageHero eyebrow={fr ? "Légal" : "Legal"} title={dict.legal.termsTitle} />
-      <section className="px-5 pb-28 md:px-8">
-        <div className="mx-auto max-w-3xl text-sm leading-relaxed text-ink-dim [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-medium [&_h2]:text-club [&_p]:mb-3">
+      <section className="pb-24">
+        <div className="wrap t-small max-w-[56rem] text-ivory/70 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-medium [&_h2]:text-ivory [&_p]:mb-3">
           {fr ? (
             <>
               <p>
@@ -102,7 +102,7 @@ export default async function TermsPage({
                 La Maison garantit la livraison de billets valides pour l&apos;événement, la date
                 et une catégorie au moins équivalente à celle commandée. À défaut, le Client est
                 intégralement remboursé dans les conditions détaillées dans la{" "}
-                <Link href={`/${locale}/remboursements`} className="text-laiton">
+                <Link href={`/${locale}/remboursements`} className="text-stone">
                   politique de remboursement et d&apos;annulation
                 </Link>
                 , qui fait partie intégrante des présentes CGV.
@@ -148,7 +148,7 @@ export default async function TermsPage({
               <h2>12. Données personnelles</h2>
               <p>
                 Les données du Client sont traitées conformément à la{" "}
-                <Link href={`/${locale}/confidentialite`} className="text-laiton">
+                <Link href={`/${locale}/confidentialite`} className="text-stone">
                   politique de confidentialité
                 </Link>
                 .
@@ -231,7 +231,7 @@ export default async function TermsPage({
                 The House guarantees delivery of valid tickets for the ordered event and date, in
                 the ordered category or a better one. Failing that, the Client is refunded in
                 full, as detailed in the{" "}
-                <Link href={`/${locale}/remboursements`} className="text-laiton">
+                <Link href={`/${locale}/remboursements`} className="text-stone">
                   Refund and Cancellation Policy
                 </Link>
                 , which forms an integral part of these terms.
@@ -272,7 +272,7 @@ export default async function TermsPage({
               <h2>12. Personal data</h2>
               <p>
                 The Client&apos;s data is processed in accordance with the{" "}
-                <Link href={`/${locale}/confidentialite`} className="text-laiton">
+                <Link href={`/${locale}/confidentialite`} className="text-stone">
                   privacy policy
                 </Link>
                 .

@@ -4,7 +4,7 @@ import type { L, Locale } from "@/i18n";
  * LES ÉVÉNEMENTS · la vitrine principale du site, à actualiser en continu.
  * Ajouter un événement = copier un bloc. Jamais de prix : les demandes
  * se font par email ou WhatsApp.
- * `image` : chemin d'une photo dans /public/events (sinon visuel abstrait auto).
+ * Visuel et couleur : l'univers du rendez-vous, dans src/lib/univers.ts.
  * `startDate` : ISO (YYYY-MM-DD ou YYYY-MM) · laisser undefined si dates sur demande.
  */
 export type EventItem = {
@@ -26,37 +26,36 @@ export type EventItem = {
 
 export const events: EventItem[] = [
   {
-    slug: "coupe-du-monde-2026",
+    slug: "champions-league",
     category: "sport",
-    name: "Coupe du Monde FIFA 2026",
-    city: "USA · Canada · Mexique",
-    country: "US",
-    venue: "MetLife Stadium & 15 autres stades",
-    startDate: "2026-06-11",
-    endDate: "2026-07-19",
+    name: "UEFA Champions League",
+    city: "Madrid",
+    country: "ES",
+    venue: "Estadio Metropolitano",
+    startDate: "2027-06-05",
     dateLabel: {
-      fr: "Finale le 19 juillet 2026 · New York",
-      en: "Final on July 19, 2026 · New York",
-      es: "Final el 19 de julio de 2026 · Nueva York",
-      pt: "Final a 19 de julho de 2026 · Nova Iorque",
+      fr: "Finale le 5 juin 2027 · Madrid",
+      en: "Final on June 5, 2027 · Madrid",
+      es: "Final el 5 de junio de 2027 · Madrid",
+      pt: "Final a 5 de junho de 2027 · Madrid",
     },
     tagline: {
-      fr: "Le match que le monde entier regardera.",
-      en: "The match the whole world will watch.",
-      es: "El partido que todo el mundo verá.",
-      pt: "O jogo que o mundo inteiro vai ver.",
+      fr: "Les grandes nuits européennes.",
+      en: "The great European nights.",
+      es: "Las grandes noches europeas.",
+      pt: "As grandes noites europeias.",
     },
     description: {
-      fr: "Demi-finales et finale de la Coupe du Monde FIFA 2026 : billets premium et hospitality officielle au MetLife Stadium, aux portes de New York. Placement optimal, lounges privés, accompagnement complet sur place.",
-      en: "Semi-finals and final of the FIFA World Cup 2026: premium tickets and official hospitality at MetLife Stadium, at the gates of New York. Prime seating, private lounges, full on-site assistance.",
-      es: "Semifinales y final del Mundial FIFA 2026: entradas premium y hospitality oficial en el MetLife Stadium, a las puertas de Nueva York. Ubicación óptima, lounges privados, acompañamiento completo.",
-      pt: "Meias-finais e final do Mundial FIFA 2026: bilhetes premium e hospitality oficial no MetLife Stadium, às portas de Nova Iorque. Lugar de excelência, lounges privados, acompanhamento completo.",
+      fr: "Les plus grands matchs de la saison, de la phase de ligue à la finale du 5 juin 2027 à l'Estadio Metropolitano de Madrid : billets premium, loges privées et hospitality officielle. Placement optimal, accompagnement complet sur place.",
+      en: "The biggest matches of the season, from the league phase to the final on June 5, 2027 at the Estadio Metropolitano in Madrid: premium tickets, private boxes and official hospitality. Prime seating, full on-site assistance.",
+      es: "Los mayores partidos de la temporada, de la fase liga a la final del 5 de junio de 2027 en el Estadio Metropolitano de Madrid: entradas premium, palcos privados y hospitality oficial. Ubicación óptima, acompañamiento completo.",
+      pt: "Os maiores jogos da temporada, da fase de liga à final de 5 de junho de 2027 no Estadio Metropolitano de Madrid: bilhetes premium, camarotes privados e hospitality oficial. Lugar de excelência, acompanhamento completo.",
     },
     offers: {
-      fr: ["Billets catégorie 1 & premium", "Hospitality officielle (lounges, restauration)", "Transferts privés stade ↔ Manhattan"],
-      en: ["Category 1 & premium tickets", "Official hospitality (lounges, dining)", "Private transfers stadium ↔ Manhattan"],
-      es: ["Entradas categoría 1 y premium", "Hospitality oficial (lounges, restauración)", "Traslados privados estadio ↔ Manhattan"],
-      pt: ["Bilhetes categoria 1 e premium", "Hospitality oficial (lounges, restauração)", "Transferes privados estádio ↔ Manhattan"],
+      fr: ["Billets catégorie 1 & premium", "Loges privées et hospitality officielle", "Transferts privés aéroport ↔ stade"],
+      en: ["Category 1 & premium tickets", "Private boxes and official hospitality", "Private transfers airport ↔ stadium"],
+      es: ["Entradas categoría 1 y premium", "Palcos privados y hospitality oficial", "Traslados privados aeropuerto ↔ estadio"],
+      pt: ["Bilhetes categoria 1 e premium", "Camarotes privados e hospitality oficial", "Transferes privados aeroporto ↔ estádio"],
     },
     hue: 145,
   },
@@ -378,7 +377,7 @@ export function getEvent(slug: string): EventItem | undefined {
 
 /** Organisateurs officiels, affichés dans les faits clés des pages événements. */
 export const organizers: Record<string, string> = {
-  "coupe-du-monde-2026": "FIFA",
+  "champions-league": "UEFA",
   "super-bowl": "NFL",
   "f1-monaco": "Automobile Club de Monaco",
   wimbledon: "AELTC",

@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
         destination: "/fr",
         permanent: false,
       },
+      // la Coupe du Monde 2026 a laissé sa place à la Ligue des champions
+      {
+        source: "/:locale(fr|en|es|pt)/evenements/coupe-du-monde-2026",
+        destination: "/:locale/evenements/champions-league",
+        permanent: true,
+      },
     ];
   },
 };
