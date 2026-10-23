@@ -28,8 +28,8 @@ export const fr = {
     metaDescription:
       "AZ Experiences, conciergerie privée parisienne spécialisée dans l'accès aux événements sold out : billets VIP, hospitality, jet privé, yachts, sécurité, voyages sur mesure. Ligue des champions, F1 Monaco, Super Bowl, Fashion Week.",
     heroEyebrow: "Conciergerie privée, Paris · Monde",
-    heroLine1: "L'accès",
-    heroLine2: "est notre métier.",
+    heroLine1: "Unlock",
+    heroLine2: "your access",
     heroSubtitle:
       "Conciergerie privée, spécialiste des rendez-vous affichés complets. Accès, hospitality et sur-mesure, à Paris et à l'international.",
     aboutEyebrow: "Qui sommes-nous",
@@ -172,7 +172,7 @@ export const fr = {
   events: {
     metaTitle: "Événements sold out, billets VIP & hospitality | AZ Experiences",
     metaDescription:
-      "Ligue des champions, Wimbledon, US Open, F1 Monaco, Super Bowl, Festival de Cannes, Ballon d'Or, Fashion Week, Roland-Garros : billets premium et hospitality via AZ Experiences.",
+      "Ligue des champions, F1 Monaco, Super Bowl, Festival de Cannes, Ballon d'Or, Fashion Week : billets premium et hospitality via AZ Experiences.",
     eyebrow: "Événements",
     title: "Là où il n'y a plus de place, nous en trouvons une",
     intro:

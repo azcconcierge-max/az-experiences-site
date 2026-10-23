@@ -9,6 +9,7 @@ import { pageAlternates } from "@/lib/seo";
 import { destinationVisual, universes, visuals } from "@/lib/univers";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/GoldLink";
+import { Monogram } from "@/components/Logo";
 import { AskSection } from "@/components/AskSection";
 import { ParisClock } from "@/components/ParisClock";
 import { TestimonialRotator } from "@/components/TestimonialRotator";
@@ -42,7 +43,16 @@ export default async function HomePage({
   const dict = getDict(locale);
   const h = dict.home;
   const serviceTitle = (slug: string) => services.find((x) => x.slug === slug)?.title[locale] ?? "";
-  const eventName = (slug: string) => events.find((x) => x.slug === slug)?.name ?? "";
+  // Libellés propres à l'accueil : les fiches gardent leur vrai nom.
+  const homeLabels: Record<string, Record<Locale, string>> = {
+    "festival-cannes": { fr: "Red Carpet Access", en: "Red Carpet Access", es: "Red Carpet Access", pt: "Red Carpet Access" },
+    "celine-dion": { fr: "Concert", en: "Concert", es: "Concierto", pt: "Concerto" },
+    "f1-monaco": { fr: "Formule 1", en: "Formula One", es: "Fórmula 1", pt: "Fórmula 1" },
+    "tennis-tour": { fr: "Tennis", en: "Tennis", es: "Tenis", pt: "Ténis" },
+    "champions-league": { fr: "Football européen", en: "European Football", es: "Fútbol europeo", pt: "Futebol europeu" },
+  };
+  const homeName = (slug: string, name: string) => homeLabels[slug]?.[locale] ?? name;
+  const eventName = (slug: string) => homeName(slug, events.find((x) => x.slug === slug)?.name ?? "");
   const doors = universes.map((u) => {
     const [, kind, slug] = u.href.split("/");
     return { ...u, label: kind === "services" ? serviceTitle(slug) : eventName(slug) };
@@ -51,8 +61,12 @@ export default async function HomePage({
   return (
     <>
       {/* ---- COUVERTURE (p.01) : noir, un titre Thin, deux labels ---- */}
-      <section className="flex min-h-svh flex-col justify-end pt-32">
-        <div className="wrap pb-8">
+      <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-black pt-32">
+        {/* le monogramme en fond : ivoire à 6 %, flou, derrière le texte */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <Monogram width={1100} className="h-auto w-[92vw] max-w-[1100px] opacity-[0.06] blur-[40px]" />
+        </div>
+        <div className="wrap relative pb-8">
           <p className="label fade-late mb-8" style={{ "--d": "100ms" } as CSSProperties}>
             {h.heroEyebrow}
           </p>
@@ -65,7 +79,11 @@ export default async function HomePage({
             </span>
           </h1>
           <div className="fade-late mt-12" style={{ "--d": "900ms" } as CSSProperties}>
-            <Button href={`/${locale}/contact`} variant="lin">
+            <Button
+              href={`/${locale}/contact`}
+              variant="lin"
+              className="!px-10 !py-5 !text-[0.875rem] md:!px-14 md:!py-6 md:!text-base"
+            >
               {dict.cta.request}
             </Button>
           </div>
@@ -119,7 +137,11 @@ export default async function HomePage({
           <div className="grid gap-x-6 gap-y-12 md:grid-cols-3">
             {events.map((e, i) => (
               <Reveal key={e.slug} delay={(i % 3) * 90}>
-                <EventPoster event={e} locale={locale} cta={dict.cta.requestAccess} />
+                <EventPoster
+                  event={{ ...e, name: homeName(e.slug, e.name) }}
+                  locale={locale}
+                  cta={dict.cta.requestAccess}
+                />
               </Reveal>
             ))}
           </div>

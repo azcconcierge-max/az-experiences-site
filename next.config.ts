@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
         destination: "/:locale/evenements/champions-league",
         permanent: true,
       },
+      // Wimbledon, US Open et Roland-Garros sont regroupés dans le Tennis Tour
+      {
+        source: "/:locale(fr|en|es|pt)/evenements/:slug(wimbledon|us-open|roland-garros)",
+        destination: "/:locale/evenements/tennis-tour",
+        permanent: true,
+      },
     ];
   },
 };

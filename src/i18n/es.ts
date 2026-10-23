@@ -30,8 +30,8 @@ export const es: Dict = {
     metaDescription:
       "AZ Experiences, conserjería privada de París especializada en el acceso a eventos agotados: entradas VIP, hospitality, jet privado, yates, seguridad, viajes a medida. Champions League, F1 Mónaco, Super Bowl, Fashion Week.",
     heroEyebrow: "Conserjería privada, París · Mundo",
-    heroLine1: "El acceso",
-    heroLine2: "es nuestro oficio.",
+    heroLine1: "Unlock",
+    heroLine2: "your access",
     heroSubtitle:
       "Conserjería privada, especialista en las grandes citas con el cartel de completo. Accesos, hospitality y a medida, en París y en el mundo.",
     aboutEyebrow: "Quiénes somos",
@@ -173,7 +173,7 @@ export const es: Dict = {
   events: {
     metaTitle: "Eventos sold out, entradas VIP y hospitality | AZ Experiences",
     metaDescription:
-      "Champions League, Wimbledon, US Open, F1 Mónaco, Super Bowl, Festival de Cannes, Balón de Oro, Fashion Week, Roland-Garros: entradas premium y hospitality con AZ Experiences.",
+      "Champions League, F1 Mónaco, Super Bowl, Festival de Cannes, Balón de Oro, Fashion Week: entradas premium y hospitality con AZ Experiences.",
     eyebrow: "Eventos",
     title: "Donde ya no queda sitio, encontramos uno",
     intro:

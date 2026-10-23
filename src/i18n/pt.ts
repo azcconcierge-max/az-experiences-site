@@ -30,8 +30,8 @@ export const pt: Dict = {
     metaDescription:
       "AZ Experiences, concierge privado de Paris especializado no acesso a eventos esgotados: bilhetes VIP, hospitality, jato privado, iates, segurança, viagens à medida. Liga dos Campeões, F1 Mónaco, Super Bowl, Fashion Week.",
     heroEyebrow: "Concierge privado, Paris · Mundo",
-    heroLine1: "O acesso",
-    heroLine2: "é o nosso ofício.",
+    heroLine1: "Unlock",
+    heroLine2: "your access",
     heroSubtitle:
       "Concierge privado, especialista nos grandes encontros esgotados. Acessos, hospitality e à medida, em Paris e no mundo.",
     aboutEyebrow: "Quem somos",
@@ -173,7 +173,7 @@ export const pt: Dict = {
   events: {
     metaTitle: "Eventos esgotados, bilhetes VIP e hospitality | AZ Experiences",
     metaDescription:
-      "Liga dos Campeões, Wimbledon, US Open, F1 Mónaco, Super Bowl, Festival de Cannes, Bola de Ouro, Fashion Week, Roland-Garros: bilhetes premium e hospitality com a AZ Experiences.",
+      "Liga dos Campeões, F1 Mónaco, Super Bowl, Festival de Cannes, Bola de Ouro, Fashion Week: bilhetes premium e hospitality com a AZ Experiences.",
     eyebrow: "Eventos",
     title: "Onde já não há lugar, encontramos um",
     intro:

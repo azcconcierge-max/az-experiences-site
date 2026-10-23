@@ -30,8 +30,8 @@ export const en: Dict = {
     metaDescription:
       "AZ Experiences, Paris-based private concierge specialised in access to sold-out events: VIP tickets, hospitality, private jet, yachts, security, bespoke travel. Champions League, Monaco F1, Super Bowl, Fashion Week.",
     heroEyebrow: "Private concierge, Paris · Worldwide",
-    heroLine1: "Access",
-    heroLine2: "is our craft.",
+    heroLine1: "Unlock",
+    heroLine2: "your access",
     heroSubtitle:
       "A private concierge for the great occasions, even fully booked. Access, hospitality and bespoke arrangements, in Paris and worldwide.",
     aboutEyebrow: "About us",
@@ -173,7 +173,7 @@ export const en: Dict = {
   events: {
     metaTitle: "Sold-out events, VIP tickets & hospitality | AZ Experiences",
     metaDescription:
-      "Champions League, Wimbledon, US Open, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week, Roland-Garros: premium tickets and hospitality through AZ Experiences.",
+      "Champions League, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week: premium tickets and hospitality through AZ Experiences.",
     eyebrow: "Events",
     title: "Where there is no room left, we find one",
     intro:

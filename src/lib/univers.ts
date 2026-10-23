@@ -54,6 +54,9 @@ export const visuals = {
   paris: place("AZ-10-paris", "Paris"),
   ibiza: place("AZ-08-ibiza", "Ibiza"),
   newYork: place("AZ-09-new-york", "New York"),
+  dubai: place("AZ-23-dubai", "Dubai"),
+  london: place("AZ-24-london", "London"),
+  miami: place("AZ-25-miami", "Miami"),
   usOpen: scene("AZ-01-us-open-court", "#13256B", "US Open"),
   superBowl: scene("AZ-02-super-bowl", "#17301F", "Super Bowl"),
   monacoGrandPrix: scene("AZ-03-monaco-grand-prix", "#2C302E", "Grand Prix de Monaco", "Monaco Grand Prix", "Gran Premio de Mónaco", "Grande Prémio do Mónaco"),
@@ -89,6 +92,9 @@ const ALTS: Record<keyof typeof visuals, L> = {
   mykonos: alt("Village blanc des Cyclades au-dessus de la mer bleue", "White Cycladic village above the blue sea", "Pueblo blanco de las Cícladas sobre el mar azul", "Aldeia branca das Cíclades sobre o mar azul"),
   paris: alt("La Seine à l'heure bleue, toits haussmanniens et tour illuminée", "The Seine at blue hour, Haussmann rooftops and the lit tower", "El Sena a la hora azul, tejados haussmannianos y la torre iluminada", "O Sena à hora azul, telhados haussmannianos e a torre iluminada"),
   ibiza: alt("Soleil couchant sur la mer à côté d'un îlot rocheux", "Sun setting over the sea beside a rocky islet", "Sol poniente sobre el mar junto a un islote rocoso", "Sol poente sobre o mar junto a um ilhéu rochoso"),
+  dubai: alt("Skyline de Dubaï au crépuscule au-dessus du désert", "Dubai skyline at dusk above the desert", "Skyline de Dubái al atardecer sobre el desierto", "Skyline do Dubai ao entardecer sobre o deserto"),
+  london: alt("La Tamise à la nuit tombée, ponts illuminés", "The Thames at nightfall, bridges lit up", "El Támesis al anochecer, puentes iluminados", "O Tamisa ao anoitecer, pontes iluminadas"),
+  miami: alt("Front de mer de Miami Beach au coucher du soleil", "Miami Beach waterfront at sunset", "Frente marítimo de Miami Beach al atardecer", "Frente marítima de Miami Beach ao pôr do sol"),
   newYork: alt("Skyline de Manhattan se reflétant dans le fleuve au crépuscule", "Manhattan skyline reflected in the river at dusk", "Skyline de Manhattan reflejado en el río al atardecer", "Skyline de Manhattan refletido no rio ao entardecer"),
   usOpen: alt("Court de tennis bleu la nuit, lignes et balle en mouvement", "Blue tennis court at night, lines and a ball in motion", "Pista de tenis azul de noche, líneas y bola en movimiento", "Court de ténis azul à noite, linhas e bola em movimento"),
   superBowl: alt("Poteaux jaunes devant le terrain, feux d'artifice au-dessus du stade", "Yellow goalposts before the field, fireworks above the stadium", "Postes amarillos ante el campo, fuegos artificiales sobre el estadio", "Postes amarelos diante do campo, fogo de artifício sobre o estádio"),
@@ -121,7 +127,7 @@ export const universes: { visual: Visual; href: string }[] = [
   { visual: visuals.festivals, href: "/evenements/festival-cannes" },
   { visual: visuals.restaurants, href: "/services/gastronomie" },
   { visual: visuals.football, href: "/evenements/champions-league" },
-  { visual: visuals.tennis, href: "/evenements/roland-garros" },
+  { visual: visuals.tennis, href: "/evenements/tennis-tour" },
   { visual: visuals.concerts, href: "/evenements/celine-dion" },
   { visual: visuals.formulaOne, href: "/evenements/f1-monaco" },
 ];
@@ -148,9 +154,7 @@ const byEvent: Record<string, Visual> = {
   "champions-league": visuals.football,
   "super-bowl": visuals.superBowl,
   "f1-monaco": visuals.monacoGrandPrix,
-  wimbledon: visuals.wimbledon,
-  "us-open": visuals.usOpen,
-  "roland-garros": visuals.tennis,
+  "tennis-tour": visuals.tennis,
   "ballon-dor": visuals.ballonDor,
   "fashion-week-paris": visuals.fashionWeek,
   "festival-cannes": visuals.cannes,
@@ -166,6 +170,12 @@ const byDestination: Record<string, Visual> = {
   mykonos: visuals.mykonos,
   ibiza: visuals.ibiza,
   "new-york": visuals.newYork,
+  // TODO : brancher visuals.dubai, visuals.london et visuals.miami quand
+  // AZ-23-dubai.jpg, AZ-24-london.jpg et AZ-25-miami.jpg seront déposés
+  // dans public/az/events-destinations/ (en attendant, l'image du hublot)
+  dubai: visuals.destinationsHero,
+  london: visuals.destinationsHero,
+  miami: visuals.destinationsHero,
 };
 
 const byGuide: Record<string, Visual> = {
