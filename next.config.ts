@@ -42,6 +42,21 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return {
+      // avant les routes dynamiques : [locale] capturerait sinon ces chemins
+      beforeFiles: [
+        {
+          source: "/politique-de-confidentialite",
+          destination: "/fr/politique-de-confidentialite",
+        },
+        {
+          source: "/privacy-policy",
+          destination: "/fr/politique-de-confidentialite",
+        },
+      ],
+    };
+  },
 };
 
 export default nextConfig;
