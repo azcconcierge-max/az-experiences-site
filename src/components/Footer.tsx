@@ -95,7 +95,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             </li>
             <li>
               <Link
-                href={`/${locale}/confidentialite`}
+                href={`/${locale}/politique-de-confidentialite`}
                 className="u-line transition-colors hover:text-ivory"
               >
                 {dict.footer.privacy}

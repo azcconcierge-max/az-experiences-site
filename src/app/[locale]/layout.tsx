@@ -54,6 +54,10 @@ export async function generateMetadata({
       images: [{ url: "/brand/images/AZ-partage-site-1200x630.png", width: 1200, height: 630 }],
     },
     robots: { index: true, follow: true },
+    // Meta domain verification. Rendered in <head> on every page.
+    other: {
+      "facebook-domain-verification": "fa5b1ntnly8ek1hw3afr82kvazm1wh",
+    },
   };
 }
 

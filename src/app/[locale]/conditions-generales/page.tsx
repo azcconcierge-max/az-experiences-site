@@ -148,7 +148,7 @@ export default async function TermsPage({
               <h2>12. Données personnelles</h2>
               <p>
                 Les données du Client sont traitées conformément à la{" "}
-                <Link href={`/${locale}/confidentialite`} className="text-stone">
+                <Link href={`/${locale}/politique-de-confidentialite`} className="text-stone">
                   politique de confidentialité
                 </Link>
                 .
@@ -272,7 +272,7 @@ export default async function TermsPage({
               <h2>12. Personal data</h2>
               <p>
                 The Client&apos;s data is processed in accordance with the{" "}
-                <Link href={`/${locale}/confidentialite`} className="text-stone">
+                <Link href={`/${locale}/politique-de-confidentialite`} className="text-stone">
                   privacy policy
                 </Link>
                 .
