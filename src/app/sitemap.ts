@@ -7,6 +7,7 @@ import { services } from "@/data/services";
 import { destinations } from "@/data/destinations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // /whatsapp-connect est une page privée : elle ne doit pas figurer ici.
   const pages = [
     "",
     "/qui-sommes-nous",

@@ -36,6 +36,21 @@ Déposer l'image dans `public/events/` puis renseigner `image: "/events/mon-fich
 3. Brancher le nom de domaine, puis mettre à jour `baseUrl` dans `src/lib/site.ts`
 4. Ajouter `RESEND_API_KEY` dans les variables d'environnement Vercel
 
+## WhatsApp Business — connexion et webhook
+
+Page privée, absente des menus, du pied de page et du sitemap : `/whatsapp-connect`.
+
+URL de rappel Meta : `/api/whatsapp/webhook`.
+
+Variables d'environnement (Vercel, environnement Production) :
+
+| Variable | Rôle |
+|---|---|
+| `WHATSAPP_VERIFY_TOKEN` | Valeur attendue de `hub.verify_token` lorsque Meta vérifie le webhook (`GET /api/whatsapp/webhook`). |
+| `META_APP_SECRET` | Secret de l'app Meta. S'il est défini, un `POST` dont l'en-tête `X-Hub-Signature-256` ne correspond pas est refusé (`401`). S'il est absent, la signature n'est pas vérifiée et un avertissement est écrit une fois dans les logs. |
+
+Le code renvoyé par l'inscription intégrée est seulement journalisé. Il n'est pas échangé contre un jeton.
+
 ## SEO / GEO intégrés
 
 - Balises meta + hreflang FR/EN sur chaque page
