@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
         destination: "https://azexperiences.com/:path*",
         permanent: true,
       },
+      // Uniquement "/". /whatsapp-connect et /api/whatsapp/* restent sans préfixe de locale.
       {
         source: "/",
         destination: "/fr",
