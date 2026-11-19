@@ -158,6 +158,23 @@ export function parsePayload(payload: unknown): Batch {
               }
             }
           }
+          // Media follow-ups (media sent < 14 days before onboarding): same wamid as the
+          // earlier media_placeholder, delivered as value.messages / value.message_echoes
+          // with no history wrapper.
+          for (const m of list(value.messages)) {
+            const mr = rec(m);
+            if (!mr) continue;
+            const from = digits(mr.from);
+            const isOut = bizNumber ? from === bizNumber : false;
+            const row = toMessage(mr, isOut ? digits(mr.to) : from, isOut ? "out" : "in", "history", null);
+            if (row) out.messages.push(row);
+          }
+          for (const m of list(value.message_echoes)) {
+            const mr = rec(m);
+            if (!mr) continue;
+            const row = toMessage(mr, digits(mr.to), "out", "history", null);
+            if (row) out.messages.push(row);
+          }
           break;
         }
         case "smb_app_state_sync": {

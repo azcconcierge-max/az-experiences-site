@@ -62,4 +62,19 @@ describe("processPayload", () => {
     }));
     assert.equal((contacts.get("33644444444") as { name: string }).name, "Marie D");
   });
+  it("history media follow-ups (messages / message_echoes without history wrapper)", async () => {
+    const { store, messages } = memStore();
+    await processPayload(store, 1, wrap("history", {
+      messages: [{ id: "h1", from: "33622222222", timestamp: "1700000000", type: "image", image: { id: "MEDIA1", caption: "photo" } }],
+    }));
+    await processPayload(store, 2, wrap("history", {
+      message_echoes: [{ id: "h2", from: "33651173987", to: "33622222222", timestamp: "1700000001", type: "document", document: { id: "MEDIA2", filename: "a.pdf" } }],
+    }));
+    assert.equal(messages.get("h1")?.direction, "in");
+    assert.equal(messages.get("h1")?.wa_id, "33622222222");
+    assert.equal(messages.get("h1")?.media_id, "MEDIA1");
+    assert.equal(messages.get("h2")?.direction, "out");
+    assert.equal(messages.get("h2")?.wa_id, "33622222222");
+    assert.equal(messages.get("h2")?.media_id, "MEDIA2");
+  });
 });

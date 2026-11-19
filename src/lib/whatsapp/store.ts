@@ -170,6 +170,9 @@ export const pgStore: WhatsAppStore & { stats(): Promise<Record<string, unknown>
           status = coalesce(whatsapp.messages.status, excluded.status),
           text = coalesce(whatsapp.messages.text, excluded.text),
           media_id = coalesce(whatsapp.messages.media_id, excluded.media_id),
+          type = case when whatsapp.messages.type = 'media_placeholder'
+                      then coalesce(excluded.type, whatsapp.messages.type)
+                      else whatsapp.messages.type end,
           updated_at = now()`;
       await s`
         update whatsapp.conversations cv set last_message_at = m.mx
