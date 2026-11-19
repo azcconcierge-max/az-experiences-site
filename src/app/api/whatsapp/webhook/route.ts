@@ -40,7 +40,28 @@ export async function GET(request: Request) {
   // Contrôle privé : GET ?status=1 avec l'en-tête X-Webhook-Secret renvoie des compteurs.
   const secret = request.headers.get("x-webhook-secret");
   const expectedSecret = process.env.WA_WEBHOOK_SECRET;
-  if (url.searchParams.get("status") && secret && expectedSecret && secretMatches(secret, expectedSecret)) {
+  const authed = !!(secret && expectedSecret && secretMatches(secret, expectedSecret));
+  if (authed && url.searchParams.get("shapes")) {
+    try {
+      return Response.json(await pgStore.rawShapes());
+    } catch (e) {
+      return text(`Storage error: ${e instanceof Error ? e.message : "unknown"}`, 500);
+    }
+  }
+  if (authed && url.searchParams.get("reprocess")) {
+    // Retraite tous les événements bruts (idempotent : upserts par id de message).
+    const rows = await pgStore.allRaw();
+    const errors: { id: unknown; error: string }[] = [];
+    for (const r of rows) {
+      try {
+        await processPayload(pgStore, Number(r.id), r.payload);
+      } catch (e) {
+        errors.push({ id: r.id, error: e instanceof Error ? e.message : "unknown" });
+      }
+    }
+    return Response.json({ reprocessed: rows.length, errors, stats: await pgStore.stats() });
+  }
+  if (url.searchParams.get("status") && authed) {
     try {
       return Response.json(await pgStore.stats());
     } catch (e) {

@@ -86,7 +86,36 @@ function chunks<T>(rows: T[]): T[][] {
   return out;
 }
 
-export const pgStore: WhatsAppStore & { stats(): Promise<Record<string, unknown>> } = {
+export const pgStore: WhatsAppStore & { stats(): Promise<Record<string, unknown>>; rawShapes(): Promise<unknown>; allRaw(): Promise<readonly Record<string, unknown>[]> } = {
+  // Structure seule des événements bruts (aucun contenu client) : champs, clés, métadonnées history, erreurs.
+  async rawShapes() {
+    await ensureSchema();
+    return db()`
+      select r.id, r.received_at, r.processed_at, r.error,
+        (select jsonb_agg(k) from jsonb_object_keys(case when jsonb_typeof(r.payload)='object' then r.payload else '{}'::jsonb end) k) as top_keys,
+        (select jsonb_agg(jsonb_build_object(
+            'field', c->>'field',
+            'value_keys', (select jsonb_agg(k) from jsonb_object_keys(case when jsonb_typeof(c->'value')='object' then c->'value' else '{}'::jsonb end) k),
+            'value_errors', c->'value'->'errors',
+            'n_messages', case when jsonb_typeof(c->'value'->'messages')='array' then jsonb_array_length(c->'value'->'messages') end,
+            'n_contacts', case when jsonb_typeof(c->'value'->'contacts')='array' then jsonb_array_length(c->'value'->'contacts') end,
+            'n_state_sync', case when jsonb_typeof(c->'value'->'state_sync')='array' then jsonb_array_length(c->'value'->'state_sync') end,
+            'history', (select jsonb_agg(jsonb_build_object(
+                 'keys', (select jsonb_agg(k) from jsonb_object_keys(case when jsonb_typeof(h)='object' then h else '{}'::jsonb end) k),
+                 'metadata', h->'metadata',
+                 'errors', h->'errors',
+                 'n_threads', case when jsonb_typeof(h->'threads')='array' then jsonb_array_length(h->'threads') end,
+                 'n_thread_messages', (select sum(case when jsonb_typeof(t->'messages')='array' then jsonb_array_length(t->'messages') else 0 end)
+                                       from jsonb_array_elements(case when jsonb_typeof(h->'threads')='array' then h->'threads' else '[]'::jsonb end) t)))
+               from jsonb_array_elements(case when jsonb_typeof(c->'value'->'history')='array' then c->'value'->'history' else '[]'::jsonb end) h)))
+          from jsonb_array_elements(case when jsonb_typeof(r.payload->'entry')='array' then r.payload->'entry' else '[]'::jsonb end) e,
+               jsonb_array_elements(case when jsonb_typeof(e->'changes')='array' then e->'changes' else '[]'::jsonb end) c) as changes
+      from whatsapp.raw_events r order by r.id`;
+  },
+  async allRaw() {
+    await ensureSchema();
+    return db()`select id, payload from whatsapp.raw_events order by id`;
+  },
   async stats() {
     await ensureSchema();
     const [r] = await db()`
