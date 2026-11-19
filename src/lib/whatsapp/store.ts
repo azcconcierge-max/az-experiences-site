@@ -86,7 +86,20 @@ function chunks<T>(rows: T[]): T[][] {
   return out;
 }
 
-export const pgStore: WhatsAppStore = {
+export const pgStore: WhatsAppStore & { stats(): Promise<Record<string, unknown>> } = {
+  async stats() {
+    await ensureSchema();
+    const [r] = await db()`
+      select
+        (select count(*) from whatsapp.raw_events)::int as raw_events,
+        (select count(*) from whatsapp.raw_events where error is not null)::int as raw_errors,
+        (select count(*) from whatsapp.raw_events where processed_at is null)::int as raw_unprocessed,
+        (select count(*) from whatsapp.contacts)::int as contacts,
+        (select count(*) from whatsapp.conversations)::int as conversations,
+        (select count(*) from whatsapp.messages)::int as messages,
+        (select max(received_at) from whatsapp.raw_events) as last_event_at`;
+    return r;
+  },
   async insertRawEvent(payload) {
     await ensureSchema();
     const s = db();

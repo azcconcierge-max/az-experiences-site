@@ -37,6 +37,17 @@ export async function GET(request: Request) {
     return text(challenge, 200);
   }
 
+  // Contrôle privé : GET ?status=1 avec l'en-tête X-Webhook-Secret renvoie des compteurs.
+  const secret = request.headers.get("x-webhook-secret");
+  const expectedSecret = process.env.WA_WEBHOOK_SECRET;
+  if (url.searchParams.get("status") && secret && expectedSecret && secretMatches(secret, expectedSecret)) {
+    try {
+      return Response.json(await pgStore.stats());
+    } catch (e) {
+      return text(`Storage error: ${e instanceof Error ? e.message : "unknown"}`, 500);
+    }
+  }
+
   return text("Forbidden", 403);
 }
 
@@ -86,12 +97,21 @@ export async function POST(request: Request) {
 
   console.log("[WA_WEBHOOK]", summarizeWhatsAppWebhook(payload));
 
+  // Le brut est stocké AVANT de répondre : si la base échoue, on renvoie 500 pour que
+  // l'expéditeur réessaie (l'historique n'est envoyé qu'une fois, on ne doit rien perdre).
+  let rawId: number;
+  try {
+    rawId = await pgStore.insertRawEvent(payload);
+  } catch (e) {
+    console.error("[WA_WEBHOOK] raw insert failed", e instanceof Error ? e.message : e);
+    return text("Storage error", 500);
+  }
+
   after(async () => {
     try {
-      const rawId = await pgStore.insertRawEvent(payload);
       await processPayload(pgStore, rawId, payload);
     } catch (e) {
-      console.error("[WA_WEBHOOK] storage failed", e instanceof Error ? e.message : e);
+      console.error("[WA_WEBHOOK] processing failed", e instanceof Error ? e.message : e);
     }
   });
   return text("OK", 200);
