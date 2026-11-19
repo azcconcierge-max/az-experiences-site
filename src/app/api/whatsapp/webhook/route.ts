@@ -1,24 +1,18 @@
+import { after } from "next/server";
 import { connection } from "next/server";
+import { timingSafeEqual } from "node:crypto";
+import { pgStore } from "@/lib/whatsapp/store";
+import { processPayload } from "@/lib/whatsapp/process";
 import { summarizeWhatsAppWebhook, whatsappSignatureMatches } from "@/lib/whatsapp-webhook";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-let missingSecretWarned = false;
 
 function text(body: string, status: number) {
   return new Response(body, {
     status,
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
-}
-
-function warnMissingSecretOnce() {
-  if (missingSecretWarned) return;
-  missingSecretWarned = true;
-  console.warn(
-    "[WA_WEBHOOK] META_APP_SECRET is not set; X-Hub-Signature-256 verification skipped."
-  );
 }
 
 /**
@@ -46,22 +40,38 @@ export async function GET(request: Request) {
   return text("Forbidden", 403);
 }
 
+function secretMatches(received: string, expected: string): boolean {
+  const a = Buffer.from(received, "utf8");
+  const b = Buffer.from(expected, "utf8");
+  if (a.length !== b.length) return false;
+  return timingSafeEqual(a, b);
+}
+
 /**
- * Notifications WhatsApp. Le corps brut sert à la signature HMAC.
- * TODO: persister les événements. La destination de stockage (base, file
- * d'attente ou CRM) sera choisie plus tard. Répondre 200 avant toute écriture.
+ * Notifications WhatsApp (Meta ou 360dialog).
+ * Auth : en-tête X-Webhook-Secret (env WA_WEBHOOK_SECRET) ; sinon, signature Meta
+ * x-hub-signature-256 (env META_APP_SECRET). Le brut est stocké d'abord, 200
+ * est renvoyé, puis le traitement tourne via after().
  */
 export async function POST(request: Request) {
   await connection();
   const rawBody = await request.text();
-  const secret = process.env.META_APP_SECRET;
 
-  if (!secret) {
-    warnMissingSecretOnce();
-  } else if (
-    !whatsappSignatureMatches(rawBody, request.headers.get("x-hub-signature-256"), secret)
-  ) {
-    return text("Invalid signature", 401);
+  const secretHeader = request.headers.get("x-webhook-secret");
+  const sigHeader = request.headers.get("x-hub-signature-256");
+  const expectedSecret = process.env.WA_WEBHOOK_SECRET;
+  const appSecret = process.env.META_APP_SECRET;
+
+  if (secretHeader !== null) {
+    if (!expectedSecret || !secretMatches(secretHeader, expectedSecret)) {
+      return text("Unauthorized", 401);
+    }
+  } else if (sigHeader !== null && appSecret) {
+    if (!whatsappSignatureMatches(rawBody, sigHeader, appSecret)) {
+      return text("Invalid signature", 401);
+    }
+  } else {
+    return text("Unauthorized", 401);
   }
 
   let payload: unknown = null;
@@ -75,5 +85,14 @@ export async function POST(request: Request) {
   }
 
   console.log("[WA_WEBHOOK]", summarizeWhatsAppWebhook(payload));
+
+  after(async () => {
+    try {
+      const rawId = await pgStore.insertRawEvent(payload);
+      await processPayload(pgStore, rawId, payload);
+    } catch (e) {
+      console.error("[WA_WEBHOOK] storage failed", e instanceof Error ? e.message : e);
+    }
+  });
   return text("OK", 200);
 }
