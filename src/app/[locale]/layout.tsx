@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { getDict, isLocale, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
 import { Header } from "@/components/Header";
@@ -118,7 +119,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <head>
         {/* active les apparitions seulement si le JavaScript tourne */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <Script id="js-flag" strategy="beforeInteractive">{"document.documentElement.classList.add('js')"}</Script>
       </head>
       <body>
         <div aria-hidden="true" className="read-progress" />

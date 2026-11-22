@@ -5,7 +5,7 @@ import { events, getEvent, organizers } from "@/data/events";
 import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
 import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/GoldLink";
+import { EventPass } from "@/components/admit/EventPass";
 import { eventVisual } from "@/lib/univers";
 import { PosterHero } from "@/components/poster";
 import { RelatedPosters } from "@/components/RelatedPosters";
@@ -127,38 +127,24 @@ export default async function EventPage({
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="md:col-span-4 md:col-start-9">
-            <aside className="h-fit bg-graphite p-8 md:sticky md:top-28">
-              <h2 className="label mb-5 text-ivory/75">{d.facts.title}</h2>
-              <dl className="mb-8 flex flex-col">
-                {[
+          <Reveal delay={120} className="md:col-span-5 md:col-start-8 lg:col-span-4 lg:col-start-9">
+            <aside className="h-fit md:sticky md:top-28">
+              <EventPass
+                admit={dict.admit.pass.admit}
+                title={event.name}
+                facts={[
                   { label: d.facts.date, value: event.dateLabel[locale] },
                   { label: d.facts.venue, value: event.venue },
                   { label: d.facts.city, value: event.city },
                   { label: d.facts.organizer, value: organizers[event.slug] },
-                ]
-                  .filter((f) => f.value)
-                  .map((fact) => (
-                    <div
-                      key={fact.label}
-                      className="flex items-baseline justify-between gap-6 border-b border-ivory/15 py-3"
-                    >
-                      <dt className="label shrink-0 text-ivory/65">{fact.label}</dt>
-                      <dd className="t-small text-right text-ivory">{fact.value}</dd>
-                    </div>
-                  ))}
-              </dl>
-              <h2 className="label mb-4 text-ivory/75">{d.whatWeOffer}</h2>
-              <ul className="mb-8 flex flex-col">
-                {event.offers[locale].map((offer) => (
-                  <li key={offer} className="t-small border-b border-ivory/15 py-3 text-ivory">
-                    {offer}
-                  </li>
-                ))}
-              </ul>
-              <Button href={`/${locale}/contact`} variant="lin">
-                {dict.cta.requestAccess}
-              </Button>
+                ]}
+                offersTitle={d.whatWeOffer}
+                offers={event.offers[locale]}
+                sold={dict.admit.pass.sold}
+                cta={dict.cta.requestAccess}
+                href={`/${locale}/contact?occasion=${encodeURIComponent(event.name)}`}
+                no={`000 ${String((events.findIndex((e) => e.slug === slug) * 137 + 1) % 1000).padStart(3, "0")}`}
+              />
             </aside>
           </Reveal>
         </div>
