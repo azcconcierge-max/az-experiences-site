@@ -36,7 +36,7 @@ export function TitleReveal({
       if (mode === "scrub") {
         // L'encre se pose : de l'ivoire éteint vers la couleur du contexte.
         anim = gsap.from(words, {
-          color: "rgba(239, 232, 218, 0.22)",
+          color: "color-mix(in srgb, var(--color-ivory) 22%, transparent)",
           stagger: 0.08,
           ease: "none",
           scrollTrigger: { trigger: el, start: "top 80%", end: "top 30%", scrub: 0.4 },

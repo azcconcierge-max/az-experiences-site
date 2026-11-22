@@ -103,6 +103,66 @@ export const en: Dict = {
     empty: "The selection is being refreshed, write to us.",
     updated: "updated on",
   },
+  admit: {
+    heroTitle: "Sold out is where we start.",
+    heroSub: "Where there are no seats left, we find one. Finals, premieres, paddocks, tables, confirmed within the hour.",
+    masthead: ["AZ Experiences", "The programme · Season 2026–27", "Paris"],
+    proof: [{
+      n: "<1h",
+      l: "Response",
+    }, {
+      n: "1,000+",
+      l: "Requests handled",
+    }, {
+      n: "9",
+      l: "Cities",
+    }],
+    pass: {
+      admit: "Admit one",
+      admitTwo: "Admit two",
+      occasion: "Occasion",
+      date: "Date",
+      access: "Access",
+      sold: "Sold out",
+      confirmed: "Confirmed",
+      hint: "Tap the pass · scroll to tear",
+      keep: "Keep this part",
+      another: "Show another pass",
+    },
+    ticker: {
+      inDays: "in {n} days",
+      onRequest: "on request",
+    },
+    story: {
+      label: "How it works",
+      occasion: "Monaco Grand Prix",
+      date: "May 2027",
+      access: "Paddock Club",
+      requested: "Requested · 21:04",
+      confirmedIn: "Confirmed in 38 min",
+      place: "Monte-Carlo · Sunday, 14:55",
+    },
+    programme: {
+      title: "The programme",
+      season: "Season 2026–27",
+      all: "All",
+      sport: "Sport",
+      culture: "Fashion & film",
+      music: "Music",
+    },
+    plates: {
+      title: "Plates",
+      count: "Nine doors",
+      plate: "Pl.",
+    },
+    arranges: "The house arranges",
+    letters: {
+      title: "Correspondence",
+      next: "Next letter",
+      letter: "Letter",
+      client: "Client",
+    },
+  },
   about: {
     metaTitle: "About us | AZ Experiences",
     metaDescription:
@@ -160,7 +220,7 @@ export const en: Dict = {
       eyebrow: "Co-founder",
       name: "Amani Omore",
       role: "Co-founder",
-      text: "Co-founder of AZ Experiences, based in Paris.",
+      text: "Co-founder of AZ Experiences.",
     },
   },
   services: {

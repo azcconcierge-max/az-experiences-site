@@ -101,6 +101,66 @@ export const fr = {
     empty: "La sélection se renouvelle en ce moment, écrivez-nous.",
     updated: "mise à jour le",
   },
+  admit: {
+    heroTitle: "Complet, c'est là que nous commençons.",
+    heroSub: "Là où il n'y a plus de place, nous en trouvons une. Finales, premières, paddocks, tables : confirmés dans l'heure.",
+    masthead: ["AZ Experiences", "Le programme · Saison 2026–27", "Paris"],
+    proof: [{
+      n: "<1h",
+      l: "Réponse",
+    }, {
+      n: "1 000+",
+      l: "Demandes traitées",
+    }, {
+      n: "9",
+      l: "Villes",
+    }],
+    pass: {
+      admit: "Une entrée",
+      admitTwo: "Deux entrées",
+      occasion: "Rendez-vous",
+      date: "Date",
+      access: "Accès",
+      sold: "Complet",
+      confirmed: "Confirmé",
+      hint: "Touchez le billet · faites défiler pour le détacher",
+      keep: "Partie à conserver",
+      another: "Voir un autre billet",
+    },
+    ticker: {
+      inDays: "dans {n} jours",
+      onRequest: "sur demande",
+    },
+    story: {
+      label: "Comment ça marche",
+      occasion: "Grand Prix de Monaco",
+      date: "Mai 2027",
+      access: "Paddock Club",
+      requested: "Demandé · 21:04",
+      confirmedIn: "Confirmé en 38 min",
+      place: "Monte-Carlo · dimanche, 14:55",
+    },
+    programme: {
+      title: "Le programme",
+      season: "Saison 2026–27",
+      all: "Tout",
+      sport: "Sport",
+      culture: "Mode & cinéma",
+      music: "Musique",
+    },
+    plates: {
+      title: "Planches",
+      count: "Neuf portes",
+      plate: "Pl.",
+    },
+    arranges: "La maison organise",
+    letters: {
+      title: "Correspondance",
+      next: "Lettre suivante",
+      letter: "Lettre",
+      client: "Client",
+    },
+  },
   about: {
     metaTitle: "Qui sommes-nous | AZ Experiences",
     metaDescription:
@@ -158,7 +218,7 @@ export const fr = {
       eyebrow: "Co-fondateur",
       name: "Amani Omore",
       role: "Co-fondateur",
-      text: "Co-fondateur d'AZ Experiences, basé à Paris.",
+      text: "Co-fondateur d'AZ Experiences.",
     },
   },
   services: {

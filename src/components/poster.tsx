@@ -90,7 +90,7 @@ export function PosterHero({
   const long = typeof title === "string" && title.length > 28;
   return (
     <section
-      className={`relative flex flex-col justify-end overflow-hidden bg-graphite ${short ? "min-h-[84svh]" : "min-h-svh"}`}
+      className={`dk relative flex flex-col justify-end overflow-hidden bg-graphite ${short ? "min-h-[84svh]" : "min-h-svh"}`}
     >
       <div className="absolute inset-0">
         {/* l'image arrive (flou → net) puis glisse moins vite que la page */}
@@ -166,7 +166,7 @@ export function PosterCard({
 }) {
   return (
     <Link href={href} className="group block">
-      <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
+      <div className="dk relative aspect-[4/3] overflow-hidden bg-graphite">
         <Illustration
           visual={visual}
           locale={locale}
@@ -279,7 +279,7 @@ export function RuledRow({
 export function EventPoster({ event, locale, cta }: { event: EventItem; locale: Locale; cta: string }) {
   return (
     <Link href={`/${locale}/evenements/${event.slug}`} className="group block">
-      <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
+      <div className="dk relative aspect-[4/3] overflow-hidden bg-graphite">
         <Illustration
           visual={eventVisual(event.slug)}
           locale={locale}

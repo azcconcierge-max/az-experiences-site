@@ -103,6 +103,66 @@ export const pt: Dict = {
     empty: "A seleção está a ser renovada, escreva-nos.",
     updated: "atualizada a",
   },
+  admit: {
+    heroTitle: "Esgotado é onde começamos.",
+    heroSub: "Onde já não há lugares, encontramos um. Finais, estreias, paddocks, mesas: confirmados em menos de uma hora.",
+    masthead: ["AZ Experiences", "O programa · Temporada 2026–27", "Paris"],
+    proof: [{
+      n: "<1h",
+      l: "Resposta",
+    }, {
+      n: "1.000+",
+      l: "Pedidos tratados",
+    }, {
+      n: "9",
+      l: "Cidades",
+    }],
+    pass: {
+      admit: "Uma entrada",
+      admitTwo: "Duas entradas",
+      occasion: "Ocasião",
+      date: "Data",
+      access: "Acesso",
+      sold: "Esgotado",
+      confirmed: "Confirmado",
+      hint: "Toque no bilhete · deslize para o destacar",
+      keep: "Guarde esta parte",
+      another: "Ver outro bilhete",
+    },
+    ticker: {
+      inDays: "dentro de {n} dias",
+      onRequest: "sob pedido",
+    },
+    story: {
+      label: "Como funciona",
+      occasion: "Grande Prémio do Mónaco",
+      date: "Maio de 2027",
+      access: "Paddock Club",
+      requested: "Pedido · 21:04",
+      confirmedIn: "Confirmado em 38 min",
+      place: "Monte-Carlo · domingo, 14:55",
+    },
+    programme: {
+      title: "O programa",
+      season: "Temporada 2026–27",
+      all: "Tudo",
+      sport: "Desporto",
+      culture: "Moda e cinema",
+      music: "Música",
+    },
+    plates: {
+      title: "Pranchas",
+      count: "Nove portas",
+      plate: "Pr.",
+    },
+    arranges: "A casa organiza",
+    letters: {
+      title: "Correspondência",
+      next: "Carta seguinte",
+      letter: "Carta",
+      client: "Cliente",
+    },
+  },
   about: {
     metaTitle: "Quem somos | AZ Experiences",
     metaDescription:
@@ -160,7 +220,7 @@ export const pt: Dict = {
       eyebrow: "Cofundador",
       name: "Amani Omore",
       role: "Cofundador",
-      text: "Cofundador da AZ Experiences, sediado em Paris.",
+      text: "Cofundador da AZ Experiences.",
     },
   },
   services: {

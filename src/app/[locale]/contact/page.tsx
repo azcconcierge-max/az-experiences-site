@@ -39,7 +39,7 @@ export default async function ContactPage({
       <section className="grid lg:min-h-svh lg:grid-cols-[0.9fr_1.1fr]">
         {/* Gauche : la porte entrouverte, le titre, les liens directs */}
         <div
-          className="relative flex min-h-[80svh] flex-col justify-end overflow-hidden bg-graphite lg:min-h-0"
+          className="dk relative flex min-h-[80svh] flex-col justify-end overflow-hidden bg-graphite lg:min-h-0"
         >
           <div aria-hidden="true" className="absolute inset-0">
             <Illustration locale={locale as Locale} visual={visuals.palaces} priority sizes="(max-width: 1024px) 100vw, 45vw" />
