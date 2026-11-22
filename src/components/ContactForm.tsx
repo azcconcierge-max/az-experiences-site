@@ -169,7 +169,7 @@ export function ContactForm({ dict, email, aside }: { dict: Dict; email: string;
           </div>
         </div>
         <p className="caption mt-5">{l.hint}</p>
-        <ol className="ao-steps mt-10">
+        <ol className="ao-csteps mt-10">
           {[l.step1, l.step2, l.step3].map((s, i) => (
             <li key={i}><span>0{i + 1}</span>{s}</li>
           ))}
