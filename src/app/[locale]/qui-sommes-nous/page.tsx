@@ -80,6 +80,20 @@ export default async function AboutPage({
         </div>
       </section>
 
+      {/* ---- 3b · LE CO-FONDATEUR ---- */}
+      <section className="border-t border-graphite py-24">
+        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+          <Reveal className="md:col-span-5">
+            <TypoPanel name={d.cofounder.name} role={d.cofounder.role} />
+          </Reveal>
+          <Reveal delay={120} className="md:col-span-6 md:col-start-7">
+            <p className="label mb-6">{d.cofounder.eyebrow}</p>
+            <p className="t-h1 text-ivory">{d.cofounder.name}</p>
+            <p className="t-body measure mt-8 text-ivory/75">{d.cofounder.text}</p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---- 4 · LES PILIERS, puis les chiffres ---- */}
       <section className="border-t border-graphite py-24">
         <div className="wrap">

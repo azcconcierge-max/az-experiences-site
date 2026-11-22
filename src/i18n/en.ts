@@ -85,7 +85,7 @@ export const en: Dict = {
       },
       {
         q: "How does a request work?",
-        a: "You write to us by WhatsApp, email or through the private form. We come back within hours with the available options and a precise quote. Nothing is committed without your written approval.",
+        a: "You write to us by WhatsApp, email or through the private form. We come back within the hour with the available options and a precise quote. Nothing is committed without your written approval.",
       },
       {
         q: "Why are prices not displayed?",
@@ -142,7 +142,7 @@ export const en: Dict = {
       },
       {
         title: "Availability",
-        text: "A house reachable seven days a week, answering in hours, not days. The finest occasions never give notice.",
+        text: "A house reachable seven days a week, answering within the hour, not in days. The finest occasions never give notice.",
       },
     ],
     closing:
@@ -155,6 +155,12 @@ export const en: Dict = {
       p2: "It was in Madrid, during business school, that I discovered the inner workings of major events and began building what is now the house's strength: a network. Official holders, organisers, hospitality houses: years of experience and travel to forge relationships that cannot be bought.",
       p3: "AZ Experiences was born of this dual culture: French hotel-trade standards and the art of access. I now put it at the service of clients who share my conviction: an experience is only worth having if it is flawless.",
       quote: "Access is only valuable if everything else is impeccable.",
+    },
+    cofounder: {
+      eyebrow: "Co-founder",
+      name: "Amani Omore",
+      role: "Co-founder",
+      text: "Co-founder of AZ Experiences, based in Paris.",
     },
   },
   services: {
@@ -173,7 +179,7 @@ export const en: Dict = {
   events: {
     metaTitle: "Sold-out events, VIP tickets & hospitality | AZ Experiences",
     metaDescription:
-      "Champions League, Monaco F1, Super Bowl, Cannes Film Festival, Ballon d'Or, Fashion Week: premium tickets and hospitality through AZ Experiences.",
+      "Champions League, Monaco F1, Super Bowl, Cannes Film Festival, Fashion Week: premium tickets and hospitality through AZ Experiences.",
     eyebrow: "Events",
     title: "Where there is no room left, we find one",
     intro:
@@ -196,7 +202,7 @@ export const en: Dict = {
     faq: [
       {
         q: "How do I book?",
-        a: "Write to us by WhatsApp, email or through the private form, stating the event, date and number of guests. We come back within hours with the available options.",
+        a: "Write to us by WhatsApp, email or through the private form, stating the event, date and number of guests. We come back within the hour with the available options.",
       },
       {
         q: "Why are no prices displayed?",
@@ -218,12 +224,12 @@ export const en: Dict = {
   destinations: {
     metaTitle: "Destinations, the world in private | AZ Experiences",
     metaDescription:
-      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York: the destinations where AZ Experiences has its habits. Villas, tables, beach clubs, nights and access by introduction.",
+      "Monaco, Côte d'Azur, Paris, Mykonos, Ibiza, New York, Dubai, London, Miami: the destinations where AZ Experiences has its habits. Villas, tables, beach clubs, nights and access by introduction.",
     eyebrow: "Destinations",
     title: "The world, in private",
     intro:
-      "Six territories where the house has its habits, its tables and its keys. Hover, choose, we take care of the rest.",
-    introShort: "Six territories where the house has its habits, its tables and its keys.",
+      "Nine cities where the house has its habits, its tables and its keys. Hover, choose, we take care of the rest.",
+    introShort: "Nine cities where the house has its habits, its tables and its keys.",
     homeEyebrow: "Our destinations",
     homeTitle: "Where the house holds the keys",
     spotsLabel: "The house guide",
@@ -250,7 +256,7 @@ export const en: Dict = {
     reading: "min read",
     ctaTitle: "A question? A wish?",
     ctaText:
-      "The guide gives the general answers. For your specific case, write to us, the answer arrives within hours.",
+      "The guide gives the general answers. For your specific case, write to us, the answer arrives within the hour.",
   },
   contact: {
     metaTitle: "Contact, private request | AZ Experiences",
@@ -259,7 +265,7 @@ export const en: Dict = {
     eyebrow: "Contact",
     title: "Your private request",
     intro:
-      "An event, a date, a wish, tell us about your project in a few lines. We come back within hours, in full confidentiality.",
+      "An event, a date, a wish, tell us about your project in a few lines. We come back within the hour, in full confidentiality.",
     form: {
       name: "Full name",
       email: "Email",

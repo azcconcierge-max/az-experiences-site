@@ -85,7 +85,7 @@ export const pt: Dict = {
       },
       {
         q: "Como funciona um pedido?",
-        a: "Escreve-nos por WhatsApp, email ou através do formulário privado. Respondemos em poucas horas com as opções disponíveis e um orçamento preciso. Nada é comprometido sem o seu acordo por escrito.",
+        a: "Escreve-nos por WhatsApp, email ou através do formulário privado. Respondemos em menos de uma hora com as opções disponíveis e um orçamento preciso. Nada é comprometido sem o seu acordo por escrito.",
       },
       {
         q: "Porque é que os preços não são mostrados?",
@@ -142,7 +142,7 @@ export const pt: Dict = {
       },
       {
         title: "A disponibilidade",
-        text: "Uma casa contactável sete dias por semana, que responde em horas, não em dias. As melhores ocasiões não avisam.",
+        text: "Uma casa contactável sete dias por semana, que responde em menos de uma hora, não em dias. As melhores ocasiões não avisam.",
       },
     ],
     closing:
@@ -155,6 +155,12 @@ export const pt: Dict = {
       p2: "Foi em Madrid, durante a minha escola de negócios, que descobri os bastidores dos grandes eventos e comecei a construir o que é hoje a força da casa: uma rede. Detentores oficiais, organizadores, casas de hospitality: anos de experiência e de viagens para criar relações que não se compram.",
       p3: "A AZ Experiences nasceu desta dupla cultura: a exigência hoteleira à francesa e a arte do acesso. Hoje coloco-a ao serviço de uma clientela que partilha a minha convicção: uma experiência só vale se for perfeita.",
       quote: "Um acesso só tem valor se tudo o resto for impecável.",
+    },
+    cofounder: {
+      eyebrow: "Cofundador",
+      name: "Amani Omore",
+      role: "Cofundador",
+      text: "Cofundador da AZ Experiences, sediado em Paris.",
     },
   },
   services: {
@@ -173,7 +179,7 @@ export const pt: Dict = {
   events: {
     metaTitle: "Eventos esgotados, bilhetes VIP e hospitality | AZ Experiences",
     metaDescription:
-      "Liga dos Campeões, F1 Mónaco, Super Bowl, Festival de Cannes, Bola de Ouro, Fashion Week: bilhetes premium e hospitality com a AZ Experiences.",
+      "Liga dos Campeões, F1 Mónaco, Super Bowl, Festival de Cannes, Fashion Week: bilhetes premium e hospitality com a AZ Experiences.",
     eyebrow: "Eventos",
     title: "Onde já não há lugar, encontramos um",
     intro:
@@ -196,7 +202,7 @@ export const pt: Dict = {
     faq: [
       {
         q: "Como reservar?",
-        a: "Escreva-nos por WhatsApp, email ou através do formulário privado indicando o evento, a data e o número de pessoas. Respondemos em poucas horas com as opções disponíveis.",
+        a: "Escreva-nos por WhatsApp, email ou através do formulário privado indicando o evento, a data e o número de pessoas. Respondemos em menos de uma hora com as opções disponíveis.",
       },
       {
         q: "Porque é que nenhum preço é mostrado?",
@@ -218,12 +224,12 @@ export const pt: Dict = {
   destinations: {
     metaTitle: "Destinos, o mundo em versão privada | AZ Experiences",
     metaDescription:
-      "Mónaco, Côte d'Azur, Paris, Mykonos, Ibiza, Nova Iorque: os destinos onde a AZ Experiences tem os seus hábitos. Villas, mesas, beach clubs, noites e acessos por introdução.",
+      "Mónaco, Côte d'Azur, Paris, Mykonos, Ibiza, Nova Iorque, Dubai, Londres, Miami: os destinos onde a AZ Experiences tem os seus hábitos. Villas, mesas, beach clubs, noites e acessos por introdução.",
     eyebrow: "Destinos",
     title: "O mundo, em versão privada",
     intro:
-      "Seis territórios onde a casa tem os seus hábitos, as suas mesas e as suas chaves. Sobrevoe, escolha, nós tratamos do resto.",
-    introShort: "Seis territórios onde a casa tem os seus hábitos, as suas mesas e as suas chaves.",
+      "Nove cidades onde a casa tem os seus hábitos, as suas mesas e as suas chaves. Sobrevoe, escolha, nós tratamos do resto.",
+    introShort: "Nove cidades onde a casa tem os seus hábitos, as suas mesas e as suas chaves.",
     homeEyebrow: "Os nossos destinos",
     homeTitle: "Onde a casa tem as chaves",
     spotsLabel: "O guia da casa",
@@ -250,7 +256,7 @@ export const pt: Dict = {
     reading: "min de leitura",
     ctaTitle: "Uma pergunta? Um desejo?",
     ctaText:
-      "O guia dá as respostas gerais. Para o seu caso concreto, escreva-nos, a resposta chega em poucas horas.",
+      "O guia dá as respostas gerais. Para o seu caso concreto, escreva-nos, a resposta chega em menos de uma hora.",
   },
   contact: {
     metaTitle: "Contacto, pedido privado | AZ Experiences",
@@ -259,7 +265,7 @@ export const pt: Dict = {
     eyebrow: "Contacto",
     title: "O seu pedido privado",
     intro:
-      "Um evento, uma data, um desejo, descreva-nos o seu projeto em algumas linhas. Respondemos em poucas horas, com total confidencialidade.",
+      "Um evento, uma data, um desejo, descreva-nos o seu projeto em algumas linhas. Respondemos em menos de uma hora, com total confidencialidade.",
     form: {
       name: "Nome completo",
       email: "Email",

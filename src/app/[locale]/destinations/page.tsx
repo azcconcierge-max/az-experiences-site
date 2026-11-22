@@ -47,7 +47,7 @@ export default async function DestinationsPage({
         </div>
       </section>
 
-      {/* ---- Six territoires, une couleur chacun ---- */}
+      {/* ---- Neuf villes, une couleur chacune ---- */}
       <section className="pb-24">
         <div className="wrap grid gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
           {destinations.map((dest, i) => (

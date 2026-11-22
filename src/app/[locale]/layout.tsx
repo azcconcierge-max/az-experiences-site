@@ -78,6 +78,10 @@ const organizationJsonLd = {
     addressLocality: site.address.city,
     addressCountry: site.address.country,
   },
+  founders: [
+    { "@type": "Person", name: "Noam Azoulay", jobTitle: "Founder" },
+    { "@type": "Person", name: "Amani Omore", jobTitle: "Co-founder" },
+  ],
   areaServed: ["Paris", "France", "Europe", "Worldwide"],
   knowsLanguage: ["fr", "en", "es", "pt"],
   telephone: site.whatsapp ? `+${site.whatsapp}` : undefined,

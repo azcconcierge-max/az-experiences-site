@@ -43,7 +43,7 @@ export const articles: Article[] = [
         { p: "C'est exactement le métier d'AZ Experiences : des années passées sur ce marché nous ont construit un réseau de détenteurs officiels et de partenaires hospitality sur les grands rendez-vous, Ligue des champions, Grand Prix de Monaco, Wimbledon, Super Bowl, Fashion Week. Quand un client nous écrit, nous savons qui appeler, à quel prix, et ce qui est réellement livrable." },
         { h: "Les bons réflexes" },
         { p: "Premier réflexe : anticiper quand c'est possible, plus la demande arrive tôt, plus les options sont larges. Deuxième réflexe : exiger une confirmation écrite avant tout paiement, avec catégorie et conditions précises ; une maison sérieuse ne confirme que ce qu'elle sait livrer. Troisième réflexe : se méfier des places « trop belles » sur les plateformes de revente anonymes, où les billets invalides sont fréquents sur les très grands événements." },
-        { p: "Un événement complet vous fait envie ? Écrivez-nous par WhatsApp ou via notre formulaire privé : nous répondons en quelques heures avec les options réelles du moment." },
+        { p: "Un événement complet vous fait envie ? Écrivez-nous par WhatsApp ou via notre formulaire privé : nous répondons dans l'heure avec les options réelles du moment." },
       ],
       en: [
         { p: "Every year, the same scene: ticketing for the final opens at 10am, everything is gone by 10:09. Yet on the day, the boxes are full of guests who never queued online. The reason is simple: at major events, a significant share of seats never goes through public ticketing." },
@@ -53,7 +53,7 @@ export const articles: Article[] = [
         { p: "That is precisely AZ Experiences's craft: years on this market have built us a network of official holders and hospitality partners at the great occasions, Champions League, Monaco Grand Prix, Wimbledon, Super Bowl, Fashion Week. When a client writes to us, we know who to call, at what price, and what is genuinely deliverable." },
         { h: "The right reflexes" },
         { p: "First: anticipate when possible, the earlier the request, the wider the options. Second: demand written confirmation before any payment, with precise category and conditions; a serious house only confirms what it knows it can deliver. Third: beware of deals that look too good on anonymous resale platforms, where invalid tickets are common at the biggest events." },
-        { p: "Tempted by a sold-out event? Write to us on WhatsApp or through our private form: we answer within hours with the real options of the moment." },
+        { p: "Tempted by a sold-out event? Write to us on WhatsApp or through our private form: we answer within the hour with the real options of the moment." },
       ],
       es: [
         { p: "Cada año, la misma escena: la venta de entradas para la final abre a las 10h y a las 10h09 no queda nada. Sin embargo, el día del evento, los palcos están llenos de invitados que nunca hicieron cola en línea. La razón es simple: en los grandes eventos, una parte importante de las plazas nunca pasa por la venta pública." },
@@ -63,7 +63,7 @@ export const articles: Article[] = [
         { p: "Ese es exactamente el oficio de AZ Experiences: años en este mercado nos han construido una red de titulares oficiales y socios de hospitality en las grandes citas, Champions League, Gran Premio de Mónaco, Wimbledon, Super Bowl, Fashion Week. Cuando un cliente nos escribe, sabemos a quién llamar, a qué precio y qué es realmente entregable." },
         { h: "Los buenos reflejos" },
         { p: "Primero: anticipar cuando sea posible, cuanto antes llega la solicitud, más amplias son las opciones. Segundo: exigir una confirmación escrita antes de cualquier pago, con categoría y condiciones precisas; una casa seria solo confirma lo que sabe entregar. Tercero: desconfiar de las gangas en plataformas de reventa anónimas, donde las entradas inválidas son frecuentes en los grandes eventos." },
-        { p: "¿Le tienta un evento agotado? Escríbanos por WhatsApp o mediante nuestro formulario privado: respondemos en pocas horas con las opciones reales del momento." },
+        { p: "¿Le tienta un evento agotado? Escríbanos por WhatsApp o mediante nuestro formulario privado: respondemos en menos de una hora con las opciones reales del momento." },
       ],
       pt: [
         { p: "Todos os anos, a mesma cena: a bilheteira da final abre às 10h, tudo vendido às 10h09. No entanto, no dia, os camarotes estão cheios de convidados que nunca fizeram fila online. A razão é simples: nos grandes eventos, uma parte importante dos lugares nunca passa pela venda pública." },
@@ -73,7 +73,7 @@ export const articles: Article[] = [
         { p: "É exatamente o ofício da AZ Experiences: anos neste mercado construíram-nos uma rede de detentores oficiais e parceiros de hospitality nos grandes encontros, Liga dos Campeões, Grande Prémio do Mónaco, Wimbledon, Super Bowl, Fashion Week. Quando um cliente nos escreve, sabemos a quem ligar, a que preço, e o que é realmente entregável." },
         { h: "Os bons reflexos" },
         { p: "Primeiro: antecipar quando possível, quanto mais cedo chega o pedido, mais amplas são as opções. Segundo: exigir uma confirmação escrita antes de qualquer pagamento, com categoria e condições precisas; uma casa séria só confirma o que sabe entregar. Terceiro: desconfiar das pechinchas em plataformas de revenda anónimas, onde os bilhetes inválidos são frequentes nos grandes eventos." },
-        { p: "Tentado por um evento esgotado? Escreva-nos por WhatsApp ou através do nosso formulário privado: respondemos em poucas horas com as opções reais do momento." },
+        { p: "Tentado por um evento esgotado? Escreva-nos por WhatsApp ou através do nosso formulário privado: respondemos em menos de uma hora com as opções reais do momento." },
       ],
     },
   },
