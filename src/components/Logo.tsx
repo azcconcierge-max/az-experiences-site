@@ -83,7 +83,7 @@ export function MonogramDraw({ width = 160, className = "" }: { width?: number; 
       <g
         clipPath="url(#az-mono-base)"
         fill="none"
-        stroke="#EFE8DA"
+        stroke="currentColor"
         strokeWidth="3.2"
         strokeLinecap="butt"
         strokeLinejoin="miter"

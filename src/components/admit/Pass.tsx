@@ -94,7 +94,7 @@ export function Pass({ items, labels }: { items: PassItem[]; labels: Labels }) {
     <div ref={wrap} className="ao-pass-wrap">
       <div
         ref={card}
-        className={`ao-pass ${stamped ? "is-stamped" : ""}`}
+        className={`ao-pass dk ${stamped ? "is-stamped" : ""}`}
         role="button"
         tabIndex={0}
         aria-label={labels.another}

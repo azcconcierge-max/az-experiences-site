@@ -95,7 +95,7 @@ export default async function HomePage({
     }),
     { href: `/${locale}/destinations/monaco`, visual: destinationVisual("monaco"), title: "Monaco" },
   ];
-  const plateShape = ["tall", "", "", "wide", "", "tall", "", "", "wide"];
+  const plateShape = ["tall", "", "", "", "", "wide", "", "", "wide"];
 
   return (
     <>
@@ -219,7 +219,7 @@ export default async function HomePage({
       </section>
 
       {/* ---- VI · CORRESPONDENCE ---- */}
-      <section className="pb-24 md:pb-32">
+      <section className="pb-12 md:pb-16">
         <div className="wrap">
           <div className="ao-sechead"><span className="label">VI.</span><h2 className="ao-h2">{a.letters.title}</h2><span /></div>
           <Letters
