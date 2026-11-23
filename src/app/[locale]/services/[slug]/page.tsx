@@ -1,18 +1,29 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDict, locales, type Locale } from "@/i18n";
 import { services } from "@/data/services";
 import { serviceDetails } from "@/data/services-details";
+import { events } from "@/data/events";
 import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
-import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/GoldLink";
-import { serviceVisual } from "@/lib/univers";
-import { PosterHero } from "@/components/poster";
-import { RelatedPosters, ToneBand } from "@/components/RelatedPosters";
-import { Breadcrumb } from "@/components/Breadcrumb";
-import { Faq, faqJsonLd } from "@/components/Faq";
+import { eventVisual, serviceVisual } from "@/lib/univers";
+import { eventCity, eventName, GROUP, when } from "@/lib/names";
+import { faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
+import { CtaBand, EventCard, FaqBlock, Label, PageHero, PvPage } from "@/components/pv/blocks";
+
+/** The occasions each service is most often used around. */
+const SERVICE_EVENTS: Record<string, string[]> = {
+  evenements: ["champions-league", "f1-monaco", "celine-dion"],
+  gastronomie: ["f1-monaco", "fashion-week-paris", "festival-cannes"],
+  "jet-prive": ["f1-monaco", "super-bowl", "festival-cannes"],
+  yachts: ["f1-monaco", "festival-cannes"],
+  hotels: ["festival-cannes", "fashion-week-paris", "f1-monaco"],
+  transport: ["fashion-week-paris", "champions-league", "met-gala"],
+  securite: ["met-gala", "oscars", "festival-cannes"],
+  voyages: ["super-bowl", "tennis-tour", "champions-league"],
+};
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => services.map((s) => ({ locale, slug: s.slug })));
@@ -46,106 +57,88 @@ export default async function ServicePage({
   if (!service || !detail) notFound();
   const dict = getDict(locale);
   const d = dict.services;
-  const visual = serviceVisual(slug);
+  const title = service.title[locale];
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.title[locale],
+    name: title,
     description: detail.intro[locale],
     provider: { "@type": "Organization", name: site.name, url: site.baseUrl },
     areaServed: "Worldwide",
   };
 
+  const related = (SERVICE_EVENTS[slug] ?? [])
+    .map((s) => events.find((e) => e.slug === s))
+    .filter((e): e is (typeof events)[number] => Boolean(e));
+
   return (
-    <>
+    <PvPage>
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={faqJsonLd(detail.faq[locale])} />
-
-      {/* ---- 1 · HERO : l'illustration de l'univers, le nom du service ---- */}
-      <div className="relative">
-        <PosterHero locale={locale} visual={visual} title={service.title[locale]} chapter="02" footer={`AZ Experiences — ${dict.nav.services}`} short />
-        <Breadcrumb
-          ariaLabel={dict.nav.services}
-          items={[
-            { href: `/${locale}`, label: dict.nav.home },
-            { href: `/${locale}/services`, label: dict.nav.services },
-            { label: service.title[locale] },
-          ]}
-        />
-      </div>
-
-      {/* ---- 2 · LA PROMESSE : une colonne de lecture, les points à côté ---- */}
-      <section className="py-24">
-        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
-          <Reveal className="md:col-span-6">
-            <p className="t-h2 text-ivory">{detail.intro[locale]}</p>
-            <p className="t-body measure mt-8 text-ivory/75">{service.text[locale]}</p>
-          </Reveal>
-          <Reveal delay={120} className="md:col-span-4 md:col-start-9">
-            <p className="label mb-6">{d.pointsLabel}</p>
-            <ul className="border-t border-graphite">
-              {service.points[locale].map((point) => (
-                <li key={point} className="t-body border-b border-graphite py-4 text-ivory">
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---- 3 · LA PHRASE SIGNATURE, sur la couleur de l'univers ---- */}
-      <ToneBand visual={visual}>{service.phrase[locale]}</ToneBand>
-
-      {/* ---- 4 · CE QUE NOUS ORCHESTRONS ---- */}
-      <section className="py-24">
-        <div className="wrap">
-          <p className="label mb-12">{d.orchestrationsLabel}</p>
-          <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3">
-            {detail.orchestrations[locale].map((item, i) => (
-              <Reveal key={item} delay={(i % 3) * 80}>
-                <div className="border-t border-graphite pt-6">
-                  <span className="label">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="t-body mt-4 text-ivory/85">{item}</p>
-                </div>
-              </Reveal>
+      <PageHero
+        locale={locale}
+        dict={dict}
+        k={dict.pv.service}
+        title={title}
+        sub={detail.intro[locale]}
+        visual={serviceVisual(slug)}
+        crumbs={[[dict.nav.services, `/${locale}/services`], [title]]}
+        ctx={title}
+      />
+      <section className="sec">
+        <div className="wrap two">
+          <div>
+            <Label>{d.pointsLabel}</Label>
+            <p className="big-sm" data-fill="">{service.text[locale]}</p>
+          </div>
+          <div className="pill-list" data-rv="">
+            {service.points[locale].map((p) => (
+              <div key={p}><span className="dot" />{p}</div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* ---- 5 · FAQ + demande ---- */}
-      <section className="border-t border-graphite py-24">
-        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
-          <Reveal className="md:col-span-7">
-            <h2 className="t-h2 mb-8 text-ivory">{d.faqTitle}</h2>
-            <Faq items={detail.faq[locale]} />
-          </Reveal>
-          <Reveal delay={120} className="md:col-span-4 md:col-start-9">
-            <aside className="h-fit bg-graphite p-8 md:sticky md:top-28">
-              <p className="t-h3 mb-3 text-ivory">{dict.contact.title}</p>
-              <p className="t-small mb-8 text-ivory/80">{dict.contact.intro}</p>
-              <Button href={`/${locale}/contact`} variant="lin">
-                {dict.cta.request}
-              </Button>
-              <p className="caption mt-6 !text-ivory/70">{dict.contact.confidential}</p>
-            </aside>
-          </Reveal>
+      <section className="sec" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <Label>{d.orchestrationsLabel}</Label>
+          <ol className="orch">
+            {detail.orchestrations[locale].map((l, i) => (
+              <li key={l} data-rv=""><span className="num">{String(i + 1).padStart(2, "0")}</span>{l}</li>
+            ))}
+          </ol>
         </div>
       </section>
-
-      {/* ---- 6 · AUTRES SERVICES ---- */}
-      <RelatedPosters locale={locale}
-        title={dict.cta.allServices}
-        items={services
-          .filter((s) => s.slug !== slug)
-          .map((s) => ({
-            href: `/${locale}/services/${s.slug}`,
-            visual: serviceVisual(s.slug),
-            title: s.title[locale],
-          }))}
-      />
-    </>
+      {related.length > 0 && (
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <Label>{dict.pv.whereClients}</Label>
+            <h2 className="h2 split">{dict.pv.aroundOccasions}</h2>
+            <div className="card-grid">
+              {related.map((e) => (
+                <EventCard
+                  key={e.slug}
+                  locale={locale}
+                  dict={dict}
+                  e={{ slug: e.slug, name: eventName(e, locale), when: when(e.dateLabel[locale]), city: eventCity(e, locale), tag: e.tagline[locale], date: e.startDate, cat: GROUP[e.category], visual: eventVisual(e.slug) }}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      <FaqBlock items={detail.faq[locale]} title={dict.pv.faqFrequent} label={dict.pv.essential} />
+      <section className="sec" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <Label>{dict.pv.allServices}</Label>
+          <div className="mini-links">
+            {services.filter((x) => x.slug !== slug).map((x) => (
+              <Link key={x.slug} href={`/${locale}/services/${x.slug}`} className="link">{x.title[locale]} →</Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CtaBand locale={locale} dict={dict} title={dict.pv.ctaNeed} ctx={title} />
+    </PvPage>
   );
 }

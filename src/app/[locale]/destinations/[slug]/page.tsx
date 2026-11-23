@@ -2,14 +2,23 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDict, locales, type Locale } from "@/i18n";
 import { destinations, getDestination, type GuideCategory } from "@/data/destinations";
+import { events } from "@/data/events";
 import { site } from "@/lib/site";
 import { pageAlternates } from "@/lib/seo";
-import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/GoldLink";
-import { destinationVisual, guideVisual } from "@/lib/univers";
-import { Illustration, PosterHero, UniverseTile } from "@/components/poster";
+import { destinationVisual, eventVisual } from "@/lib/univers";
+import { cityName, eventCity, eventName, GROUP, when } from "@/lib/names";
 import { JsonLd } from "@/components/JsonLd";
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { CtaBand, DestCard, EventCard, Label, PageHero, PvPage, requestHref } from "@/components/pv/blocks";
+import Link from "next/link";
+
+const DEST_EVENTS: Record<string, string[]> = {
+  monaco: ["f1-monaco"],
+  "cote-d-azur": ["festival-cannes", "f1-monaco"],
+  paris: ["fashion-week-paris"],
+  "new-york": ["met-gala"],
+  london: ["tennis-tour"],
+  miami: ["super-bowl"],
+};
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => destinations.map((d) => ({ locale, slug: d.slug })));
@@ -42,10 +51,10 @@ export default async function DestinationPage({
   if (!dest) notFound();
   const dict = getDict(locale);
   const d = dict.destinations;
+  const name = cityName(dest.name, locale);
 
   const cats: GuideCategory[] = ["vivre", "tables", "verres", "nuit"];
   const allSpots = cats.flatMap((c) => dest.guide[c]);
-
   const placeJsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristDestination",
@@ -54,117 +63,93 @@ export default async function DestinationPage({
     touristType: "Luxury travellers",
     includesAttraction: allSpots.map((s) => ({ "@type": "TouristAttraction", name: s.name })),
   };
-
-  const visual = destinationVisual(slug);
+  const evs = (DEST_EVENTS[slug] ?? []).map((s) => events.find((e) => e.slug === s)).filter((e): e is (typeof events)[number] => Boolean(e));
+  const others = destinations.filter((x) => x.slug !== slug).slice(0, 3);
 
   return (
-    <>
+    <PvPage>
       <JsonLd data={placeJsonLd} />
-
-      {/* ---- 1 · HERO : le territoire, sa couleur, son nom ---- */}
-      <div className="relative">
-        <PosterHero locale={locale} visual={visual} label={dest.region[locale]} title={dest.name} subtitle={dest.tagline[locale]} chapter="04" footer={`AZ Experiences — ${dict.nav.destinations}`} short />
-        <Breadcrumb
-          ariaLabel={dict.nav.destinations}
-          items={[
-            { href: `/${locale}`, label: dict.nav.home },
-            { href: `/${locale}/destinations`, label: dict.nav.destinations },
-            { label: dest.name },
-          ]}
-        />
-      </div>
-
-      {/* ---- 2 · RÉCIT : la phrase, puis le texte ---- */}
-      <section className="py-24">
-        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
-          <Reveal className="md:col-span-5">
-            <p className="t-h2 text-ivory">{dest.tagline[locale]}</p>
-          </Reveal>
-          <Reveal delay={120} className="md:col-span-6 md:col-start-7">
-            <p className="t-body measure text-ivory/75">{dest.intro[locale]}</p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---- 3 · LE GUIDE en quatre chapitres ---- */}
-      <section className="border-t border-graphite py-24">
-        <div className="wrap">
-          <p className="label mb-6">{d.spotsLabel}</p>
-          <h2 className="t-h1 max-w-[36rem] text-ivory">{d.spotsTitle}</h2>
-          <p className="t-small measure mt-6 text-ivory/70">{d.spotsNote}</p>
-
-          {cats.map((cat, ci) => {
-            const chapter = guideVisual(cat);
-            return (
-              <div key={cat} className="mt-20 grid gap-8 md:grid-cols-12 md:gap-6">
-                <Reveal className="md:col-span-4">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
-                    <Illustration locale={locale} visual={chapter} portrait={false} sizes="(max-width: 768px) 100vw, 30vw" />
-                  </div>
-                  <div className="mt-4 flex items-baseline justify-between">
-                    <h3 className="t-h2 text-ivory">{d.cats[cat]}</h3>
-                    <span className="label">
-                      {String(ci + 1).padStart(2, "0")} / {String(cats.length).padStart(2, "0")}
-                    </span>
-                  </div>
-                </Reveal>
-                <div className="md:col-span-7 md:col-start-6">
-                  {dest.guide[cat].map((spot, si) => (
-                    <Reveal key={spot.name} delay={si * 80}>
-                      <div className="grid gap-2 border-b border-graphite py-6 first:pt-0 md:grid-cols-[48px_1fr] md:gap-6">
-                        <span className="label pt-1">{String(si + 1).padStart(2, "0")}</span>
-                        <div>
-                          <h4 className="t-h3 text-ivory">{spot.name}</h4>
-                          <p className="t-small measure mt-2 text-ivory/70">{spot.text[locale]}</p>
-                        </div>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ---- 4 · SUR PLACE, NOUS ORCHESTRONS : la couleur du territoire ---- */}
-      <section className="border-t border-graphite py-24">
-        <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
-          <div className="md:col-span-4">
-            <p className="label mb-6">{d.whatWeDo}</p>
-            <Button href={`/${locale}/contact`} variant="lin">
-              {dict.cta.request}
-            </Button>
+      <PageHero
+        locale={locale}
+        dict={dict}
+        k={dest.region[locale]}
+        title={name}
+        sub={dest.tagline[locale]}
+        visual={destinationVisual(slug)}
+        crumbs={[[dict.nav.destinations, `/${locale}/destinations`], [name]]}
+        ctx={name}
+      />
+      <section className="sec">
+        <div className="wrap two">
+          <div>
+            <Label>{dict.pv.theCity}</Label>
+            <p className="big-sm" data-fill="">{dest.intro[locale]}</p>
           </div>
-          <ul className="border-t border-graphite md:col-span-7 md:col-start-6">
-            {dest.offers[locale].map((offer) => (
-              <li key={offer} className="t-body border-b border-graphite py-4 text-ivory">
-                {offer}
-              </li>
-            ))}
-          </ul>
+          <div>
+            <div className="label" data-rv="">{d.whatWeDo}</div>
+            <div className="pill-list" data-rv="">
+              {dest.offers[locale].map((p) => (
+                <div key={p}><span className="dot" />{p}</div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* ---- 5 · LES AUTRES TERRITOIRES ---- */}
-      <section className="py-24">
+      <section className="sec guide-sec">
         <div className="wrap">
-          <p className="label mb-12">{d.homeEyebrow}</p>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-5">
-            {destinations
-              .filter((o) => o.slug !== slug)
-              .map((o) => (
-                <UniverseTile locale={locale}
-                  key={o.slug}
-                  href={`/${locale}/destinations/${o.slug}`}
-                  visual={destinationVisual(o.slug)}
-                  label={o.name}
-                  sizes="(max-width: 768px) 50vw, 20vw"
+          <Label>{d.spotsLabel}</Label>
+          <h2 className="h2 split">{d.spotsTitle}.</h2>
+          <p className="sub" data-rv="">{d.spotsNote}</p>
+          <div className="tabs" role="tablist">
+            {cats.map((c, i) => (
+              <button key={c} type="button" role="tab" aria-selected={i === 0} className={i ? "" : "on"} data-tab={i}>{d.cats[c]}</button>
+            ))}
+            <i className="tab-ink" />
+          </div>
+          <div className="tab-panels">
+            {cats.map((c, i) => (
+              <div key={c} className={`tab-panel${i ? "" : " on"}`} data-panel={i}>
+                {dest.guide[c].map((s, k) => (
+                  <div key={s.name} className="addr">
+                    <span className="num">{String(k + 1).padStart(2, "0")}</span>
+                    <h3>{s.name}</h3>
+                    <p>{s.text[locale]}</p>
+                    <Link href={requestHref(locale, `${s.name}, ${name}`)} className="link">{dict.pv.bookThrough} →</Link>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {evs.length > 0 && (
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <Label>{dict.pv.occasionsIn.replace("{city}", name)}</Label>
+            <div className="card-grid">
+              {evs.map((e) => (
+                <EventCard
+                  key={e.slug}
+                  locale={locale}
+                  dict={dict}
+                  e={{ slug: e.slug, name: eventName(e, locale), when: when(e.dateLabel[locale]), city: eventCity(e, locale), tag: e.tagline[locale], date: e.startDate, cat: GROUP[e.category], visual: eventVisual(e.slug) }}
                 />
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+      <section className="sec" style={{ paddingTop: evs.length ? 0 : undefined }}>
+        <div className="wrap">
+          <Label>{dict.pv.otherDestinations}</Label>
+          <div className="dest-grid" style={{ marginTop: 40 }}>
+            {others.map((x) => (
+              <DestCard key={x.slug} slug={x.slug} name={cityName(x.name, locale)} k={x.region[locale]} tag={x.tagline[locale]} visual={destinationVisual(x.slug)} locale={locale} />
+            ))}
           </div>
         </div>
       </section>
-    </>
+      <CtaBand locale={locale} dict={dict} title={dict.pv.ctaDates} ctx={name} />
+    </PvPage>
   );
 }

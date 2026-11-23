@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { serviceVisual, visuals } from "@/lib/univers";
+import Link from "next/link";
+import { serviceVisual } from "@/lib/univers";
 import { getDict, type Locale } from "@/i18n";
 import { services } from "@/data/services";
 import { pageAlternates } from "@/lib/seo";
-import { PosterCard, PosterHero } from "@/components/poster";
-import { Reveal } from "@/components/Reveal";
-import { AskSection } from "@/components/AskSection";
 import { JsonLd } from "@/components/JsonLd";
+import { faqJsonLd } from "@/components/Faq";
 import { site } from "@/lib/site";
+import { CtaBand, FaqBlock, Media, PvPage, TextHero } from "@/components/pv/blocks";
 
 export async function generateMetadata({
   params,
@@ -32,52 +32,42 @@ export default async function ServicesPage({
   const locale = rawLocale as Locale;
   const dict = getDict(locale);
   const d = dict.services;
+  const faq = dict.home.faq.slice(0, 3);
 
   const servicesJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     itemListElement: services.map((s, i) => ({
-      "@type": "Service",
+      "@type": "ListItem",
       position: i + 1,
-      name: s.title[locale],
-      description: s.text[locale],
-      provider: { "@type": "Organization", name: site.name, url: site.baseUrl },
+      item: { "@type": "Service", name: s.title[locale], description: s.text[locale], provider: { "@type": "Organization", name: site.name } },
     })),
   };
 
   return (
-    <>
+    <PvPage>
       <JsonLd data={servicesJsonLd} />
-
-      {/* ---- Un titre, une phrase, puis un poster par service ---- */}
-      <PosterHero locale={locale}
-        visual={visuals.palaces}
-        label={d.eyebrow}
-        title={d.title}
-        chapter="02"
-        footer={`AZ Experiences — ${dict.nav.services}`}
-      />
-      <section className="pt-24 pb-12">
-        <div className="wrap">
-          <p className="t-h2 max-w-[40rem] text-ivory">{d.introShort}</p>
-        </div>
-      </section>
-      <section className="pb-24">
-        <div className="wrap grid gap-6 md:grid-cols-3">
+      <JsonLd data={faqJsonLd(faq)} />
+      <TextHero locale={locale} dict={dict} k={d.eyebrow} title={`${d.title}.`} sub={d.introShort} crumbs={[[dict.nav.services]]} />
+      <section className="sec" style={{ paddingTop: 0 }}>
+        <div className="wrap svc-hub">
           {services.map((s, i) => (
-            <Reveal key={s.slug} delay={(i % 3) * 80} className="h-full">
-              <PosterCard locale={locale}
-                href={`/${locale}/services/${s.slug}`}
-                visual={serviceVisual(s.slug)}
-                label={String(i + 1).padStart(2, "0")}
-                title={s.title[locale]}
-              />
-            </Reveal>
+            <Link key={s.slug} href={`/${locale}/services/${s.slug}`} className="svc-row" data-rv="">
+              <div className="svc-row-media">
+                <Media visual={serviceVisual(s.slug)} locale={locale} sizes="(max-width: 900px) 100vw, 55vw" />
+              </div>
+              <div className="svc-row-txt">
+                <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                <h2>{s.title[locale]}</h2>
+                <p>{s.phrase[locale]}</p>
+                <span className="link">{dict.pv.explore} →</span>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
-
-      <AskSection locale={locale} dict={dict} />
-    </>
+      <FaqBlock items={faq} title={dict.pv.faqBefore} label={dict.pv.essential} />
+      <CtaBand locale={locale} dict={dict} />
+    </PvPage>
   );
 }

@@ -1,9 +1,4 @@
-/** Transition entre pages : un voile vert nuit qui se dissipe. */
+/* Page transitions are handled by the curtain in PvRuntime. */
 export default function Template({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <div aria-hidden="true" className="page-veil" />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

@@ -47,14 +47,8 @@ export function Header({
   const localeHref = (target: string) =>
     pathname?.replace(new RegExp(`^/${locale}`), `/${target}`) || `/${target}`;
 
-  // Transparent uniquement au-dessus d'un hero sombre (liste tenue à jour
-  // au fil de la refonte) ; ailleurs, fond noir permanent.
-  const darkHeroRoutes = [`/${locale}`, `/${locale}/qui-sommes-nous`, `/${locale}/guide`];
-  const darkHeroPrefixes = [`/${locale}/services/`, `/${locale}/destinations`];
-  const hasDarkHero =
-    darkHeroRoutes.includes(pathname ?? "") ||
-    darkHeroPrefixes.some((p) => (pathname ?? "").startsWith(p));
-  const solid = !open && (scrolled || !hasDarkHero);
+  // Ivory theme: the bar is always frosted paper, so it reads over photos and paper alike.
+  const solid = !open;
   const linkBase = "text-ivory/75 hover:text-ivory";
   const linkActive = "text-ivory";
 

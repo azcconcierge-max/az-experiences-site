@@ -1,6 +1,4 @@
-import { Reveal } from "./Reveal";
-
-/** En-tête des pages intérieures : un label, un titre H1, une phrase. */
+/** Header of the simple pages (legal, selection): the preview's text hero. */
 export function PageHero({
   eyebrow,
   title,
@@ -11,14 +9,16 @@ export function PageHero({
   intro?: string;
 }) {
   return (
-    <section className="pt-40 pb-16 md:pt-48 md:pb-24">
-      <div className="wrap">
-        <Reveal>
-          <p className="label mb-6">{eyebrow}</p>
-          <h1 className="t-h1 max-w-[40rem] text-ivory">{title}</h1>
-          {intro && <p className="t-body measure mt-8 text-ivory/75">{intro}</p>}
-        </Reveal>
+    <div className="pv">
+      <div className="pv-root">
+        <section className="thero" style={{ paddingBottom: "clamp(48px,6vw,80px)" }}>
+          <div className="wrap">
+            <div className="label hero-in">{eyebrow}</div>
+            <h1 className="thero-title split">{title}</h1>
+            {intro && <p className="phero-sub hero-in">{intro}</p>}
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   );
 }

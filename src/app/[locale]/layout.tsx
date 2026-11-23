@@ -11,14 +11,16 @@ import { JsonLd } from "@/components/JsonLd";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { MobileBar } from "@/components/MobileBar";
 import { GlobalDetails } from "@/components/GlobalDetails";
+import { PvRuntime } from "@/components/pv/PvRuntime";
 import { SideIndex } from "@/components/SideIndex";
 import { RevealObserver } from "@/components/RevealObserver";
 import "../globals.css";
+import "../pv.css";
 
 // Une seule famille : Thin 100, Light 300, Regular 400, Medium 500 (brand book p.18)
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["100", "300", "400", "500"],
+  weight: ["100", "200", "300", "400", "500"],
   style: "normal",
   variable: "--font-inter",
   display: "swap",
@@ -119,13 +121,14 @@ export default async function LocaleLayout({
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <head>
         {/* active les apparitions seulement si le JavaScript tourne */}
-        <Script id="js-flag" strategy="beforeInteractive">{"document.documentElement.classList.add('js')"}</Script>
+        <Script id="js-flag" strategy="beforeInteractive">{"(function(){var h=document.documentElement;h.classList.add('js');try{var s=sessionStorage.getItem('azPre'),r=matchMedia('(prefers-reduced-motion: reduce)').matches;h.classList.add(s||r?'pre-skip':'pre-on');setTimeout(function(){h.classList.remove('pre-on')},4000)}catch(e){h.classList.add('pre-skip')}})()"}</Script>
       </head>
       <body>
         <div aria-hidden="true" className="read-progress" />
         <RevealObserver />
         <SmoothScroll />
         <GlobalDetails />
+        <PvRuntime locale={locale} admitLabel={dict.admit.pass.admit} />
         <JsonLd data={organizationJsonLd} />
         <Header locale={locale} nav={nav} ctaLabel={dict.cta.request} />
         <SideIndex
