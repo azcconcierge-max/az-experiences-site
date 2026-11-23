@@ -407,3 +407,4 @@ html.anim .pv .play .b-frame-media{clip-path:inset(0 0 0 0)}
 .pv .ferr{color:#a2483b;font-size:13px}
 @media (max-width:900px){.pv .fd-grid{grid-template-columns:1fr}.pv .fd{grid-template-columns:64px 1fr;gap:18px}.pv .fd-mono{width:64px;height:64px;font-size:20px}.pv .a-sechead{grid-template-columns:40px 1fr}.pv .a-sechead>*:last-child:not(h2){display:none}.pv .thero{padding-top:150px}}
 html.pre-skip .pv .pre{display:none}
+.pv .dcard{--ivory:#EFE8DA;--stone:#D8D1C2;--black:#0D0D0C;color:#EFE8DA}.pv .dcard .label{color:#D8D1C2}
