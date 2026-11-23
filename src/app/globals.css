@@ -1299,3 +1299,6 @@ html.js .ao-plate.reveal.is-in .ao-plate-img img { filter: none; }
 .ao-pass-offers li { font-size: 0.875rem; font-weight: 300; color: #d8d1c2; padding: 8px 0 8px 18px; position: relative; }
 .ao-pass-offers li::before { content: ""; position: absolute; left: 0; top: 50%; width: 8px; height: 1px; background: #8d877b; }
 .ao-event-pass .ao-sold::after { transform: scaleX(1); }
+
+/* nothing may push the page sideways on phones; clip (unlike hidden) keeps sticky sections working */
+main { overflow-x: clip; }

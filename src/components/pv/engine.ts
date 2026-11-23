@@ -249,8 +249,11 @@ export function preloader(onDone: () => void) {
   try { sessionStorage.setItem("azPre", "1"); } catch { /* private mode */ }
   html.classList.add("pre-on");
   const c = el.querySelector<HTMLElement>("[data-pc]")!, t0 = performance.now(), d = 1500;
+  // the mark draws in step with the counter (not left to a CSS animation that may finish before first paint)
+  const lines = [...el.querySelectorAll<SVGPolylineElement>("polyline")];
+  lines.forEach((l) => { l.style.animation = "none"; l.style.strokeDasharray = "240"; l.style.strokeDashoffset = "240"; });
   const done = () => { el.classList.add("out"); html.classList.remove("pre-on"); onDone(); setTimeout(() => (el.style.display = "none"), 1200); };
-  const step = (t: number) => { const p = clamp((t - t0) / d); c.textContent = String(Math.round((1 - Math.pow(1 - p, 3)) * 100)).padStart(3, "0"); if (p < 1) requestAnimationFrame(step); else done(); };
+  const step = (t: number) => { const p = clamp((t - t0) / d); c.textContent = String(Math.round((1 - Math.pow(1 - p, 3)) * 100)).padStart(3, "0"); lines.forEach((l, i) => { const q = clamp((p - i * 0.12) / 0.85); l.style.strokeDashoffset = String(240 * (1 - (1 - Math.pow(1 - q, 3)))); }); if (p < 1) requestAnimationFrame(step); else done(); };
   requestAnimationFrame(step);
   return true;
 }
