@@ -57,7 +57,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       fr: [
         {
           q: "Comment demander des billets pour un événement complet ?",
-          a: "Écrivez-nous par WhatsApp, email ou formulaire privé en précisant l'événement, la date et le nombre de places. Nous répondons en quelques heures avec les options réelles et un devis précis.",
+          a: "Écrivez-nous par WhatsApp, email ou formulaire privé en précisant l'événement, la date et le nombre de places. Nous répondons dans l'heure avec les options réelles et un devis précis.",
         },
         {
           q: "Les billets sont-ils garantis ?",
@@ -71,7 +71,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       en: [
         {
           q: "How do I request tickets for a sold-out event?",
-          a: "Write to us by WhatsApp, email or private form with the event, date and number of seats. We reply within hours with the real options and a precise quote.",
+          a: "Write to us by WhatsApp, email or private form with the event, date and number of seats. We reply within the hour with the real options and a precise quote.",
         },
         {
           q: "Are tickets guaranteed?",
@@ -85,7 +85,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       es: [
         {
           q: "¿Cómo pido entradas para un evento agotado?",
-          a: "Escríbanos por WhatsApp, email o formulario privado con el evento, la fecha y el número de plazas. Respondemos en pocas horas con las opciones reales y un presupuesto preciso.",
+          a: "Escríbanos por WhatsApp, email o formulario privado con el evento, la fecha y el número de plazas. Respondemos en menos de una hora con las opciones reales y un presupuesto preciso.",
         },
         {
           q: "¿Las entradas están garantizadas?",
@@ -99,7 +99,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       pt: [
         {
           q: "Como peço bilhetes para um evento esgotado?",
-          a: "Escreva-nos por WhatsApp, email ou formulário privado com o evento, a data e o número de lugares. Respondemos em poucas horas com as opções reais e um orçamento preciso.",
+          a: "Escreva-nos por WhatsApp, email ou formulário privado com o evento, a data e o número de lugares. Respondemos em menos de uma hora com as opções reais e um orçamento preciso.",
         },
         {
           q: "Os bilhetes são garantidos?",

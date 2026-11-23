@@ -9,7 +9,7 @@ export const site = {
   name: BRAND_NAME,
   legalName: "AZ Management",
   baseUrl: "https://azexperiences.com",
-  email: "azcconcierge@gmail.com",
+  email: "contact@azexperiences.com",
   // Numéro WhatsApp au format international sans "+".
   whatsapp: "33651733987" as string | null,
   address: {

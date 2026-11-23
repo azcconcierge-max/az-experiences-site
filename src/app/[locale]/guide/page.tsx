@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getDict, type Locale } from "@/i18n";
 import { articles } from "@/data/articles";
 import { pageAlternates } from "@/lib/seo";
-import { Reveal } from "@/components/Reveal";
 import { articleVisual } from "@/lib/univers";
-import { PosterCard, PosterHero } from "@/components/poster";
-import { Button } from "@/components/GoldLink";
-import { AskSection } from "@/components/AskSection";
+import { CtaBand, Media, PvPage, TextHero } from "@/components/pv/blocks";
 
 export async function generateMetadata({
   params,
@@ -22,15 +20,10 @@ export async function generateMetadata({
   };
 }
 
-/** Espace insécable avant la ponctuation haute, pour ne jamais isoler un « ? ». */
-function frPunct(text: string) {
-  return text.replace(/ ([?!:;\u00BB])/g, "\u00A0$1").replace(/\u00AB /g, "\u00AB\u00A0");
-}
-
 function formatDate(iso: string, locale: string) {
   return new Date(iso).toLocaleDateString(
     { fr: "fr-FR", en: "en-GB", es: "es-ES", pt: "pt-PT" }[locale] ?? "fr-FR",
-    { day: "numeric", month: "long", year: "numeric" }
+    { day: "numeric", month: "long", year: "numeric" },
   );
 }
 
@@ -44,42 +37,40 @@ export default async function GuidePage({
   const dict = getDict(locale);
   const d = dict.guide;
   const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
-  const [cover, ...rest] = sorted;
+  const [f, ...rest] = sorted;
+  const meta = (a: (typeof articles)[number]) => `${formatDate(a.date, locale)} · ${a.readingMinutes} ${d.reading}`;
 
   return (
-    <>
-      {/* ---- COUVERTURE : le dernier article, en poster ---- */}
-      <PosterHero locale={locale}
-        visual={articleVisual(cover.slug)}
-        label={`${d.eyebrow} · ${formatDate(cover.date, locale)}`}
-        title={frPunct(cover.title[locale])}
-        chapter="05"
-        footer={`AZ Experiences — ${dict.nav.guide}`}
-      >
-        <Button href={`/${locale}/guide/${cover.slug}`} variant="lin">
-          {dict.cta.readArticle}
-        </Button>
-      </PosterHero>
-
-      {/* ---- LES AUTRES ARTICLES ---- */}
-      {rest.length > 0 && (
-        <section className="py-24">
-          <div className="wrap grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {rest.map((article, i) => (
-              <Reveal key={article.slug} delay={(i % 3) * 80} className="h-full">
-                <PosterCard locale={locale}
-                  href={`/${locale}/guide/${article.slug}`}
-                  visual={articleVisual(article.slug)}
-                  label={formatDate(article.date, locale)}
-                  title={frPunct(article.title[locale])}
-                />
-              </Reveal>
+    <PvPage>
+      <TextHero locale={locale} dict={dict} k={d.eyebrow} title={dict.pv.guideTitle} sub={dict.pv.guideSub} crumbs={[[dict.nav.guide]]} />
+      <section className="sec" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          {f && (
+            <Link href={`/${locale}/guide/${f.slug}`} className="feat" data-rv="">
+              <div className="feat-media" data-par="">
+                <Media visual={articleVisual(f.slug)} locale={locale} sizes="(max-width: 900px) 100vw, 55vw" />
+              </div>
+              <div className="feat-txt">
+                <div className="label">{meta(f)}</div>
+                <h2>{f.title[locale]}</h2>
+                <p>{f.excerpt[locale]}</p>
+                <span className="link">{dict.cta.readArticle} →</span>
+              </div>
+            </Link>
+          )}
+          <div className="art-grid">
+            {rest.map((a) => (
+              <Link key={a.slug} href={`/${locale}/guide/${a.slug}`} className="art" data-rv="">
+                <div className="art-media"><Media visual={articleVisual(a.slug)} locale={locale} sizes="(max-width: 900px) 100vw, 33vw" /></div>
+                <div className="label">{meta(a)}</div>
+                <h3>{a.title[locale]}</h3>
+                <p>{a.excerpt[locale]}</p>
+              </Link>
             ))}
           </div>
-        </section>
-      )}
-
-      <AskSection locale={locale} dict={dict} />
-    </>
+        </div>
+      </section>
+      <CtaBand locale={locale} dict={dict} title={d.ctaTitle} />
+    </PvPage>
   );
 }

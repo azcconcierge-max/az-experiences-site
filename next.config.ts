@@ -35,6 +35,12 @@ const nextConfig: NextConfig = {
         destination: "/:locale/evenements/tennis-tour",
         permanent: true,
       },
+      // le Ballon d'Or 2026 est passé (26 octobre 2026)
+      {
+        source: "/:locale(fr|en|es|pt)/evenements/ballon-dor",
+        destination: "/:locale/evenements",
+        permanent: false,
+      },
       // le service « Accès sur mesure » a été retiré
       {
         source: "/:locale(fr|en|es|pt)/services/sur-mesure",
