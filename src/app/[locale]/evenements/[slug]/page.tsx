@@ -18,15 +18,15 @@ import { DaysCount } from "@/components/pv/DaysCount";
 
 /** What completes each occasion: its city, its article, the services around it. */
 const AROUND: Record<string, { dest?: string; article?: string; svc: string[] }> = {
-  "champions-league": { article: "obtenir-billets-evenement-sold-out", svc: ["transport", "hotels"] },
-  "super-bowl": { dest: "miami", svc: ["jet-prive", "voyages"] },
+  "champions-league": { article: "finale-ligue-des-champions-2027-madrid", svc: ["transport", "hotels"] },
+  "super-bowl": { dest: "miami", article: "super-bowl-lxi-2027-billets-suite", svc: ["jet-prive", "voyages"] },
   "f1-monaco": { dest: "monaco", article: "grand-prix-monaco-vip", svc: ["yachts", "jet-prive"] },
-  "tennis-tour": { dest: "london", svc: ["voyages", "hotels"] },
+  "tennis-tour": { dest: "london", article: "rolex-monte-carlo-masters-2027-vip", svc: ["voyages", "hotels"] },
   "fashion-week-paris": { dest: "paris", svc: ["transport", "gastronomie"] },
   "festival-cannes": { dest: "cote-d-azur", svc: ["hotels", "yachts"] },
   "met-gala": { dest: "new-york", svc: ["securite", "transport"] },
   oscars: { svc: ["securite", "transport"] },
-  "celine-dion": { article: "obtenir-billets-evenement-sold-out", svc: ["evenements", "transport"] },
+  "celine-dion": { article: "celine-dion-paris-la-defense-arena-2027", svc: ["evenements", "transport"] },
 };
 
 export function generateStaticParams() {

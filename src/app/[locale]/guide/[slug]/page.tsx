@@ -15,6 +15,13 @@ const ARTICLE_EVENT: Record<string, string> = {
   "obtenir-billets-evenement-sold-out": "champions-league",
   "grand-prix-monaco-vip": "f1-monaco",
   "monaco-adresses": "f1-monaco",
+  "psg-parc-des-princes-loge-vip": "champions-league",
+  "real-madrid-santiago-bernabeu-vip": "champions-league",
+  "finale-ligue-des-champions-2027-madrid": "champions-league",
+  "super-bowl-lxi-2027-billets-suite": "super-bowl",
+  "rolex-monte-carlo-masters-2027-vip": "tennis-tour",
+  "rolex-paris-masters-la-defense-arena-vip": "tennis-tour",
+  "celine-dion-paris-la-defense-arena-2027": "celine-dion",
 };
 
 export function generateStaticParams() {

@@ -1,4 +1,5 @@
 import type { L, Locale } from "@/i18n";
+import { newGuides } from "./guides";
 
 /**
  * LE GUIDE, les articles SEO de la maison, à publier régulièrement.
@@ -17,7 +18,7 @@ export type Article = {
   body: Record<Locale, ArticleBlock[]>;
 };
 
-export const articles: Article[] = [
+const baseArticles: Article[] = [
   {
     slug: "obtenir-billets-evenement-sold-out",
     date: "2026-07-01",
@@ -188,6 +189,9 @@ export const articles: Article[] = [
     },
   },
 ];
+
+/** All guides, newest first in the hub (sorted by date there). */
+export const articles: Article[] = [...newGuides, ...baseArticles];
 
 export function getArticle(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);

@@ -185,6 +185,16 @@ const byArticle: Record<string, Visual> = {
   "obtenir-billets-evenement-sold-out": visuals.concerts,
   "grand-prix-monaco-vip": visuals.formulaOne,
   "monaco-adresses": visuals.guideMap,
+  "psg-parc-des-princes-loge-vip": visuals.paris,
+  "real-madrid-santiago-bernabeu-vip": visuals.football,
+  "finale-ligue-des-champions-2027-madrid": visuals.football,
+  "super-bowl-lxi-2027-billets-suite": visuals.superBowl,
+  "rolex-monte-carlo-masters-2027-vip": visuals.tennis,
+  "rolex-paris-masters-la-defense-arena-vip": visuals.usOpen,
+  "celine-dion-paris-la-defense-arena-2027": visuals.celineDion,
+  "u2-stade-de-france-2027": visuals.concerts,
+  "the-weeknd-concert-vip": visuals.concerts,
+  "the-ice-st-moritz-2027": visuals.jet,
 };
 
 export const serviceVisual = (slug: string) => byService[slug] ?? visuals.palaces;
