@@ -196,6 +196,7 @@ const byArticle: Record<string, Visual> = {
   "the-weeknd-concert-vip": visuals.concerts,
   "the-ice-st-moritz-2027": visuals.jet,
   "grand-prix-abu-dhabi-2026": visuals.formulaOne,
+  "festival-sanremo-2027-teatro-ariston": visuals.concerts,
 };
 
 export const serviceVisual = (slug: string) => byService[slug] ?? visuals.palaces;
