@@ -79,6 +79,7 @@ const organizationJsonLd = {
     streetAddress: site.address.street,
     postalCode: site.address.postalCode,
     addressLocality: site.address.city,
+    addressRegion: site.address.region,
     addressCountry: site.address.country,
   },
   founders: [

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getDict, type Locale } from "@/i18n";
 import { pageAlternates } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { addressLine, site } from "@/lib/site";
 import { faqJsonLd } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { Crumbs, FaqBlock, PvPage, waHref } from "@/components/pv/blocks";
@@ -50,7 +50,7 @@ export default async function ContactPage({
                   <a href={waHref(locale)} target="_blank" rel="noopener noreferrer" className="link">{r.preferWa} →</a>
                 )}
                 <a href={`mailto:${site.email}`}>{site.email}</a>
-                <span>{site.address.street}, {site.address.postalCode} {site.address.city}</span>
+                <span>{addressLine}</span>
               </div>
             </>
           }

@@ -77,7 +77,7 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             <li>
               {site.address.street}
               <br />
-              {site.address.postalCode} {site.address.city}
+              {site.address.city}, {site.address.region} {site.address.postalCode}
             </li>
           </ul>
         </div>
