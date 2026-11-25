@@ -104,7 +104,7 @@ export const fr = {
   admit: {
     heroTitle: "Complet, c'est là que nous commençons.",
     heroSub: "Là où il n'y a plus de place, nous en trouvons une. Finales, premières, paddocks, tables : confirmés dans l'heure.",
-    masthead: ["AZ Experiences", "Le programme · Saison 2026–27", "Paris"],
+    masthead: ["AZ Experiences", "Le programme · Saison 2026–27"],
     proof: [{
       n: "<1h",
       l: "Réponse",

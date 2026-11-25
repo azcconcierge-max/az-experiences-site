@@ -106,7 +106,7 @@ export const es: Dict = {
   admit: {
     heroTitle: "Agotado es donde empezamos.",
     heroSub: "Donde no quedan plazas, encontramos una. Finales, estrenos, paddocks, mesas: confirmados en menos de una hora.",
-    masthead: ["AZ Experiences", "El programa · Temporada 2026–27", "París"],
+    masthead: ["AZ Experiences", "El programa · Temporada 2026–27"],
     proof: [{
       n: "<1h",
       l: "Respuesta",
