@@ -57,7 +57,6 @@ export default async function AboutPage({
           <div className="a-sechead">
             <span className="label">I.</span>
             <h2 className="h2 split">{pv.founders}</h2>
-            <span className="label">Paris</span>
           </div>
           <div className="fd-grid">
             <article className="fd" data-rv="">

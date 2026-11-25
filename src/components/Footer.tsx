@@ -128,7 +128,6 @@ export function Footer({ locale, dict }: { locale: string; dict: Dict }) {
             © {year} {site.name}. {dict.footer.rights}
           </span>
           <span className="flex items-center gap-6">
-            <span className="city text-[0.7rem] text-ivory/70">Paris</span>
             <BackToTop label={dict.footer.backToTop} />
           </span>
         </div>
