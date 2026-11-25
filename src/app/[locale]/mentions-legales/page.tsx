@@ -34,7 +34,7 @@ export default async function MentionsPage({
           <p>
             {site.legalName}, SIRET 993 643 378 00017
             <br />
-            {site.address.street}, {site.address.postalCode} {site.address.city}, France
+            {site.registeredOffice}
             <br />
             Email : {site.email}
           </p>

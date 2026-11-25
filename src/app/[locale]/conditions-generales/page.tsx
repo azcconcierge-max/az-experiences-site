@@ -41,7 +41,7 @@ export default async function TermsPage({
               <h2>1. Identité du vendeur</h2>
               <p>
                 {site.legalName}, SIRET 993 643 378 00017, dont le siège est situé{" "}
-                {site.address.street}, {site.address.postalCode} {site.address.city}, France,
+                {site.registeredOffice},
                 exploitant la marque AZ Experiences (ci-après « la Maison »).
                 <br />
                 Contact : {site.email} · WhatsApp +33 6 51 73 39 87 · azexperiences.com
@@ -175,7 +175,7 @@ export default async function TermsPage({
               <h2>1. Seller identity</h2>
               <p>
                 {site.legalName}, SIRET 993 643 378 00017, registered office at{" "}
-                {site.address.street}, {site.address.postalCode} {site.address.city}, France,
+                {site.registeredOffice},
                 operating under the brand AZ Experiences (the &quot;House&quot;).
                 <br />
                 Contact: {site.email} · WhatsApp +33 6 51 73 39 87 · azexperiences.com

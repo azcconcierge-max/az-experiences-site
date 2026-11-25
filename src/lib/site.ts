@@ -12,16 +12,23 @@ export const site = {
   email: "contact@azexperiences.com",
   // Numéro WhatsApp au format international sans "+".
   whatsapp: "33651733987" as string | null,
+  // Adresse affichée sur le site (pied de page, contact, données structurées).
   address: {
-    street: "11 Avenue Myron Herrick",
-    postalCode: "75008",
-    city: "Paris",
-    country: "FR",
+    street: "30 N. Gould St. #69254",
+    city: "Sheridan",
+    region: "Wyoming",
+    postalCode: "82801",
+    country: "US",
   },
+  /** Siège social de l'entité juridique citée dans les pages légales (AZ Management, SIRET). */
+  registeredOffice: "11 avenue Myron Herrick, 75008 Paris, France",
   foundingYear: 2024,
   instagram: null as string | null, // ex: "https://instagram.com/azconciergerie"
   linkedin: "https://www.linkedin.com/company/146265280/" as string | null,
 } as const;
+
+/** « 30 N. Gould St. #69254, Sheridan, Wyoming 82801 » */
+export const addressLine = `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`;
 
 /**
  * Numéro WhatsApp de la maison, format international sans « + ».
